@@ -60,17 +60,17 @@ def main() -> None:
 
     stock_rows = []
     m = ticker_map[ticker_map["instrument"].isin(inst) & ticker_map["yfinance_ticker"].notna()].copy()
-    for row in m.itertuples(index=False):
-        px = fetch_yfinance_prices(row.yfinance_ticker, start, end)
-        for p in px.itertuples(index=False):
+    for row in m.to_dict(orient="records"):
+        px = fetch_yfinance_prices(row["yfinance_ticker"], start, end)
+        for p in px.to_dict(orient="records"):
             stock_rows.append(
                 {
-                    "date": p.date,
-                    "instrument": row.instrument,
-                    "ticker": row.ticker,
-                    "yfinance_ticker": row.yfinance_ticker,
-                    "currency": row.currency,
-                    "close": p.close,
+                    "date": p["date"],
+                    "instrument": row["instrument"],
+                    "ticker": row["ticker"],
+                    "yfinance_ticker": row["yfinance_ticker"],
+                    "currency": row["currency"],
+                    "close": p["close"],
                     "source": "yfinance",
                     "updated_at_utc": pd.Timestamp.utcnow().strftime("%Y-%m-%dT%H:%M:%SZ"),
                 }
@@ -80,17 +80,17 @@ def main() -> None:
     if benchmarks_path.exists():
         b = pd.read_csv(benchmarks_path)
         b_rows = []
-        for row in b.itertuples(index=False):
-            px = fetch_yfinance_prices(row.yfinance_ticker, start, end)
-            for p in px.itertuples(index=False):
+        for row in b.to_dict(orient="records"):
+            px = fetch_yfinance_prices(row["yfinance_ticker"], start, end)
+            for p in px.to_dict(orient="records"):
                 b_rows.append(
                     {
-                        "date": p.date,
-                        "name": row.name,
-                        "ticker": row.ticker,
-                        "yfinance_ticker": row.yfinance_ticker,
-                        "currency": row.currency,
-                        "close": p.close,
+                        "date": p["date"],
+                        "name": row["name"],
+                        "ticker": row["ticker"],
+                        "yfinance_ticker": row["yfinance_ticker"],
+                        "currency": row["currency"],
+                        "close": p["close"],
                         "source": "yfinance",
                         "updated_at_utc": pd.Timestamp.utcnow().strftime("%Y-%m-%dT%H:%M:%SZ"),
                     }
