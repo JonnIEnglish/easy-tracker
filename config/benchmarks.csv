@@ -1,5 +1,0 @@
-name,ticker,yfinance_ticker,currency,notes
-S&P 500,SPY,SPY,USD,US large cap proxy
-Nasdaq 100,QQQ,QQQ,USD,growth/technology proxy
-Semiconductors,SMH,SMH,USD,semiconductor ETF proxy
-Global Equity,VT,VT,USD,global equity proxy

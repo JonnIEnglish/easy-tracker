@@ -1,156 +1,339 @@
 <!doctype html>
-<html>
+<html lang="en">
 <head>
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>EASYGE Active Tracker</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>EasyETFs Holdings Tracker</title>
   <style>
-    :root { --bg:#f2f5f8; --card:#fff; --ink:#1a2433; --muted:#5b6b80; --accent:#005f73; --line:#d5dee8; --good:#117a65; --bad:#b23a48; }
-    * { box-sizing:border-box; }
-    body { margin:0; font-family: "Avenir Next", "Segoe UI", sans-serif; background:linear-gradient(180deg,#eaf2f8 0,#f6f8fb 45%,#eef3f9 100%); color:var(--ink); }
-    .wrap { max-width:1200px; margin:0 auto; padding:24px; }
-    h1,h2 { margin:0 0 10px; }
-    p.sub { margin:0 0 20px; color:var(--muted); }
-    .cards { display:grid; grid-template-columns:repeat(auto-fit,minmax(160px,1fr)); gap:12px; margin-bottom:18px; }
-    .card { background:var(--card); border:1px solid var(--line); border-radius:12px; padding:12px; box-shadow:0 2px 10px rgba(0,35,65,.05); }
-    .label { color:var(--muted); font-size:12px; text-transform:uppercase; letter-spacing:.5px; }
-    .val { font-size:24px; font-weight:700; margin-top:4px; }
-    .grid { display:grid; grid-template-columns:2fr 1fr; gap:14px; }
-    .panel { background:var(--card); border:1px solid var(--line); border-radius:12px; padding:14px; margin-bottom:14px; }
-    table { width:100%; border-collapse:collapse; font-size:13px; }
-    th,td { padding:8px; border-bottom:1px solid var(--line); text-align:left; vertical-align:top; }
-    th { font-size:12px; color:var(--muted); text-transform:uppercase; letter-spacing:.5px; }
-    .search { width:100%; padding:10px; border:1px solid var(--line); border-radius:8px; margin-bottom:10px; }
-    .twocol { display:grid; grid-template-columns:1fr 1fr; gap:10px; }
-    .good { color:var(--good); }
-    .bad { color:var(--bad); }
-    img { max-width:100%; border-radius:10px; border:1px solid var(--line); margin:8px 0; }
-    @media (max-width: 980px) { .grid { grid-template-columns:1fr; } .twocol { grid-template-columns:1fr; } }
+    :root {
+      color-scheme: light;
+      --bg: #f7f8fa;
+      --panel: #ffffff;
+      --ink: #17202a;
+      --muted: #647282;
+      --line: #dde3ea;
+      --accent: #0f766e;
+      --accent-soft: #d9f0ed;
+      --good: #0a7a3d;
+      --bad: #b42318;
+      --warn: #8a5a00;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--ink);
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      font-size: 14px;
+    }
+    header {
+      border-bottom: 1px solid var(--line);
+      background: #ffffff;
+    }
+    .wrap {
+      width: min(1280px, calc(100vw - 32px));
+      margin: 0 auto;
+    }
+    .topbar {
+      min-height: 82px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+    }
+    h1 {
+      margin: 0;
+      font-size: 24px;
+      line-height: 1.1;
+      letter-spacing: 0;
+    }
+    .subtle { color: var(--muted); }
+    .timestamp {
+      text-align: right;
+      line-height: 1.5;
+      white-space: nowrap;
+    }
+    main { padding: 20px 0 32px; }
+    .tabs {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin-bottom: 16px;
+    }
+    .tab {
+      min-height: 38px;
+      border: 1px solid var(--line);
+      background: #ffffff;
+      color: var(--ink);
+      border-radius: 8px;
+      padding: 0 14px;
+      font: inherit;
+      cursor: pointer;
+    }
+    .tab[aria-selected="true"] {
+      border-color: var(--accent);
+      background: var(--accent-soft);
+      color: #064e49;
+      font-weight: 700;
+    }
+    .summary {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 10px;
+      margin-bottom: 16px;
+    }
+    .metric, .toolbar, .table-panel, .empty {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+    }
+    .metric {
+      padding: 12px;
+      min-height: 78px;
+    }
+    .metric .label {
+      color: var(--muted);
+      font-size: 12px;
+      text-transform: uppercase;
+    }
+    .metric .value {
+      margin-top: 5px;
+      font-size: 22px;
+      font-weight: 750;
+      overflow-wrap: anywhere;
+    }
+    .toolbar {
+      display: grid;
+      grid-template-columns: minmax(220px, 1fr) 190px;
+      gap: 10px;
+      padding: 10px;
+      margin-bottom: 12px;
+    }
+    input, select {
+      width: 100%;
+      min-height: 38px;
+      border: 1px solid var(--line);
+      border-radius: 6px;
+      background: #ffffff;
+      color: var(--ink);
+      font: inherit;
+      padding: 0 10px;
+    }
+    .table-panel { overflow: hidden; }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      table-layout: fixed;
+    }
+    th, td {
+      padding: 10px 12px;
+      border-bottom: 1px solid var(--line);
+      text-align: left;
+      vertical-align: middle;
+      overflow-wrap: anywhere;
+    }
+    th {
+      background: #f0f3f6;
+      color: var(--muted);
+      font-size: 12px;
+      text-transform: uppercase;
+      font-weight: 750;
+      position: sticky;
+      top: 0;
+      z-index: 1;
+    }
+    tbody tr:hover { background: #fafcfd; }
+    .num { text-align: right; font-variant-numeric: tabular-nums; }
+    .instrument { font-weight: 650; }
+    .ticker {
+      display: inline-flex;
+      align-items: center;
+      min-height: 24px;
+      padding: 0 8px;
+      border-radius: 999px;
+      background: #eef2f6;
+      color: #334155;
+      font-size: 12px;
+      font-weight: 700;
+    }
+    .positive { color: var(--good); }
+    .negative { color: var(--bad); }
+    .missing { color: var(--warn); }
+    .empty {
+      padding: 28px;
+      color: var(--muted);
+      text-align: center;
+    }
+    a { color: var(--accent); }
+    @media (max-width: 860px) {
+      .topbar, .toolbar { display: block; }
+      .timestamp { margin-top: 8px; text-align: left; white-space: normal; }
+      .summary { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .toolbar > * + * { margin-top: 10px; }
+      table { min-width: 760px; }
+      .table-panel { overflow-x: auto; }
+    }
   </style>
 </head>
 <body>
-  <div class="wrap">
-    <h1>EASYGE Active Holdings Tracker</h1>
-    <p class="sub">Latest snapshot: 2026-05-08</p>
-
-    <div class="cards">
-      <div class="card"><div class="label">Holdings</div><div class="val">33</div></div>
-      <div class="card"><div class="label">Cash</div><div class="val">6.37%</div></div>
-      <div class="card"><div class="label">Top 1</div><div class="val">9.74%</div></div>
-      <div class="card"><div class="label">Top 5</div><div class="val">34.03%</div></div>
-      <div class="card"><div class="label">Top 10</div><div class="val">58.54%</div></div>
-      <div class="card"><div class="label">Turnover</div><div class="val">n/a</div></div>
-      <div class="card"><div class="label">Estimated Interval Return</div><div class="val">n/a</div></div>
-      <div class="card"><div class="label">Largest Holding</div><div class="val" style="font-size:16px;">LUMENTUM HOL</div></div>
-    </div>
-
-    <div class="grid">
+  <header>
+    <div class="wrap topbar">
       <div>
-        <div class="panel">
-          <h2>Latest Holdings</h2>
-          <input id="holdSearch" class="search" placeholder="Search holdings table" />
-          <table id="holdingsTable">
-            <thead><tr><th>Instrument</th><th>Ticker</th><th>Currency</th><th>Weight</th><th>Theme</th><th>Subtheme</th></tr></thead>
-            <tbody><tr><td>LUMENTUM HOL</td><td>LITE</td><td>USD</td><td>9.74%</td><td>Unmapped</td><td>Unmapped</td></tr>
-<tr><td>COMFORT SYSTEMS</td><td>FIX</td><td>USD</td><td>7.18%</td><td>Data Centres</td><td>Mechanical and Electrical</td></tr>
-<tr><td>INAV - USD.CASH</td><td>CASH_USD</td><td>USD</td><td>5.86%</td><td>Cash</td><td>USD Cash</td></tr>
-<tr><td>BLOOM ENERGY C-A</td><td>BE</td><td>USD</td><td>5.68%</td><td>Unmapped</td><td>Unmapped</td></tr>
-<tr><td>NVIDIA CORP</td><td>NVDA</td><td>USD</td><td>5.57%</td><td>AI Infrastructure</td><td>Semiconductors</td></tr>
-<tr><td>FORMFACTOR INC</td><td>FORM</td><td>USD</td><td>5.53%</td><td>Semiconductors</td><td>Test Equipment</td></tr>
-<tr><td>CIENA CORP</td><td>CIEN</td><td>USD</td><td>5.35%</td><td>Unmapped</td><td>Unmapped</td></tr>
-<tr><td>COHERENT CORP</td><td>COHR</td><td>USD</td><td>5.05%</td><td>Unmapped</td><td>Unmapped</td></tr>
-<tr><td>ARGAN INC</td><td>AGX</td><td>USD</td><td>4.79%</td><td>Unmapped</td><td>Unmapped</td></tr>
-<tr><td>MICRON TECH</td><td>MU</td><td>USD</td><td>3.79%</td><td>AI Infrastructure</td><td>Memory</td></tr>
-<tr><td>ADV ENERGY INDS</td><td>AEIS</td><td>USD</td><td>3.52%</td><td>Unmapped</td><td>Unmapped</td></tr>
-<tr><td>VERTIV HOLDINGS</td><td>VRT</td><td>USD</td><td>3.44%</td><td>Data Centres</td><td>Power and Cooling</td></tr>
-<tr><td>QUANTA SERVICES</td><td>PWR</td><td>USD</td><td>3.06%</td><td>Electrification</td><td>Grid Infrastructure</td></tr>
-<tr><td>CREDO TECHNOLOGY GROUP HOLDI</td><td>CRDO</td><td>USD</td><td>2.78%</td><td>AI Infrastructure</td><td>Connectivity</td></tr>
-<tr><td>GRAHAM CORP</td><td>GHM</td><td>USD</td><td>2.66%</td><td>Unmapped</td><td>Unmapped</td></tr>
-<tr><td>CAMECO CORP</td><td>CCJ</td><td>USD</td><td>2.15%</td><td>Nuclear</td><td>Uranium</td></tr>
-<tr><td>GE VERNOVA LLC</td><td>GEV</td><td>USD</td><td>2.12%</td><td>Electrification</td><td>Grid and Power</td></tr>
-<tr><td>META PLATFORMS-A</td><td>META</td><td>USD</td><td>2.04%</td><td>Unmapped</td><td>Unmapped</td></tr>
-<tr><td>NEBIUS GROUP NV</td><td>NBIS</td><td>USD</td><td>1.93%</td><td>Unmapped</td><td>Unmapped</td></tr>
-<tr><td>ELBIT SYSTEMS</td><td>ESLT</td><td>USD</td><td>1.92%</td><td>Defence</td><td>Aerospace and Defence</td></tr>
-<tr><td>NLIGHT INC</td><td>LASR</td><td>USD</td><td>1.84%</td><td>Unmapped</td><td>Unmapped</td></tr>
-<tr><td>GENERAL ELECTRIC</td><td>GE</td><td>USD</td><td>1.82%</td><td>Unmapped</td><td>Unmapped</td></tr>
-<tr><td>CARPENTER TECH</td><td>CRS</td><td>USD</td><td>1.70%</td><td>Unmapped</td><td>Unmapped</td></tr>
-<tr><td>ALLEGHENY TECH</td><td>ATI</td><td>USD</td><td>1.69%</td><td>Unmapped</td><td>Unmapped</td></tr>
-<tr><td>Howmet Aerospace Inc</td><td>HWM</td><td>USD</td><td>1.59%</td><td>Aerospace</td><td>Aerospace Components</td></tr>
-<tr><td>APPLOVIN CO-CL A</td><td>APP</td><td>USD</td><td>1.29%</td><td>Unmapped</td><td>Unmapped</td></tr>
-<tr><td>INTERACTIVE BROK</td><td>IBKR</td><td>USD</td><td>1.22%</td><td>Fintech</td><td>Brokerage</td></tr>
-<tr><td>KARMAN HOLDINGS INC</td><td>KRMN</td><td>USD</td><td>1.10%</td><td>Unmapped</td><td>Unmapped</td></tr>
-<tr><td>ROBINHOOD MARK-A</td><td>HOOD</td><td>USD</td><td>0.88%</td><td>Fintech</td><td>Brokerage</td></tr>
-<tr><td>BWX TECHNOLOGIES</td><td>BWXT</td><td>USD</td><td>0.88%</td><td>Unmapped</td><td>Unmapped</td></tr>
-<tr><td>KRATOS DEFENSE &</td><td>KTOS</td><td>USD</td><td>0.59%</td><td>Defence</td><td>Aerospace and Defence</td></tr>
-<tr><td>KRAKEN ROBOTICS INC</td><td>PNG.V</td><td>USD</td><td>0.55%</td><td>Robotics</td><td>Marine Robotics</td></tr>
-<tr><td>INAV - ZAR.CASH</td><td>CASH_ZAR</td><td>ZAR</td><td>0.51%</td><td>Cash</td><td>ZAR Cash</td></tr></tbody>
-          </table>
-        </div>
-
-        <div class="panel">
-          <h2>Monthly Changes</h2>
-          <table>
-            <thead><tr><th>Instrument</th><th>Prev</th><th>Current</th><th>Change</th><th>Type</th></tr></thead>
-            <tbody><tr><td colspan='5'>No data</td></tr></tbody>
-          </table>
-        </div>
-
-        <div class="panel">
-          <h2>Active Trade Estimates</h2>
-          <table>
-            <thead><tr><th>Instrument</th><th>Raw change (pp)</th><th>Expected drift</th><th>Active change (pp)</th><th>Signal</th></tr></thead>
-            <tbody><tr><td colspan='5'>No data</td></tr></tbody>
-          </table>
-        </div>
+        <h1>EasyETFs Holdings Tracker</h1>
+        <div class="subtle">Latest holdings and mapped stock performance for easyGE, easyAI, and easybalanced.</div>
       </div>
-
-      <div>
-        <div class="panel">
-          <h2>Performance Attribution</h2>
-          <div class="twocol">
-            <div>
-              <h3>Top Contributors</h3>
-              <table><thead><tr><th>Name</th><th>Contribution</th></tr></thead><tbody><tr><td colspan='2'>No data</td></tr></tbody></table>
-            </div>
-            <div>
-              <h3>Top Detractors</h3>
-              <table><thead><tr><th>Name</th><th>Contribution</th></tr></thead><tbody><tr><td colspan='2'>No data</td></tr></tbody></table>
-            </div>
-          </div>
-        </div>
-
-        <div class="panel">
-          <h2>Decision Scorecard</h2>
-          <table>
-            <thead><tr><th>Decision</th><th>Count</th><th>Avg 1m</th><th>Hit 1m</th><th>Avg 3m</th><th>Hit 3m</th></tr></thead>
-            <tbody><tr><td colspan='6'>No data</td></tr></tbody>
-          </table>
-        </div>
-
-        <div class="panel">
-          <h2>Data Quality Warnings</h2>
-          <ul><li>## Missing Theme Mappings</li><li>- ADV ENERGY INDS</li><li>- ALLEGHENY TECH</li><li>- APPLOVIN CO-CL A</li><li>- ARGAN INC</li><li>- BLOOM ENERGY C-A</li><li>- BWX TECHNOLOGIES</li><li>- CARPENTER TECH</li><li>- CIENA CORP</li><li>- COHERENT CORP</li><li>- GENERAL ELECTRIC</li><li>- GRAHAM CORP</li><li>- KARMAN HOLDINGS INC</li><li>- LUMENTUM HOL</li><li>- META PLATFORMS-A</li><li>- NEBIUS GROUP NV</li><li>- NLIGHT INC</li><li></li></ul>
-        </div>
-
-        <div class="panel">
-          <h2>Charts</h2>
-          <img src="charts/latest_top20.png" alt="Top 20" />
-          <img src="charts/concentration.png" alt="Concentration" />
-          <img src="charts/theme_exposure.png" alt="Theme exposure" />
-        </div>
+      <div class="timestamp">
+        <div class="subtle">Generated</div>
+        <strong id="generated">Loading...</strong>
       </div>
     </div>
-  </div>
+  </header>
+
+  <main class="wrap">
+    <nav id="tabs" class="tabs" aria-label="Funds"></nav>
+    <section id="summary" class="summary"></section>
+    <section class="toolbar">
+      <input id="search" type="search" placeholder="Search holdings" />
+      <select id="perfFilter" aria-label="Performance filter">
+        <option value="all">All holdings</option>
+        <option value="mapped">With performance</option>
+        <option value="missing">Missing performance</option>
+      </select>
+    </section>
+    <section id="tablePanel" class="table-panel"></section>
+  </main>
 
   <script>
-    const input = document.getElementById('holdSearch');
-    const table = document.getElementById('holdingsTable');
-    input.addEventListener('input', () => {
-      const q = input.value.toLowerCase();
-      for (const row of table.tBodies[0].rows) {
-        row.style.display = row.innerText.toLowerCase().includes(q) ? '' : 'none';
+    const state = { data: null, activeCode: null, query: "", perfFilter: "all" };
+    const generated = document.querySelector("#generated");
+    const tabs = document.querySelector("#tabs");
+    const summary = document.querySelector("#summary");
+    const tablePanel = document.querySelector("#tablePanel");
+    const search = document.querySelector("#search");
+    const perfFilter = document.querySelector("#perfFilter");
+
+    const fmtDateTime = value => value ? new Date(value).toLocaleString(undefined, { dateStyle: "medium", timeStyle: "short" }) : "n/a";
+    const fmtPct = value => Number.isFinite(value) ? `${value.toFixed(2)}%` : "n/a";
+    const fmtWeight = value => Number.isFinite(value) ? `${value.toFixed(2)}%` : "n/a";
+    const cssFor = value => Number.isFinite(value) ? (value >= 0 ? "positive" : "negative") : "missing";
+
+    function activeFund() {
+      return state.data.funds.find(fund => fund.code === state.activeCode) || state.data.funds[0];
+    }
+
+    function renderTabs() {
+      tabs.innerHTML = "";
+      for (const fund of state.data.funds) {
+        const button = document.createElement("button");
+        button.className = "tab";
+        button.type = "button";
+        button.setAttribute("aria-selected", String(fund.code === state.activeCode));
+        button.textContent = fund.slug;
+        button.addEventListener("click", () => {
+          state.activeCode = fund.code;
+          render();
+        });
+        tabs.appendChild(button);
       }
+    }
+
+    function renderSummary(fund) {
+      const largest = fund.holdings[0];
+      const rows = [
+        ["Snapshot", fund.snapshot_date || "n/a"],
+        ["Holdings", fund.holdings_count],
+        ["Total weight", fmtWeight(fund.total_weight)],
+        ["Largest holding", largest ? largest.instrument : "n/a"],
+      ];
+      summary.innerHTML = rows.map(([label, value]) => `
+        <article class="metric">
+          <div class="label">${label}</div>
+          <div class="value">${value}</div>
+        </article>
+      `).join("");
+    }
+
+    function visibleHoldings(fund) {
+      const query = state.query.trim().toLowerCase();
+      return fund.holdings.filter(row => {
+        const hasPerf = row.performance && [row.performance.d1, row.performance.d7, row.performance.d30].some(Number.isFinite);
+        if (state.perfFilter === "mapped" && !hasPerf) return false;
+        if (state.perfFilter === "missing" && hasPerf) return false;
+        if (!query) return true;
+        return [row.instrument, row.currency, row.ticker].filter(Boolean).join(" ").toLowerCase().includes(query);
+      });
+    }
+
+    function renderTable(fund) {
+      const rows = visibleHoldings(fund);
+      if (!rows.length) {
+        tablePanel.className = "empty";
+        tablePanel.textContent = "No holdings match the current filters.";
+        return;
+      }
+      tablePanel.className = "table-panel";
+      tablePanel.innerHTML = `
+        <table>
+          <thead>
+            <tr>
+              <th style="width:34%">Instrument</th>
+              <th style="width:12%">Ticker</th>
+              <th style="width:10%">Currency</th>
+              <th class="num" style="width:11%">Weight</th>
+              <th class="num" style="width:11%">1d</th>
+              <th class="num" style="width:11%">7d</th>
+              <th class="num" style="width:11%">30d</th>
+            </tr>
+          </thead>
+          <tbody>
+            ${rows.map(row => {
+              const perf = row.performance || {};
+              return `
+                <tr>
+                  <td class="instrument">${row.instrument}</td>
+                  <td>${row.ticker ? `<span class="ticker">${row.ticker}</span>` : "<span class=\"subtle\">n/a</span>"}</td>
+                  <td>${row.currency}</td>
+                  <td class="num">${fmtWeight(row.weight)}</td>
+                  <td class="num ${cssFor(perf.d1)}">${fmtPct(perf.d1)}</td>
+                  <td class="num ${cssFor(perf.d7)}">${fmtPct(perf.d7)}</td>
+                  <td class="num ${cssFor(perf.d30)}">${fmtPct(perf.d30)}</td>
+                </tr>
+              `;
+            }).join("")}
+          </tbody>
+        </table>
+      `;
+    }
+
+    function render() {
+      const fund = activeFund();
+      renderTabs();
+      renderSummary(fund);
+      renderTable(fund);
+    }
+
+    search.addEventListener("input", event => {
+      state.query = event.target.value;
+      renderTable(activeFund());
     });
+    perfFilter.addEventListener("change", event => {
+      state.perfFilter = event.target.value;
+      renderTable(activeFund());
+    });
+
+    fetch("data.json")
+      .then(response => response.json())
+      .then(data => {
+        state.data = data;
+        state.activeCode = data.funds[0]?.code;
+        generated.textContent = fmtDateTime(data.generated_at_utc);
+        render();
+      })
+      .catch(error => {
+        generated.textContent = "Unable to load";
+        tablePanel.className = "empty";
+        tablePanel.textContent = `Could not load site/data.json: ${error.message}`;
+      });
   </script>
 </body>
 </html>

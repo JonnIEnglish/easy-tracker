@@ -1,4 +1,4 @@
-name: Hourly EASYGE update
+name: Hourly holdings capture
 
 on:
   schedule:
@@ -11,37 +11,33 @@ permissions:
   id-token: write
 
 concurrency:
-  group: easyge-dashboard
+  group: holdings-capture
   cancel-in-progress: false
 
 jobs:
-  update:
+  capture:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
       - uses: actions/setup-python@v5
         with:
           python-version: "3.12"
       - name: Install dependencies
         run: pip install -r requirements.txt
-      - name: Fetch holdings
+      - name: Run tests
+        run: python -m pytest
+      - name: Fetch holdings CSVs
         run: python -m scripts.fetch_holdings
-      - name: Fetch prices
-        run: python -m scripts.fetch_prices
-      - name: Analyse holdings
-        run: python -m scripts.analyse_holdings
-      - name: Build charts
-        run: python -m scripts.build_charts
-      - name: Build dashboard
-        run: python -m scripts.build_dashboard
-      - name: Build README
-        run: python -m scripts.build_readme
-      - name: Commit updated files
+      - name: Build site data
+        run: python -m scripts.build_site_data
+      - name: Commit captured data
         run: |
           git config user.name "github-actions"
           git config user.email "github-actions@github.com"
-          git add README.md data site reports
-          git commit -m "Update EASYGE tracker" || echo "No changes to commit"
+          git add data site
+          git commit -m "Capture latest EasyETFs holdings" || echo "No changes to commit"
           git pull --rebase || true
           git push
       - name: Upload Pages artifact
@@ -50,7 +46,7 @@ jobs:
           path: site
 
   deploy:
-    needs: update
+    needs: capture
     runs-on: ubuntu-latest
     environment:
       name: github-pages

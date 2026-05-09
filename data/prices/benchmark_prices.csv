@@ -1,5 +1,0 @@
-date,name,ticker,yfinance_ticker,currency,close,source,updated_at_utc
-2026-05-08,S&P 500,SPY,SPY,USD,737.6199951171875,yfinance,2026-05-09T15:11:13Z
-2026-05-08,Nasdaq 100,QQQ,QQQ,USD,711.22998046875,yfinance,2026-05-09T15:11:14Z
-2026-05-08,Semiconductors,SMH,SMH,USD,566.5399780273438,yfinance,2026-05-09T15:11:16Z
-2026-05-08,Global Equity,VT,VT,USD,155.17999267578125,yfinance,2026-05-09T15:11:17Z

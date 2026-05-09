@@ -1,0 +1,21 @@
+funds:
+  - code: EASYGE
+    slug: easyge
+    name: EasyETFs Global Equity Actively Managed ETF
+    holdings_url_template: "https://easyetf-constituents.s3.us-west-2.amazonaws.com/EASYGE_PCF_ZAR_{yyyymmdd}.csv"
+    instrument_page: "https://etfs.easyequities.co.za/easyetf-instrument-page/easyge"
+
+  - code: EASYAI
+    slug: easyai
+    name: EasyETFs AI World Actively Managed ETF
+    holdings_url_template: "https://easyetf-constituents.s3.us-west-2.amazonaws.com/EASYAI_PCF_ZAR_{yyyymmdd}.csv"
+    instrument_page: "https://etfs.easyequities.co.za/easyetf-instrument-page/easyai"
+
+  - code: EASYBF
+    slug: easybalanced
+    name: EasyETFs Balanced Actively Managed ETF
+    holdings_url_template: "https://easyetf-constituents.s3.us-west-2.amazonaws.com/EASYBF_PCF_ZAR_{yyyymmdd}.csv"
+    instrument_page: "https://etfs.easyequities.co.za/easyetf-instrument-page/easybf"
+
+max_holdings_lookback_days: 21
+site_dir: site

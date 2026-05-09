@@ -3,9 +3,9 @@ requires = ["setuptools>=68", "wheel"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "easyge-active-tracker"
-version = "0.1.0"
-description = "Automated EASYGE active holdings tracker"
+name = "easyetfs-holdings-tracker"
+version = "0.2.0"
+description = "Historical holdings capture and static viewer for selected EasyETFs funds"
 requires-python = ">=3.10"
 
 [tool.pytest.ini_options]

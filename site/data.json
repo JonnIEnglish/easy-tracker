@@ -1,0 +1,1097 @@
+{
+  "generated_at_utc": "2026-05-09T15:33:15Z",
+  "funds": [
+    {
+      "code": "EASYGE",
+      "slug": "easyge",
+      "name": "EasyETFs Global Equity Actively Managed ETF",
+      "instrument_page": "https://etfs.easyequities.co.za/easyetf-instrument-page/easyge",
+      "snapshot_date": "2026-05-08",
+      "captured_at_utc": "2026-05-09T15:31:51Z",
+      "holdings_count": 33,
+      "total_weight": 99.82,
+      "holdings": [
+        {
+          "instrument": "LUMENTUM HOL",
+          "currency": "USD",
+          "weight": 9.74,
+          "ticker": "LITE",
+          "performance": {
+            "d1": 1.2570268758319791,
+            "d7": -4.856147846524205,
+            "d30": 0.8682806290186251
+          }
+        },
+        {
+          "instrument": "COMFORT SYSTEMS",
+          "currency": "USD",
+          "weight": 7.18,
+          "ticker": "FIX",
+          "performance": {
+            "d1": 0.5329489645753416,
+            "d7": 4.571454761763416,
+            "d30": 28.01082846150478
+          }
+        },
+        {
+          "instrument": "INAV - USD.CASH",
+          "currency": "USD",
+          "weight": 5.86,
+          "ticker": null,
+          "performance": {
+            "d1": null,
+            "d7": null,
+            "d30": null
+          }
+        },
+        {
+          "instrument": "BLOOM ENERGY C-A",
+          "currency": "USD",
+          "weight": 5.68,
+          "ticker": "BE",
+          "performance": {
+            "d1": 0.9240581485846278,
+            "d7": -10.150761169479184,
+            "d30": 77.83758069911826
+          }
+        },
+        {
+          "instrument": "NVIDIA CORP",
+          "currency": "USD",
+          "weight": 5.57,
+          "ticker": "NVDA",
+          "performance": {
+            "d1": 1.7494075405400489,
+            "d7": 8.440413332114382,
+            "d30": 18.189803813775395
+          }
+        },
+        {
+          "instrument": "FORMFACTOR INC",
+          "currency": "USD",
+          "weight": 5.53,
+          "ticker": "FORM",
+          "performance": {
+            "d1": 2.2048677100467096,
+            "d7": 7.643590575250925,
+            "d30": 25.526308392553965
+          }
+        },
+        {
+          "instrument": "CIENA CORP",
+          "currency": "USD",
+          "weight": 5.35,
+          "ticker": "CIEN",
+          "performance": {
+            "d1": 1.7354620640839702,
+            "d7": 2.394964944321054,
+            "d30": 10.951190161431
+          }
+        },
+        {
+          "instrument": "COHERENT CORP",
+          "currency": "USD",
+          "weight": 5.05,
+          "ticker": "COHR",
+          "performance": {
+            "d1": 5.034621135155604,
+            "d7": 1.7481061504172946,
+            "d30": 18.975123176583164
+          }
+        },
+        {
+          "instrument": "ARGAN INC",
+          "currency": "USD",
+          "weight": 4.79,
+          "ticker": "AGX",
+          "performance": {
+            "d1": -1.4115927875905765,
+            "d7": -3.1341235071256746,
+            "d30": 15.729435570080174
+          }
+        },
+        {
+          "instrument": "MICRON TECH",
+          "currency": "USD",
+          "weight": 3.79,
+          "ticker": "MU",
+          "performance": {
+            "d1": 15.492629775807675,
+            "d7": 37.73445109730109,
+            "d30": 83.6132022192228
+          }
+        },
+        {
+          "instrument": "ADV ENERGY INDS",
+          "currency": "USD",
+          "weight": 3.52,
+          "ticker": "AEIS",
+          "performance": {
+            "d1": 1.5059350333019195,
+            "d7": -8.176326579277859,
+            "d30": -2.6461429757843713
+          }
+        },
+        {
+          "instrument": "VERTIV HOLDINGS",
+          "currency": "USD",
+          "weight": 3.44,
+          "ticker": "VRT",
+          "performance": {
+            "d1": -0.01176687267220311,
+            "d7": 3.5515225697714037,
+            "d30": 20.972850833513323
+          }
+        },
+        {
+          "instrument": "QUANTA SERVICES",
+          "currency": "USD",
+          "weight": 3.06,
+          "ticker": "PWR",
+          "performance": {
+            "d1": -0.7632545146488257,
+            "d7": 0.37590142207033495,
+            "d30": 29.28641063196342
+          }
+        },
+        {
+          "instrument": "CREDO TECHNOLOGY GROUP HOLDI",
+          "currency": "USD",
+          "weight": 2.78,
+          "ticker": "CRDO",
+          "performance": {
+            "d1": 0.11419172783810883,
+            "d7": 2.237227405770903,
+            "d30": 71.04165361468615
+          }
+        },
+        {
+          "instrument": "GRAHAM CORP",
+          "currency": "USD",
+          "weight": 2.66,
+          "ticker": "GHM",
+          "performance": {
+            "d1": 1.143387504548321,
+            "d7": 3.575948608142565,
+            "d30": 9.61152091355142
+          }
+        },
+        {
+          "instrument": "CAMECO CORP",
+          "currency": "USD",
+          "weight": 2.15,
+          "ticker": "CCJ",
+          "performance": {
+            "d1": -1.6510817113880583,
+            "d7": -3.1923702511051366,
+            "d30": 0.7333895279814096
+          }
+        },
+        {
+          "instrument": "GE VERNOVA LLC",
+          "currency": "USD",
+          "weight": 2.12,
+          "ticker": "GEV",
+          "performance": {
+            "d1": -0.5240840874075836,
+            "d7": -2.144967101477935,
+            "d30": 11.118828322184937
+          }
+        },
+        {
+          "instrument": "META PLATFORMS-A",
+          "currency": "USD",
+          "weight": 2.04,
+          "ticker": "META",
+          "performance": {
+            "d1": -1.1640525776495991,
+            "d7": 0.14455932366530533,
+            "d30": -0.4555661319354809
+          }
+        },
+        {
+          "instrument": "NEBIUS GROUP NV",
+          "currency": "USD",
+          "weight": 1.93,
+          "ticker": "NBIS",
+          "performance": {
+            "d1": -4.178168015474659,
+            "d7": 14.602884818715346,
+            "d30": 41.640002441406246
+          }
+        },
+        {
+          "instrument": "ELBIT SYSTEMS",
+          "currency": "USD",
+          "weight": 1.92,
+          "ticker": "ESLT",
+          "performance": {
+            "d1": -1.6038542376459963,
+            "d7": -5.89614668293057,
+            "d30": -14.933259097491558
+          }
+        },
+        {
+          "instrument": "NLIGHT INC",
+          "currency": "USD",
+          "weight": 1.84,
+          "ticker": "LASR",
+          "performance": {
+            "d1": 11.663394675860816,
+            "d7": 4.127923593412408,
+            "d30": 22.52984753985543
+          }
+        },
+        {
+          "instrument": "GENERAL ELECTRIC",
+          "currency": "USD",
+          "weight": 1.82,
+          "ticker": "GE",
+          "performance": {
+            "d1": -1.8107956573738093,
+            "d7": 3.7136517986101847,
+            "d30": -3.5415191029579463
+          }
+        },
+        {
+          "instrument": "CARPENTER TECH",
+          "currency": "USD",
+          "weight": 1.7,
+          "ticker": "CRS",
+          "performance": {
+            "d1": -3.8841730637442673,
+            "d7": -0.3632885925548335,
+            "d30": 0.04904760722179713
+          }
+        },
+        {
+          "instrument": "ALLEGHENY TECH",
+          "currency": "USD",
+          "weight": 1.69,
+          "ticker": "ATI",
+          "performance": {
+            "d1": -2.6251101538955712,
+            "d7": 2.0159764224870536,
+            "d30": 1.2788541516756124
+          }
+        },
+        {
+          "instrument": "Howmet Aerospace Inc",
+          "currency": "USD",
+          "weight": 1.59,
+          "ticker": "HWM",
+          "performance": {
+            "d1": -0.6827750449524328,
+            "d7": 13.01372831559422,
+            "d30": 8.271671865285413
+          }
+        },
+        {
+          "instrument": "APPLOVIN CO-CL A",
+          "currency": "USD",
+          "weight": 1.29,
+          "ticker": "APP",
+          "performance": {
+            "d1": -6.077737210291911,
+            "d7": 1.8586929984714784,
+            "d30": 19.772488029729995
+          }
+        },
+        {
+          "instrument": "INTERACTIVE BROK",
+          "currency": "USD",
+          "weight": 1.22,
+          "ticker": "IBKR",
+          "performance": {
+            "d1": 0.8481652039634913,
+            "d7": 4.921699141849567,
+            "d30": 16.74733926043721
+          }
+        },
+        {
+          "instrument": "KARMAN HOLDINGS INC",
+          "currency": "USD",
+          "weight": 1.1,
+          "ticker": "KRMN",
+          "performance": {
+            "d1": 0.6451602725000116,
+            "d7": -7.43952982596322,
+            "d30": -30.666666492777328
+          }
+        },
+        {
+          "instrument": "ROBINHOOD MARK-A",
+          "currency": "USD",
+          "weight": 0.88,
+          "ticker": "HOOD",
+          "performance": {
+            "d1": 0.9832197325671199,
+            "d7": 4.5750678110827,
+            "d30": 7.239310616297434
+          }
+        },
+        {
+          "instrument": "BWX TECHNOLOGIES",
+          "currency": "USD",
+          "weight": 0.88,
+          "ticker": "BWXT",
+          "performance": {
+            "d1": -2.1725654256296356,
+            "d7": -5.0760463462003464,
+            "d30": -11.41168223640735
+          }
+        },
+        {
+          "instrument": "KRATOS DEFENSE &",
+          "currency": "USD",
+          "weight": 0.59,
+          "ticker": "KTOS",
+          "performance": {
+            "d1": 1.5614024379797087,
+            "d7": -6.704270585917216,
+            "d30": -22.253558821597686
+          }
+        },
+        {
+          "instrument": "KRAKEN ROBOTICS INC",
+          "currency": "USD",
+          "weight": 0.55,
+          "ticker": "PNG.V",
+          "performance": {
+            "d1": -2.928870793757621,
+            "d7": -6.577178304203168,
+            "d30": -17.339667754368836
+          }
+        },
+        {
+          "instrument": "INAV - ZAR.CASH",
+          "currency": "ZAR",
+          "weight": 0.51,
+          "ticker": null,
+          "performance": {
+            "d1": null,
+            "d7": null,
+            "d30": null
+          }
+        }
+      ]
+    },
+    {
+      "code": "EASYAI",
+      "slug": "easyai",
+      "name": "EasyETFs AI World Actively Managed ETF",
+      "instrument_page": "https://etfs.easyequities.co.za/easyetf-instrument-page/easyai",
+      "snapshot_date": "2026-05-08",
+      "captured_at_utc": "2026-05-09T15:31:53Z",
+      "holdings_count": 31,
+      "total_weight": 99.83,
+      "holdings": [
+        {
+          "instrument": "LUMENTUM HOL",
+          "currency": "USD",
+          "weight": 8.62,
+          "ticker": "LITE",
+          "performance": {
+            "d1": 1.2570268758319791,
+            "d7": -4.856147846524205,
+            "d30": 0.8682806290186251
+          }
+        },
+        {
+          "instrument": "COMFORT SYSTEMS",
+          "currency": "USD",
+          "weight": 7.81,
+          "ticker": "FIX",
+          "performance": {
+            "d1": 0.5329489645753416,
+            "d7": 4.571454761763416,
+            "d30": 28.01082846150478
+          }
+        },
+        {
+          "instrument": "BLOOM ENERGY C-A",
+          "currency": "USD",
+          "weight": 5.87,
+          "ticker": "BE",
+          "performance": {
+            "d1": 0.9240581485846278,
+            "d7": -10.150761169479184,
+            "d30": 77.83758069911826
+          }
+        },
+        {
+          "instrument": "NVIDIA CORP",
+          "currency": "USD",
+          "weight": 5.74,
+          "ticker": "NVDA",
+          "performance": {
+            "d1": 1.7494075405400489,
+            "d7": 8.440413332114382,
+            "d30": 18.189803813775395
+          }
+        },
+        {
+          "instrument": "FORMFACTOR INC",
+          "currency": "USD",
+          "weight": 5.54,
+          "ticker": "FORM",
+          "performance": {
+            "d1": 2.2048677100467096,
+            "d7": 7.643590575250925,
+            "d30": 25.526308392553965
+          }
+        },
+        {
+          "instrument": "VICOR CORP",
+          "currency": "USD",
+          "weight": 4.78,
+          "ticker": "VICR",
+          "performance": {
+            "d1": -1.863471028327024,
+            "d7": -4.4306099194643345,
+            "d30": 42.49124584333863
+          }
+        },
+        {
+          "instrument": "COHERENT CORP",
+          "currency": "USD",
+          "weight": 4.73,
+          "ticker": "COHR",
+          "performance": {
+            "d1": 5.034621135155604,
+            "d7": 1.7481061504172946,
+            "d30": 18.975123176583164
+          }
+        },
+        {
+          "instrument": "GE VERNOVA LLC",
+          "currency": "USD",
+          "weight": 4.7,
+          "ticker": "GEV",
+          "performance": {
+            "d1": -0.5240840874075836,
+            "d7": -2.144967101477935,
+            "d30": 11.118828322184937
+          }
+        },
+        {
+          "instrument": "ARGAN INC",
+          "currency": "USD",
+          "weight": 4.01,
+          "ticker": "AGX",
+          "performance": {
+            "d1": -1.4115927875905765,
+            "d7": -3.1341235071256746,
+            "d30": 15.729435570080174
+          }
+        },
+        {
+          "instrument": "ADV ENERGY INDS",
+          "currency": "USD",
+          "weight": 3.8,
+          "ticker": "AEIS",
+          "performance": {
+            "d1": 1.5059350333019195,
+            "d7": -8.176326579277859,
+            "d30": -2.6461429757843713
+          }
+        },
+        {
+          "instrument": "FABRINET",
+          "currency": "USD",
+          "weight": 3.68,
+          "ticker": "FN",
+          "performance": {
+            "d1": -0.7730093046152686,
+            "d7": -12.06601226629237,
+            "d30": 1.8191413606364781
+          }
+        },
+        {
+          "instrument": "MICRON TECH",
+          "currency": "USD",
+          "weight": 3.51,
+          "ticker": "MU",
+          "performance": {
+            "d1": 15.492629775807675,
+            "d7": 37.73445109730109,
+            "d30": 83.6132022192228
+          }
+        },
+        {
+          "instrument": "QUANTA SERVICES",
+          "currency": "USD",
+          "weight": 3.31,
+          "ticker": "PWR",
+          "performance": {
+            "d1": -0.7632545146488257,
+            "d7": 0.37590142207033495,
+            "d30": 29.28641063196342
+          }
+        },
+        {
+          "instrument": "CIENA CORP",
+          "currency": "USD",
+          "weight": 3.19,
+          "ticker": "CIEN",
+          "performance": {
+            "d1": 1.7354620640839702,
+            "d7": 2.394964944321054,
+            "d30": 10.951190161431
+          }
+        },
+        {
+          "instrument": "AXT INC",
+          "currency": "USD",
+          "weight": 2.81,
+          "ticker": "AXTI",
+          "performance": {
+            "d1": 7.3233744470588835,
+            "d7": 21.20833396911621,
+            "d30": 118.80406156941436
+          }
+        },
+        {
+          "instrument": "ONTO INNOVATION",
+          "currency": "USD",
+          "weight": 2.7,
+          "ticker": "ONTO",
+          "performance": {
+            "d1": 3.8297404842807747,
+            "d7": -2.8164685312754623,
+            "d30": 18.3708291094975
+          }
+        },
+        {
+          "instrument": "CREDO TECHNOLOGY GROUP HOLDI",
+          "currency": "USD",
+          "weight": 2.66,
+          "ticker": "CRDO",
+          "performance": {
+            "d1": 0.11419172783810883,
+            "d7": 2.237227405770903,
+            "d30": 71.04165361468615
+          }
+        },
+        {
+          "instrument": "CAMTEK LTD",
+          "currency": "USD",
+          "weight": 2.59,
+          "ticker": "CAMT",
+          "performance": {
+            "d1": 6.453279126224909,
+            "d7": 10.138248132020667,
+            "d30": 20.841905880119693
+          }
+        },
+        {
+          "instrument": "META PLATFORMS-A",
+          "currency": "USD",
+          "weight": 2.39,
+          "ticker": "META",
+          "performance": {
+            "d1": -1.1640525776495991,
+            "d7": 0.14455932366530533,
+            "d30": -0.4555661319354809
+          }
+        },
+        {
+          "instrument": "BWX TECHNOLOGIES",
+          "currency": "USD",
+          "weight": 2.38,
+          "ticker": "BWXT",
+          "performance": {
+            "d1": -2.1725654256296356,
+            "d7": -5.0760463462003464,
+            "d30": -11.41168223640735
+          }
+        },
+        {
+          "instrument": "MKS INC",
+          "currency": "USD",
+          "weight": 2.2,
+          "ticker": null,
+          "performance": {
+            "d1": null,
+            "d7": null,
+            "d30": null
+          }
+        },
+        {
+          "instrument": "VERTIV HOLDINGS",
+          "currency": "USD",
+          "weight": 2.17,
+          "ticker": "VRT",
+          "performance": {
+            "d1": -0.01176687267220311,
+            "d7": 3.5515225697714037,
+            "d30": 20.972850833513323
+          }
+        },
+        {
+          "instrument": "AMPHENOL CORP",
+          "currency": "USD",
+          "weight": 2.15,
+          "ticker": "APH",
+          "performance": {
+            "d1": -6.287510353460668,
+            "d7": -10.028112414917246,
+            "d30": -5.387236292010722
+          }
+        },
+        {
+          "instrument": "NEBIUS GROUP NV",
+          "currency": "USD",
+          "weight": 1.95,
+          "ticker": "NBIS",
+          "performance": {
+            "d1": -4.178168015474659,
+            "d7": 14.602884818715346,
+            "d30": 41.640002441406246
+          }
+        },
+        {
+          "instrument": "GENERAL ELECTRIC",
+          "currency": "USD",
+          "weight": 1.5,
+          "ticker": "GE",
+          "performance": {
+            "d1": -1.8107956573738093,
+            "d7": 3.7136517986101847,
+            "d30": -3.5415191029579463
+          }
+        },
+        {
+          "instrument": "APPLOVIN CO-CL A",
+          "currency": "USD",
+          "weight": 1.43,
+          "ticker": "APP",
+          "performance": {
+            "d1": -6.077737210291911,
+            "d7": 1.8586929984714784,
+            "d30": 19.772488029729995
+          }
+        },
+        {
+          "instrument": "IREN LTD",
+          "currency": "USD",
+          "weight": 1.41,
+          "ticker": "IREN",
+          "performance": {
+            "d1": 7.651719271019042,
+            "d7": 34.034167690449756,
+            "d30": 66.16887787210541
+          }
+        },
+        {
+          "instrument": "AXON ENTERPRISE",
+          "currency": "USD",
+          "weight": 0.95,
+          "ticker": "AXON",
+          "performance": {
+            "d1": -5.469794397216199,
+            "d7": 0.3057371165997358,
+            "d30": 3.0674558279236708
+          }
+        },
+        {
+          "instrument": "KARMAN HOLDINGS INC",
+          "currency": "USD",
+          "weight": 0.8,
+          "ticker": "KRMN",
+          "performance": {
+            "d1": 0.6451602725000116,
+            "d7": -7.43952982596322,
+            "d30": -30.666666492777328
+          }
+        },
+        {
+          "instrument": "INAV - ZAR.CASH",
+          "currency": "ZAR",
+          "weight": 0.45,
+          "ticker": null,
+          "performance": {
+            "d1": null,
+            "d7": null,
+            "d30": null
+          }
+        },
+        {
+          "instrument": "INAV - USD.CASH",
+          "currency": "USD",
+          "weight": 0.0,
+          "ticker": null,
+          "performance": {
+            "d1": null,
+            "d7": null,
+            "d30": null
+          }
+        }
+      ]
+    },
+    {
+      "code": "EASYBF",
+      "slug": "easybalanced",
+      "name": "EasyETFs Balanced Actively Managed ETF",
+      "instrument_page": "https://etfs.easyequities.co.za/easyetf-instrument-page/easybf",
+      "snapshot_date": "2026-05-08",
+      "captured_at_utc": "2026-05-09T15:31:56Z",
+      "holdings_count": 32,
+      "total_weight": 99.77,
+      "holdings": [
+        {
+          "instrument": "AI ACTIVELY MANAGED ETF",
+          "currency": "ZAR",
+          "weight": 21.5,
+          "ticker": "EASYAI.JO",
+          "performance": {
+            "d1": -0.8915574963609951,
+            "d7": 3.5551330798479164,
+            "d30": 20.84303937881309
+          }
+        },
+        {
+          "instrument": "EGE ACTIVELY MANAGED ETF",
+          "currency": "ZAR",
+          "weight": 21.5,
+          "ticker": "EASYGE.JO",
+          "performance": {
+            "d1": -0.38440417353102774,
+            "d7": 3.7164093767867445,
+            "d30": 16.20755925688662
+          }
+        },
+        {
+          "instrument": "Satrix SA Bond Portfolio",
+          "currency": "ZAR",
+          "weight": 7.33,
+          "ticker": "STXGOV.JO",
+          "performance": {
+            "d1": -0.2123142250530785,
+            "d7": 0.42735042735042583,
+            "d30": -3.2554156629518216
+          }
+        },
+        {
+          "instrument": "INAV - ZAR.CASH",
+          "currency": "ZAR",
+          "weight": 6.13,
+          "ticker": null,
+          "performance": {
+            "d1": null,
+            "d7": null,
+            "d30": null
+          }
+        },
+        {
+          "instrument": "Pan African Resource",
+          "currency": "ZAR",
+          "weight": 4.9,
+          "ticker": "PAN.JO",
+          "performance": {
+            "d1": -2.7753934191702467,
+            "d7": 6.9562480327352905,
+            "d30": -1.7919075144508634
+          }
+        },
+        {
+          "instrument": "SATRIX NAS 100",
+          "currency": "ZAR",
+          "weight": 4.65,
+          "ticker": "STXNDQ.JO",
+          "performance": {
+            "d1": 1.2395309882747174,
+            "d7": 4.768875192604005,
+            "d30": 17.456123414922864
+          }
+        },
+        {
+          "instrument": "Capitec Bank Holdings Ltd",
+          "currency": "ZAR",
+          "weight": 4.29,
+          "ticker": "CPI.JO",
+          "performance": {
+            "d1": -1.278388137066444,
+            "d7": 0.5740814811903361,
+            "d30": -1.262254262179363
+          }
+        },
+        {
+          "instrument": "New Gold Issuer Ltd",
+          "currency": "ZAR",
+          "weight": 3.43,
+          "ticker": "GLD.JO",
+          "performance": {
+            "d1": -0.296292155245903,
+            "d7": 0.054698457223012475,
+            "d30": -0.8781314696197029
+          }
+        },
+        {
+          "instrument": "NewPlat ETF",
+          "currency": "ZAR",
+          "weight": 3.3,
+          "ticker": null,
+          "performance": {
+            "d1": null,
+            "d7": null,
+            "d30": null
+          }
+        },
+        {
+          "instrument": "BHP GROUP LTD",
+          "currency": "ZAR",
+          "weight": 2.46,
+          "ticker": "BHG.JO",
+          "performance": {
+            "d1": 0.1520218911523319,
+            "d7": 5.228410179959542,
+            "d30": 9.73032994923857
+          }
+        },
+        {
+          "instrument": "ANGLOGOLD ASHANTI PLC",
+          "currency": "ZAR",
+          "weight": 2.05,
+          "ticker": "ANG.JO",
+          "performance": {
+            "d1": 4.040863471240574,
+            "d7": 12.054685032518385,
+            "d30": -1.091804920233952
+          }
+        },
+        {
+          "instrument": "Naspers Ltd - N Shares",
+          "currency": "ZAR",
+          "weight": 1.85,
+          "ticker": "NPN.JO",
+          "performance": {
+            "d1": -3.1894364822965704,
+            "d7": -0.5302085189805794,
+            "d30": -2.2665834892909076
+          }
+        },
+        {
+          "instrument": "Sibanye Stillwater Ltd",
+          "currency": "ZAR",
+          "weight": 1.7,
+          "ticker": "SSW.JO",
+          "performance": {
+            "d1": -2.6815840880838215,
+            "d7": 10.328165894906371,
+            "d30": 2.2006713912719134
+          }
+        },
+        {
+          "instrument": "Gold Fields Ltd",
+          "currency": "ZAR",
+          "weight": 1.29,
+          "ticker": "GFI.JO",
+          "performance": {
+            "d1": -3.491792514773473,
+            "d7": 3.2176966292134734,
+            "d30": -8.95564915758177
+          }
+        },
+        {
+          "instrument": "OPTASIA GROUP",
+          "currency": "ZAR",
+          "weight": 1.26,
+          "ticker": "OPT.JO",
+          "performance": {
+            "d1": null,
+            "d7": null,
+            "d30": null
+          }
+        },
+        {
+          "instrument": "NORTHAM PLATINUM",
+          "currency": "ZAR",
+          "weight": 1.22,
+          "ticker": "NPH.JO",
+          "performance": {
+            "d1": -1.5284023505393596,
+            "d7": 11.540624999999993,
+            "d30": -1.8803089864474765
+          }
+        },
+        {
+          "instrument": "Vukile Property Fund Ltd",
+          "currency": "ZAR",
+          "weight": 1.2,
+          "ticker": "VKE.JO",
+          "performance": {
+            "d1": -0.4237288135593209,
+            "d7": -1.5088013411567514,
+            "d30": 0.08517887563883608
+          }
+        },
+        {
+          "instrument": "Fortress Real Estate Investments Limited B",
+          "currency": "ZAR",
+          "weight": 1.18,
+          "ticker": "FFB.JO",
+          "performance": {
+            "d1": -0.20325203252032908,
+            "d7": 1.0288065843621297,
+            "d30": 3.937341236240477
+          }
+        },
+        {
+          "instrument": "Impala Platinum Holdings Ltd",
+          "currency": "ZAR",
+          "weight": 1.05,
+          "ticker": "IMP.JO",
+          "performance": {
+            "d1": -1.4572015856702425,
+            "d7": 15.590286747610428,
+            "d30": 2.885720855369045
+          }
+        },
+        {
+          "instrument": "Lewis Group Ltd",
+          "currency": "ZAR",
+          "weight": 1.05,
+          "ticker": "LEW.JO",
+          "performance": {
+            "d1": -0.11627906976744429,
+            "d7": 1.0588235294117565,
+            "d30": -2.4085435128379906
+          }
+        },
+        {
+          "instrument": "MTN Group Ltd",
+          "currency": "ZAR",
+          "weight": 1.04,
+          "ticker": "MTN.JO",
+          "performance": {
+            "d1": -0.2136244956088329,
+            "d7": 0.574162679425827,
+            "d30": 5.585694193289137
+          }
+        },
+        {
+          "instrument": "SATRIX GOVI ETF",
+          "currency": "ZAR",
+          "weight": 0.7,
+          "ticker": "STXGOV.JO",
+          "performance": {
+            "d1": -0.2123142250530785,
+            "d7": 0.42735042735042583,
+            "d30": -3.2554156629518216
+          }
+        },
+        {
+          "instrument": "NINETY ONE LTD",
+          "currency": "ZAR",
+          "weight": 0.69,
+          "ticker": "NY1.JO",
+          "performance": {
+            "d1": -1.461864406779656,
+            "d7": -0.5346449957228439,
+            "d30": -1.9190215099114338
+          }
+        },
+        {
+          "instrument": "NewPall ETF",
+          "currency": "ZAR",
+          "weight": 0.67,
+          "ticker": null,
+          "performance": {
+            "d1": null,
+            "d7": null,
+            "d30": null
+          }
+        },
+        {
+          "instrument": "Purple Group Ltd",
+          "currency": "ZAR",
+          "weight": 0.66,
+          "ticker": "PPE.JO",
+          "performance": {
+            "d1": -1.0526315789473717,
+            "d7": 0.5347593582887722,
+            "d30": -8.292682926829265
+          }
+        },
+        {
+          "instrument": "Ninety One Plc",
+          "currency": "ZAR",
+          "weight": 0.59,
+          "ticker": "N91.JO",
+          "performance": {
+            "d1": -0.5544147843942526,
+            "d7": 0.33146882121399823,
+            "d30": 0.7070076939072578
+          }
+        },
+        {
+          "instrument": "Attacq Limited",
+          "currency": "ZAR",
+          "weight": 0.56,
+          "ticker": "ATT.JO",
+          "performance": {
+            "d1": 0.0604960677555999,
+            "d7": -0.6009615384615419,
+            "d30": -6.553672316384185
+          }
+        },
+        {
+          "instrument": "VALTERRA PLATINUM LIMITED",
+          "currency": "ZAR",
+          "weight": 0.44,
+          "ticker": "VAL.JO",
+          "performance": {
+            "d1": -3.2310510040213902,
+            "d7": 9.232209737827723,
+            "d30": -5.878062633929726
+          }
+        },
+        {
+          "instrument": "SOUTHERN SUN LTD",
+          "currency": "ZAR",
+          "weight": 0.41,
+          "ticker": "SSU.JO",
+          "performance": {
+            "d1": -3.364485981308407,
+            "d7": 2.783300198807148,
+            "d30": -1.5238095238095273
+          }
+        },
+        {
+          "instrument": "CELL C HOLDINGS LTD",
+          "currency": "ZAR",
+          "weight": 0.28,
+          "ticker": null,
+          "performance": {
+            "d1": null,
+            "d7": null,
+            "d30": null
+          }
+        },
+        {
+          "instrument": "Vodacom Group Limited",
+          "currency": "ZAR",
+          "weight": 0.22,
+          "ticker": "VOD.JO",
+          "performance": {
+            "d1": -1.0091432441584836,
+            "d7": 3.4321704054914637,
+            "d30": -2.037533512064338
+          }
+        },
+        {
+          "instrument": "Growthpoint Properties Ltd",
+          "currency": "ZAR",
+          "weight": 0.17,
+          "ticker": "GRT.JO",
+          "performance": {
+            "d1": -0.669099756690994,
+            "d7": -0.12232415902140303,
+            "d30": -6.650219750827413
+          }
+        }
+      ]
+    }
+  ]
+}
