@@ -1,0 +1,5 @@
+.venv/
+.venv312/
+.cache/
+__pycache__/
+.DS_Store
