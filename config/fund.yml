@@ -1,0 +1,18 @@
+fund:
+  code: EASYGE
+  name: EasyETFs Global Equity Actively Managed ETF
+  holdings_url_template: "https://easyetf-constituents.s3.us-west-2.amazonaws.com/EASYGE_PCF_ZAR_{yyyymmdd}.csv"
+  max_holdings_lookback_days: 14
+  base_currency: ZAR
+  main_holdings_currency: USD
+
+github_pages:
+  site_dir: site
+
+reporting:
+  monthly_report_day: 1
+
+analysis:
+  top_n_table: 20
+  top_n_area: 10
+  stale_price_warning_days: 7

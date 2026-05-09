@@ -1,0 +1,156 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>EASYGE Active Tracker</title>
+  <style>
+    :root { --bg:#f2f5f8; --card:#fff; --ink:#1a2433; --muted:#5b6b80; --accent:#005f73; --line:#d5dee8; --good:#117a65; --bad:#b23a48; }
+    * { box-sizing:border-box; }
+    body { margin:0; font-family: "Avenir Next", "Segoe UI", sans-serif; background:linear-gradient(180deg,#eaf2f8 0,#f6f8fb 45%,#eef3f9 100%); color:var(--ink); }
+    .wrap { max-width:1200px; margin:0 auto; padding:24px; }
+    h1,h2 { margin:0 0 10px; }
+    p.sub { margin:0 0 20px; color:var(--muted); }
+    .cards { display:grid; grid-template-columns:repeat(auto-fit,minmax(160px,1fr)); gap:12px; margin-bottom:18px; }
+    .card { background:var(--card); border:1px solid var(--line); border-radius:12px; padding:12px; box-shadow:0 2px 10px rgba(0,35,65,.05); }
+    .label { color:var(--muted); font-size:12px; text-transform:uppercase; letter-spacing:.5px; }
+    .val { font-size:24px; font-weight:700; margin-top:4px; }
+    .grid { display:grid; grid-template-columns:2fr 1fr; gap:14px; }
+    .panel { background:var(--card); border:1px solid var(--line); border-radius:12px; padding:14px; margin-bottom:14px; }
+    table { width:100%; border-collapse:collapse; font-size:13px; }
+    th,td { padding:8px; border-bottom:1px solid var(--line); text-align:left; vertical-align:top; }
+    th { font-size:12px; color:var(--muted); text-transform:uppercase; letter-spacing:.5px; }
+    .search { width:100%; padding:10px; border:1px solid var(--line); border-radius:8px; margin-bottom:10px; }
+    .twocol { display:grid; grid-template-columns:1fr 1fr; gap:10px; }
+    .good { color:var(--good); }
+    .bad { color:var(--bad); }
+    img { max-width:100%; border-radius:10px; border:1px solid var(--line); margin:8px 0; }
+    @media (max-width: 980px) { .grid { grid-template-columns:1fr; } .twocol { grid-template-columns:1fr; } }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <h1>EASYGE Active Holdings Tracker</h1>
+    <p class="sub">Latest snapshot: 2026-05-08</p>
+
+    <div class="cards">
+      <div class="card"><div class="label">Holdings</div><div class="val">33</div></div>
+      <div class="card"><div class="label">Cash</div><div class="val">6.37%</div></div>
+      <div class="card"><div class="label">Top 1</div><div class="val">9.74%</div></div>
+      <div class="card"><div class="label">Top 5</div><div class="val">34.03%</div></div>
+      <div class="card"><div class="label">Top 10</div><div class="val">58.54%</div></div>
+      <div class="card"><div class="label">Turnover</div><div class="val">n/a</div></div>
+      <div class="card"><div class="label">Estimated Interval Return</div><div class="val">n/a</div></div>
+      <div class="card"><div class="label">Largest Holding</div><div class="val" style="font-size:16px;">LUMENTUM HOL</div></div>
+    </div>
+
+    <div class="grid">
+      <div>
+        <div class="panel">
+          <h2>Latest Holdings</h2>
+          <input id="holdSearch" class="search" placeholder="Search holdings table" />
+          <table id="holdingsTable">
+            <thead><tr><th>Instrument</th><th>Ticker</th><th>Currency</th><th>Weight</th><th>Theme</th><th>Subtheme</th></tr></thead>
+            <tbody><tr><td>LUMENTUM HOL</td><td>LITE</td><td>USD</td><td>9.74%</td><td>Unmapped</td><td>Unmapped</td></tr>
+<tr><td>COMFORT SYSTEMS</td><td>FIX</td><td>USD</td><td>7.18%</td><td>Data Centres</td><td>Mechanical and Electrical</td></tr>
+<tr><td>INAV - USD.CASH</td><td>CASH_USD</td><td>USD</td><td>5.86%</td><td>Cash</td><td>USD Cash</td></tr>
+<tr><td>BLOOM ENERGY C-A</td><td>BE</td><td>USD</td><td>5.68%</td><td>Unmapped</td><td>Unmapped</td></tr>
+<tr><td>NVIDIA CORP</td><td>NVDA</td><td>USD</td><td>5.57%</td><td>AI Infrastructure</td><td>Semiconductors</td></tr>
+<tr><td>FORMFACTOR INC</td><td>FORM</td><td>USD</td><td>5.53%</td><td>Semiconductors</td><td>Test Equipment</td></tr>
+<tr><td>CIENA CORP</td><td>CIEN</td><td>USD</td><td>5.35%</td><td>Unmapped</td><td>Unmapped</td></tr>
+<tr><td>COHERENT CORP</td><td>COHR</td><td>USD</td><td>5.05%</td><td>Unmapped</td><td>Unmapped</td></tr>
+<tr><td>ARGAN INC</td><td>AGX</td><td>USD</td><td>4.79%</td><td>Unmapped</td><td>Unmapped</td></tr>
+<tr><td>MICRON TECH</td><td>MU</td><td>USD</td><td>3.79%</td><td>AI Infrastructure</td><td>Memory</td></tr>
+<tr><td>ADV ENERGY INDS</td><td>AEIS</td><td>USD</td><td>3.52%</td><td>Unmapped</td><td>Unmapped</td></tr>
+<tr><td>VERTIV HOLDINGS</td><td>VRT</td><td>USD</td><td>3.44%</td><td>Data Centres</td><td>Power and Cooling</td></tr>
+<tr><td>QUANTA SERVICES</td><td>PWR</td><td>USD</td><td>3.06%</td><td>Electrification</td><td>Grid Infrastructure</td></tr>
+<tr><td>CREDO TECHNOLOGY GROUP HOLDI</td><td>CRDO</td><td>USD</td><td>2.78%</td><td>AI Infrastructure</td><td>Connectivity</td></tr>
+<tr><td>GRAHAM CORP</td><td>GHM</td><td>USD</td><td>2.66%</td><td>Unmapped</td><td>Unmapped</td></tr>
+<tr><td>CAMECO CORP</td><td>CCJ</td><td>USD</td><td>2.15%</td><td>Nuclear</td><td>Uranium</td></tr>
+<tr><td>GE VERNOVA LLC</td><td>GEV</td><td>USD</td><td>2.12%</td><td>Electrification</td><td>Grid and Power</td></tr>
+<tr><td>META PLATFORMS-A</td><td>META</td><td>USD</td><td>2.04%</td><td>Unmapped</td><td>Unmapped</td></tr>
+<tr><td>NEBIUS GROUP NV</td><td>NBIS</td><td>USD</td><td>1.93%</td><td>Unmapped</td><td>Unmapped</td></tr>
+<tr><td>ELBIT SYSTEMS</td><td>ESLT</td><td>USD</td><td>1.92%</td><td>Defence</td><td>Aerospace and Defence</td></tr>
+<tr><td>NLIGHT INC</td><td>LASR</td><td>USD</td><td>1.84%</td><td>Unmapped</td><td>Unmapped</td></tr>
+<tr><td>GENERAL ELECTRIC</td><td>GE</td><td>USD</td><td>1.82%</td><td>Unmapped</td><td>Unmapped</td></tr>
+<tr><td>CARPENTER TECH</td><td>CRS</td><td>USD</td><td>1.70%</td><td>Unmapped</td><td>Unmapped</td></tr>
+<tr><td>ALLEGHENY TECH</td><td>ATI</td><td>USD</td><td>1.69%</td><td>Unmapped</td><td>Unmapped</td></tr>
+<tr><td>Howmet Aerospace Inc</td><td>HWM</td><td>USD</td><td>1.59%</td><td>Aerospace</td><td>Aerospace Components</td></tr>
+<tr><td>APPLOVIN CO-CL A</td><td>APP</td><td>USD</td><td>1.29%</td><td>Unmapped</td><td>Unmapped</td></tr>
+<tr><td>INTERACTIVE BROK</td><td>IBKR</td><td>USD</td><td>1.22%</td><td>Fintech</td><td>Brokerage</td></tr>
+<tr><td>KARMAN HOLDINGS INC</td><td>KRMN</td><td>USD</td><td>1.10%</td><td>Unmapped</td><td>Unmapped</td></tr>
+<tr><td>ROBINHOOD MARK-A</td><td>HOOD</td><td>USD</td><td>0.88%</td><td>Fintech</td><td>Brokerage</td></tr>
+<tr><td>BWX TECHNOLOGIES</td><td>BWXT</td><td>USD</td><td>0.88%</td><td>Unmapped</td><td>Unmapped</td></tr>
+<tr><td>KRATOS DEFENSE &</td><td>KTOS</td><td>USD</td><td>0.59%</td><td>Defence</td><td>Aerospace and Defence</td></tr>
+<tr><td>KRAKEN ROBOTICS INC</td><td>PNG.V</td><td>USD</td><td>0.55%</td><td>Robotics</td><td>Marine Robotics</td></tr>
+<tr><td>INAV - ZAR.CASH</td><td>CASH_ZAR</td><td>ZAR</td><td>0.51%</td><td>Cash</td><td>ZAR Cash</td></tr></tbody>
+          </table>
+        </div>
+
+        <div class="panel">
+          <h2>Monthly Changes</h2>
+          <table>
+            <thead><tr><th>Instrument</th><th>Prev</th><th>Current</th><th>Change</th><th>Type</th></tr></thead>
+            <tbody><tr><td colspan='5'>No data</td></tr></tbody>
+          </table>
+        </div>
+
+        <div class="panel">
+          <h2>Active Trade Estimates</h2>
+          <table>
+            <thead><tr><th>Instrument</th><th>Raw change (pp)</th><th>Expected drift</th><th>Active change (pp)</th><th>Signal</th></tr></thead>
+            <tbody><tr><td colspan='5'>No data</td></tr></tbody>
+          </table>
+        </div>
+      </div>
+
+      <div>
+        <div class="panel">
+          <h2>Performance Attribution</h2>
+          <div class="twocol">
+            <div>
+              <h3>Top Contributors</h3>
+              <table><thead><tr><th>Name</th><th>Contribution</th></tr></thead><tbody><tr><td colspan='2'>No data</td></tr></tbody></table>
+            </div>
+            <div>
+              <h3>Top Detractors</h3>
+              <table><thead><tr><th>Name</th><th>Contribution</th></tr></thead><tbody><tr><td colspan='2'>No data</td></tr></tbody></table>
+            </div>
+          </div>
+        </div>
+
+        <div class="panel">
+          <h2>Decision Scorecard</h2>
+          <table>
+            <thead><tr><th>Decision</th><th>Count</th><th>Avg 1m</th><th>Hit 1m</th><th>Avg 3m</th><th>Hit 3m</th></tr></thead>
+            <tbody><tr><td colspan='6'>No data</td></tr></tbody>
+          </table>
+        </div>
+
+        <div class="panel">
+          <h2>Data Quality Warnings</h2>
+          <ul><li>## Missing Theme Mappings</li><li>- ADV ENERGY INDS</li><li>- ALLEGHENY TECH</li><li>- APPLOVIN CO-CL A</li><li>- ARGAN INC</li><li>- BLOOM ENERGY C-A</li><li>- BWX TECHNOLOGIES</li><li>- CARPENTER TECH</li><li>- CIENA CORP</li><li>- COHERENT CORP</li><li>- GENERAL ELECTRIC</li><li>- GRAHAM CORP</li><li>- KARMAN HOLDINGS INC</li><li>- LUMENTUM HOL</li><li>- META PLATFORMS-A</li><li>- NEBIUS GROUP NV</li><li>- NLIGHT INC</li><li></li></ul>
+        </div>
+
+        <div class="panel">
+          <h2>Charts</h2>
+          <img src="charts/latest_top20.png" alt="Top 20" />
+          <img src="charts/concentration.png" alt="Concentration" />
+          <img src="charts/theme_exposure.png" alt="Theme exposure" />
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const input = document.getElementById('holdSearch');
+    const table = document.getElementById('holdingsTable');
+    input.addEventListener('input', () => {
+      const q = input.value.toLowerCase();
+      for (const row of table.tBodies[0].rows) {
+        row.style.display = row.innerText.toLowerCase().includes(q) ? '' : 'none';
+      }
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,64 @@
+name: Hourly EASYGE update
+
+on:
+  schedule:
+    - cron: "15 * * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+
+concurrency:
+  group: easyge-dashboard
+  cancel-in-progress: false
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+      - name: Fetch holdings
+        run: python -m scripts.fetch_holdings
+      - name: Fetch prices
+        run: python -m scripts.fetch_prices
+      - name: Analyse holdings
+        run: python -m scripts.analyse_holdings
+      - name: Build charts
+        run: python -m scripts.build_charts
+      - name: Build dashboard
+        run: python -m scripts.build_dashboard
+      - name: Build README
+        run: python -m scripts.build_readme
+      - name: Commit updated files
+        run: |
+          git config user.name "github-actions"
+          git config user.email "github-actions@github.com"
+          git add README.md data site reports
+          git commit -m "Update EASYGE tracker" || echo "No changes to commit"
+          git pull --rebase || true
+          git push
+      - name: Upload Pages artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: site
+
+  deploy:
+    needs: update
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    permissions:
+      pages: write
+      id-token: write
+    steps:
+      - name: Deploy GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
