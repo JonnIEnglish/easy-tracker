@@ -1,5 +1,5 @@
 {
-  "generated_at_utc": "2026-05-09T16:53:13Z",
+  "generated_at_utc": "2026-05-09T20:16:37Z",
   "funds": [
     {
       "code": "EASYGE",
@@ -10,13 +10,24 @@
       "captured_at_utc": "2026-05-09T15:31:51Z",
       "holdings_count": 33,
       "total_weight": 99.82,
-      "latest_nav": null,
-      "latest_market_price": null,
+      "latest_nav": {
+        "value_zac": 1777.88,
+        "nav_date": "2026-05-09",
+        "source_url": "https://etfs.easyequities.co.za/easyetf-instrument-page/easyge",
+        "captured_at_utc": "2026-05-09T20:15:25Z"
+      },
+      "latest_market_price": {
+        "ticker": "EASYGE.JO",
+        "value_zac": 1814.0,
+        "source": "yfinance",
+        "price_at_utc": "2026-05-07T22:00:00Z",
+        "captured_at_utc": "2026-05-09T20:15:25Z"
+      },
       "estimated_nav_gap": {
-        "status": "n/a",
-        "difference_zac": null,
-        "difference_pct": null,
-        "label": "n/a"
+        "status": "premium",
+        "difference_zac": 36.11999999999989,
+        "difference_pct": 2.031633181092081,
+        "label": "estimated premium/discount to NAV"
       },
       "holdings": [
         {
@@ -702,13 +713,24 @@
       "captured_at_utc": "2026-05-09T15:31:53Z",
       "holdings_count": 31,
       "total_weight": 99.83,
-      "latest_nav": null,
-      "latest_market_price": null,
+      "latest_nav": {
+        "value_zac": 10692.74,
+        "nav_date": "2026-05-09",
+        "source_url": "https://etfs.easyequities.co.za/easyetf-instrument-page/easyai",
+        "captured_at_utc": "2026-05-09T20:15:25Z"
+      },
+      "latest_market_price": {
+        "ticker": "EASYAI.JO",
+        "value_zac": 10894.0,
+        "source": "yfinance",
+        "price_at_utc": "2026-05-07T22:00:00Z",
+        "captured_at_utc": "2026-05-09T20:15:25Z"
+      },
       "estimated_nav_gap": {
-        "status": "n/a",
-        "difference_zac": null,
-        "difference_pct": null,
-        "label": "n/a"
+        "status": "premium",
+        "difference_zac": 201.26000000000022,
+        "difference_pct": 1.8822116688519523,
+        "label": "estimated premium/discount to NAV"
       },
       "holdings": [
         {
@@ -1354,13 +1376,24 @@
       "captured_at_utc": "2026-05-09T15:31:56Z",
       "holdings_count": 32,
       "total_weight": 99.77,
-      "latest_nav": null,
-      "latest_market_price": null,
+      "latest_nav": {
+        "value_zac": 1474.14,
+        "nav_date": "2026-05-09",
+        "source_url": "https://etfs.easyequities.co.za/easyetf-instrument-page/easybf",
+        "captured_at_utc": "2026-05-09T20:15:25Z"
+      },
+      "latest_market_price": {
+        "ticker": "EASYBF.JO",
+        "value_zac": 1480.0,
+        "source": "yfinance",
+        "price_at_utc": "2026-05-07T22:00:00Z",
+        "captured_at_utc": "2026-05-09T20:15:25Z"
+      },
       "estimated_nav_gap": {
-        "status": "n/a",
-        "difference_zac": null,
-        "difference_pct": null,
-        "label": "n/a"
+        "status": "premium",
+        "difference_zac": 5.8599999999999,
+        "difference_pct": 0.39751990991356995,
+        "label": "estimated premium/discount to NAV"
       },
       "holdings": [
         {

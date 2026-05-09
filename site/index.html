@@ -109,70 +109,6 @@
       padding: 10px;
       margin-bottom: 12px;
     }
-    .heatmap-panel {
-      background: var(--panel);
-      border: 1px solid var(--line);
-      border-radius: 8px;
-      margin-bottom: 12px;
-      overflow: hidden;
-    }
-    .heatmap-head {
-      padding: 10px 12px;
-      border-bottom: 1px solid var(--line);
-      background: #f0f3f6;
-      display: flex;
-      align-items: baseline;
-      justify-content: space-between;
-      gap: 12px;
-    }
-    .heatmap-title {
-      margin: 0;
-      font-size: 12px;
-      text-transform: uppercase;
-      color: var(--muted);
-      font-weight: 750;
-    }
-    .heatmap-note {
-      color: var(--muted);
-      font-size: 12px;
-    }
-    .heatmap-scroll {
-      overflow-x: auto;
-      padding: 0 0 2px;
-    }
-    .heatmap-table {
-      width: auto;
-      min-width: 100%;
-      border-collapse: collapse;
-    }
-    .heatmap-table th,
-    .heatmap-table td {
-      white-space: nowrap;
-    }
-    .heatmap-instrument {
-      position: sticky;
-      left: 0;
-      z-index: 2;
-      background: #ffffff;
-      min-width: 220px;
-      max-width: 320px;
-    }
-    .heatmap-cell {
-      min-width: 72px;
-      text-align: center;
-      font-variant-numeric: tabular-nums;
-      font-size: 12px;
-      border-left: 1px solid var(--line);
-    }
-    .heatmap-fill {
-      color: #064e49;
-      font-weight: 700;
-    }
-    .heatmap-empty {
-      background: #fafcfd;
-      color: var(--muted);
-      font-weight: 600;
-    }
     input, select {
       width: 100%;
       min-height: 38px;
@@ -220,6 +156,24 @@
       font-size: 12px;
       font-weight: 700;
     }
+    .history-strip {
+      display: grid;
+      grid-auto-flow: column;
+      grid-auto-columns: minmax(18px, 1fr);
+      gap: 3px;
+      align-items: end;
+      min-height: 28px;
+    }
+    .history-cell {
+      min-width: 18px;
+      min-height: 22px;
+      border: 1px solid var(--line);
+      border-radius: 4px;
+      background: #fafcfd;
+    }
+    .history-cell-active {
+      border-color: rgba(15, 118, 110, 0.28);
+    }
     .positive { color: var(--good); }
     .negative { color: var(--bad); }
     .missing { color: var(--warn); }
@@ -259,9 +213,8 @@
       .timestamp { margin-top: 8px; text-align: left; white-space: normal; }
       .summary { grid-template-columns: repeat(2, minmax(0, 1fr)); }
       .toolbar > * + * { margin-top: 10px; }
-      table { min-width: 760px; }
+      table { min-width: 980px; }
       .table-panel { overflow-x: auto; }
-      .heatmap-instrument { min-width: 180px; }
     }
   </style>
 </head>
@@ -290,7 +243,6 @@
         <option value="missing">Missing performance</option>
       </select>
     </section>
-    <section id="heatmapPanel"></section>
     <section id="tablePanel" class="table-panel"></section>
   </main>
 
@@ -299,7 +251,6 @@
     const generated = document.querySelector("#generated");
     const tabs = document.querySelector("#tabs");
     const summary = document.querySelector("#summary");
-    const heatmapPanel = document.querySelector("#heatmapPanel");
     const tablePanel = document.querySelector("#tablePanel");
     const search = document.querySelector("#search");
     const perfFilter = document.querySelector("#perfFilter");
@@ -387,64 +338,31 @@
       return map;
     }
 
-    function renderHeatmap(fund) {
+    function monthlyHistoryByInstrument(fund) {
       const monthly = fund.monthly_holdings_history || { months: [], rows: [] };
-      if (!monthly.months.length || !monthly.rows.length) {
-        heatmapPanel.className = "empty";
-        heatmapPanel.innerHTML = `
-          <div>Holdings weight history will appear once monthly snapshots are available for ${fund.slug}.</div>
-        `;
-        return;
-      }
-
       const maxWeight = Math.max(
         0,
         ...monthly.rows.flatMap(row => (row.weights || []).filter(Number.isFinite))
       );
-      const monthHeaders = monthly.months.map(month => `<th class="num" style="min-width:72px">${fmtMonth(month)}</th>`).join("");
-      const rows = monthly.rows.map(row => {
-        const cells = (row.weights || []).map(weight => {
-          const safeWeight = Number.isFinite(weight) ? weight : 0;
-          const intensity = maxWeight > 0 ? safeWeight / maxWeight : 0;
-          const alpha = safeWeight > 0 ? Math.max(0.15, Math.min(0.85, intensity * 0.85)) : 0;
-          const style = safeWeight > 0 ? `background-color: rgba(15, 118, 110, ${alpha.toFixed(3)});` : "";
-          const cls = safeWeight > 0 ? "heatmap-fill" : "heatmap-empty";
-          const label = safeWeight > 0 ? fmtWeight(safeWeight) : "0.00%";
-          const title = `${row.instrument} ${label}`;
-          return `<td class="heatmap-cell ${cls}" style="${style}" title="${title}">${safeWeight > 0 ? label : "—"}</td>`;
-        }).join("");
-        const activeLabel = row.first_month && row.last_month && row.first_month !== row.last_month
-          ? `${fmtMonth(row.first_month)} to ${fmtMonth(row.last_month)}`
-          : (row.first_month ? fmtMonth(row.first_month) : "none");
-        return `
-          <tr>
-            <td class="instrument heatmap-instrument">
-              ${row.instrument}
-              <div class="subtle">Active: ${activeLabel}</div>
-            </td>
-            ${cells}
-          </tr>
-        `;
-      }).join("");
+      const map = new Map();
+      for (const row of (monthly.rows || [])) map.set(row.instrument, { weights: row.weights || [], months: monthly.months || [], maxWeight });
+      return map;
+    }
 
-      heatmapPanel.className = "heatmap-panel";
-      heatmapPanel.innerHTML = `
-        <div class="heatmap-head">
-          <h3 class="heatmap-title">Holdings Weight History</h3>
-          <div class="heatmap-note">Darker cells indicate higher portfolio weight; blank cells indicate no position in that month.</div>
-        </div>
-        <div class="heatmap-scroll">
-          <table class="heatmap-table">
-            <thead>
-              <tr>
-                <th class="heatmap-instrument">Holding</th>
-                ${monthHeaders}
-              </tr>
-            </thead>
-            <tbody>
-              ${rows}
-            </tbody>
-          </table>
+    function renderHistoryStrip(entry) {
+      if (!entry || !entry.weights.length) return '<span class="subtle">n/a</span>';
+      return `
+        <div class="history-strip">
+          ${entry.weights.map((weight, index) => {
+            const safeWeight = Number.isFinite(weight) ? weight : 0;
+            const intensity = entry.maxWeight > 0 ? safeWeight / entry.maxWeight : 0;
+            const alpha = safeWeight > 0 ? Math.max(0.14, Math.min(0.86, intensity * 0.86)) : 0;
+            const cls = safeWeight > 0 ? "history-cell history-cell-active" : "history-cell";
+            const style = safeWeight > 0 ? `background-color: rgba(15, 118, 110, ${alpha.toFixed(3)});` : "";
+            const month = entry.months[index] ? fmtMonth(entry.months[index]) : "n/a";
+            const title = `${month}: ${fmtWeight(safeWeight)}`;
+            return `<span class="${cls}" style="${style}" title="${title}" aria-label="${title}"></span>`;
+          }).join("")}
         </div>
       `;
     }
@@ -452,6 +370,7 @@
     function renderTable(fund) {
       const rows = visibleHoldings(fund);
       const monthlyChangeMap = monthlyChangeByInstrument(fund);
+      const monthlyHistoryMap = monthlyHistoryByInstrument(fund);
       if (!rows.length) {
         tablePanel.className = "empty";
         tablePanel.textContent = "No holdings match the current filters.";
@@ -462,14 +381,15 @@
         <table>
           <thead>
             <tr>
-              <th style="width:34%">Instrument</th>
-              <th style="width:12%">Ticker</th>
-              <th style="width:10%">Currency</th>
-              <th class="num" style="width:11%">Weight</th>
-              <th class="num" style="width:11%">Monthly Δ (pp)</th>
-              <th class="num" style="width:10%">1d</th>
-              <th class="num" style="width:10%">7d</th>
-              <th class="num" style="width:10%">30d</th>
+              <th style="width:28%">Instrument</th>
+              <th style="width:10%">Ticker</th>
+              <th style="width:9%">Currency</th>
+              <th class="num" style="width:10%">Weight</th>
+              <th style="width:17%">Weight History</th>
+              <th class="num" style="width:10%">Monthly Δ (pp)</th>
+              <th class="num" style="width:8%">1d</th>
+              <th class="num" style="width:8%">7d</th>
+              <th class="num" style="width:8%">30d</th>
             </tr>
           </thead>
           <tbody>
@@ -481,6 +401,7 @@
                   <td>${row.ticker ? `<span class="ticker">${row.ticker}</span>` : "<span class=\"subtle\">n/a</span>"}</td>
                   <td>${row.currency}</td>
                   <td class="num">${fmtWeight(row.weight)}</td>
+                  <td>${renderHistoryStrip(monthlyHistoryMap.get(row.instrument))}</td>
                   <td class="num ${cssFor(monthlyChangeMap.get(row.instrument))}">${fmtWeight(monthlyChangeMap.get(row.instrument))}</td>
                   <td class="num ${cssFor(perf.d1)}">${fmtPct(perf.d1)}</td>
                   <td class="num ${cssFor(perf.d7)}">${fmtPct(perf.d7)}</td>
@@ -497,7 +418,6 @@
       const fund = activeFund();
       renderTabs();
       renderSummary(fund);
-      renderHeatmap(fund);
       renderTable(fund);
     }
 
@@ -510,7 +430,7 @@
       renderTable(activeFund());
     });
 
-    fetch("data.json")
+    fetch(`data.json?ts=${Date.now()}`)
       .then(response => response.json())
       .then(data => {
         state.data = data;
