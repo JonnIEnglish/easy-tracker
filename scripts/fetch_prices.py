@@ -11,7 +11,22 @@ def fetch_yfinance_prices(ticker: str, start: str, end: str) -> pd.DataFrame:
     df = yf.download(ticker, start=start, end=end, auto_adjust=False, progress=False)
     if df.empty:
         return pd.DataFrame(columns=["date", "close"])
-    out = df.reset_index()[["Date", "Close"]].rename(columns={"Date": "date", "Close": "close"})
+
+    # yfinance may return MultiIndex columns (e.g. ("Close", "AAPL")).
+    out = df.reset_index().copy()
+    out.columns = [
+        "_".join(str(part) for part in col if str(part).strip()) if isinstance(col, tuple) else str(col)
+        for col in out.columns
+    ]
+
+    date_col = "Date" if "Date" in out.columns else ("date" if "date" in out.columns else None)
+    close_candidates = [f"Close_{ticker}", "Close", f"close_{ticker}", "close"]
+    close_col = next((c for c in close_candidates if c in out.columns), None)
+
+    if not date_col or not close_col:
+        return pd.DataFrame(columns=["date", "close"])
+
+    out = out[[date_col, close_col]].rename(columns={date_col: "date", close_col: "close"})
     out["date"] = pd.to_datetime(out["date"]).dt.date.astype(str)
     return out
 

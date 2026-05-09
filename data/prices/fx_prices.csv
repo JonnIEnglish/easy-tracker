@@ -1,1 +1,2 @@
-date,pair,close,source
+date,close,pair,source
+2026-05-08,16.43829917907715,USD/ZAR,yfinance
