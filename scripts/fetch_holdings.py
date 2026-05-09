@@ -38,8 +38,7 @@ def parse_weight(value: object) -> float | None:
     if not raw:
         return None
 
-    had_pct = raw.endswith("%")
-    if had_pct:
+    if raw.endswith("%"):
         raw = raw[:-1].strip()
 
     try:
@@ -47,9 +46,20 @@ def parse_weight(value: object) -> float | None:
     except ValueError:
         return None
 
-    if not had_pct and 0 <= num <= 1:
-        return num * 100
     return num
+
+
+def _pick_weight_scale(values: pd.Series) -> float:
+    total = float(values.sum())
+    if 95 <= total <= 105:
+        return 1.0
+
+    candidates = [1.0, 100.0, 0.01]
+    best = min(candidates, key=lambda scale: abs((total * scale) - 100.0))
+    scaled_total = total * best
+    if not (95 <= scaled_total <= 105):
+        raise HoldingsValidationError(f"Total weight out of expected range: {scaled_total:.2f}")
+    return best
 
 
 def parse_holdings_csv(csv_text: str, snapshot_dt: date) -> pd.DataFrame:
@@ -76,6 +86,7 @@ def parse_holdings_csv(csv_text: str, snapshot_dt: date) -> pd.DataFrame:
     out["snapshot_date"] = snapshot_dt.isoformat()
     out = out.dropna(subset=["instrument", "weight"])
     out = out[out["instrument"] != ""]
+    out["weight"] = out["weight"] * _pick_weight_scale(out["weight"])
 
     out = out[["snapshot_date", "instrument", "currency", "weight"]]
     out = out.drop_duplicates(subset=["snapshot_date", "instrument", "currency"], keep="last")
