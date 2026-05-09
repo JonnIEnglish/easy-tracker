@@ -1,5 +1,5 @@
 {
-  "generated_at_utc": "2026-05-09T16:09:09Z",
+  "generated_at_utc": "2026-05-09T16:53:13Z",
   "funds": [
     {
       "code": "EASYGE",
@@ -11,6 +11,13 @@
       "holdings_count": 33,
       "total_weight": 99.82,
       "latest_nav": null,
+      "latest_market_price": null,
+      "estimated_nav_gap": {
+        "status": "n/a",
+        "difference_zac": null,
+        "difference_pct": null,
+        "label": "n/a"
+      },
       "holdings": [
         {
           "instrument": "LUMENTUM HOL",
@@ -696,6 +703,13 @@
       "holdings_count": 31,
       "total_weight": 99.83,
       "latest_nav": null,
+      "latest_market_price": null,
+      "estimated_nav_gap": {
+        "status": "n/a",
+        "difference_zac": null,
+        "difference_pct": null,
+        "label": "n/a"
+      },
       "holdings": [
         {
           "instrument": "LUMENTUM HOL",
@@ -1341,6 +1355,13 @@
       "holdings_count": 32,
       "total_weight": 99.77,
       "latest_nav": null,
+      "latest_market_price": null,
+      "estimated_nav_gap": {
+        "status": "n/a",
+        "difference_zac": null,
+        "difference_pct": null,
+        "label": "n/a"
+      },
       "holdings": [
         {
           "instrument": "AI ACTIVELY MANAGED ETF",

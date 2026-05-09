@@ -109,37 +109,6 @@
       padding: 10px;
       margin-bottom: 12px;
     }
-    .movers {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 10px;
-      margin-bottom: 12px;
-    }
-    .movers-panel {
-      background: var(--panel);
-      border: 1px solid var(--line);
-      border-radius: 8px;
-      overflow: hidden;
-    }
-    .movers-heading {
-      margin: 0;
-      padding: 10px 12px;
-      border-bottom: 1px solid var(--line);
-      background: #f0f3f6;
-      color: var(--muted);
-      font-size: 12px;
-      text-transform: uppercase;
-      font-weight: 750;
-      letter-spacing: 0;
-    }
-    .movers-empty {
-      padding: 16px 12px;
-      color: var(--muted);
-    }
-    .movers-meta {
-      margin-bottom: 8px;
-      color: var(--muted);
-    }
     .heatmap-panel {
       background: var(--panel);
       border: 1px solid var(--line);
@@ -254,6 +223,31 @@
     .positive { color: var(--good); }
     .negative { color: var(--bad); }
     .missing { color: var(--warn); }
+    .status-pill {
+      display: inline-flex;
+      align-items: center;
+      min-height: 24px;
+      padding: 0 8px;
+      border-radius: 999px;
+      font-size: 12px;
+      font-weight: 700;
+    }
+    .status-premium {
+      background: #fee4e2;
+      color: #b42318;
+    }
+    .status-discount {
+      background: #dcfce7;
+      color: #166534;
+    }
+    .status-near_nav {
+      background: #fef3c7;
+      color: #92400e;
+    }
+    .status-na {
+      background: #eef2f6;
+      color: #475569;
+    }
     .empty {
       padding: 28px;
       color: var(--muted);
@@ -264,7 +258,6 @@
       .topbar, .toolbar { display: block; }
       .timestamp { margin-top: 8px; text-align: left; white-space: normal; }
       .summary { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-      .movers { grid-template-columns: minmax(0, 1fr); }
       .toolbar > * + * { margin-top: 10px; }
       table { min-width: 760px; }
       .table-panel { overflow-x: auto; }
@@ -297,7 +290,6 @@
         <option value="missing">Missing performance</option>
       </select>
     </section>
-    <section id="moversPanel"></section>
     <section id="heatmapPanel"></section>
     <section id="tablePanel" class="table-panel"></section>
   </main>
@@ -307,7 +299,6 @@
     const generated = document.querySelector("#generated");
     const tabs = document.querySelector("#tabs");
     const summary = document.querySelector("#summary");
-    const moversPanel = document.querySelector("#moversPanel");
     const heatmapPanel = document.querySelector("#heatmapPanel");
     const tablePanel = document.querySelector("#tablePanel");
     const search = document.querySelector("#search");
@@ -316,6 +307,7 @@
     const fmtDateTime = value => value ? new Date(value).toLocaleString(undefined, { dateStyle: "medium", timeStyle: "short" }) : "n/a";
     const fmtPct = value => Number.isFinite(value) ? `${value.toFixed(2)}%` : "n/a";
     const fmtWeight = value => Number.isFinite(value) ? `${value.toFixed(2)}%` : "n/a";
+    const fmtZac = value => Number.isFinite(value) ? `ZAC ${value.toFixed(2)}` : "n/a";
     const fmtMonth = value => {
       if (!value || !/^\d{4}-\d{2}$/.test(value)) return value || "n/a";
       const [year, month] = value.split("-").map(Number);
@@ -345,16 +337,34 @@
 
     function renderSummary(fund) {
       const largest = fund.holdings[0];
+      const latestNav = fund.latest_nav || null;
+      const latestMarket = fund.latest_market_price || null;
+      const navGap = fund.estimated_nav_gap || { status: "n/a", difference_zac: null, difference_pct: null, label: "n/a" };
+      const navStatusClass = navGap.status ? `status-${navGap.status.replace("/", "_")}` : "status-na";
       const rows = [
         ["Snapshot", fund.snapshot_date || "n/a"],
         ["Holdings", fund.holdings_count],
         ["Total weight", fmtWeight(fund.total_weight)],
         ["Largest holding", largest ? largest.instrument : "n/a"],
+        ["NAV (latest)", fmtZac(latestNav?.value_zac)],
+        ["Market Price (latest)", fmtZac(latestMarket?.value_zac)],
+        ["Difference (Price - NAV)", Number.isFinite(navGap.difference_zac) ? fmtZac(navGap.difference_zac) : "n/a"],
+        ["Estimated Premium/Discount to NAV", `<span class="status-pill ${navStatusClass}">${fmtPct(navGap.difference_pct)}</span>`],
       ];
       summary.innerHTML = rows.map(([label, value]) => `
         <article class="metric">
           <div class="label">${label}</div>
           <div class="value">${value}</div>
+          ${
+            label === "NAV (latest)" && latestNav
+              ? `<div class="subtle">As of ${latestNav.nav_date} | Captured ${fmtDateTime(latestNav.captured_at_utc)}</div>`
+              : ""
+          }
+          ${
+            label === "Market Price (latest)" && latestMarket
+              ? `<div class="subtle">Source ${latestMarket.source || "n/a"} | Price time ${fmtDateTime(latestMarket.price_at_utc || latestMarket.captured_at_utc)}</div>`
+              : ""
+          }
         </article>
       `).join("");
     }
@@ -370,74 +380,11 @@
       });
     }
 
-    function renderMoversTable(rows) {
-      return `
-        <table>
-          <thead>
-            <tr>
-              <th style="width:46%">Instrument</th>
-              <th class="num" style="width:18%">Current</th>
-              <th class="num" style="width:18%">Previous</th>
-              <th class="num" style="width:18%">Change</th>
-            </tr>
-          </thead>
-          <tbody>
-            ${rows.map(row => `
-              <tr>
-                <td class="instrument">${row.instrument}</td>
-                <td class="num">${fmtWeight(row.current_weight)}</td>
-                <td class="num">${fmtWeight(row.previous_weight)}</td>
-                <td class="num ${cssFor(row.change_pp)}">${fmtWeight(row.change_pp)}</td>
-              </tr>
-            `).join("")}
-          </tbody>
-        </table>
-      `;
-    }
-
-    function renderMoversPanel(title, rows) {
-      if (!rows.length) {
-        return `
-          <article class="movers-panel">
-            <h3 class="movers-heading">${title}</h3>
-            <div class="movers-empty">No holdings in this category for the selected month.</div>
-          </article>
-        `;
-      }
-      return `
-        <article class="movers-panel">
-          <h3 class="movers-heading">${title}</h3>
-          ${renderMoversTable(rows)}
-        </article>
-      `;
-    }
-
-    function renderMovers(fund) {
-      const monthly = fund.monthly_changes || { previous_month: null, current_month: null, changes: [] };
-      if (!monthly.previous_month || !monthly.current_month || !monthly.changes.length) {
-        moversPanel.className = "empty";
-        moversPanel.innerHTML = `
-          <div>Monthly movers will appear once at least two monthly snapshots are available for ${fund.slug}.</div>
-        `;
-        return;
-      }
-
-      const changes = monthly.changes.slice();
-      const increases = changes.filter(row => row.action === "increased").sort((a, b) => b.change_pp - a.change_pp).slice(0, 10);
-      const decreases = changes.filter(row => row.action === "trimmed").sort((a, b) => a.change_pp - b.change_pp).slice(0, 10);
-      const added = changes.filter(row => row.action === "added").sort((a, b) => b.current_weight - a.current_weight).slice(0, 10);
-      const exited = changes.filter(row => row.action === "exited").sort((a, b) => b.previous_weight - a.previous_weight).slice(0, 10);
-
-      moversPanel.className = "";
-      moversPanel.innerHTML = `
-        <div class="movers-meta">Monthly comparison: ${monthly.previous_month} to ${monthly.current_month}</div>
-        <div class="movers">
-          ${renderMoversPanel("Biggest Increases", increases)}
-          ${renderMoversPanel("Biggest Decreases", decreases)}
-          ${renderMoversPanel("New Holdings", added)}
-          ${renderMoversPanel("Exited Holdings", exited)}
-        </div>
-      `;
+    function monthlyChangeByInstrument(fund) {
+      const monthly = fund.monthly_changes || { changes: [] };
+      const map = new Map();
+      for (const row of (monthly.changes || [])) map.set(row.instrument, row.change_pp);
+      return map;
     }
 
     function renderHeatmap(fund) {
@@ -504,6 +451,7 @@
 
     function renderTable(fund) {
       const rows = visibleHoldings(fund);
+      const monthlyChangeMap = monthlyChangeByInstrument(fund);
       if (!rows.length) {
         tablePanel.className = "empty";
         tablePanel.textContent = "No holdings match the current filters.";
@@ -518,9 +466,10 @@
               <th style="width:12%">Ticker</th>
               <th style="width:10%">Currency</th>
               <th class="num" style="width:11%">Weight</th>
-              <th class="num" style="width:11%">1d</th>
-              <th class="num" style="width:11%">7d</th>
-              <th class="num" style="width:11%">30d</th>
+              <th class="num" style="width:11%">Monthly Δ (pp)</th>
+              <th class="num" style="width:10%">1d</th>
+              <th class="num" style="width:10%">7d</th>
+              <th class="num" style="width:10%">30d</th>
             </tr>
           </thead>
           <tbody>
@@ -532,6 +481,7 @@
                   <td>${row.ticker ? `<span class="ticker">${row.ticker}</span>` : "<span class=\"subtle\">n/a</span>"}</td>
                   <td>${row.currency}</td>
                   <td class="num">${fmtWeight(row.weight)}</td>
+                  <td class="num ${cssFor(monthlyChangeMap.get(row.instrument))}">${fmtWeight(monthlyChangeMap.get(row.instrument))}</td>
                   <td class="num ${cssFor(perf.d1)}">${fmtPct(perf.d1)}</td>
                   <td class="num ${cssFor(perf.d7)}">${fmtPct(perf.d7)}</td>
                   <td class="num ${cssFor(perf.d30)}">${fmtPct(perf.d30)}</td>
@@ -547,7 +497,6 @@
       const fund = activeFund();
       renderTabs();
       renderSummary(fund);
-      renderMovers(fund);
       renderHeatmap(fund);
       renderTable(fund);
     }

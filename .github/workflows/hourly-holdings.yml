@@ -32,6 +32,8 @@ jobs:
         run: python -m scripts.fetch_holdings
       - name: Capture NAV observations
         run: python -m scripts.fetch_nav
+      - name: Capture market prices
+        run: python -m scripts.fetch_market_prices
       - name: Build site data
         run: python -m scripts.build_site_data
       - name: Commit captured data

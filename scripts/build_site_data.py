@@ -13,6 +13,7 @@ from scripts.utils import load_funds_config, read_csv_if_exists, utc_now_iso
 HISTORY_PATH = Path("data/holdings_history.csv")
 TICKER_MAP_PATH = Path("config/ticker_map.csv")
 NAV_HISTORY_PATH = Path("data/nav_history.csv")
+MARKET_PRICE_HISTORY_PATH = Path("data/market_price_history.csv")
 SITE_DATA_PATH = Path("site/data.json")
 
 
@@ -242,6 +243,72 @@ def latest_nav_by_fund(nav_history: pd.DataFrame) -> dict[str, dict[str, Any]]:
     }
 
 
+def latest_market_price_by_fund(price_history: pd.DataFrame) -> dict[str, dict[str, Any]]:
+    if price_history.empty:
+        return {}
+    working = price_history.copy()
+    working["captured_at_utc"] = pd.to_datetime(working["captured_at_utc"], utc=True, errors="coerce")
+    working["price_at_utc"] = pd.to_datetime(working.get("price_at_utc"), utc=True, errors="coerce")
+    working["price"] = pd.to_numeric(working["price"], errors="coerce")
+    working = working.dropna(subset=["fund_code", "ticker", "price", "captured_at_utc"])
+    if working.empty:
+        return {}
+    working["_price_sort"] = working["price_at_utc"].fillna(working["captured_at_utc"])
+    working = working.sort_values(["fund_code", "_price_sort", "captured_at_utc"], ascending=[True, False, False])
+    latest = working.groupby("fund_code", as_index=False).head(1)
+    return {
+        str(row["fund_code"]): {
+            "ticker": str(row["ticker"]),
+            "value_zac": float(row["price"]),
+            "source": str(row.get("source") or ""),
+            "price_at_utc": row["price_at_utc"].isoformat().replace("+00:00", "Z")
+            if pd.notna(row["price_at_utc"])
+            else None,
+            "captured_at_utc": row["captured_at_utc"].isoformat().replace("+00:00", "Z"),
+        }
+        for row in latest.to_dict(orient="records")
+    }
+
+
+def estimate_premium_discount_to_nav(
+    latest_nav: dict[str, Any] | None,
+    latest_market_price: dict[str, Any] | None,
+    near_nav_threshold_pct: float = 0.25,
+) -> dict[str, Any]:
+    if not latest_nav or not latest_market_price:
+        return {
+            "status": "n/a",
+            "difference_zac": None,
+            "difference_pct": None,
+            "label": "n/a",
+        }
+    nav_value = float(latest_nav.get("value_zac")) if latest_nav.get("value_zac") is not None else None
+    market_value = float(latest_market_price.get("value_zac")) if latest_market_price.get("value_zac") is not None else None
+    if not nav_value or not market_value:
+        return {
+            "status": "n/a",
+            "difference_zac": None,
+            "difference_pct": None,
+            "label": "n/a",
+        }
+    difference_zac = market_value - nav_value
+    difference_pct = (difference_zac / nav_value) * 100 if nav_value else None
+    if difference_pct is None:
+        status = "n/a"
+    elif abs(difference_pct) <= near_nav_threshold_pct:
+        status = "near_nav"
+    elif difference_pct > 0:
+        status = "premium"
+    else:
+        status = "discount"
+    return {
+        "status": status,
+        "difference_zac": float(difference_zac),
+        "difference_pct": float(difference_pct) if difference_pct is not None else None,
+        "label": "estimated premium/discount to NAV",
+    }
+
+
 def build_payload() -> dict[str, Any]:
     cfg = load_funds_config()
     funds_cfg = {row["code"]: row for row in cfg["funds"]}
@@ -250,6 +317,7 @@ def build_payload() -> dict[str, Any]:
     monthly_changes_by_fund = derive_monthly_holdings_changes(full_history)
     monthly_history_by_fund = derive_monthly_holdings_history(full_history)
     latest_navs = latest_nav_by_fund(read_csv_if_exists(NAV_HISTORY_PATH))
+    latest_market_prices = latest_market_price_by_fund(read_csv_if_exists(MARKET_PRICE_HISTORY_PATH))
     ticker_map = read_csv_if_exists(TICKER_MAP_PATH)
 
     ticker_by_instrument: dict[str, str] = {}
@@ -291,6 +359,8 @@ def build_payload() -> dict[str, Any]:
                 "holdings_count": int(len(rows)),
                 "total_weight": round(float(rows["weight"].sum()), 4) if not rows.empty else None,
                 "latest_nav": latest_navs.get(code),
+                "latest_market_price": latest_market_prices.get(code),
+                "estimated_nav_gap": estimate_premium_discount_to_nav(latest_navs.get(code), latest_market_prices.get(code)),
                 "holdings": holdings,
                 "monthly_changes": monthly_changes_by_fund.get(code, {"previous_month": None, "current_month": None, "changes": []}),
                 "monthly_holdings_history": monthly_history_by_fund.get(code, {"months": [], "rows": []}),

@@ -15,10 +15,20 @@ The hourly GitHub Action:
 1. Looks back for the latest holdings CSV for each fund.
 2. Saves new raw CSVs under `data/raw/<fund>/`.
 3. Appends normalized rows to `data/holdings_history.csv`.
-4. Builds `site/data.json` for the static dashboard.
-5. Commits any changed data and deploys `site/` to GitHub Pages.
+4. Captures published NAV observations into `data/nav_history.csv`.
+5. Captures latest public ETF market prices into `data/market_price_history.csv`.
+6. Builds `site/data.json` for the static dashboard.
+7. Commits any changed data and deploys `site/` to GitHub Pages.
 
 No PNG plots are generated.
+
+## Live Quote Override Decision
+
+This dashboard remains strictly automated.
+
+- Premium/discount to NAV is calculated from published NAV and latest available public market prices.
+- No manual EasyEquities live quote entry is supported in the dashboard.
+- This avoids introducing logged-in, user-specific quote flows into the automated hourly pipeline.
 
 ## Local Commands
 
