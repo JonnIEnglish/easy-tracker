@@ -1,5 +1,5 @@
 {
-  "generated_at_utc": "2026-05-09T20:43:00Z",
+  "generated_at_utc": "2026-05-09T20:46:13Z",
   "funds": [
     {
       "code": "EASYGE",
@@ -14,14 +14,14 @@
         "value_zac": 1777.88,
         "nav_date": "2026-05-09",
         "source_url": "https://etfs.easyequities.co.za/easyetf-instrument-page/easyge",
-        "captured_at_utc": "2026-05-09T20:41:52Z"
+        "captured_at_utc": "2026-05-09T20:45:48Z"
       },
       "latest_market_price": {
         "ticker": "EASYGE.JO",
         "value_zac": 1814.0,
         "source": "yfinance",
         "price_at_utc": "2026-05-07T22:00:00Z",
-        "captured_at_utc": "2026-05-09T20:41:55Z"
+        "captured_at_utc": "2026-05-09T20:45:50Z"
       },
       "etf_performance": {
         "d1": -0.38440417353102774,
@@ -732,14 +732,14 @@
         "value_zac": 10692.74,
         "nav_date": "2026-05-09",
         "source_url": "https://etfs.easyequities.co.za/easyetf-instrument-page/easyai",
-        "captured_at_utc": "2026-05-09T20:41:52Z"
+        "captured_at_utc": "2026-05-09T20:45:48Z"
       },
       "latest_market_price": {
         "ticker": "EASYAI.JO",
         "value_zac": 10894.0,
         "source": "yfinance",
         "price_at_utc": "2026-05-07T22:00:00Z",
-        "captured_at_utc": "2026-05-09T20:41:55Z"
+        "captured_at_utc": "2026-05-09T20:45:50Z"
       },
       "etf_performance": {
         "d1": -0.8915574963609951,
@@ -1410,14 +1410,14 @@
         "value_zac": 1474.14,
         "nav_date": "2026-05-09",
         "source_url": "https://etfs.easyequities.co.za/easyetf-instrument-page/easybf",
-        "captured_at_utc": "2026-05-09T20:41:52Z"
+        "captured_at_utc": "2026-05-09T20:45:48Z"
       },
       "latest_market_price": {
         "ticker": "EASYBF.JO",
         "value_zac": 1480.0,
         "source": "yfinance",
         "price_at_utc": "2026-05-07T22:00:00Z",
-        "captured_at_utc": "2026-05-09T20:41:55Z"
+        "captured_at_utc": "2026-05-09T20:45:50Z"
       },
       "etf_performance": {
         "d1": -0.6711409395973145,
