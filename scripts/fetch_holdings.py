@@ -56,7 +56,10 @@ def parse_holdings_csv(csv_text: str, snapshot_dt: date) -> pd.DataFrame:
     df = pd.read_csv(StringIO(csv_text))
     df.columns = [_normalize_col(c) for c in df.columns]
 
-    instrument_col = _first_match(df.columns, {"instrument", "security", "name", "constituent", "holding"})
+    instrument_col = _first_match(
+        df.columns,
+        {"instrument", "security", "name", "constituent", "holding", "description"},
+    )
     currency_col = _first_match(df.columns, {"currency", "ccy"})
     weight_col = _first_match(df.columns, {"weight", "weight_%", "weighting", "percentage"})
 
