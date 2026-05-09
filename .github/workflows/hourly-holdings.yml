@@ -30,6 +30,8 @@ jobs:
         run: python -m pytest
       - name: Fetch holdings CSVs
         run: python -m scripts.fetch_holdings
+      - name: Capture NAV observations
+        run: python -m scripts.fetch_nav
       - name: Build site data
         run: python -m scripts.build_site_data
       - name: Commit captured data

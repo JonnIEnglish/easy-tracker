@@ -1,5 +1,5 @@
 {
-  "generated_at_utc": "2026-05-09T15:39:47Z",
+  "generated_at_utc": "2026-05-09T16:09:09Z",
   "funds": [
     {
       "code": "EASYGE",
@@ -10,6 +10,7 @@
       "captured_at_utc": "2026-05-09T15:31:51Z",
       "holdings_count": 33,
       "total_weight": 99.82,
+      "latest_nav": null,
       "holdings": [
         {
           "instrument": "LUMENTUM HOL",
@@ -374,7 +375,316 @@
             "d30": null
           }
         }
-      ]
+      ],
+      "monthly_changes": {
+        "previous_month": null,
+        "current_month": null,
+        "changes": []
+      },
+      "monthly_holdings_history": {
+        "months": [
+          "2026-05"
+        ],
+        "rows": [
+          {
+            "instrument": "LUMENTUM HOL",
+            "weights": [
+              9.74
+            ],
+            "active_months": 1,
+            "first_month": "2026-05",
+            "last_month": "2026-05"
+          },
+          {
+            "instrument": "COMFORT SYSTEMS",
+            "weights": [
+              7.18
+            ],
+            "active_months": 1,
+            "first_month": "2026-05",
+            "last_month": "2026-05"
+          },
+          {
+            "instrument": "INAV - USD.CASH",
+            "weights": [
+              5.86
+            ],
+            "active_months": 1,
+            "first_month": "2026-05",
+            "last_month": "2026-05"
+          },
+          {
+            "instrument": "BLOOM ENERGY C-A",
+            "weights": [
+              5.68
+            ],
+            "active_months": 1,
+            "first_month": "2026-05",
+            "last_month": "2026-05"
+          },
+          {
+            "instrument": "NVIDIA CORP",
+            "weights": [
+              5.57
+            ],
+            "active_months": 1,
+            "first_month": "2026-05",
+            "last_month": "2026-05"
+          },
+          {
+            "instrument": "FORMFACTOR INC",
+            "weights": [
+              5.53
+            ],
+            "active_months": 1,
+            "first_month": "2026-05",
+            "last_month": "2026-05"
+          },
+          {
+            "instrument": "CIENA CORP",
+            "weights": [
+              5.35
+            ],
+            "active_months": 1,
+            "first_month": "2026-05",
+            "last_month": "2026-05"
+          },
+          {
+            "instrument": "COHERENT CORP",
+            "weights": [
+              5.05
+            ],
+            "active_months": 1,
+            "first_month": "2026-05",
+            "last_month": "2026-05"
+          },
+          {
+            "instrument": "ARGAN INC",
+            "weights": [
+              4.79
+            ],
+            "active_months": 1,
+            "first_month": "2026-05",
+            "last_month": "2026-05"
+          },
+          {
+            "instrument": "MICRON TECH",
+            "weights": [
+              3.79
+            ],
+            "active_months": 1,
+            "first_month": "2026-05",
+            "last_month": "2026-05"
+          },
+          {
+            "instrument": "ADV ENERGY INDS",
+            "weights": [
+              3.52
+            ],
+            "active_months": 1,
+            "first_month": "2026-05",
+            "last_month": "2026-05"
+          },
+          {
+            "instrument": "VERTIV HOLDINGS",
+            "weights": [
+              3.44
+            ],
+            "active_months": 1,
+            "first_month": "2026-05",
+            "last_month": "2026-05"
+          },
+          {
+            "instrument": "QUANTA SERVICES",
+            "weights": [
+              3.06
+            ],
+            "active_months": 1,
+            "first_month": "2026-05",
+            "last_month": "2026-05"
+          },
+          {
+            "instrument": "CREDO TECHNOLOGY GROUP HOLDI",
+            "weights": [
+              2.78
+            ],
+            "active_months": 1,
+            "first_month": "2026-05",
+            "last_month": "2026-05"
+          },
+          {
+            "instrument": "GRAHAM CORP",
+            "weights": [
+              2.66
+            ],
+            "active_months": 1,
+            "first_month": "2026-05",
+            "last_month": "2026-05"
+          },
+          {
+            "instrument": "CAMECO CORP",
+            "weights": [
+              2.15
+            ],
+            "active_months": 1,
+            "first_month": "2026-05",
+            "last_month": "2026-05"
+          },
+          {
+            "instrument": "GE VERNOVA LLC",
+            "weights": [
+              2.12
+            ],
+            "active_months": 1,
+            "first_month": "2026-05",
+            "last_month": "2026-05"
+          },
+          {
+            "instrument": "META PLATFORMS-A",
+            "weights": [
+              2.04
+            ],
+            "active_months": 1,
+            "first_month": "2026-05",
+            "last_month": "2026-05"
+          },
+          {
+            "instrument": "NEBIUS GROUP NV",
+            "weights": [
+              1.93
+            ],
+            "active_months": 1,
+            "first_month": "2026-05",
+            "last_month": "2026-05"
+          },
+          {
+            "instrument": "ELBIT SYSTEMS",
+            "weights": [
+              1.92
+            ],
+            "active_months": 1,
+            "first_month": "2026-05",
+            "last_month": "2026-05"
+          },
+          {
+            "instrument": "NLIGHT INC",
+            "weights": [
+              1.84
+            ],
+            "active_months": 1,
+            "first_month": "2026-05",
+            "last_month": "2026-05"
+          },
+          {
+            "instrument": "GENERAL ELECTRIC",
+            "weights": [
+              1.82
+            ],
+            "active_months": 1,
+            "first_month": "2026-05",
+            "last_month": "2026-05"
+          },
+          {
+            "instrument": "CARPENTER TECH",
+            "weights": [
+              1.7
+            ],
+            "active_months": 1,
+            "first_month": "2026-05",
+            "last_month": "2026-05"
+          },
+          {
+            "instrument": "ALLEGHENY TECH",
+            "weights": [
+              1.69
+            ],
+            "active_months": 1,
+            "first_month": "2026-05",
+            "last_month": "2026-05"
+          },
+          {
+            "instrument": "Howmet Aerospace Inc",
+            "weights": [
+              1.59
+            ],
+            "active_months": 1,
+            "first_month": "2026-05",
+            "last_month": "2026-05"
+          },
+          {
+            "instrument": "APPLOVIN CO-CL A",
+            "weights": [
+              1.29
+            ],
+            "active_months": 1,
+            "first_month": "2026-05",
+            "last_month": "2026-05"
+          },
+          {
+            "instrument": "INTERACTIVE BROK",
+            "weights": [
+              1.22
+            ],
+            "active_months": 1,
+            "first_month": "2026-05",
+            "last_month": "2026-05"
+          },
+          {
+            "instrument": "KARMAN HOLDINGS INC",
+            "weights": [
+              1.1
+            ],
+            "active_months": 1,
+            "first_month": "2026-05",
+            "last_month": "2026-05"
+          },
+          {
+            "instrument": "BWX TECHNOLOGIES",
+            "weights": [
+              0.88
+            ],
+            "active_months": 1,
+            "first_month": "2026-05",
+            "last_month": "2026-05"
+          },
+          {
+            "instrument": "ROBINHOOD MARK-A",
+            "weights": [
+              0.88
+            ],
+            "active_months": 1,
+            "first_month": "2026-05",
+            "last_month": "2026-05"
+          },
+          {
+            "instrument": "KRATOS DEFENSE &",
+            "weights": [
+              0.59
+            ],
+            "active_months": 1,
+            "first_month": "2026-05",
+            "last_month": "2026-05"
+          },
+          {
+            "instrument": "KRAKEN ROBOTICS INC",
+            "weights": [
+              0.55
+            ],
+            "active_months": 1,
+            "first_month": "2026-05",
+            "last_month": "2026-05"
+          },
+          {
+            "instrument": "INAV - ZAR.CASH",
+            "weights": [
+              0.51
+            ],
+            "active_months": 1,
+            "first_month": "2026-05",
+            "last_month": "2026-05"
+          }
+        ]
+      }
     },
     {
       "code": "EASYAI",
@@ -385,6 +695,7 @@
       "captured_at_utc": "2026-05-09T15:31:53Z",
       "holdings_count": 31,
       "total_weight": 99.83,
+      "latest_nav": null,
       "holdings": [
         {
           "instrument": "LUMENTUM HOL",
@@ -727,7 +1038,298 @@
             "d30": null
           }
         }
-      ]
+      ],
+      "monthly_changes": {
+        "previous_month": null,
+        "current_month": null,
+        "changes": []
+      },
+      "monthly_holdings_history": {
+        "months": [
+          "2026-05"
+        ],
+        "rows": [
+          {
+            "instrument": "LUMENTUM HOL",
+            "weights": [
+              8.62
+            ],
+            "active_months": 1,
+            "first_month": "2026-05",
+            "last_month": "2026-05"
+          },
+          {
+            "instrument": "COMFORT SYSTEMS",
+            "weights": [
+              7.81
+            ],
+            "active_months": 1,
+            "first_month": "2026-05",
+            "last_month": "2026-05"
+          },
+          {
+            "instrument": "BLOOM ENERGY C-A",
+            "weights": [
+              5.87
+            ],
+            "active_months": 1,
+            "first_month": "2026-05",
+            "last_month": "2026-05"
+          },
+          {
+            "instrument": "NVIDIA CORP",
+            "weights": [
+              5.74
+            ],
+            "active_months": 1,
+            "first_month": "2026-05",
+            "last_month": "2026-05"
+          },
+          {
+            "instrument": "FORMFACTOR INC",
+            "weights": [
+              5.54
+            ],
+            "active_months": 1,
+            "first_month": "2026-05",
+            "last_month": "2026-05"
+          },
+          {
+            "instrument": "VICOR CORP",
+            "weights": [
+              4.78
+            ],
+            "active_months": 1,
+            "first_month": "2026-05",
+            "last_month": "2026-05"
+          },
+          {
+            "instrument": "COHERENT CORP",
+            "weights": [
+              4.73
+            ],
+            "active_months": 1,
+            "first_month": "2026-05",
+            "last_month": "2026-05"
+          },
+          {
+            "instrument": "GE VERNOVA LLC",
+            "weights": [
+              4.7
+            ],
+            "active_months": 1,
+            "first_month": "2026-05",
+            "last_month": "2026-05"
+          },
+          {
+            "instrument": "ARGAN INC",
+            "weights": [
+              4.01
+            ],
+            "active_months": 1,
+            "first_month": "2026-05",
+            "last_month": "2026-05"
+          },
+          {
+            "instrument": "ADV ENERGY INDS",
+            "weights": [
+              3.8
+            ],
+            "active_months": 1,
+            "first_month": "2026-05",
+            "last_month": "2026-05"
+          },
+          {
+            "instrument": "FABRINET",
+            "weights": [
+              3.68
+            ],
+            "active_months": 1,
+            "first_month": "2026-05",
+            "last_month": "2026-05"
+          },
+          {
+            "instrument": "MICRON TECH",
+            "weights": [
+              3.51
+            ],
+            "active_months": 1,
+            "first_month": "2026-05",
+            "last_month": "2026-05"
+          },
+          {
+            "instrument": "QUANTA SERVICES",
+            "weights": [
+              3.31
+            ],
+            "active_months": 1,
+            "first_month": "2026-05",
+            "last_month": "2026-05"
+          },
+          {
+            "instrument": "CIENA CORP",
+            "weights": [
+              3.19
+            ],
+            "active_months": 1,
+            "first_month": "2026-05",
+            "last_month": "2026-05"
+          },
+          {
+            "instrument": "AXT INC",
+            "weights": [
+              2.81
+            ],
+            "active_months": 1,
+            "first_month": "2026-05",
+            "last_month": "2026-05"
+          },
+          {
+            "instrument": "ONTO INNOVATION",
+            "weights": [
+              2.7
+            ],
+            "active_months": 1,
+            "first_month": "2026-05",
+            "last_month": "2026-05"
+          },
+          {
+            "instrument": "CREDO TECHNOLOGY GROUP HOLDI",
+            "weights": [
+              2.66
+            ],
+            "active_months": 1,
+            "first_month": "2026-05",
+            "last_month": "2026-05"
+          },
+          {
+            "instrument": "CAMTEK LTD",
+            "weights": [
+              2.59
+            ],
+            "active_months": 1,
+            "first_month": "2026-05",
+            "last_month": "2026-05"
+          },
+          {
+            "instrument": "META PLATFORMS-A",
+            "weights": [
+              2.39
+            ],
+            "active_months": 1,
+            "first_month": "2026-05",
+            "last_month": "2026-05"
+          },
+          {
+            "instrument": "BWX TECHNOLOGIES",
+            "weights": [
+              2.38
+            ],
+            "active_months": 1,
+            "first_month": "2026-05",
+            "last_month": "2026-05"
+          },
+          {
+            "instrument": "MKS INC",
+            "weights": [
+              2.2
+            ],
+            "active_months": 1,
+            "first_month": "2026-05",
+            "last_month": "2026-05"
+          },
+          {
+            "instrument": "VERTIV HOLDINGS",
+            "weights": [
+              2.17
+            ],
+            "active_months": 1,
+            "first_month": "2026-05",
+            "last_month": "2026-05"
+          },
+          {
+            "instrument": "AMPHENOL CORP",
+            "weights": [
+              2.15
+            ],
+            "active_months": 1,
+            "first_month": "2026-05",
+            "last_month": "2026-05"
+          },
+          {
+            "instrument": "NEBIUS GROUP NV",
+            "weights": [
+              1.95
+            ],
+            "active_months": 1,
+            "first_month": "2026-05",
+            "last_month": "2026-05"
+          },
+          {
+            "instrument": "GENERAL ELECTRIC",
+            "weights": [
+              1.5
+            ],
+            "active_months": 1,
+            "first_month": "2026-05",
+            "last_month": "2026-05"
+          },
+          {
+            "instrument": "APPLOVIN CO-CL A",
+            "weights": [
+              1.43
+            ],
+            "active_months": 1,
+            "first_month": "2026-05",
+            "last_month": "2026-05"
+          },
+          {
+            "instrument": "IREN LTD",
+            "weights": [
+              1.41
+            ],
+            "active_months": 1,
+            "first_month": "2026-05",
+            "last_month": "2026-05"
+          },
+          {
+            "instrument": "AXON ENTERPRISE",
+            "weights": [
+              0.95
+            ],
+            "active_months": 1,
+            "first_month": "2026-05",
+            "last_month": "2026-05"
+          },
+          {
+            "instrument": "KARMAN HOLDINGS INC",
+            "weights": [
+              0.8
+            ],
+            "active_months": 1,
+            "first_month": "2026-05",
+            "last_month": "2026-05"
+          },
+          {
+            "instrument": "INAV - ZAR.CASH",
+            "weights": [
+              0.45
+            ],
+            "active_months": 1,
+            "first_month": "2026-05",
+            "last_month": "2026-05"
+          },
+          {
+            "instrument": "INAV - USD.CASH",
+            "weights": [
+              0.0
+            ],
+            "active_months": 0,
+            "first_month": null,
+            "last_month": null
+          }
+        ]
+      }
     },
     {
       "code": "EASYBF",
@@ -738,6 +1340,7 @@
       "captured_at_utc": "2026-05-09T15:31:56Z",
       "holdings_count": 32,
       "total_weight": 99.77,
+      "latest_nav": null,
       "holdings": [
         {
           "instrument": "AI ACTIVELY MANAGED ETF",
@@ -1091,7 +1694,307 @@
             "d30": -6.650219750827413
           }
         }
-      ]
+      ],
+      "monthly_changes": {
+        "previous_month": null,
+        "current_month": null,
+        "changes": []
+      },
+      "monthly_holdings_history": {
+        "months": [
+          "2026-05"
+        ],
+        "rows": [
+          {
+            "instrument": "AI ACTIVELY MANAGED ETF",
+            "weights": [
+              21.5
+            ],
+            "active_months": 1,
+            "first_month": "2026-05",
+            "last_month": "2026-05"
+          },
+          {
+            "instrument": "EGE ACTIVELY MANAGED ETF",
+            "weights": [
+              21.5
+            ],
+            "active_months": 1,
+            "first_month": "2026-05",
+            "last_month": "2026-05"
+          },
+          {
+            "instrument": "Satrix SA Bond Portfolio",
+            "weights": [
+              7.33
+            ],
+            "active_months": 1,
+            "first_month": "2026-05",
+            "last_month": "2026-05"
+          },
+          {
+            "instrument": "INAV - ZAR.CASH",
+            "weights": [
+              6.13
+            ],
+            "active_months": 1,
+            "first_month": "2026-05",
+            "last_month": "2026-05"
+          },
+          {
+            "instrument": "Pan African Resource",
+            "weights": [
+              4.9
+            ],
+            "active_months": 1,
+            "first_month": "2026-05",
+            "last_month": "2026-05"
+          },
+          {
+            "instrument": "SATRIX NAS 100",
+            "weights": [
+              4.65
+            ],
+            "active_months": 1,
+            "first_month": "2026-05",
+            "last_month": "2026-05"
+          },
+          {
+            "instrument": "Capitec Bank Holdings Ltd",
+            "weights": [
+              4.29
+            ],
+            "active_months": 1,
+            "first_month": "2026-05",
+            "last_month": "2026-05"
+          },
+          {
+            "instrument": "New Gold Issuer Ltd",
+            "weights": [
+              3.43
+            ],
+            "active_months": 1,
+            "first_month": "2026-05",
+            "last_month": "2026-05"
+          },
+          {
+            "instrument": "NewPlat ETF",
+            "weights": [
+              3.3
+            ],
+            "active_months": 1,
+            "first_month": "2026-05",
+            "last_month": "2026-05"
+          },
+          {
+            "instrument": "BHP GROUP LTD",
+            "weights": [
+              2.46
+            ],
+            "active_months": 1,
+            "first_month": "2026-05",
+            "last_month": "2026-05"
+          },
+          {
+            "instrument": "ANGLOGOLD ASHANTI PLC",
+            "weights": [
+              2.05
+            ],
+            "active_months": 1,
+            "first_month": "2026-05",
+            "last_month": "2026-05"
+          },
+          {
+            "instrument": "Naspers Ltd - N Shares",
+            "weights": [
+              1.85
+            ],
+            "active_months": 1,
+            "first_month": "2026-05",
+            "last_month": "2026-05"
+          },
+          {
+            "instrument": "Sibanye Stillwater Ltd",
+            "weights": [
+              1.7
+            ],
+            "active_months": 1,
+            "first_month": "2026-05",
+            "last_month": "2026-05"
+          },
+          {
+            "instrument": "Gold Fields Ltd",
+            "weights": [
+              1.29
+            ],
+            "active_months": 1,
+            "first_month": "2026-05",
+            "last_month": "2026-05"
+          },
+          {
+            "instrument": "OPTASIA GROUP",
+            "weights": [
+              1.26
+            ],
+            "active_months": 1,
+            "first_month": "2026-05",
+            "last_month": "2026-05"
+          },
+          {
+            "instrument": "NORTHAM PLATINUM",
+            "weights": [
+              1.22
+            ],
+            "active_months": 1,
+            "first_month": "2026-05",
+            "last_month": "2026-05"
+          },
+          {
+            "instrument": "Vukile Property Fund Ltd",
+            "weights": [
+              1.2
+            ],
+            "active_months": 1,
+            "first_month": "2026-05",
+            "last_month": "2026-05"
+          },
+          {
+            "instrument": "Fortress Real Estate Investments Limited B",
+            "weights": [
+              1.18
+            ],
+            "active_months": 1,
+            "first_month": "2026-05",
+            "last_month": "2026-05"
+          },
+          {
+            "instrument": "Impala Platinum Holdings Ltd",
+            "weights": [
+              1.05
+            ],
+            "active_months": 1,
+            "first_month": "2026-05",
+            "last_month": "2026-05"
+          },
+          {
+            "instrument": "Lewis Group Ltd",
+            "weights": [
+              1.05
+            ],
+            "active_months": 1,
+            "first_month": "2026-05",
+            "last_month": "2026-05"
+          },
+          {
+            "instrument": "MTN Group Ltd",
+            "weights": [
+              1.04
+            ],
+            "active_months": 1,
+            "first_month": "2026-05",
+            "last_month": "2026-05"
+          },
+          {
+            "instrument": "SATRIX GOVI ETF",
+            "weights": [
+              0.7
+            ],
+            "active_months": 1,
+            "first_month": "2026-05",
+            "last_month": "2026-05"
+          },
+          {
+            "instrument": "NINETY ONE LTD",
+            "weights": [
+              0.69
+            ],
+            "active_months": 1,
+            "first_month": "2026-05",
+            "last_month": "2026-05"
+          },
+          {
+            "instrument": "NewPall ETF",
+            "weights": [
+              0.67
+            ],
+            "active_months": 1,
+            "first_month": "2026-05",
+            "last_month": "2026-05"
+          },
+          {
+            "instrument": "Purple Group Ltd",
+            "weights": [
+              0.66
+            ],
+            "active_months": 1,
+            "first_month": "2026-05",
+            "last_month": "2026-05"
+          },
+          {
+            "instrument": "Ninety One Plc",
+            "weights": [
+              0.59
+            ],
+            "active_months": 1,
+            "first_month": "2026-05",
+            "last_month": "2026-05"
+          },
+          {
+            "instrument": "Attacq Limited",
+            "weights": [
+              0.56
+            ],
+            "active_months": 1,
+            "first_month": "2026-05",
+            "last_month": "2026-05"
+          },
+          {
+            "instrument": "VALTERRA PLATINUM LIMITED",
+            "weights": [
+              0.44
+            ],
+            "active_months": 1,
+            "first_month": "2026-05",
+            "last_month": "2026-05"
+          },
+          {
+            "instrument": "SOUTHERN SUN LTD",
+            "weights": [
+              0.41
+            ],
+            "active_months": 1,
+            "first_month": "2026-05",
+            "last_month": "2026-05"
+          },
+          {
+            "instrument": "CELL C HOLDINGS LTD",
+            "weights": [
+              0.28
+            ],
+            "active_months": 1,
+            "first_month": "2026-05",
+            "last_month": "2026-05"
+          },
+          {
+            "instrument": "Vodacom Group Limited",
+            "weights": [
+              0.22
+            ],
+            "active_months": 1,
+            "first_month": "2026-05",
+            "last_month": "2026-05"
+          },
+          {
+            "instrument": "Growthpoint Properties Ltd",
+            "weights": [
+              0.17
+            ],
+            "active_months": 1,
+            "first_month": "2026-05",
+            "last_month": "2026-05"
+          }
+        ]
+      }
     }
   ]
 }

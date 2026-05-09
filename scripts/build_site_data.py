@@ -12,6 +12,7 @@ from scripts.utils import load_funds_config, read_csv_if_exists, utc_now_iso
 
 HISTORY_PATH = Path("data/holdings_history.csv")
 TICKER_MAP_PATH = Path("config/ticker_map.csv")
+NAV_HISTORY_PATH = Path("data/nav_history.csv")
 SITE_DATA_PATH = Path("site/data.json")
 
 
@@ -29,6 +30,140 @@ def latest_holdings(history: pd.DataFrame) -> pd.DataFrame:
     idx = history.groupby("fund_code")["captured_at_utc"].idxmax()
     latest_capture = history.loc[idx, ["fund_code", "captured_at_utc"]]
     return history.merge(latest_capture, on=["fund_code", "captured_at_utc"], how="inner")
+
+
+def classify_holding_change(previous_weight: float, current_weight: float) -> str:
+    if previous_weight == 0 and current_weight > 0:
+        return "added"
+    if previous_weight > 0 and current_weight == 0:
+        return "exited"
+    if current_weight > previous_weight:
+        return "increased"
+    if current_weight < previous_weight:
+        return "trimmed"
+    return "unchanged"
+
+
+def derive_monthly_holdings_changes(history: pd.DataFrame) -> dict[str, dict[str, Any]]:
+    if history.empty:
+        return {}
+
+    working = history.copy()
+    working["captured_at_utc"] = pd.to_datetime(working["captured_at_utc"], utc=True)
+    working["month"] = working["captured_at_utc"].dt.strftime("%Y-%m")
+
+    latest_in_month = working.loc[
+        working.groupby(["fund_code", "month"])["captured_at_utc"].transform("max") == working["captured_at_utc"]
+    ].copy()
+
+    results: dict[str, dict[str, Any]] = {}
+    for fund_code, fund_rows in latest_in_month.groupby("fund_code"):
+        months = sorted(fund_rows["month"].drop_duplicates())
+        if len(months) < 2:
+            results[str(fund_code)] = {
+                "previous_month": None,
+                "current_month": None,
+                "changes": [],
+            }
+            continue
+
+        previous_month = months[-2]
+        current_month = months[-1]
+        previous_rows = fund_rows[fund_rows["month"] == previous_month]
+        current_rows = fund_rows[fund_rows["month"] == current_month]
+
+        previous_weights = (
+            previous_rows.groupby("instrument", as_index=False)["weight"].sum().rename(columns={"weight": "previous_weight"})
+        )
+        current_weights = (
+            current_rows.groupby("instrument", as_index=False)["weight"].sum().rename(columns={"weight": "current_weight"})
+        )
+
+        merged = previous_weights.merge(current_weights, on="instrument", how="outer").fillna(0.0)
+        merged["previous_weight"] = pd.to_numeric(merged["previous_weight"], errors="coerce").fillna(0.0)
+        merged["current_weight"] = pd.to_numeric(merged["current_weight"], errors="coerce").fillna(0.0)
+        merged["change_pp"] = merged["current_weight"] - merged["previous_weight"]
+        merged["action"] = merged.apply(
+            lambda row: classify_holding_change(float(row["previous_weight"]), float(row["current_weight"])),
+            axis=1,
+        )
+
+        merged = merged.sort_values(["change_pp", "instrument"], ascending=[False, True]).reset_index(drop=True)
+        changes = [
+            {
+                "instrument": str(row["instrument"]),
+                "previous_weight": float(row["previous_weight"]),
+                "current_weight": float(row["current_weight"]),
+                "change_pp": float(row["change_pp"]),
+                "action": str(row["action"]),
+            }
+            for row in merged.to_dict(orient="records")
+        ]
+
+        results[str(fund_code)] = {
+            "previous_month": str(previous_month),
+            "current_month": str(current_month),
+            "changes": changes,
+        }
+
+    return results
+
+
+def derive_monthly_holdings_history(history: pd.DataFrame) -> dict[str, dict[str, Any]]:
+    if history.empty:
+        return {}
+
+    working = history.copy()
+    working["captured_at_utc"] = pd.to_datetime(working["captured_at_utc"], utc=True)
+    working["month"] = working["captured_at_utc"].dt.strftime("%Y-%m")
+
+    latest_in_month = working.loc[
+        working.groupby(["fund_code", "month"])["captured_at_utc"].transform("max") == working["captured_at_utc"]
+    ].copy()
+    latest_in_month["weight"] = pd.to_numeric(latest_in_month["weight"], errors="coerce").fillna(0.0)
+
+    results: dict[str, dict[str, Any]] = {}
+    for fund_code, fund_rows in latest_in_month.groupby("fund_code"):
+        months = sorted(fund_rows["month"].drop_duplicates())
+        if not months:
+            results[str(fund_code)] = {"months": [], "rows": []}
+            continue
+
+        grouped = (
+            fund_rows.groupby(["instrument", "month"], as_index=False)["weight"]
+            .sum()
+            .pivot(index="instrument", columns="month", values="weight")
+            .fillna(0.0)
+        )
+        grouped = grouped.reindex(columns=months, fill_value=0.0)
+
+        if months:
+            latest_month = months[-1]
+            grouped = grouped.assign(
+                _latest_weight=grouped[latest_month],
+                _max_weight=grouped.max(axis=1),
+            ).sort_values(["_latest_weight", "_max_weight"], ascending=[False, False])
+
+        rows = []
+        for instrument, row in grouped.iterrows():
+            weights = [float(row[month]) for month in months]
+            active_month_indexes = [idx for idx, value in enumerate(weights) if value > 0]
+            rows.append(
+                {
+                    "instrument": str(instrument),
+                    "weights": weights,
+                    "active_months": int(len(active_month_indexes)),
+                    "first_month": months[active_month_indexes[0]] if active_month_indexes else None,
+                    "last_month": months[active_month_indexes[-1]] if active_month_indexes else None,
+                }
+            )
+
+        results[str(fund_code)] = {
+            "months": months,
+            "rows": rows,
+        }
+
+    return results
 
 
 def fetch_price_history(tickers: list[str]) -> dict[str, pd.DataFrame]:
@@ -83,10 +218,38 @@ def performance_for(prices: pd.DataFrame | None) -> dict[str, float | None]:
     }
 
 
+def latest_nav_by_fund(nav_history: pd.DataFrame) -> dict[str, dict[str, Any]]:
+    if nav_history.empty:
+        return {}
+    working = nav_history.copy()
+    working["nav_date"] = pd.to_datetime(working["nav_date"], errors="coerce")
+    working["captured_at_utc"] = pd.to_datetime(working["captured_at_utc"], utc=True, errors="coerce")
+    working = working.dropna(subset=["fund_code", "nav_zac", "nav_date", "captured_at_utc"])
+    if working.empty:
+        return {}
+    working["nav_zac"] = pd.to_numeric(working["nav_zac"], errors="coerce")
+    working = working.dropna(subset=["nav_zac"])
+    working = working.sort_values(["fund_code", "nav_date", "captured_at_utc"], ascending=[True, False, False])
+    latest = working.groupby("fund_code", as_index=False).head(1)
+    return {
+        str(row["fund_code"]): {
+            "value_zac": float(row["nav_zac"]),
+            "nav_date": row["nav_date"].date().isoformat(),
+            "source_url": str(row["source_url"]),
+            "captured_at_utc": row["captured_at_utc"].isoformat().replace("+00:00", "Z"),
+        }
+        for row in latest.to_dict(orient="records")
+    }
+
+
 def build_payload() -> dict[str, Any]:
     cfg = load_funds_config()
     funds_cfg = {row["code"]: row for row in cfg["funds"]}
-    history = latest_holdings(read_csv_if_exists(HISTORY_PATH))
+    full_history = read_csv_if_exists(HISTORY_PATH)
+    history = latest_holdings(full_history)
+    monthly_changes_by_fund = derive_monthly_holdings_changes(full_history)
+    monthly_history_by_fund = derive_monthly_holdings_history(full_history)
+    latest_navs = latest_nav_by_fund(read_csv_if_exists(NAV_HISTORY_PATH))
     ticker_map = read_csv_if_exists(TICKER_MAP_PATH)
 
     ticker_by_instrument: dict[str, str] = {}
@@ -127,7 +290,10 @@ def build_payload() -> dict[str, Any]:
                 "captured_at_utc": rows["captured_at_utc"].iloc[0].isoformat().replace("+00:00", "Z") if not rows.empty else None,
                 "holdings_count": int(len(rows)),
                 "total_weight": round(float(rows["weight"].sum()), 4) if not rows.empty else None,
+                "latest_nav": latest_navs.get(code),
                 "holdings": holdings,
+                "monthly_changes": monthly_changes_by_fund.get(code, {"previous_month": None, "current_month": None, "changes": []}),
+                "monthly_holdings_history": monthly_history_by_fund.get(code, {"months": [], "rows": []}),
             }
         )
 
