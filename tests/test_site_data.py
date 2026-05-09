@@ -4,6 +4,7 @@ import pytest
 from scripts.build_site_data import (
     derive_monthly_holdings_changes,
     derive_monthly_holdings_history,
+    derive_nav_price_history,
     estimate_premium_discount_to_nav,
     latest_holdings,
     latest_market_price_by_fund,
@@ -159,3 +160,41 @@ def test_estimate_premium_discount_to_nav_states_and_missing() -> None:
     assert near_result["status"] == "near_nav"
     assert missing_result["status"] == "n/a"
     assert missing_result["difference_pct"] is None
+
+
+def test_derive_nav_price_history_combines_hourly_nav_and_market_price() -> None:
+    nav_history = pd.DataFrame(
+        [
+            {
+                "fund_code": "EASYGE",
+                "nav_zac": 100.0,
+                "nav_date": "2026-05-09",
+                "source_url": "u1",
+                "captured_at_utc": "2026-05-09T10:05:00Z",
+            },
+        ]
+    )
+    market_history = pd.DataFrame(
+        [
+            {
+                "fund_code": "EASYGE",
+                "ticker": "EASYGE.JO",
+                "price": 102.0,
+                "source": "yfinance",
+                "price_at_utc": "2026-05-09T10:00:00Z",
+                "captured_at_utc": "2026-05-09T10:08:00Z",
+            },
+        ]
+    )
+
+    history = derive_nav_price_history(nav_history, market_history)
+
+    assert len(history) == 1
+    row = history.iloc[0]
+    assert row["fund_code"] == "EASYGE"
+    assert row["captured_hour_utc"] == "2026-05-09T10:00:00Z"
+    assert row["nav_zac"] == pytest.approx(100.0)
+    assert row["market_price_zac"] == pytest.approx(102.0)
+    assert row["difference_zac"] == pytest.approx(2.0)
+    assert row["difference_pct"] == pytest.approx(2.0)
+    assert row["status"] == "premium"

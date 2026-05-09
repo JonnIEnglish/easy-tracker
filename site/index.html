@@ -102,6 +102,11 @@
       font-weight: 750;
       overflow-wrap: anywhere;
     }
+    .metric .value a {
+      color: inherit;
+      text-decoration-color: var(--accent);
+      text-underline-offset: 3px;
+    }
     .toolbar {
       display: grid;
       grid-template-columns: minmax(220px, 1fr) 190px;
@@ -265,6 +270,7 @@
       return new Date(Date.UTC(year, month - 1, 1)).toLocaleDateString(undefined, { month: "short", year: "2-digit", timeZone: "UTC" });
     };
     const cssFor = value => Number.isFinite(value) ? (value >= 0 ? "positive" : "negative") : "missing";
+    const chartHref = (fund, metric) => `chart.html?fund=${encodeURIComponent(fund.code)}&metric=${encodeURIComponent(metric)}`;
 
     function activeFund() {
       return state.data.funds.find(fund => fund.code === state.activeCode) || state.data.funds[0];
@@ -290,6 +296,7 @@
       const largest = fund.holdings[0];
       const latestNav = fund.latest_nav || null;
       const latestMarket = fund.latest_market_price || null;
+      const etfPerf = fund.etf_performance || { d1: null, d7: null, d30: null };
       const navGap = fund.estimated_nav_gap || { status: "n/a", difference_zac: null, difference_pct: null, label: "n/a" };
       const navStatusClass = navGap.status ? `status-${navGap.status.replace("/", "_")}` : "status-na";
       const rows = [
@@ -297,10 +304,18 @@
         ["Holdings", fund.holdings_count],
         ["Total weight", fmtWeight(fund.total_weight)],
         ["Largest holding", largest ? largest.instrument : "n/a"],
-        ["NAV (latest)", fmtZac(latestNav?.value_zac)],
-        ["Market Price (latest)", fmtZac(latestMarket?.value_zac)],
+        ["NAV (latest)", latestNav ? `<a href="${chartHref(fund, "nav")}">${fmtZac(latestNav.value_zac)}</a>` : "n/a"],
+        ["Market Price (latest)", latestMarket ? `<a href="${chartHref(fund, "nav")}">${fmtZac(latestMarket?.value_zac)}</a>` : "n/a"],
+        ["ETF 1d", `<span class="${cssFor(etfPerf.d1)}">${fmtPct(etfPerf.d1)}</span>`],
+        ["ETF 7d", `<span class="${cssFor(etfPerf.d7)}">${fmtPct(etfPerf.d7)}</span>`],
+        ["ETF 30d", `<span class="${cssFor(etfPerf.d30)}">${fmtPct(etfPerf.d30)}</span>`],
         ["Difference (Price - NAV)", Number.isFinite(navGap.difference_zac) ? fmtZac(navGap.difference_zac) : "n/a"],
-        ["Estimated Premium/Discount to NAV", `<span class="status-pill ${navStatusClass}">${fmtPct(navGap.difference_pct)}</span>`],
+        [
+          "Estimated Premium/Discount to NAV",
+          Number.isFinite(navGap.difference_pct)
+            ? `<a href="${chartHref(fund, "premium")}" aria-label="View premium discount chart"><span class="status-pill ${navStatusClass}">${fmtPct(navGap.difference_pct)}</span></a>`
+            : `<span class="status-pill ${navStatusClass}">n/a</span>`,
+        ],
       ];
       summary.innerHTML = rows.map(([label, value]) => `
         <article class="metric">

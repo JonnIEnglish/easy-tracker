@@ -1,5 +1,5 @@
 {
-  "generated_at_utc": "2026-05-09T20:16:37Z",
+  "generated_at_utc": "2026-05-09T20:43:00Z",
   "funds": [
     {
       "code": "EASYGE",
@@ -14,14 +14,19 @@
         "value_zac": 1777.88,
         "nav_date": "2026-05-09",
         "source_url": "https://etfs.easyequities.co.za/easyetf-instrument-page/easyge",
-        "captured_at_utc": "2026-05-09T20:15:25Z"
+        "captured_at_utc": "2026-05-09T20:41:52Z"
       },
       "latest_market_price": {
         "ticker": "EASYGE.JO",
         "value_zac": 1814.0,
         "source": "yfinance",
         "price_at_utc": "2026-05-07T22:00:00Z",
-        "captured_at_utc": "2026-05-09T20:15:25Z"
+        "captured_at_utc": "2026-05-09T20:41:55Z"
+      },
+      "etf_performance": {
+        "d1": -0.38440417353102774,
+        "d7": 3.7164093767867445,
+        "d30": 16.20755925688662
       },
       "estimated_nav_gap": {
         "status": "premium",
@@ -29,6 +34,16 @@
         "difference_pct": 2.031633181092081,
         "label": "estimated premium/discount to NAV"
       },
+      "nav_price_history": [
+        {
+          "captured_hour_utc": "2026-05-09T20:00:00Z",
+          "nav_zac": 1777.88,
+          "market_price_zac": 1814.0,
+          "difference_zac": 36.11999999999989,
+          "difference_pct": 2.031633181092081,
+          "status": "premium"
+        }
+      ],
       "holdings": [
         {
           "instrument": "LUMENTUM HOL",
@@ -717,14 +732,19 @@
         "value_zac": 10692.74,
         "nav_date": "2026-05-09",
         "source_url": "https://etfs.easyequities.co.za/easyetf-instrument-page/easyai",
-        "captured_at_utc": "2026-05-09T20:15:25Z"
+        "captured_at_utc": "2026-05-09T20:41:52Z"
       },
       "latest_market_price": {
         "ticker": "EASYAI.JO",
         "value_zac": 10894.0,
         "source": "yfinance",
         "price_at_utc": "2026-05-07T22:00:00Z",
-        "captured_at_utc": "2026-05-09T20:15:25Z"
+        "captured_at_utc": "2026-05-09T20:41:55Z"
+      },
+      "etf_performance": {
+        "d1": -0.8915574963609951,
+        "d7": 3.5551330798479164,
+        "d30": 20.84303937881309
       },
       "estimated_nav_gap": {
         "status": "premium",
@@ -732,6 +752,16 @@
         "difference_pct": 1.8822116688519523,
         "label": "estimated premium/discount to NAV"
       },
+      "nav_price_history": [
+        {
+          "captured_hour_utc": "2026-05-09T20:00:00Z",
+          "nav_zac": 10692.74,
+          "market_price_zac": 10894.0,
+          "difference_zac": 201.26000000000022,
+          "difference_pct": 1.8822116688519523,
+          "status": "premium"
+        }
+      ],
       "holdings": [
         {
           "instrument": "LUMENTUM HOL",
@@ -1380,14 +1410,19 @@
         "value_zac": 1474.14,
         "nav_date": "2026-05-09",
         "source_url": "https://etfs.easyequities.co.za/easyetf-instrument-page/easybf",
-        "captured_at_utc": "2026-05-09T20:15:25Z"
+        "captured_at_utc": "2026-05-09T20:41:52Z"
       },
       "latest_market_price": {
         "ticker": "EASYBF.JO",
         "value_zac": 1480.0,
         "source": "yfinance",
         "price_at_utc": "2026-05-07T22:00:00Z",
-        "captured_at_utc": "2026-05-09T20:15:25Z"
+        "captured_at_utc": "2026-05-09T20:41:55Z"
+      },
+      "etf_performance": {
+        "d1": -0.6711409395973145,
+        "d7": 3.2798325191905064,
+        "d30": 7.636363636363641
       },
       "estimated_nav_gap": {
         "status": "premium",
@@ -1395,6 +1430,16 @@
         "difference_pct": 0.39751990991356995,
         "label": "estimated premium/discount to NAV"
       },
+      "nav_price_history": [
+        {
+          "captured_hour_utc": "2026-05-09T20:00:00Z",
+          "nav_zac": 1474.14,
+          "market_price_zac": 1480.0,
+          "difference_zac": 5.8599999999999,
+          "difference_pct": 0.39751990991356995,
+          "status": "premium"
+        }
+      ],
       "holdings": [
         {
           "instrument": "AI ACTIVELY MANAGED ETF",

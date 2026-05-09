@@ -8,12 +8,13 @@ from typing import Any
 
 import pandas as pd
 
-from scripts.utils import load_funds_config, read_csv_if_exists, utc_now_iso
+from scripts.utils import load_funds_config, read_csv_if_exists, utc_now_iso, write_csv
 
 HISTORY_PATH = Path("data/holdings_history.csv")
 TICKER_MAP_PATH = Path("config/ticker_map.csv")
 NAV_HISTORY_PATH = Path("data/nav_history.csv")
 MARKET_PRICE_HISTORY_PATH = Path("data/market_price_history.csv")
+NAV_PRICE_HISTORY_PATH = Path("data/nav_price_history.csv")
 SITE_DATA_PATH = Path("site/data.json")
 
 
@@ -309,6 +310,91 @@ def estimate_premium_discount_to_nav(
     }
 
 
+def derive_nav_price_history(nav_history: pd.DataFrame, price_history: pd.DataFrame) -> pd.DataFrame:
+    columns = [
+        "fund_code",
+        "captured_hour_utc",
+        "nav_zac",
+        "nav_date",
+        "nav_captured_at_utc",
+        "market_ticker",
+        "market_price_zac",
+        "market_price_at_utc",
+        "market_captured_at_utc",
+        "difference_zac",
+        "difference_pct",
+        "status",
+    ]
+    if nav_history.empty and price_history.empty:
+        return pd.DataFrame(columns=columns)
+
+    nav = pd.DataFrame(columns=["fund_code", "captured_hour_utc", "nav_zac", "nav_date", "nav_captured_at_utc"])
+    if not nav_history.empty:
+        nav = nav_history.copy()
+        nav["nav_captured_at_utc"] = pd.to_datetime(nav["captured_at_utc"], utc=True, errors="coerce")
+        nav["captured_hour_utc"] = nav["nav_captured_at_utc"].dt.floor("h")
+        nav["nav_zac"] = pd.to_numeric(nav["nav_zac"], errors="coerce")
+        nav = nav.dropna(subset=["fund_code", "captured_hour_utc", "nav_zac"])
+        nav = nav.sort_values(["fund_code", "captured_hour_utc", "nav_captured_at_utc"])
+        nav = nav.groupby(["fund_code", "captured_hour_utc"], as_index=False).tail(1)
+        nav = nav[["fund_code", "captured_hour_utc", "nav_zac", "nav_date", "nav_captured_at_utc"]]
+
+    price = pd.DataFrame(
+        columns=["fund_code", "captured_hour_utc", "market_ticker", "market_price_zac", "market_price_at_utc", "market_captured_at_utc"]
+    )
+    if not price_history.empty:
+        price = price_history.copy()
+        price["market_captured_at_utc"] = pd.to_datetime(price["captured_at_utc"], utc=True, errors="coerce")
+        price["captured_hour_utc"] = price["market_captured_at_utc"].dt.floor("h")
+        price["market_price_at_utc"] = pd.to_datetime(price.get("price_at_utc"), utc=True, errors="coerce")
+        price["market_price_zac"] = pd.to_numeric(price["price"], errors="coerce")
+        price = price.dropna(subset=["fund_code", "captured_hour_utc", "market_price_zac"])
+        price = price.sort_values(["fund_code", "captured_hour_utc", "market_captured_at_utc"])
+        price = price.groupby(["fund_code", "captured_hour_utc"], as_index=False).tail(1)
+        price = price.rename(columns={"ticker": "market_ticker"})
+        price = price[
+            ["fund_code", "captured_hour_utc", "market_ticker", "market_price_zac", "market_price_at_utc", "market_captured_at_utc"]
+        ]
+
+    combined = nav.merge(price, on=["fund_code", "captured_hour_utc"], how="outer")
+    if combined.empty:
+        return pd.DataFrame(columns=columns)
+
+    combined["difference_zac"] = combined["market_price_zac"] - combined["nav_zac"]
+    combined["difference_pct"] = (combined["difference_zac"] / combined["nav_zac"]) * 100
+    combined["status"] = combined["difference_pct"].map(
+        lambda value: "n/a"
+        if pd.isna(value)
+        else ("near_nav" if abs(float(value)) <= 0.25 else ("premium" if float(value) > 0 else "discount"))
+    )
+    for col in ["captured_hour_utc", "nav_captured_at_utc", "market_price_at_utc", "market_captured_at_utc"]:
+        combined[col] = pd.to_datetime(combined[col], utc=True, errors="coerce").map(
+            lambda value: value.isoformat().replace("+00:00", "Z") if pd.notna(value) else None
+        )
+    combined = combined.sort_values(["fund_code", "captured_hour_utc"])
+    return combined.reindex(columns=columns)
+
+
+def nav_price_history_by_fund(history: pd.DataFrame) -> dict[str, list[dict[str, Any]]]:
+    if history.empty:
+        return {}
+    out: dict[str, list[dict[str, Any]]] = {}
+    for fund_code, rows in history.groupby("fund_code"):
+        clean_rows = rows.sort_values("captured_hour_utc").where(pd.notna(rows), None)
+        out[str(fund_code)] = [
+            {
+                "captured_hour_utc": row["captured_hour_utc"],
+                "nav_zac": float(row["nav_zac"]) if row["nav_zac"] is not None else None,
+                "market_price_zac": float(row["market_price_zac"]) if row["market_price_zac"] is not None else None,
+                "difference_zac": float(row["difference_zac"]) if row["difference_zac"] is not None else None,
+                "difference_pct": float(row["difference_pct"]) if row["difference_pct"] is not None else None,
+                "status": row["status"],
+            }
+            for row in clean_rows.to_dict(orient="records")
+        ]
+    return out
+
+
 def build_payload() -> dict[str, Any]:
     cfg = load_funds_config()
     funds_cfg = {row["code"]: row for row in cfg["funds"]}
@@ -316,8 +402,12 @@ def build_payload() -> dict[str, Any]:
     history = latest_holdings(full_history)
     monthly_changes_by_fund = derive_monthly_holdings_changes(full_history)
     monthly_history_by_fund = derive_monthly_holdings_history(full_history)
-    latest_navs = latest_nav_by_fund(read_csv_if_exists(NAV_HISTORY_PATH))
-    latest_market_prices = latest_market_price_by_fund(read_csv_if_exists(MARKET_PRICE_HISTORY_PATH))
+    nav_history = read_csv_if_exists(NAV_HISTORY_PATH)
+    market_price_history = read_csv_if_exists(MARKET_PRICE_HISTORY_PATH)
+    latest_navs = latest_nav_by_fund(nav_history)
+    latest_market_prices = latest_market_price_by_fund(market_price_history)
+    nav_price_history = derive_nav_price_history(nav_history, market_price_history)
+    nav_price_history_series = nav_price_history_by_fund(nav_price_history)
     ticker_map = read_csv_if_exists(TICKER_MAP_PATH)
 
     ticker_by_instrument: dict[str, str] = {}
@@ -327,7 +417,17 @@ def build_payload() -> dict[str, Any]:
         active = active[active["yfinance_ticker"] != ""]
         ticker_by_instrument = dict(zip(active["instrument"].astype(str), active["yfinance_ticker"]))
 
-    tickers = sorted({ticker_by_instrument.get(str(x)) for x in history.get("instrument", pd.Series(dtype=str)).dropna() if ticker_by_instrument.get(str(x))})
+    holding_tickers = {
+        ticker_by_instrument.get(str(x))
+        for x in history.get("instrument", pd.Series(dtype=str)).dropna()
+        if ticker_by_instrument.get(str(x))
+    }
+    fund_tickers = {
+        str(row.get("ticker"))
+        for row in latest_market_prices.values()
+        if row.get("ticker")
+    }
+    tickers = sorted({*holding_tickers, *fund_tickers})
     price_history = fetch_price_history(tickers)
     performance = {ticker: performance_for(df) for ticker, df in price_history.items()}
 
@@ -360,7 +460,12 @@ def build_payload() -> dict[str, Any]:
                 "total_weight": round(float(rows["weight"].sum()), 4) if not rows.empty else None,
                 "latest_nav": latest_navs.get(code),
                 "latest_market_price": latest_market_prices.get(code),
+                "etf_performance": performance.get(
+                    latest_market_prices.get(code, {}).get("ticker"),
+                    {"d1": None, "d7": None, "d30": None},
+                ),
                 "estimated_nav_gap": estimate_premium_discount_to_nav(latest_navs.get(code), latest_market_prices.get(code)),
+                "nav_price_history": nav_price_history_series.get(code, []),
                 "holdings": holdings,
                 "monthly_changes": monthly_changes_by_fund.get(code, {"previous_month": None, "current_month": None, "changes": []}),
                 "monthly_holdings_history": monthly_history_by_fund.get(code, {"months": [], "rows": []}),
@@ -371,6 +476,8 @@ def build_payload() -> dict[str, Any]:
 
 
 def main() -> None:
+    nav_price_history = derive_nav_price_history(read_csv_if_exists(NAV_HISTORY_PATH), read_csv_if_exists(MARKET_PRICE_HISTORY_PATH))
+    write_csv(nav_price_history, NAV_PRICE_HISTORY_PATH)
     SITE_DATA_PATH.parent.mkdir(parents=True, exist_ok=True)
     payload = build_payload()
     SITE_DATA_PATH.write_text(json.dumps(payload, indent=2), encoding="utf-8")

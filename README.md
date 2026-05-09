@@ -17,8 +17,9 @@ The hourly GitHub Action:
 3. Appends normalized rows to `data/holdings_history.csv`.
 4. Captures published NAV observations into `data/nav_history.csv`.
 5. Captures latest public ETF market prices into `data/market_price_history.csv`.
-6. Builds `site/data.json` for the static dashboard.
-7. Commits any changed data and deploys `site/` to GitHub Pages.
+6. Combines hourly NAV and market price observations into `data/nav_price_history.csv`.
+7. Builds `site/data.json` for the static dashboard and chart pages.
+8. Commits any changed data and deploys `site/` to GitHub Pages.
 
 No PNG plots are generated.
 
