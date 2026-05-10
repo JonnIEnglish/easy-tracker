@@ -186,28 +186,29 @@ def process_fund(fund: Fund, max_lookback_days: int) -> dict[str, object]:
         history = history.sort_values(["fund_code", "snapshot_date", "captured_at_utc", "weight"], ascending=[True, True, True, False])
         write_csv(history, HISTORY_PATH)
 
-    snapshot_log = read_csv_if_exists(SNAPSHOT_LOG_PATH)
     status = "duplicate" if is_duplicate else "new"
-    log_row = pd.DataFrame(
-        [
-            {
-                "fund": fund.slug,
-                "fund_code": fund.code,
-                "snapshot_date": snapshot_dt.isoformat(),
-                "source_url": source_url,
-                "raw_file": str(raw_file),
-                "raw_sha256": raw_sha,
-                "status": status,
-                "num_holdings": int(len(parsed)),
-                "total_weight": round(float(parsed["weight"].sum()), 4),
-                "captured_at_utc": captured_at,
-            }
-        ]
-    )
-    snapshot_log = pd.concat([snapshot_log, log_row], ignore_index=True) if not snapshot_log.empty else log_row
-    snapshot_log = snapshot_log.drop_duplicates(subset=["fund_code", "raw_sha256"], keep="last")
-    snapshot_log = snapshot_log.sort_values(["fund_code", "captured_at_utc"])
-    write_csv(snapshot_log, SNAPSHOT_LOG_PATH)
+    if not is_duplicate:
+        snapshot_log = read_csv_if_exists(SNAPSHOT_LOG_PATH)
+        log_row = pd.DataFrame(
+            [
+                {
+                    "fund": fund.slug,
+                    "fund_code": fund.code,
+                    "snapshot_date": snapshot_dt.isoformat(),
+                    "source_url": source_url,
+                    "raw_file": str(raw_file),
+                    "raw_sha256": raw_sha,
+                    "status": status,
+                    "num_holdings": int(len(parsed)),
+                    "total_weight": round(float(parsed["weight"].sum()), 4),
+                    "captured_at_utc": captured_at,
+                }
+            ]
+        )
+        snapshot_log = pd.concat([snapshot_log, log_row], ignore_index=True) if not snapshot_log.empty else log_row
+        snapshot_log = snapshot_log.drop_duplicates(subset=["fund_code", "raw_sha256"], keep="last")
+        snapshot_log = snapshot_log.sort_values(["fund_code", "captured_at_utc"])
+        write_csv(snapshot_log, SNAPSHOT_LOG_PATH)
 
     return {
         "fund_code": fund.code,

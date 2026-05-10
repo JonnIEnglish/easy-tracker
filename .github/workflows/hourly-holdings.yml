@@ -18,7 +18,7 @@ jobs:
   capture:
     runs-on: ubuntu-latest
     outputs:
-      changed: ${{ steps.commit_changes.outputs.changed }}
+      changed: ${{ steps.commit_changes.outputs.changed || steps.commit_changes_unchanged.outputs.changed }}
     steps:
       - uses: actions/checkout@v4
         with:
@@ -31,12 +31,29 @@ jobs:
       - name: Run tests
         run: python -m pytest
       - name: Fetch holdings CSVs
+        id: fetch_holdings
         run: python -m scripts.fetch_holdings
+      - name: Check for new holdings information
+        id: holdings_changes
+        run: |
+          if [ -z "$(git status --porcelain -- data/holdings_history.csv data/raw)" ]; then
+            echo "changed=false" >> "$GITHUB_OUTPUT"
+            echo "No new EasyEquities fund weighting information found."
+          else
+            echo "changed=true" >> "$GITHUB_OUTPUT"
+            echo "New EasyEquities fund weighting information found."
+          fi
       - name: Capture NAV observations
+        if: steps.holdings_changes.outputs.changed == 'true'
         run: python -m scripts.fetch_nav
+      - name: Capture market price observations
+        if: steps.holdings_changes.outputs.changed == 'true'
+        run: python -m scripts.fetch_market_prices
       - name: Build site data
+        if: steps.holdings_changes.outputs.changed == 'true'
         run: python -m scripts.build_site_data
       - name: Commit captured data
+        if: steps.holdings_changes.outputs.changed == 'true'
         id: commit_changes
         run: |
           git config user.name "github-actions"
@@ -50,6 +67,10 @@ jobs:
           git pull --rebase || true
           git push
           echo "changed=true" >> "$GITHUB_OUTPUT"
+      - name: Mark unchanged
+        if: steps.holdings_changes.outputs.changed != 'true'
+        id: commit_changes_unchanged
+        run: echo "changed=false" >> "$GITHUB_OUTPUT"
       - name: Upload Pages artifact
         if: steps.commit_changes.outputs.changed == 'true'
         uses: actions/upload-pages-artifact@v3

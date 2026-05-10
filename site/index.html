@@ -276,6 +276,7 @@
     const cssFor = value => Number.isFinite(value) ? (value >= 0 ? "positive" : "negative") : "missing";
     const chartHref = (fund, metric) => `chart.html?fund=${encodeURIComponent(fund.code)}&metric=${encodeURIComponent(metric)}`;
     const LIVE_PRICE_LOOKBACK_DAYS = 45;
+    const CORS_TEXT_PROXY = "https://api.allorigins.win/raw?url=";
 
     function pctChange(current, previous) {
       if (!Number.isFinite(current) || !Number.isFinite(previous) || previous === 0) return null;
@@ -334,20 +335,83 @@
       return parsed.slice(-LIVE_PRICE_LOOKBACK_DAYS);
     }
 
-    async function fetchLiveFundMetrics(fund) {
-      if (!fund?.market_ticker) return;
+    async function fetchTextWithCorsFallback(url) {
       try {
-        const rows = await fetchDailyHistoryViaStooq(fund.market_ticker);
-        const latest = rows[rows.length - 1];
-        state.liveByFundCode.set(fund.code, {
-          value_zac: latest.close * 100,
-          source: "stooq",
-          price_at_utc: latest.date.toISOString(),
-          etf_performance: computeEtfPerfFromRows(rows),
-        });
-        if (state.activeCode === fund.code) render();
+        const direct = await fetch(url, { cache: "no-store" });
+        if (direct.ok) return direct.text();
       } catch (_error) {
-        // Silent fallback to prebuilt values when client-side quote fetch fails.
+        // Some source pages do not allow browser CORS; fall through to a read-only text proxy.
+      }
+      const proxied = await fetch(`${CORS_TEXT_PROXY}${encodeURIComponent(url)}`, { cache: "no-store" });
+      if (!proxied.ok) throw new Error(`proxy HTTP ${proxied.status}`);
+      return proxied.text();
+    }
+
+    function parseNavValue(html) {
+      const match = html.match(/Price\s*\/\s*NAV\s*\(ZAC\)[\s\S]*?([0-9][0-9,\s]*(?:\.[0-9]+)?)/i);
+      if (!match) return null;
+      const value = Number(match[1].replace(/[,\s]/g, ""));
+      return Number.isFinite(value) && value > 0 ? value : null;
+    }
+
+    function parseNavDate(html) {
+      const patterns = [
+        /(?:As[\s-]*of|As[\s-]*at|NAV\s*Date|Date)\s*[:-]?\s*([0-9]{1,2}\s+[A-Za-z]{3,9}\s+[0-9]{4})/i,
+        /(?:As[\s-]*of|As[\s-]*at|NAV\s*Date|Date)\s*[:-]?\s*([0-9]{4}-[0-9]{2}-[0-9]{2})/i,
+        /(?:As[\s-]*of|As[\s-]*at|NAV\s*Date|Date)\s*[:-]?\s*([0-9]{1,2}[/-][0-9]{1,2}[/-][0-9]{4})/i,
+      ];
+      for (const pattern of patterns) {
+        const match = html.match(pattern);
+        if (!match) continue;
+        const parsed = new Date(match[1].replace(",", ""));
+        if (Number.isFinite(parsed.getTime())) return parsed.toISOString().slice(0, 10);
+      }
+      return new Date().toISOString().slice(0, 10);
+    }
+
+    async function fetchLiveNav(fund) {
+      if (!fund?.instrument_page) return null;
+      const html = await fetchTextWithCorsFallback(fund.instrument_page);
+      const value = parseNavValue(html);
+      if (!Number.isFinite(value)) throw new Error("NAV not found");
+      return {
+        value_zac: value,
+        nav_date: parseNavDate(html),
+        source_url: fund.instrument_page,
+        captured_at_utc: new Date().toISOString(),
+        source: "easyequities",
+      };
+    }
+
+    function mergeLiveFundMetrics(fundCode, patch) {
+      state.liveByFundCode.set(fundCode, { ...(state.liveByFundCode.get(fundCode) || {}), ...patch });
+      if (state.activeCode === fundCode) render();
+    }
+
+    async function fetchLiveFundMetrics(fund) {
+      if (fund?.market_ticker) {
+        try {
+          const rows = await fetchDailyHistoryViaStooq(fund.market_ticker);
+          const latest = rows[rows.length - 1];
+          mergeLiveFundMetrics(fund.code, {
+            latest_market_price: {
+              value_zac: latest.close * 100,
+              source: "stooq",
+              price_at_utc: latest.date.toISOString(),
+              captured_at_utc: new Date().toISOString(),
+            },
+            etf_performance: computeEtfPerfFromRows(rows),
+          });
+        } catch (_error) {
+          // Silent fallback to prebuilt values when client-side quote fetch fails.
+        }
+      }
+
+      try {
+        const latestNav = await fetchLiveNav(fund);
+        if (latestNav) mergeLiveFundMetrics(fund.code, { latest_nav: latestNav });
+      } catch (_error) {
+        // Silent fallback to prebuilt values when client-side NAV fetch fails.
       }
     }
 
@@ -373,10 +437,10 @@
 
     function renderSummary(fund) {
       const largest = fund.holdings[0];
-      const latestNav = fund.latest_nav || null;
-      const liveMarket = state.liveByFundCode.get(fund.code) || null;
-      const latestMarket = liveMarket || fund.latest_market_price || null;
-      const etfPerf = (liveMarket && liveMarket.etf_performance) || fund.etf_performance || { d1: null, d7: null, d30: null };
+      const liveMetrics = state.liveByFundCode.get(fund.code) || null;
+      const latestNav = liveMetrics?.latest_nav || fund.latest_nav || null;
+      const latestMarket = liveMetrics?.latest_market_price || fund.latest_market_price || null;
+      const etfPerf = liveMetrics?.etf_performance || fund.etf_performance || { d1: null, d7: null, d30: null };
       const baseNavGap = fund.estimated_nav_gap || { status: "n/a", difference_zac: null, difference_pct: null, label: "n/a" };
       const navGap = (latestNav && latestMarket && Number.isFinite(latestNav.value_zac) && Number.isFinite(latestMarket.value_zac))
         ? (() => {
@@ -417,12 +481,12 @@
           <div class="value">${value}</div>
           ${
             label === "NAV (latest)" && latestNav
-              ? `<div class="subtle">As of ${latestNav.nav_date} | Captured ${fmtDateTime(latestNav.captured_at_utc)}</div>`
+              ? `<div class="subtle">As of ${latestNav.nav_date} | Captured ${fmtDateTime(latestNav.captured_at_utc)}${liveMetrics?.latest_nav ? " | Live frontend NAV" : ""}</div>`
               : ""
           }
           ${
             label === "Market Price (latest)" && latestMarket
-              ? `<div class="subtle">Source ${latestMarket.source || "n/a"} | Price time ${fmtDateTime(latestMarket.price_at_utc || latestMarket.captured_at_utc)}${liveMarket ? " | Live frontend quote" : ""}</div>`
+              ? `<div class="subtle">Source ${latestMarket.source || "n/a"} | Price time ${fmtDateTime(latestMarket.price_at_utc || latestMarket.captured_at_utc)}${liveMetrics?.latest_market_price ? " | Live frontend quote" : ""}</div>`
               : ""
           }
         </article>
