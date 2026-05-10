@@ -8,7 +8,7 @@ from typing import Any
 
 import pandas as pd
 
-from scripts.utils import load_funds_config, read_csv_if_exists, utc_now_iso, write_csv
+from scripts.utils import load_funds_config, read_csv_if_exists, write_csv
 
 HISTORY_PATH = Path("data/holdings_history.csv")
 TICKER_MAP_PATH = Path("config/ticker_map.csv")
@@ -395,6 +395,21 @@ def nav_price_history_by_fund(history: pd.DataFrame) -> dict[str, list[dict[str,
     return out
 
 
+def latest_generated_timestamp_from_easyequities(holdings_history: pd.DataFrame, nav_history: pd.DataFrame) -> str | None:
+    timestamps: list[pd.Timestamp] = []
+    if not holdings_history.empty and "captured_at_utc" in holdings_history.columns:
+        captured = pd.to_datetime(holdings_history["captured_at_utc"], utc=True, errors="coerce").dropna()
+        if not captured.empty:
+            timestamps.append(captured.max())
+    if not nav_history.empty and "captured_at_utc" in nav_history.columns:
+        captured = pd.to_datetime(nav_history["captured_at_utc"], utc=True, errors="coerce").dropna()
+        if not captured.empty:
+            timestamps.append(captured.max())
+    if not timestamps:
+        return None
+    return max(timestamps).isoformat().replace("+00:00", "Z")
+
+
 def build_payload() -> dict[str, Any]:
     cfg = load_funds_config()
     funds_cfg = {row["code"]: row for row in cfg["funds"]}
@@ -454,6 +469,7 @@ def build_payload() -> dict[str, Any]:
                 "slug": fund_cfg["slug"],
                 "name": fund_cfg["name"],
                 "instrument_page": fund_cfg.get("instrument_page"),
+                "market_ticker": fund_cfg.get("market_ticker"),
                 "snapshot_date": str(rows["snapshot_date"].iloc[0]) if not rows.empty else None,
                 "captured_at_utc": rows["captured_at_utc"].iloc[0].isoformat().replace("+00:00", "Z") if not rows.empty else None,
                 "holdings_count": int(len(rows)),
@@ -472,7 +488,8 @@ def build_payload() -> dict[str, Any]:
             }
         )
 
-    return {"generated_at_utc": utc_now_iso(), "funds": funds}
+    generated_at_utc = latest_generated_timestamp_from_easyequities(full_history, nav_history)
+    return {"generated_at_utc": generated_at_utc, "funds": funds}
 
 
 def main() -> None:

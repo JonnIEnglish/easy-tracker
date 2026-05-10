@@ -91,6 +91,10 @@
       padding: 12px;
       min-height: 78px;
     }
+    .metric.perf-card {
+      border-color: #cfe3f1;
+      background: #f8fbfe;
+    }
     .metric .label {
       color: var(--muted);
       font-size: 12px;
@@ -252,7 +256,7 @@
   </main>
 
   <script>
-    const state = { data: null, activeCode: null, query: "", perfFilter: "all" };
+    const state = { data: null, activeCode: null, query: "", perfFilter: "all", liveByFundCode: new Map(), timerId: null };
     const generated = document.querySelector("#generated");
     const tabs = document.querySelector("#tabs");
     const summary = document.querySelector("#summary");
@@ -271,6 +275,81 @@
     };
     const cssFor = value => Number.isFinite(value) ? (value >= 0 ? "positive" : "negative") : "missing";
     const chartHref = (fund, metric) => `chart.html?fund=${encodeURIComponent(fund.code)}&metric=${encodeURIComponent(metric)}`;
+    const LIVE_PRICE_LOOKBACK_DAYS = 45;
+
+    function pctChange(current, previous) {
+      if (!Number.isFinite(current) || !Number.isFinite(previous) || previous === 0) return null;
+      return ((current / previous) - 1) * 100;
+    }
+
+    function fmtAge(durationMs) {
+      if (!Number.isFinite(durationMs) || durationMs < 0) return "n/a";
+      const totalSeconds = Math.floor(durationMs / 1000);
+      const days = Math.floor(totalSeconds / 86400);
+      const hours = Math.floor((totalSeconds % 86400) / 3600);
+      const minutes = Math.floor((totalSeconds % 3600) / 60);
+      const seconds = totalSeconds % 60;
+      if (days > 0) return `${days}d ${hours}h ${minutes}m`;
+      if (hours > 0) return `${hours}h ${minutes}m ${seconds}s`;
+      if (minutes > 0) return `${minutes}m ${seconds}s`;
+      return `${seconds}s`;
+    }
+
+    function closeOnOrBefore(rows, targetDate) {
+      const target = new Date(targetDate);
+      const subset = rows.filter(row => row.date <= target && Number.isFinite(row.close));
+      if (!subset.length) return null;
+      return subset[subset.length - 1].close;
+    }
+
+    function computeEtfPerfFromRows(rows) {
+      if (!rows.length) return { d1: null, d7: null, d30: null };
+      const currentRow = rows[rows.length - 1];
+      const current = currentRow.close;
+      const currentDate = currentRow.date;
+      return {
+        d1: pctChange(current, closeOnOrBefore(rows, new Date(currentDate.getTime() - 1 * 86400000))),
+        d7: pctChange(current, closeOnOrBefore(rows, new Date(currentDate.getTime() - 7 * 86400000))),
+        d30: pctChange(current, closeOnOrBefore(rows, new Date(currentDate.getTime() - 30 * 86400000))),
+      };
+    }
+
+    async function fetchDailyHistoryViaStooq(ticker) {
+      const symbol = String(ticker || "").toLowerCase();
+      const url = `https://stooq.com/q/d/l/?s=${encodeURIComponent(symbol)}&i=d`;
+      const response = await fetch(url, { cache: "no-store" });
+      if (!response.ok) throw new Error(`stooq HTTP ${response.status}`);
+      const text = await response.text();
+      const lines = text.trim().split(/\r?\n/);
+      if (lines.length < 2) throw new Error("No stooq rows");
+      const parsed = [];
+      for (const line of lines.slice(1)) {
+        const parts = line.split(",");
+        if (parts.length < 5) continue;
+        const date = new Date(parts[0]);
+        const close = Number(parts[4]);
+        if (Number.isFinite(date.getTime()) && Number.isFinite(close) && close > 0) parsed.push({ date, close });
+      }
+      if (!parsed.length) throw new Error("No valid stooq closes");
+      return parsed.slice(-LIVE_PRICE_LOOKBACK_DAYS);
+    }
+
+    async function fetchLiveFundMetrics(fund) {
+      if (!fund?.market_ticker) return;
+      try {
+        const rows = await fetchDailyHistoryViaStooq(fund.market_ticker);
+        const latest = rows[rows.length - 1];
+        state.liveByFundCode.set(fund.code, {
+          value_zac: latest.close * 100,
+          source: "stooq",
+          price_at_utc: latest.date.toISOString(),
+          etf_performance: computeEtfPerfFromRows(rows),
+        });
+        if (state.activeCode === fund.code) render();
+      } catch (_error) {
+        // Silent fallback to prebuilt values when client-side quote fetch fails.
+      }
+    }
 
     function activeFund() {
       return state.data.funds.find(fund => fund.code === state.activeCode) || state.data.funds[0];
@@ -295,20 +374,35 @@
     function renderSummary(fund) {
       const largest = fund.holdings[0];
       const latestNav = fund.latest_nav || null;
-      const latestMarket = fund.latest_market_price || null;
-      const etfPerf = fund.etf_performance || { d1: null, d7: null, d30: null };
-      const navGap = fund.estimated_nav_gap || { status: "n/a", difference_zac: null, difference_pct: null, label: "n/a" };
+      const liveMarket = state.liveByFundCode.get(fund.code) || null;
+      const latestMarket = liveMarket || fund.latest_market_price || null;
+      const etfPerf = (liveMarket && liveMarket.etf_performance) || fund.etf_performance || { d1: null, d7: null, d30: null };
+      const baseNavGap = fund.estimated_nav_gap || { status: "n/a", difference_zac: null, difference_pct: null, label: "n/a" };
+      const navGap = (latestNav && latestMarket && Number.isFinite(latestNav.value_zac) && Number.isFinite(latestMarket.value_zac))
+        ? (() => {
+            const differenceZac = latestMarket.value_zac - latestNav.value_zac;
+            const differencePct = latestNav.value_zac ? (differenceZac / latestNav.value_zac) * 100 : null;
+            const status = !Number.isFinite(differencePct)
+              ? "n/a"
+              : (Math.abs(differencePct) <= 0.25 ? "near_nav" : (differencePct > 0 ? "premium" : "discount"));
+            return { status, difference_zac: differenceZac, difference_pct: differencePct, label: "estimated premium/discount to NAV" };
+          })()
+        : baseNavGap;
       const navStatusClass = navGap.status ? `status-${navGap.status.replace("/", "_")}` : "status-na";
+      const holdingsCapturedAt = fund.captured_at_utc || null;
+      const holdingsAge = holdingsCapturedAt ? fmtAge(Date.now() - new Date(holdingsCapturedAt).getTime()) : "n/a";
       const rows = [
+        ["Fund 1d", `<span class="${cssFor(etfPerf.d1)}">${fmtPct(etfPerf.d1)}</span>`, "perf-card"],
+        ["Fund 7d", `<span class="${cssFor(etfPerf.d7)}">${fmtPct(etfPerf.d7)}</span>`, "perf-card"],
+        ["Fund 30d", `<span class="${cssFor(etfPerf.d30)}">${fmtPct(etfPerf.d30)}</span>`, "perf-card"],
         ["Snapshot", fund.snapshot_date || "n/a"],
+        ["Last Holdings Update", holdingsCapturedAt ? fmtDateTime(holdingsCapturedAt) : "n/a"],
+        ["Time Since Holdings Update", holdingsAge],
         ["Holdings", fund.holdings_count],
         ["Total weight", fmtWeight(fund.total_weight)],
         ["Largest holding", largest ? largest.instrument : "n/a"],
         ["NAV (latest)", latestNav ? `<a href="${chartHref(fund, "nav")}">${fmtZac(latestNav.value_zac)}</a>` : "n/a"],
         ["Market Price (latest)", latestMarket ? `<a href="${chartHref(fund, "nav")}">${fmtZac(latestMarket?.value_zac)}</a>` : "n/a"],
-        ["ETF 1d", `<span class="${cssFor(etfPerf.d1)}">${fmtPct(etfPerf.d1)}</span>`],
-        ["ETF 7d", `<span class="${cssFor(etfPerf.d7)}">${fmtPct(etfPerf.d7)}</span>`],
-        ["ETF 30d", `<span class="${cssFor(etfPerf.d30)}">${fmtPct(etfPerf.d30)}</span>`],
         ["Difference (Price - NAV)", Number.isFinite(navGap.difference_zac) ? fmtZac(navGap.difference_zac) : "n/a"],
         [
           "Estimated Premium/Discount to NAV",
@@ -317,8 +411,8 @@
             : `<span class="status-pill ${navStatusClass}">n/a</span>`,
         ],
       ];
-      summary.innerHTML = rows.map(([label, value]) => `
-        <article class="metric">
+      summary.innerHTML = rows.map(([label, value, extraClass]) => `
+        <article class="metric ${extraClass || ""}">
           <div class="label">${label}</div>
           <div class="value">${value}</div>
           ${
@@ -328,7 +422,7 @@
           }
           ${
             label === "Market Price (latest)" && latestMarket
-              ? `<div class="subtle">Source ${latestMarket.source || "n/a"} | Price time ${fmtDateTime(latestMarket.price_at_utc || latestMarket.captured_at_utc)}</div>`
+              ? `<div class="subtle">Source ${latestMarket.source || "n/a"} | Price time ${fmtDateTime(latestMarket.price_at_utc || latestMarket.captured_at_utc)}${liveMarket ? " | Live frontend quote" : ""}</div>`
               : ""
           }
         </article>
@@ -436,6 +530,14 @@
       renderTable(fund);
     }
 
+    function startUpdateTimer() {
+      if (state.timerId) clearInterval(state.timerId);
+      state.timerId = setInterval(() => {
+        if (!state.data || !state.activeCode) return;
+        renderSummary(activeFund());
+      }, 1000);
+    }
+
     search.addEventListener("input", event => {
       state.query = event.target.value;
       renderTable(activeFund());
@@ -452,6 +554,8 @@
         state.activeCode = data.funds[0]?.code;
         generated.textContent = fmtDateTime(data.generated_at_utc);
         render();
+        startUpdateTimer();
+        for (const fund of (data.funds || [])) fetchLiveFundMetrics(fund);
       })
       .catch(error => {
         generated.textContent = "Unable to load";

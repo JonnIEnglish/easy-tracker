@@ -17,6 +17,8 @@ concurrency:
 jobs:
   capture:
     runs-on: ubuntu-latest
+    outputs:
+      changed: ${{ steps.commit_changes.outputs.changed }}
     steps:
       - uses: actions/checkout@v4
         with:
@@ -32,25 +34,31 @@ jobs:
         run: python -m scripts.fetch_holdings
       - name: Capture NAV observations
         run: python -m scripts.fetch_nav
-      - name: Capture market prices
-        run: python -m scripts.fetch_market_prices
       - name: Build site data
         run: python -m scripts.build_site_data
       - name: Commit captured data
+        id: commit_changes
         run: |
           git config user.name "github-actions"
           git config user.email "github-actions@github.com"
           git add data site
-          git commit -m "Capture latest EasyETFs holdings" || echo "No changes to commit"
+          if git diff --cached --quiet; then
+            echo "changed=false" >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+          git commit -m "Capture latest EasyETFs holdings"
           git pull --rebase || true
           git push
+          echo "changed=true" >> "$GITHUB_OUTPUT"
       - name: Upload Pages artifact
+        if: steps.commit_changes.outputs.changed == 'true'
         uses: actions/upload-pages-artifact@v3
         with:
           path: site
 
   deploy:
     needs: capture
+    if: needs.capture.outputs.changed == 'true'
     runs-on: ubuntu-latest
     environment:
       name: github-pages
