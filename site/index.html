@@ -302,7 +302,11 @@
     const cssFor = value => Number.isFinite(value) ? (value >= 0 ? "positive" : "negative") : "missing";
     const chartHref = (fund, metric) => `chart.html?fund=${encodeURIComponent(fund.code)}&metric=${encodeURIComponent(metric)}`;
     const LIVE_PRICE_LOOKBACK_DAYS = 45;
-    const CORS_TEXT_PROXY = "https://api.allorigins.win/raw?url=";
+    const FETCH_TIMEOUT_MS = 8000;
+    const CORS_TEXT_PROXIES = [
+      url => `https://corsproxy.io/?url=${encodeURIComponent(url)}`,
+      url => `https://api.allorigins.win/raw?url=${encodeURIComponent(url)}`,
+    ];
 
     function pctChange(current, previous) {
       if (!Number.isFinite(current) || !Number.isFinite(previous) || previous === 0) return null;
@@ -341,36 +345,48 @@
       };
     }
 
-    async function fetchDailyHistoryViaStooq(ticker) {
-      const symbol = String(ticker || "").toLowerCase();
-      const url = `https://stooq.com/q/d/l/?s=${encodeURIComponent(symbol)}&i=d`;
-      const response = await fetch(url, { cache: "no-store" });
-      if (!response.ok) throw new Error(`stooq HTTP ${response.status}`);
-      const text = await response.text();
-      const lines = text.trim().split(/\r?\n/);
-      if (lines.length < 2) throw new Error("No stooq rows");
+    async function fetchDailyHistoryViaYahoo(ticker) {
+      const symbol = String(ticker || "").trim();
+      const chartUrl = `https://query1.finance.yahoo.com/v8/finance/chart/${encodeURIComponent(symbol)}?range=${LIVE_PRICE_LOOKBACK_DAYS}d&interval=1d`;
+      const text = await fetchTextWithCorsFallback(chartUrl);
+      const data = JSON.parse(text);
+      const result = data?.chart?.result?.[0];
+      const timestamps = result?.timestamp || [];
+      const closes = result?.indicators?.quote?.[0]?.close || [];
       const parsed = [];
-      for (const line of lines.slice(1)) {
-        const parts = line.split(",");
-        if (parts.length < 5) continue;
-        const date = new Date(parts[0]);
-        const close = Number(parts[4]);
+      for (let index = 0; index < timestamps.length; index += 1) {
+        const date = new Date(Number(timestamps[index]) * 1000);
+        const close = Number(closes[index]);
         if (Number.isFinite(date.getTime()) && Number.isFinite(close) && close > 0) parsed.push({ date, close });
       }
-      if (!parsed.length) throw new Error("No valid stooq closes");
+      if (!parsed.length) throw new Error("No valid Yahoo closes");
       return parsed.slice(-LIVE_PRICE_LOOKBACK_DAYS);
     }
 
-    async function fetchTextWithCorsFallback(url) {
+    async function fetchWithTimeout(url) {
+      const controller = new AbortController();
+      const timeoutId = window.setTimeout(() => controller.abort(), FETCH_TIMEOUT_MS);
       try {
-        const direct = await fetch(url, { cache: "no-store" });
-        if (direct.ok) return direct.text();
-      } catch (_error) {
-        // Some source pages do not allow browser CORS; fall through to a read-only text proxy.
+        return await fetch(url, { cache: "no-store", signal: controller.signal });
+      } finally {
+        window.clearTimeout(timeoutId);
       }
-      const proxied = await fetch(`${CORS_TEXT_PROXY}${encodeURIComponent(url)}`, { cache: "no-store" });
-      if (!proxied.ok) throw new Error(`proxy HTTP ${proxied.status}`);
-      return proxied.text();
+    }
+
+    async function fetchTextWithCorsFallback(url) {
+      const candidates = [() => url, ...CORS_TEXT_PROXIES];
+      const errors = [];
+      for (const candidate of candidates) {
+        const candidateUrl = candidate(url);
+        try {
+          const response = await fetchWithTimeout(candidateUrl);
+          if (response.ok) return response.text();
+          errors.push(`HTTP ${response.status}`);
+        } catch (error) {
+          errors.push(errorMessageFor(error));
+        }
+      }
+      throw new Error(errors.filter(Boolean).join(" | ") || "all fetch attempts failed");
     }
 
     function parseNavValue(html) {
@@ -435,12 +451,12 @@
     async function fetchLiveFundMetrics(fund) {
       if (fund?.market_ticker) {
         try {
-          const rows = await fetchDailyHistoryViaStooq(fund.market_ticker);
+          const rows = await fetchDailyHistoryViaYahoo(fund.market_ticker);
           const latest = rows[rows.length - 1];
           mergeLiveFundMetrics(fund.code, {
             latest_market_price: {
-              value_zac: latest.close * 100,
-              source: "stooq",
+              value_zac: latest.close,
+              source: "yahoo",
               price_at_utc: latest.date.toISOString(),
               captured_at_utc: new Date().toISOString(),
             },
@@ -460,6 +476,12 @@
       } catch (error) {
         console.warn(`Live NAV fetch failed for ${fund.code}`, error);
         recordLiveStatus(fund.code, "nav", "error", errorMessageFor(error));
+      }
+    }
+
+    async function refreshLiveMetricsSequentially(funds) {
+      for (const fund of funds || []) {
+        await fetchLiveFundMetrics(fund);
       }
     }
 
@@ -693,7 +715,7 @@
         generated.textContent = fmtDateTime(data.generated_at_utc);
         render();
         startUpdateTimer();
-        for (const fund of (data.funds || [])) fetchLiveFundMetrics(fund);
+        refreshLiveMetricsSequentially(data.funds);
       })
       .catch(error => {
         generated.textContent = "Unable to load";
