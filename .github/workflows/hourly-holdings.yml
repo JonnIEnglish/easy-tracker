@@ -1,6 +1,9 @@
 name: Hourly holdings capture
 
 on:
+  push:
+    branches:
+      - main
   schedule:
     - cron: "15 * * * *"
   workflow_dispatch:
@@ -16,6 +19,7 @@ concurrency:
 
 jobs:
   capture:
+    if: github.event_name != 'push'
     runs-on: ubuntu-latest
     outputs:
       changed: ${{ steps.commit_changes.outputs.changed || steps.commit_changes_unchanged.outputs.changed }}
@@ -79,7 +83,7 @@ jobs:
 
   deploy:
     needs: capture
-    if: needs.capture.outputs.changed == 'true'
+    if: github.event_name != 'push' && needs.capture.outputs.changed == 'true'
     runs-on: ubuntu-latest
     environment:
       name: github-pages
@@ -88,6 +92,35 @@ jobs:
       pages: write
       id-token: write
     steps:
+      - name: Deploy GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
+
+  deploy-committed-site:
+    if: github.event_name == 'push'
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    permissions:
+      pages: write
+      id-token: write
+      contents: read
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+      - name: Run tests
+        run: python -m pytest
+      - name: Build site data
+        run: python -m scripts.build_site_data
+      - name: Upload Pages artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: site
       - name: Deploy GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4

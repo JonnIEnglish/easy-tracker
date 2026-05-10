@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import json
+import math
 from contextlib import redirect_stderr, redirect_stdout
 from io import StringIO
 from pathlib import Path
@@ -22,6 +23,29 @@ def pct_change(current: float | None, previous: float | None) -> float | None:
     if current is None or previous in (None, 0):
         return None
     return ((current / previous) - 1) * 100
+
+
+def json_safe(value: Any) -> Any:
+    if isinstance(value, dict):
+        return {key: json_safe(item) for key, item in value.items()}
+    if isinstance(value, list):
+        return [json_safe(item) for item in value]
+    if isinstance(value, tuple):
+        return [json_safe(item) for item in value]
+    if value is None:
+        return None
+    if isinstance(value, float) and not math.isfinite(value):
+        return None
+    if isinstance(value, pd.Timestamp):
+        if pd.isna(value):
+            return None
+        return value.isoformat().replace("+00:00", "Z")
+    try:
+        if pd.isna(value):
+            return None
+    except (TypeError, ValueError):
+        pass
+    return value
 
 
 def latest_holdings(history: pd.DataFrame) -> pd.DataFrame:
@@ -496,8 +520,8 @@ def main() -> None:
     nav_price_history = derive_nav_price_history(read_csv_if_exists(NAV_HISTORY_PATH), read_csv_if_exists(MARKET_PRICE_HISTORY_PATH))
     write_csv(nav_price_history, NAV_PRICE_HISTORY_PATH)
     SITE_DATA_PATH.parent.mkdir(parents=True, exist_ok=True)
-    payload = build_payload()
-    SITE_DATA_PATH.write_text(json.dumps(payload, indent=2), encoding="utf-8")
+    payload = json_safe(build_payload())
+    SITE_DATA_PATH.write_text(json.dumps(payload, indent=2, allow_nan=False), encoding="utf-8")
     print(f"Wrote {SITE_DATA_PATH} for {len(payload['funds'])} funds.")
 
 

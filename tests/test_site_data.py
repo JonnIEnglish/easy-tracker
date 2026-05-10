@@ -1,3 +1,5 @@
+import json
+
 import pandas as pd
 import pytest
 
@@ -6,6 +8,7 @@ from scripts.build_site_data import (
     derive_monthly_holdings_history,
     derive_nav_price_history,
     estimate_premium_discount_to_nav,
+    json_safe,
     latest_holdings,
     latest_market_price_by_fund,
     latest_nav_by_fund,
@@ -17,6 +20,22 @@ def test_pct_change() -> None:
     assert pct_change(110, 100) == pytest.approx(10)
     assert pct_change(100, 0) is None
     assert pct_change(None, 100) is None
+
+
+def test_json_safe_converts_non_finite_values_to_strict_json_null() -> None:
+    payload = {
+        "finite": 1.2,
+        "missing": float("nan"),
+        "nested": [{"positive_infinity": float("inf"), "pandas_missing": pd.NA}],
+    }
+
+    text = json.dumps(json_safe(payload), allow_nan=False)
+
+    assert json.loads(text) == {
+        "finite": 1.2,
+        "missing": None,
+        "nested": [{"positive_infinity": None, "pandas_missing": None}],
+    }
 
 
 def test_latest_holdings_uses_latest_capture_per_fund() -> None:

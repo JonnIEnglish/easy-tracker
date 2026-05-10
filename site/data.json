@@ -1,11 +1,12 @@
 {
-  "generated_at_utc": "2026-05-10T04:15:49Z",
+  "generated_at_utc": "2026-05-10T04:15:36Z",
   "funds": [
     {
       "code": "EASYGE",
       "slug": "easyge",
       "name": "EasyETFs Global Equity Actively Managed ETF",
       "instrument_page": "https://etfs.easyequities.co.za/easyetf-instrument-page/easyge",
+      "market_ticker": "EASYGE.JO",
       "snapshot_date": "2026-05-08",
       "captured_at_utc": "2026-05-09T15:31:51Z",
       "holdings_count": 33,
@@ -38,9 +39,9 @@
         {
           "captured_hour_utc": "2026-05-09T23:00:00Z",
           "nav_zac": 1777.88,
-          "market_price_zac": NaN,
-          "difference_zac": NaN,
-          "difference_pct": NaN,
+          "market_price_zac": null,
+          "difference_zac": null,
+          "difference_pct": null,
           "status": "n/a"
         },
         {
@@ -732,6 +733,7 @@
       "slug": "easyai",
       "name": "EasyETFs AI World Actively Managed ETF",
       "instrument_page": "https://etfs.easyequities.co.za/easyetf-instrument-page/easyai",
+      "market_ticker": "EASYAI.JO",
       "snapshot_date": "2026-05-08",
       "captured_at_utc": "2026-05-09T15:31:53Z",
       "holdings_count": 31,
@@ -764,9 +766,9 @@
         {
           "captured_hour_utc": "2026-05-09T23:00:00Z",
           "nav_zac": 10692.74,
-          "market_price_zac": NaN,
-          "difference_zac": NaN,
-          "difference_pct": NaN,
+          "market_price_zac": null,
+          "difference_zac": null,
+          "difference_pct": null,
           "status": "n/a"
         },
         {
@@ -1418,6 +1420,7 @@
       "slug": "easybalanced",
       "name": "EasyETFs Balanced Actively Managed ETF",
       "instrument_page": "https://etfs.easyequities.co.za/easyetf-instrument-page/easybf",
+      "market_ticker": "EASYBF.JO",
       "snapshot_date": "2026-05-08",
       "captured_at_utc": "2026-05-09T15:31:56Z",
       "holdings_count": 32,
@@ -1450,9 +1453,9 @@
         {
           "captured_hour_utc": "2026-05-09T23:00:00Z",
           "nav_zac": 1474.14,
-          "market_price_zac": NaN,
-          "difference_zac": NaN,
-          "difference_pct": NaN,
+          "market_price_zac": null,
+          "difference_zac": null,
+          "difference_pct": null,
           "status": "n/a"
         },
         {
