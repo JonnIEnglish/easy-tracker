@@ -1,5 +1,5 @@
 {
-  "generated_at_utc": "2026-05-10T00:04:52Z",
+  "generated_at_utc": "2026-05-10T04:15:49Z",
   "funds": [
     {
       "code": "EASYGE",
@@ -14,14 +14,14 @@
         "value_zac": 1777.88,
         "nav_date": "2026-05-10",
         "source_url": "https://etfs.easyequities.co.za/easyetf-instrument-page/easyge",
-        "captured_at_utc": "2026-05-10T00:04:32Z"
+        "captured_at_utc": "2026-05-10T04:15:36Z"
       },
       "latest_market_price": {
         "ticker": "EASYGE.JO",
         "value_zac": 1814.0,
         "source": "yfinance",
         "price_at_utc": "2026-05-07T22:00:00Z",
-        "captured_at_utc": "2026-05-10T00:04:34Z"
+        "captured_at_utc": "2026-05-10T04:15:38Z"
       },
       "etf_performance": {
         "d1": -0.38440417353102774,
@@ -44,7 +44,7 @@
           "status": "n/a"
         },
         {
-          "captured_hour_utc": "2026-05-10T00:00:00Z",
+          "captured_hour_utc": "2026-05-10T04:00:00Z",
           "nav_zac": 1777.88,
           "market_price_zac": 1814.0,
           "difference_zac": 36.11999999999989,
@@ -740,14 +740,14 @@
         "value_zac": 10692.74,
         "nav_date": "2026-05-10",
         "source_url": "https://etfs.easyequities.co.za/easyetf-instrument-page/easyai",
-        "captured_at_utc": "2026-05-10T00:04:32Z"
+        "captured_at_utc": "2026-05-10T04:15:36Z"
       },
       "latest_market_price": {
         "ticker": "EASYAI.JO",
         "value_zac": 10894.0,
         "source": "yfinance",
         "price_at_utc": "2026-05-07T22:00:00Z",
-        "captured_at_utc": "2026-05-10T00:04:34Z"
+        "captured_at_utc": "2026-05-10T04:15:38Z"
       },
       "etf_performance": {
         "d1": -0.8915574963609951,
@@ -770,7 +770,7 @@
           "status": "n/a"
         },
         {
-          "captured_hour_utc": "2026-05-10T00:00:00Z",
+          "captured_hour_utc": "2026-05-10T04:00:00Z",
           "nav_zac": 10692.74,
           "market_price_zac": 10894.0,
           "difference_zac": 201.26000000000022,
@@ -1426,14 +1426,14 @@
         "value_zac": 1474.14,
         "nav_date": "2026-05-10",
         "source_url": "https://etfs.easyequities.co.za/easyetf-instrument-page/easybf",
-        "captured_at_utc": "2026-05-10T00:04:32Z"
+        "captured_at_utc": "2026-05-10T04:15:36Z"
       },
       "latest_market_price": {
         "ticker": "EASYBF.JO",
         "value_zac": 1480.0,
         "source": "yfinance",
         "price_at_utc": "2026-05-07T22:00:00Z",
-        "captured_at_utc": "2026-05-10T00:04:34Z"
+        "captured_at_utc": "2026-05-10T04:15:38Z"
       },
       "etf_performance": {
         "d1": -0.6711409395973145,
@@ -1456,7 +1456,7 @@
           "status": "n/a"
         },
         {
-          "captured_hour_utc": "2026-05-10T00:00:00Z",
+          "captured_hour_utc": "2026-05-10T04:00:00Z",
           "nav_zac": 1474.14,
           "market_price_zac": 1480.0,
           "difference_zac": 5.8599999999999,
