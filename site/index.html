@@ -82,6 +82,22 @@
       gap: 10px;
       margin-bottom: 16px;
     }
+    .live-status {
+      margin-bottom: 16px;
+    }
+    .notice {
+      border: 1px solid #f2c94c;
+      background: #fff8db;
+      color: #6b4e00;
+      border-radius: 8px;
+      padding: 10px 12px;
+      line-height: 1.45;
+    }
+    .notice strong {
+      display: block;
+      color: #533b00;
+      margin-bottom: 2px;
+    }
     .metric, .toolbar, .table-panel, .empty {
       background: var(--panel);
       border: 1px solid var(--line);
@@ -244,6 +260,7 @@
   <main class="wrap">
     <nav id="tabs" class="tabs" aria-label="Funds"></nav>
     <section id="summary" class="summary"></section>
+    <section id="liveStatus" class="live-status" aria-live="polite"></section>
     <section class="toolbar">
       <input id="search" type="search" placeholder="Search holdings" />
       <select id="perfFilter" aria-label="Performance filter">
@@ -256,10 +273,19 @@
   </main>
 
   <script>
-    const state = { data: null, activeCode: null, query: "", perfFilter: "all", liveByFundCode: new Map(), timerId: null };
+    const state = {
+      data: null,
+      activeCode: null,
+      query: "",
+      perfFilter: "all",
+      liveByFundCode: new Map(),
+      liveStatusByFundCode: new Map(),
+      timerId: null,
+    };
     const generated = document.querySelector("#generated");
     const tabs = document.querySelector("#tabs");
     const summary = document.querySelector("#summary");
+    const liveStatus = document.querySelector("#liveStatus");
     const tablePanel = document.querySelector("#tablePanel");
     const search = document.querySelector("#search");
     const perfFilter = document.querySelector("#perfFilter");
@@ -388,6 +414,24 @@
       if (state.activeCode === fundCode) render();
     }
 
+    function recordLiveStatus(fundCode, source, status, message = "") {
+      const current = state.liveStatusByFundCode.get(fundCode) || {};
+      state.liveStatusByFundCode.set(fundCode, {
+        ...current,
+        [source]: {
+          status,
+          message,
+          checked_at_utc: new Date().toISOString(),
+        },
+      });
+      if (state.activeCode === fundCode) renderLiveStatus(activeFund());
+    }
+
+    function errorMessageFor(error) {
+      if (!error) return "Unknown error";
+      return error.message || String(error);
+    }
+
     async function fetchLiveFundMetrics(fund) {
       if (fund?.market_ticker) {
         try {
@@ -402,16 +446,20 @@
             },
             etf_performance: computeEtfPerfFromRows(rows),
           });
-        } catch (_error) {
-          // Silent fallback to prebuilt values when client-side quote fetch fails.
+          recordLiveStatus(fund.code, "price", "ok");
+        } catch (error) {
+          console.warn(`Live price fetch failed for ${fund.code}`, error);
+          recordLiveStatus(fund.code, "price", "error", errorMessageFor(error));
         }
       }
 
       try {
         const latestNav = await fetchLiveNav(fund);
         if (latestNav) mergeLiveFundMetrics(fund.code, { latest_nav: latestNav });
-      } catch (_error) {
-        // Silent fallback to prebuilt values when client-side NAV fetch fails.
+        recordLiveStatus(fund.code, "nav", "ok");
+      } catch (error) {
+        console.warn(`Live NAV fetch failed for ${fund.code}`, error);
+        recordLiveStatus(fund.code, "nav", "error", errorMessageFor(error));
       }
     }
 
@@ -491,6 +539,31 @@
           }
         </article>
       `).join("");
+    }
+
+    function renderLiveStatus(fund) {
+      const statuses = state.liveStatusByFundCode.get(fund.code) || {};
+      const failures = [
+        ["price", "market price"],
+        ["nav", "NAV"],
+      ]
+        .map(([source, label]) => ({ label, ...(statuses[source] || {}) }))
+        .filter(row => row.status === "error");
+
+      if (!failures.length) {
+        liveStatus.innerHTML = "";
+        return;
+      }
+
+      liveStatus.innerHTML = `
+        <div class="notice" role="status">
+          <strong>Live data refresh failed for ${fund.slug}</strong>
+          Showing the last built values from site/data.json for ${failures.map(row => row.label).join(" and ")}.
+          ${failures.map(row => `
+            <div>${row.label}: ${row.message || "unavailable"}${row.checked_at_utc ? ` (${fmtDateTime(row.checked_at_utc)})` : ""}</div>
+          `).join("")}
+        </div>
+      `;
     }
 
     function visibleHoldings(fund) {
@@ -591,6 +664,7 @@
       const fund = activeFund();
       renderTabs();
       renderSummary(fund);
+      renderLiveStatus(fund);
       renderTable(fund);
     }
 
