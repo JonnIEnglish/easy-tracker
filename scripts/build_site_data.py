@@ -135,6 +135,142 @@ def derive_monthly_holdings_changes(history: pd.DataFrame) -> dict[str, dict[str
     return results
 
 
+def derive_weekly_holdings_changes(history: pd.DataFrame) -> dict[str, dict[str, Any]]:
+    if history.empty:
+        return {}
+
+    working = history.copy()
+    working["captured_at_utc"] = pd.to_datetime(working["captured_at_utc"], utc=True)
+    # use ISO week period
+    working["week"] = working["captured_at_utc"].dt.to_period("W").astype(str)
+
+    latest_in_week = working.loc[
+        working.groupby(["fund_code", "week"])["captured_at_utc"].transform("max") == working["captured_at_utc"]
+    ].copy()
+
+    results: dict[str, dict[str, Any]] = {}
+    for fund_code, fund_rows in latest_in_week.groupby("fund_code"):
+        weeks = sorted(fund_rows["week"].drop_duplicates())
+        if len(weeks) < 2:
+            results[str(fund_code)] = {
+                "previous_week": None,
+                "current_week": None,
+                "changes": [],
+            }
+            continue
+
+        previous_week = weeks[-2]
+        current_week = weeks[-1]
+        previous_rows = fund_rows[fund_rows["week"] == previous_week]
+        current_rows = fund_rows[fund_rows["week"] == current_week]
+
+        previous_weights = (
+            previous_rows.groupby("instrument", as_index=False)["weight"].sum().rename(columns={"weight": "previous_weight"})
+        )
+        current_weights = (
+            current_rows.groupby("instrument", as_index=False)["weight"].sum().rename(columns={"weight": "current_weight"})
+        )
+
+        merged = previous_weights.merge(current_weights, on="instrument", how="outer").fillna(0.0)
+        merged["previous_weight"] = pd.to_numeric(merged["previous_weight"], errors="coerce").fillna(0.0)
+        merged["current_weight"] = pd.to_numeric(merged["current_weight"], errors="coerce").fillna(0.0)
+        merged["change_pp"] = merged["current_weight"] - merged["previous_weight"]
+        merged["action"] = merged.apply(
+            lambda row: classify_holding_change(float(row["previous_weight"]), float(row["current_weight"])),
+            axis=1,
+        )
+
+        merged = merged.sort_values(["change_pp", "instrument"], ascending=[False, True]).reset_index(drop=True)
+        changes = [
+            {
+                "instrument": str(row["instrument"]),
+                "previous_weight": float(row["previous_weight"]),
+                "current_weight": float(row["current_weight"]),
+                "change_pp": float(row["change_pp"]),
+                "action": str(row["action"]),
+            }
+            for row in merged.to_dict(orient="records")
+        ]
+
+        results[str(fund_code)] = {
+            "previous_week": str(previous_week),
+            "current_week": str(current_week),
+            "changes": changes,
+        }
+
+    return results
+
+
+def derive_snapshot_holdings_changes(history: pd.DataFrame) -> dict[str, dict[str, Any]]:
+    if history.empty:
+        return {}
+
+    working = history.copy()
+    working["captured_at_utc"] = pd.to_datetime(working["captured_at_utc"], utc=True, errors="coerce")
+    working["snapshot_date"] = pd.to_datetime(working["snapshot_date"], errors="coerce").dt.date
+    working["weight"] = pd.to_numeric(working["weight"], errors="coerce").fillna(0.0)
+    working = working.dropna(subset=["fund_code", "snapshot_date", "captured_at_utc", "instrument"])
+    if working.empty:
+        return {}
+
+    latest_capture_per_snapshot = working.groupby(["fund_code", "snapshot_date"])["captured_at_utc"].transform("max")
+    latest_snapshots = working[working["captured_at_utc"] == latest_capture_per_snapshot].copy()
+
+    results: dict[str, dict[str, Any]] = {}
+    for fund_code, fund_rows in latest_snapshots.groupby("fund_code"):
+        snapshots = sorted(row.isoformat() for row in fund_rows["snapshot_date"].drop_duplicates())
+        if len(snapshots) < 2:
+            results[str(fund_code)] = {
+                "previous_snapshot": None,
+                "current_snapshot": None,
+                "changes": [],
+            }
+            continue
+
+        grouped = (
+            fund_rows.assign(snapshot_date=fund_rows["snapshot_date"].map(lambda value: value.isoformat()))
+            .groupby(["instrument", "snapshot_date"], as_index=False)["weight"]
+            .sum()
+            .pivot(index="instrument", columns="snapshot_date", values="weight")
+            .fillna(0.0)
+        )
+        grouped = grouped.reindex(columns=snapshots, fill_value=0.0)
+
+        prev = snapshots[-2]
+        curr = snapshots[-1]
+        previous_weights = grouped[prev].rename("previous_weight").reset_index()
+        current_weights = grouped[curr].rename("current_weight").reset_index()
+
+        merged = previous_weights.merge(current_weights, on="instrument", how="outer").fillna(0.0)
+        merged["previous_weight"] = pd.to_numeric(merged["previous_weight"], errors="coerce").fillna(0.0)
+        merged["current_weight"] = pd.to_numeric(merged["current_weight"], errors="coerce").fillna(0.0)
+        merged["change_pp"] = merged["current_weight"] - merged["previous_weight"]
+        merged["action"] = merged.apply(
+            lambda row: classify_holding_change(float(row["previous_weight"]), float(row["current_weight"])),
+            axis=1,
+        )
+
+        merged = merged.sort_values(["change_pp", "instrument"], ascending=[False, True]).reset_index(drop=True)
+        changes = [
+            {
+                "instrument": str(row["instrument"]),
+                "previous_weight": float(row["previous_weight"]),
+                "current_weight": float(row["current_weight"]),
+                "change_pp": float(row["change_pp"]),
+                "action": str(row["action"]),
+            }
+            for row in merged.to_dict(orient="records")
+        ]
+
+        results[str(fund_code)] = {
+            "previous_snapshot": str(prev),
+            "current_snapshot": str(curr),
+            "changes": changes,
+        }
+
+    return results
+
+
 def derive_monthly_holdings_history(history: pd.DataFrame) -> dict[str, dict[str, Any]]:
     if history.empty:
         return {}
@@ -498,6 +634,8 @@ def build_payload() -> dict[str, Any]:
     full_history = read_csv_if_exists(HISTORY_PATH)
     history = latest_holdings(full_history)
     monthly_changes_by_fund = derive_monthly_holdings_changes(full_history)
+    weekly_changes_by_fund = derive_weekly_holdings_changes(full_history)
+    snapshot_changes_by_fund = derive_snapshot_holdings_changes(full_history)
     monthly_history_by_fund = derive_monthly_holdings_history(full_history)
     snapshot_history_by_fund = derive_snapshot_holdings_history(full_history)
     nav_history = read_csv_if_exists(NAV_HISTORY_PATH)
@@ -566,6 +704,8 @@ def build_payload() -> dict[str, Any]:
                 "estimated_nav_gap": estimate_premium_discount_to_nav(latest_navs.get(code), latest_market_prices.get(code)),
                 "nav_price_history": nav_price_history_series.get(code, []),
                 "holdings": holdings,
+                "weekly_changes": weekly_changes_by_fund.get(code, {"previous_week": None, "current_week": None, "changes": []}),
+                "snapshot_changes": snapshot_changes_by_fund.get(code, {"previous_snapshot": None, "current_snapshot": None, "changes": []}),
                 "monthly_changes": monthly_changes_by_fund.get(code, {"previous_month": None, "current_month": None, "changes": []}),
                 "monthly_holdings_history": monthly_history_by_fund.get(code, {"months": [], "rows": []}),
                 "snapshot_holdings_history": snapshot_history_by_fund.get(code, {"snapshots": [], "rows": []}),

@@ -673,6 +673,20 @@
       return map;
     }
 
+    function weeklyChangeByInstrument(fund) {
+      const weekly = fund.weekly_changes || { changes: [] };
+      const map = new Map();
+      for (const row of (weekly.changes || [])) map.set(row.instrument, row.change_pp);
+      return map;
+    }
+
+    function snapshotChangeByInstrument(fund) {
+      const snapshot = fund.snapshot_changes || { changes: [] };
+      const map = new Map();
+      for (const row of (snapshot.changes || [])) map.set(row.instrument, row.change_pp);
+      return map;
+    }
+
     function monthlyHistoryByInstrument(fund) {
       const monthly = fund.monthly_holdings_history || { months: [], rows: [] };
       const maxWeight = Math.max(
@@ -791,7 +805,8 @@
 
     function renderTable(fund) {
       const rows = visibleHoldings(fund);
-      const monthlyChangeMap = monthlyChangeByInstrument(fund);
+      const weeklyChangeMap = weeklyChangeByInstrument(fund);
+      const snapshotChangeMap = snapshotChangeByInstrument(fund);
       const monthlyHistoryMap = monthlyHistoryByInstrument(fund);
       if (!rows.length) {
         tablePanel.className = "empty";
@@ -808,7 +823,8 @@
               <th style="width:9%">Currency</th>
               <th class="num" style="width:10%">Weight</th>
               <th style="width:17%">Weight History</th>
-              <th class="num" style="width:10%">Monthly Δ (pp)</th>
+              <th class="num" style="width:10%">Since last update (pp)</th>
+              <th class="num" style="width:10%">Weekly Δ (pp)</th>
               <th class="num" style="width:8%">1d</th>
               <th class="num" style="width:8%">7d</th>
               <th class="num" style="width:8%">30d</th>
@@ -824,7 +840,8 @@
                   <td>${row.currency}</td>
                   <td class="num">${fmtWeight(row.weight)}</td>
                   <td>${renderHistoryStrip(monthlyHistoryMap.get(row.instrument))}</td>
-                  <td class="num ${cssFor(monthlyChangeMap.get(row.instrument))}">${fmtWeight(monthlyChangeMap.get(row.instrument))}</td>
+                  <td class="num ${cssFor(snapshotChangeMap.get(row.instrument))}">${fmtWeight(snapshotChangeMap.get(row.instrument))}</td>
+                  <td class="num ${cssFor(weeklyChangeMap.get(row.instrument))}">${fmtWeight(weeklyChangeMap.get(row.instrument))}</td>
                   <td class="num ${cssFor(perf.d1)}">${fmtPct(perf.d1)}</td>
                   <td class="num ${cssFor(perf.d7)}">${fmtPct(perf.d7)}</td>
                   <td class="num ${cssFor(perf.d30)}">${fmtPct(perf.d30)}</td>
