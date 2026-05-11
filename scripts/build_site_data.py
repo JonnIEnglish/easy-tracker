@@ -192,6 +192,64 @@ def derive_monthly_holdings_history(history: pd.DataFrame) -> dict[str, dict[str
     return results
 
 
+def derive_snapshot_holdings_history(history: pd.DataFrame) -> dict[str, dict[str, Any]]:
+    if history.empty:
+        return {}
+
+    working = history.copy()
+    working["captured_at_utc"] = pd.to_datetime(working["captured_at_utc"], utc=True, errors="coerce")
+    working["snapshot_date"] = pd.to_datetime(working["snapshot_date"], errors="coerce").dt.date
+    working["weight"] = pd.to_numeric(working["weight"], errors="coerce").fillna(0.0)
+    working = working.dropna(subset=["fund_code", "snapshot_date", "captured_at_utc", "instrument"])
+    if working.empty:
+        return {}
+
+    latest_capture_per_snapshot = working.groupby(["fund_code", "snapshot_date"])["captured_at_utc"].transform("max")
+    latest_snapshots = working[working["captured_at_utc"] == latest_capture_per_snapshot].copy()
+
+    results: dict[str, dict[str, Any]] = {}
+    for fund_code, fund_rows in latest_snapshots.groupby("fund_code"):
+        snapshots = sorted(row.isoformat() for row in fund_rows["snapshot_date"].drop_duplicates())
+        grouped = (
+            fund_rows.assign(snapshot_date=fund_rows["snapshot_date"].map(lambda value: value.isoformat()))
+            .groupby(["instrument", "snapshot_date"], as_index=False)["weight"]
+            .sum()
+            .pivot(index="instrument", columns="snapshot_date", values="weight")
+            .fillna(0.0)
+        )
+        grouped = grouped.reindex(columns=snapshots, fill_value=0.0)
+
+        latest_snapshot = snapshots[-1] if snapshots else None
+        if latest_snapshot:
+            grouped = grouped.assign(
+                _latest_weight=grouped[latest_snapshot],
+                _max_weight=grouped.max(axis=1),
+            ).sort_values(["_latest_weight", "_max_weight"], ascending=[False, False])
+
+        rows = []
+        for instrument, row in grouped.iterrows():
+            weights = [float(row[snapshot]) for snapshot in snapshots]
+            active_snapshot_indexes = [idx for idx, value in enumerate(weights) if value > 0]
+            rows.append(
+                {
+                    "instrument": str(instrument),
+                    "weights": weights,
+                    "active_snapshots": int(len(active_snapshot_indexes)),
+                    "first_snapshot": snapshots[active_snapshot_indexes[0]] if active_snapshot_indexes else None,
+                    "last_snapshot": snapshots[active_snapshot_indexes[-1]] if active_snapshot_indexes else None,
+                    "latest_weight": float(weights[-1]) if weights else 0.0,
+                    "max_weight": float(max(weights)) if weights else 0.0,
+                }
+            )
+
+        results[str(fund_code)] = {
+            "snapshots": snapshots,
+            "rows": rows,
+        }
+
+    return results
+
+
 def fetch_price_history(tickers: list[str]) -> dict[str, pd.DataFrame]:
     if not tickers:
         return {}
@@ -441,6 +499,7 @@ def build_payload() -> dict[str, Any]:
     history = latest_holdings(full_history)
     monthly_changes_by_fund = derive_monthly_holdings_changes(full_history)
     monthly_history_by_fund = derive_monthly_holdings_history(full_history)
+    snapshot_history_by_fund = derive_snapshot_holdings_history(full_history)
     nav_history = read_csv_if_exists(NAV_HISTORY_PATH)
     market_price_history = read_csv_if_exists(MARKET_PRICE_HISTORY_PATH)
     latest_navs = latest_nav_by_fund(nav_history)
@@ -509,6 +568,7 @@ def build_payload() -> dict[str, Any]:
                 "holdings": holdings,
                 "monthly_changes": monthly_changes_by_fund.get(code, {"previous_month": None, "current_month": None, "changes": []}),
                 "monthly_holdings_history": monthly_history_by_fund.get(code, {"months": [], "rows": []}),
+                "snapshot_holdings_history": snapshot_history_by_fund.get(code, {"snapshots": [], "rows": []}),
             }
         )
 

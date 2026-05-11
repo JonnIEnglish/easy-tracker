@@ -98,7 +98,7 @@
       color: #533b00;
       margin-bottom: 2px;
     }
-    .metric, .toolbar, .table-panel, .empty {
+    .metric, .toolbar, .chart-panel, .table-panel, .empty {
       background: var(--panel);
       border: 1px solid var(--line);
       border-radius: 8px;
@@ -133,6 +133,54 @@
       gap: 10px;
       padding: 10px;
       margin-bottom: 12px;
+    }
+    .chart-panel {
+      overflow: hidden;
+      margin-bottom: 12px;
+    }
+    .chart-head {
+      padding: 12px;
+      border-bottom: 1px solid var(--line);
+      background: #f0f3f6;
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+    }
+    .chart-title {
+      margin: 0;
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 750;
+      text-transform: uppercase;
+    }
+    .chart-note {
+      margin-top: 3px;
+      color: var(--muted);
+      font-size: 12px;
+    }
+    .chart-body { padding: 14px; }
+    .chart-body canvas {
+      display: block;
+      width: 100%;
+      height: 340px;
+    }
+    .legend {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px 14px;
+      padding: 0 14px 14px;
+      color: var(--muted);
+      font-size: 12px;
+    }
+    .legend-item {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .legend-swatch {
+      width: 18px;
+      height: 3px;
+      border-radius: 999px;
     }
     input, select {
       width: 100%;
@@ -237,6 +285,7 @@
       .topbar, .toolbar { display: block; }
       .timestamp { margin-top: 8px; text-align: left; white-space: normal; }
       .summary { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .chart-head { display: block; }
       .toolbar > * + * { margin-top: 10px; }
       table { min-width: 980px; }
       .table-panel { overflow-x: auto; }
@@ -261,6 +310,18 @@
     <nav id="tabs" class="tabs" aria-label="Funds"></nav>
     <section id="summary" class="summary"></section>
     <section id="liveStatus" class="live-status" aria-live="polite"></section>
+    <section id="holdingsChartPanel" class="chart-panel">
+      <div class="chart-head">
+        <div>
+          <h2 class="chart-title">Holding Weight Change By Snapshot</h2>
+          <div id="holdingsChartNote" class="chart-note">Top current holdings, sampled from each raw holdings snapshot.</div>
+        </div>
+      </div>
+      <div class="chart-body">
+        <canvas id="holdingsChart" width="1100" height="340"></canvas>
+      </div>
+      <div id="holdingsChartLegend" class="legend"></div>
+    </section>
     <section class="toolbar">
       <input id="search" type="search" placeholder="Search holdings" />
       <select id="perfFilter" aria-label="Performance filter">
@@ -286,6 +347,11 @@
     const tabs = document.querySelector("#tabs");
     const summary = document.querySelector("#summary");
     const liveStatus = document.querySelector("#liveStatus");
+    const holdingsChartPanel = document.querySelector("#holdingsChartPanel");
+    const holdingsChartNote = document.querySelector("#holdingsChartNote");
+    const holdingsChartLegend = document.querySelector("#holdingsChartLegend");
+    const holdingsChart = document.querySelector("#holdingsChart");
+    const holdingsChartCtx = holdingsChart.getContext("2d");
     const tablePanel = document.querySelector("#tablePanel");
     const search = document.querySelector("#search");
     const perfFilter = document.querySelector("#perfFilter");
@@ -294,6 +360,7 @@
     const fmtPct = value => Number.isFinite(value) ? `${value.toFixed(2)}%` : "n/a";
     const fmtWeight = value => Number.isFinite(value) ? `${value.toFixed(2)}%` : "n/a";
     const fmtZac = value => Number.isFinite(value) ? `ZAC ${value.toFixed(2)}` : "n/a";
+    const fmtDate = value => value ? new Date(`${value}T00:00:00Z`).toLocaleDateString(undefined, { month: "short", day: "numeric", timeZone: "UTC" }) : "n/a";
     const fmtMonth = value => {
       if (!value || !/^\d{4}-\d{2}$/.test(value)) return value || "n/a";
       const [year, month] = value.split("-").map(Number);
@@ -635,6 +702,93 @@
       `;
     }
 
+    function snapshotSeriesForChart(fund) {
+      const history = fund.snapshot_holdings_history || { snapshots: [], rows: [] };
+      const snapshots = history.snapshots || [];
+      const rows = (history.rows || [])
+        .filter(row => row.instrument && Array.isArray(row.weights))
+        .filter(row => !String(row.instrument).toUpperCase().includes(".CASH"))
+        .sort((a, b) => (Number(b.latest_weight) || 0) - (Number(a.latest_weight) || 0))
+        .slice(0, 8);
+      return { snapshots, rows };
+    }
+
+    function drawHoldingsSnapshotChart(fund) {
+      const { snapshots, rows } = snapshotSeriesForChart(fund);
+      if (!snapshots.length || !rows.length) {
+        holdingsChartPanel.className = "chart-panel";
+        holdingsChartNote.textContent = "No per-snapshot holdings history is available yet.";
+        holdingsChartLegend.innerHTML = "";
+        holdingsChartCtx.clearRect(0, 0, holdingsChart.width, holdingsChart.height);
+        return;
+      }
+
+      holdingsChartPanel.className = "chart-panel";
+      holdingsChartNote.textContent = `${rows.length} top current holdings across ${snapshots.length} raw snapshot${snapshots.length === 1 ? "" : "s"}.`;
+      const palette = ["#0f766e", "#2563eb", "#dc2626", "#9333ea", "#ea580c", "#16a34a", "#0891b2", "#be123c"];
+      holdingsChartLegend.innerHTML = rows.map((row, index) => `
+        <span class="legend-item"><span class="legend-swatch" style="background:${palette[index % palette.length]}"></span>${row.instrument}</span>
+      `).join("");
+
+      const rect = holdingsChart.getBoundingClientRect();
+      const ratio = window.devicePixelRatio || 1;
+      holdingsChart.width = Math.max(1, Math.floor(rect.width * ratio));
+      holdingsChart.height = Math.max(1, Math.floor(rect.height * ratio));
+      holdingsChartCtx.setTransform(ratio, 0, 0, ratio, 0, 0);
+
+      const width = rect.width;
+      const height = rect.height;
+      const pad = { top: 18, right: 20, bottom: 42, left: 58 };
+      const values = rows.flatMap(row => row.weights.map(Number).filter(Number.isFinite));
+      const max = Math.max(1, ...values);
+      const niceMax = Math.ceil(max / 2) * 2;
+      const xFor = index => pad.left + (snapshots.length === 1 ? 0 : (index / (snapshots.length - 1)) * (width - pad.left - pad.right));
+      const yFor = value => pad.top + ((niceMax - value) / niceMax) * (height - pad.top - pad.bottom);
+
+      holdingsChartCtx.clearRect(0, 0, width, height);
+      holdingsChartCtx.fillStyle = "#ffffff";
+      holdingsChartCtx.fillRect(0, 0, width, height);
+      holdingsChartCtx.strokeStyle = "#dde3ea";
+      holdingsChartCtx.lineWidth = 1;
+      holdingsChartCtx.beginPath();
+      for (let index = 0; index <= 4; index += 1) {
+        const y = pad.top + (index / 4) * (height - pad.top - pad.bottom);
+        holdingsChartCtx.moveTo(pad.left, y);
+        holdingsChartCtx.lineTo(width - pad.right, y);
+      }
+      holdingsChartCtx.stroke();
+
+      holdingsChartCtx.fillStyle = "#647282";
+      holdingsChartCtx.font = "12px system-ui, sans-serif";
+      holdingsChartCtx.textAlign = "right";
+      holdingsChartCtx.textBaseline = "middle";
+      for (let index = 0; index <= 4; index += 1) {
+        const value = niceMax - (index / 4) * niceMax;
+        const y = pad.top + (index / 4) * (height - pad.top - pad.bottom);
+        holdingsChartCtx.fillText(fmtWeight(value), pad.left - 8, y);
+      }
+
+      rows.forEach((row, rowIndex) => {
+        holdingsChartCtx.strokeStyle = palette[rowIndex % palette.length];
+        holdingsChartCtx.lineWidth = 2;
+        holdingsChartCtx.beginPath();
+        row.weights.forEach((weight, index) => {
+          const x = xFor(index);
+          const y = yFor(Number(weight) || 0);
+          if (index === 0) holdingsChartCtx.moveTo(x, y);
+          else holdingsChartCtx.lineTo(x, y);
+        });
+        holdingsChartCtx.stroke();
+      });
+
+      holdingsChartCtx.fillStyle = "#647282";
+      holdingsChartCtx.textBaseline = "top";
+      holdingsChartCtx.textAlign = "left";
+      holdingsChartCtx.fillText(fmtDate(snapshots[0]), pad.left, height - pad.bottom + 14);
+      holdingsChartCtx.textAlign = "right";
+      holdingsChartCtx.fillText(fmtDate(snapshots[snapshots.length - 1]), width - pad.right, height - pad.bottom + 14);
+    }
+
     function renderTable(fund) {
       const rows = visibleHoldings(fund);
       const monthlyChangeMap = monthlyChangeByInstrument(fund);
@@ -687,6 +841,7 @@
       renderTabs();
       renderSummary(fund);
       renderLiveStatus(fund);
+      drawHoldingsSnapshotChart(fund);
       renderTable(fund);
     }
 
@@ -722,6 +877,10 @@
         tablePanel.className = "empty";
         tablePanel.textContent = `Could not load site/data.json: ${error.message}`;
       });
+
+    window.addEventListener("resize", () => {
+      if (state.data) drawHoldingsSnapshotChart(activeFund());
+    });
   </script>
 </body>
 </html>

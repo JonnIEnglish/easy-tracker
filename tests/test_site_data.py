@@ -7,6 +7,7 @@ from scripts.build_site_data import (
     derive_monthly_holdings_changes,
     derive_monthly_holdings_history,
     derive_nav_price_history,
+    derive_snapshot_holdings_history,
     estimate_premium_discount_to_nav,
     json_safe,
     latest_holdings,
@@ -102,6 +103,50 @@ def test_derive_monthly_holdings_history_uses_latest_snapshot_per_month() -> Non
     assert rows["C"]["weights"] == pytest.approx([0.0, 7.0])
     assert rows["C"]["first_month"] == "2026-02"
     assert rows["B"]["last_month"] == "2026-01"
+
+
+def test_derive_snapshot_holdings_history_uses_each_latest_raw_snapshot() -> None:
+    history = pd.DataFrame(
+        [
+            {
+                "fund_code": "EASYAI",
+                "snapshot_date": "2026-05-08",
+                "captured_at_utc": "2026-05-09T10:00:00Z",
+                "instrument": "A",
+                "weight": 10.0,
+            },
+            {
+                "fund_code": "EASYAI",
+                "snapshot_date": "2026-05-08",
+                "captured_at_utc": "2026-05-09T11:00:00Z",
+                "instrument": "A",
+                "weight": 11.0,
+            },
+            {
+                "fund_code": "EASYAI",
+                "snapshot_date": "2026-05-11",
+                "captured_at_utc": "2026-05-11T08:00:00Z",
+                "instrument": "A",
+                "weight": 9.0,
+            },
+            {
+                "fund_code": "EASYAI",
+                "snapshot_date": "2026-05-11",
+                "captured_at_utc": "2026-05-11T08:00:00Z",
+                "instrument": "B",
+                "weight": 4.0,
+            },
+        ]
+    )
+
+    derived = derive_snapshot_holdings_history(history)["EASYAI"]
+    assert derived["snapshots"] == ["2026-05-08", "2026-05-11"]
+
+    rows = {row["instrument"]: row for row in derived["rows"]}
+    assert rows["A"]["weights"] == pytest.approx([11.0, 9.0])
+    assert rows["B"]["weights"] == pytest.approx([0.0, 4.0])
+    assert rows["B"]["first_snapshot"] == "2026-05-11"
+    assert rows["A"]["active_snapshots"] == 2
 
 
 def test_latest_nav_by_fund_picks_latest_nav_date_then_capture_time() -> None:
