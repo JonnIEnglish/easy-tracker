@@ -5,28 +5,9 @@ on:
     branches:
       - main
   schedule:
-    - cron: "0 8 * * *"
-    - cron: "30 8 * * *"
-    - cron: "0 9 * * *"
-    - cron: "30 9 * * *"
-    - cron: "0 10 * * *"
-    - cron: "30 10 * * *"
-    - cron: "0 11 * * *"
-    - cron: "30 11 * * *"
-    - cron: "0 12 * * *"
-    - cron: "30 12 * * *"
-    - cron: "0 13 * * *"
-    - cron: "30 13 * * *"
-    - cron: "0 14 * * *"
-    - cron: "30 14 * * *"
-    - cron: "0 15 * * *"
-    - cron: "30 15 * * *"
-    - cron: "0 16 * * *"
-    - cron: "30 16 * * *"
-    - cron: "0 17 * * *"
-    - cron: "30 17 * * *"
-    - cron: "0 18 * * *"
-    - cron: "30 18 * * *"
+    - cron: "17 9 * * *"
+    - cron: "17 10 * * *"
+    - cron: "17 14 * * *"
   workflow_dispatch:
 
 permissions:
@@ -48,34 +29,17 @@ jobs:
       - uses: actions/checkout@v4
         with:
           fetch-depth: 0
-      - name: Check if commit exists today
-        id: check_commit
-        run: |
-          TODAY=$(date -u +%Y-%m-%d)
-          COMMIT_COUNT=$(git log --since="$TODAY 00:00:00" --until="$TODAY 23:59:59" --oneline | wc -l)
-          if [ "$COMMIT_COUNT" -gt 0 ]; then
-            echo "has_commit=true" >> "$GITHUB_OUTPUT"
-            echo "Commits found today, skipping workflow."
-          else
-            echo "has_commit=false" >> "$GITHUB_OUTPUT"
-            echo "No commits today, continuing with workflow."
-          fi
       - uses: actions/setup-python@v5
-        if: steps.check_commit.outputs.has_commit == 'false'
         with:
           python-version: "3.12"
       - name: Install dependencies
-        if: steps.check_commit.outputs.has_commit == 'false'
         run: pip install -r requirements.txt
       - name: Run tests
-        if: steps.check_commit.outputs.has_commit == 'false'
         run: python -m pytest
       - name: Fetch holdings CSVs
-        if: steps.check_commit.outputs.has_commit == 'false'
         id: fetch_holdings
         run: python -m scripts.fetch_holdings
       - name: Check for new holdings information
-        if: steps.check_commit.outputs.has_commit == 'false'
         id: holdings_changes
         run: |
           if [ -z "$(git status --porcelain -- data/holdings_history.csv data/raw)" ]; then
@@ -86,16 +50,16 @@ jobs:
             echo "New EasyEquities fund weighting information found."
           fi
       - name: Capture NAV observations
-        if: steps.check_commit.outputs.has_commit == 'false' && steps.holdings_changes.outputs.changed == 'true'
+        if: steps.holdings_changes.outputs.changed == 'true'
         run: python -m scripts.fetch_nav
       - name: Capture market price observations
-        if: steps.check_commit.outputs.has_commit == 'false' && steps.holdings_changes.outputs.changed == 'true'
+        if: steps.holdings_changes.outputs.changed == 'true'
         run: python -m scripts.fetch_market_prices
       - name: Build site data
-        if: steps.check_commit.outputs.has_commit == 'false' && steps.holdings_changes.outputs.changed == 'true'
+        if: steps.holdings_changes.outputs.changed == 'true'
         run: python -m scripts.build_site_data
       - name: Commit captured data
-        if: steps.check_commit.outputs.has_commit == 'false' && steps.holdings_changes.outputs.changed == 'true'
+        if: steps.holdings_changes.outputs.changed == 'true'
         id: commit_changes
         run: |
           git config user.name "github-actions"
@@ -110,170 +74,7 @@ jobs:
           git push
           echo "changed=true" >> "$GITHUB_OUTPUT"
       - name: Mark unchanged
-        if: steps.check_commit.outputs.has_commit == 'true' || steps.holdings_changes.outputs.changed != 'true'
-        id: commit_changes_unchanged
-        run: echo "changed=false" >> "$GITHUB_OUTPUT"
-      - name: Upload Pages artifact
-        if: steps.commit_changes.outputs.changed == 'true'
-        uses: actions/upload-pages-artifact@v3
-        with:
-          path: site
-
-  deploy:
-    needs: capture
-    if: github.event_name != 'push' && needs.capture.outputs.changed == 'true'
-    runs-on: ubuntu-latest
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
-    permissions:
-      pages: write
-      id-token: write
-    steps:
-      - name: Deploy GitHub Pages
-        id: deployment
-        uses: actions/deploy-pages@v4
-
-  deploy-committed-site:
-    if: github.event_name == 'push'
-    runs-on: ubuntu-latest
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
-    permissions:
-      pages: write
-      id-token: write
-      contents: read
-    steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-python@v5
-        with:
-          python-version: "3.12"
-      - name: Install dependencies
-        run: pip install -r requirements.txt
-      - name: Run tests
-        run: python -m pytest
-      - name: Build site data
-        run: python -m scripts.build_site_data
-      - name: Upload Pages artifact
-        uses: actions/upload-pages-artifact@v3
-        with:
-          path: site
-      - name: Deploy GitHub Pages
-        id: deployment
-        uses: actions/deploy-pages@v4name: Hourly holdings capture
-
-on:
-  push:
-    branches:
-      - main
-  schedule:
-    - cron: "0 8 * * *"
-    - cron: "30 8 * * *"
-    - cron: "0 9 * * *"
-    - cron: "30 9 * * *"
-    - cron: "0 10 * * *"
-    - cron: "30 10 * * *"
-    - cron: "0 11 * * *"
-    - cron: "30 11 * * *"
-    - cron: "0 12 * * *"
-    - cron: "30 12 * * *"
-    - cron: "0 13 * * *"
-    - cron: "30 13 * * *"
-    - cron: "0 14 * * *"
-    - cron: "30 14 * * *"
-    - cron: "0 15 * * *"
-    - cron: "30 15 * * *"
-    - cron: "0 16 * * *"
-    - cron: "30 16 * * *"
-    - cron: "0 17 * * *"
-    - cron: "30 17 * * *"
-    - cron: "0 18 * * *"
-    - cron: "30 18 * * *"
-  workflow_dispatch:
-
-permissions:
-  contents: write
-  pages: write
-  id-token: write
-
-concurrency:
-  group: holdings-capture
-  cancel-in-progress: false
-
-jobs:
-  capture:
-    if: github.event_name != 'push'
-    runs-on: ubuntu-latest
-    outputs:
-      changed: ${{ steps.commit_changes.outputs.changed || steps.commit_changes_unchanged.outputs.changed }}
-    steps:
-      - uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
-      - name: Check if commit exists today
-        id: check_commit
-        run: |
-          TODAY=$(date -u +%Y-%m-%d)
-          COMMIT_COUNT=$(git log --since="$TODAY 00:00:00" --until="$TODAY 23:59:59" --oneline | wc -l)
-          if [ "$COMMIT_COUNT" -gt 0 ]; then
-            echo "has_commit=true" >> "$GITHUB_OUTPUT"
-            echo "Commits found today, skipping workflow."
-          else
-            echo "has_commit=false" >> "$GITHUB_OUTPUT"
-            echo "No commits today, continuing with workflow."
-          fi
-      - uses: actions/setup-python@v5
-        if: steps.check_commit.outputs.has_commit == 'false'
-        with:
-          python-version: "3.12"
-      - name: Install dependencies
-        if: steps.check_commit.outputs.has_commit == 'false'
-        run: pip install -r requirements.txt
-      - name: Run tests
-        if: steps.check_commit.outputs.has_commit == 'false'
-        run: python -m pytest
-      - name: Fetch holdings CSVs
-        if: steps.check_commit.outputs.has_commit == 'false'
-        id: fetch_holdings
-        run: python -m scripts.fetch_holdings
-      - name: Check for new holdings information
-        if: steps.check_commit.outputs.has_commit == 'false'
-        id: holdings_changes
-        run: |
-          if [ -z "$(git status --porcelain -- data/holdings_history.csv data/raw)" ]; then
-            echo "changed=false" >> "$GITHUB_OUTPUT"
-            echo "No new EasyEquities fund weighting information found."
-          else
-            echo "changed=true" >> "$GITHUB_OUTPUT"
-            echo "New EasyEquities fund weighting information found."
-          fi
-      - name: Capture NAV observations
-        if: steps.check_commit.outputs.has_commit == 'false' && steps.holdings_changes.outputs.changed == 'true'
-        run: python -m scripts.fetch_nav
-      - name: Capture market price observations
-        if: steps.check_commit.outputs.has_commit == 'false' && steps.holdings_changes.outputs.changed == 'true'
-        run: python -m scripts.fetch_market_prices
-      - name: Build site data
-        if: steps.check_commit.outputs.has_commit == 'false' && steps.holdings_changes.outputs.changed == 'true'
-        run: python -m scripts.build_site_data
-      - name: Commit captured data
-        if: steps.check_commit.outputs.has_commit == 'false' && steps.holdings_changes.outputs.changed == 'true'
-        id: commit_changes
-        run: |
-          git config user.name "github-actions"
-          git config user.email "github-actions@github.com"
-          git add data site
-          if git diff --cached --quiet; then
-            echo "changed=false" >> "$GITHUB_OUTPUT"
-            exit 0
-          fi
-          git commit -m "Capture latest EasyETFs holdings"
-          git pull --rebase || true
-          git push
-          echo "changed=true" >> "$GITHUB_OUTPUT"
-      - name: Mark unchanged
-        if: steps.check_commit.outputs.has_commit == 'true' || steps.holdings_changes.outputs.changed != 'true'
+        if: steps.holdings_changes.outputs.changed != 'true'
         id: commit_changes_unchanged
         run: echo "changed=false" >> "$GITHUB_OUTPUT"
       - name: Upload Pages artifact
