@@ -1,5 +1,5 @@
 {
-  "generated_at_utc": "2026-05-12T07:43:31Z",
+  "generated_at_utc": "2026-05-13T11:37:33Z",
   "funds": [
     {
       "code": "EASYGE",
@@ -7,32 +7,32 @@
       "name": "EasyETFs Global Equity Actively Managed ETF",
       "instrument_page": "https://etfs.easyequities.co.za/easyetf-instrument-page/easyge",
       "market_ticker": "EASYGE.JO",
-      "snapshot_date": "2026-05-12",
-      "captured_at_utc": "2026-05-12T07:43:29Z",
+      "snapshot_date": "2026-05-13",
+      "captured_at_utc": "2026-05-13T11:37:32Z",
       "holdings_count": 33,
       "total_weight": 99.77,
       "latest_nav": {
-        "value_zac": 1899.97,
-        "nav_date": "2026-05-12",
+        "value_zac": 1877.29,
+        "nav_date": "2026-05-13",
         "source_url": "https://etfs.easyequities.co.za/easyetf-instrument-page/easyge",
-        "captured_at_utc": "2026-05-12T07:43:31Z"
+        "captured_at_utc": "2026-05-13T11:37:33Z"
       },
       "latest_market_price": {
         "ticker": "EASYGE.JO",
-        "value_zac": 1870.0,
+        "value_zac": 1920.0,
         "source": "yfinance",
-        "price_at_utc": "2026-05-10T22:00:00Z",
-        "captured_at_utc": "2026-05-12T07:43:33Z"
+        "price_at_utc": "2026-05-12T22:00:00Z",
+        "captured_at_utc": "2026-05-13T11:37:35Z"
       },
       "etf_performance": {
-        "d1": 3.087100330760739,
-        "d7": 2.297592997811826,
-        "d30": 14.723926380368102
+        "d1": 2.400000000000002,
+        "d7": 4.632152588555849,
+        "d30": 15.802171290711708
       },
       "estimated_nav_gap": {
-        "status": "discount",
-        "difference_zac": -29.970000000000027,
-        "difference_pct": -1.5773933272630634,
+        "status": "premium",
+        "difference_zac": 42.710000000000036,
+        "difference_pct": 2.275088025824462,
         "label": "estimated premium/discount to NAV"
       },
       "nav_price_history": [
@@ -67,57 +67,65 @@
           "difference_zac": -29.970000000000027,
           "difference_pct": -1.5773933272630634,
           "status": "discount"
+        },
+        {
+          "captured_hour_utc": "2026-05-13T11:00:00Z",
+          "nav_zac": 1877.29,
+          "market_price_zac": 1920.0,
+          "difference_zac": 42.710000000000036,
+          "difference_pct": 2.275088025824462,
+          "status": "premium"
         }
       ],
       "holdings": [
         {
           "instrument": "LUMENTUM HOL",
           "currency": "USD",
-          "weight": 10.7,
+          "weight": 10.3,
           "ticker": "LITE",
           "performance": {
-            "d1": 16.518032755444256,
-            "d7": 7.878667225468883,
-            "d30": 17.36208404622075
+            "d1": -5.765886360509254,
+            "d7": -0.22019812246442116,
+            "d30": 10.595119649790297
           }
         },
         {
           "instrument": "COMFORT SYSTEMS",
           "currency": "USD",
-          "weight": 7.06,
+          "weight": 7.16,
           "ticker": "FIX",
           "performance": {
-            "d1": 4.128827299803084,
-            "d7": 7.454215647169793,
-            "d30": 27.63240652501868
+            "d1": -0.8199747186470763,
+            "d7": 2.494361064382833,
+            "d30": 26.585853058712683
           }
         },
         {
           "instrument": "BLOOM ENERGY C-A",
           "currency": "USD",
-          "weight": 5.85,
+          "weight": 5.92,
           "ticker": "BE",
           "performance": {
-            "d1": 8.769112651987253,
-            "d7": -1.6352553288400018,
-            "d30": 70.31794758573824
+            "d1": -1.1376482225865514,
+            "d7": -4.931413228990267,
+            "d30": 68.38032848228319
           }
         },
         {
           "instrument": "COHERENT CORP",
           "currency": "USD",
-          "weight": 5.64,
+          "weight": 5.68,
           "ticker": "COHR",
           "performance": {
-            "d1": 13.252398550856558,
-            "d7": 15.095936700612288,
-            "d30": 23.47642355818089
+            "d1": -1.4959552896465333,
+            "d7": 11.402018743226305,
+            "d30": 21.629271468495936
           }
         },
         {
           "instrument": "INAV - USD.CASH",
           "currency": "USD",
-          "weight": 5.5,
+          "weight": 5.62,
           "ticker": null,
           "performance": {
             "d1": null,
@@ -128,78 +136,78 @@
         {
           "instrument": "NVIDIA CORP",
           "currency": "USD",
-          "weight": 5.43,
+          "weight": 5.58,
           "ticker": "NVDA",
           "performance": {
-            "d1": 1.9702628035742187,
-            "d7": 10.560261570460616,
-            "d30": 16.333561342870475
-          }
-        },
-        {
-          "instrument": "FORMFACTOR INC",
-          "currency": "USD",
-          "weight": 5.43,
-          "ticker": "FORM",
-          "performance": {
-            "d1": 2.387231281437008,
-            "d7": 12.673959513390297,
-            "d30": 22.29401467234833
+            "d1": 0.6106436032548013,
+            "d7": 12.356233475469146,
+            "d30": 17.043944793649214
           }
         },
         {
           "instrument": "CIENA CORP",
           "currency": "USD",
-          "weight": 5.41,
+          "weight": 5.5,
           "ticker": "CIEN",
           "performance": {
-            "d1": 6.086367014489813,
-            "d7": 7.977560334708977,
-            "d30": 17.227124628458835
+            "d1": -0.7429354062495674,
+            "d7": 5.947686904830207,
+            "d30": 16.356202813865718
+          }
+        },
+        {
+          "instrument": "FORMFACTOR INC",
+          "currency": "USD",
+          "weight": 4.84,
+          "ticker": "FORM",
+          "performance": {
+            "d1": -12.800522064270348,
+            "d7": -8.951721191406248,
+            "d30": 6.639742340932364
           }
         },
         {
           "instrument": "ARGAN INC",
           "currency": "USD",
-          "weight": 4.46,
+          "weight": 4.54,
           "ticker": "AGX",
           "performance": {
-            "d1": 0.47922995896056975,
-            "d7": -1.9551035509563608,
-            "d30": 13.287589209690331
+            "d1": -0.3672181785321138,
+            "d7": -5.415276421440973,
+            "d30": 12.871576588091571
           }
         },
         {
           "instrument": "MICRON TECH",
           "currency": "USD",
-          "weight": 4.37,
+          "weight": 4.31,
           "ticker": "MU",
           "performance": {
-            "d1": 6.496969736595304,
-            "d7": 37.97033571823432,
-            "d30": 89.0986528483424
+            "d1": -3.614851619104964,
+            "d7": 19.74070641566046,
+            "d30": 82.26301713414841
           }
         },
         {
           "instrument": "VERTIV HOLDINGS",
           "currency": "USD",
-          "weight": 3.49,
+          "weight": 3.57,
           "ticker": "VRT",
           "performance": {
-            "d1": 8.22131720642214,
-            "d7": 11.164157497885018,
-            "d30": 24.67216688362266
+            "d1": -0.21472290609084732,
+            "d7": 7.656447337488426,
+            "d30": 24.404467183803714
           }
         },
         {
           "instrument": "ADV ENERGY INDS",
           "currency": "USD",
-          "weight": 3.33,
+          "weight": 3.26,
           "ticker": "AEIS",
           "performance": {
-            "d1": -0.6354241058462162,
-            "d7": -8.28359498222666,
-            "d30": -6.498264797134157
+            "d1": -4.380648432119349,
+            "d7": -1.7967165371489235,
+            "d30": -10.594247094302878
           }
         },
         {
@@ -208,185 +216,185 @@
           "weight": 2.99,
           "ticker": "PWR",
           "performance": {
-            "d1": 4.883222131921139,
-            "d7": 3.1742648182956135,
-            "d30": 33.48708904547377
+            "d1": -1.9926293515219684,
+            "d7": -0.7516735012606302,
+            "d30": 30.8271861286614
           }
         },
         {
           "instrument": "CREDO TECHNOLOGY GROUP HOLDI",
           "currency": "USD",
-          "weight": 2.91,
+          "weight": 2.81,
           "ticker": "CRDO",
           "performance": {
-            "d1": 11.519586098729917,
-            "d7": 16.74997449241602,
-            "d30": 75.7839348257405
+            "d1": -5.541810402832903,
+            "d7": 2.5830447955841107,
+            "d30": 66.04232243905864
           }
         },
         {
           "instrument": "GRAHAM CORP",
           "currency": "USD",
-          "weight": 2.53,
+          "weight": 2.61,
           "ticker": "GHM",
           "performance": {
-            "d1": 0.13239357387280215,
-            "d7": 4.953030929262359,
-            "d30": 7.937208966519771
+            "d1": 0.8136727565509982,
+            "d7": 1.2668630240697754,
+            "d30": 8.815464630061886
           }
         },
         {
           "instrument": "NLIGHT INC",
           "currency": "USD",
-          "weight": 2.22,
+          "weight": 2.24,
           "ticker": "LASR",
           "performance": {
-            "d1": 14.937075820756007,
-            "d7": 22.38869394357348,
-            "d30": 29.952567506483586
-          }
-        },
-        {
-          "instrument": "CAMECO CORP",
-          "currency": "USD",
-          "weight": 2.05,
-          "ticker": "CCJ",
-          "performance": {
-            "d1": 2.903639734174246,
-            "d7": 1.5897152202418274,
-            "d30": 3.533263048753099
+            "d1": -1.3419651919976072,
+            "d7": 25.182974426997685,
+            "d30": 28.20864928443938
           }
         },
         {
           "instrument": "GE VERNOVA LLC",
           "currency": "USD",
-          "weight": 2.04,
+          "weight": 2.09,
           "ticker": "GEV",
           "performance": {
-            "d1": 3.1658828887856982,
-            "d7": -0.08100890700150076,
-            "d30": 8.247583840374206
+            "d1": -0.10250639570061892,
+            "d7": -2.1210527019737024,
+            "d30": 8.136623143746435
+          }
+        },
+        {
+          "instrument": "CAMECO CORP",
+          "currency": "USD",
+          "weight": 2.04,
+          "ticker": "CCJ",
+          "performance": {
+            "d1": -2.6718820549197053,
+            "d7": 2.1579601961033035,
+            "d30": 0.7669763724806655
           }
         },
         {
           "instrument": "META PLATFORMS-A",
           "currency": "USD",
-          "weight": 1.86,
+          "weight": 1.92,
           "ticker": "META",
           "performance": {
-            "d1": -1.7666485318944103,
-            "d7": -1.8921689194344116,
-            "d30": -4.9217287525730065
-          }
-        },
-        {
-          "instrument": "NEBIUS GROUP NV",
-          "currency": "USD",
-          "weight": 1.82,
-          "ticker": "NBIS",
-          "performance": {
-            "d1": 5.111552045052603,
-            "d7": 5.486910800951517,
-            "d30": 28.371390312810952
+            "d1": 0.6913159586054318,
+            "d7": -0.323991983183447,
+            "d30": -4.264437490273387
           }
         },
         {
           "instrument": "ELBIT SYSTEMS",
           "currency": "USD",
-          "weight": 1.8,
+          "weight": 1.86,
           "ticker": "ESLT",
           "performance": {
-            "d1": 1.6287173363294327,
-            "d7": -7.325798555588781,
-            "d30": -13.988788560702458
+            "d1": 0.9132661996531066,
+            "d7": -5.7620453481038725,
+            "d30": -13.203277238715195
+          }
+        },
+        {
+          "instrument": "NEBIUS GROUP NV",
+          "currency": "USD",
+          "weight": 1.8,
+          "ticker": "NBIS",
+          "performance": {
+            "d1": -3.7560479655631807,
+            "d7": 1.8133256449575086,
+            "d30": 23.549699318601448
           }
         },
         {
           "instrument": "GENERAL ELECTRIC",
           "currency": "USD",
-          "weight": 1.7,
+          "weight": 1.72,
           "ticker": "GE",
           "performance": {
-            "d1": 1.2182383279632836,
-            "d7": 7.218736914684909,
-            "d30": -2.4582509939367614
+            "d1": -1.103825823024418,
+            "d7": 3.7568089180992414,
+            "d30": -3.534942007695363
           }
         },
         {
           "instrument": "ALLEGHENY TECH",
           "currency": "USD",
-          "weight": 1.58,
+          "weight": 1.61,
           "ticker": "ATI",
           "performance": {
-            "d1": 1.7488504849643816,
-            "d7": 4.7241564112644685,
-            "d30": -0.6473108984022091
+            "d1": -0.09308088350999943,
+            "d7": 3.6433782947834947,
+            "d30": -0.7397892592089117
           }
         },
         {
           "instrument": "CARPENTER TECH",
           "currency": "USD",
-          "weight": 1.54,
+          "weight": 1.56,
           "ticker": "CRS",
           "performance": {
-            "d1": 0.28280739460486704,
-            "d7": 0.3343995181472659,
-            "d30": -1.3874554077781154
+            "d1": -1.0254961827065867,
+            "d7": -4.5686390746807355,
+            "d30": -2.398723288241189
           }
         },
         {
           "instrument": "Howmet Aerospace Inc",
           "currency": "USD",
-          "weight": 1.49,
+          "weight": 1.51,
           "ticker": "HWM",
           "performance": {
-            "d1": 1.1161993794067238,
-            "d7": 14.18460836544908,
-            "d30": 8.323307166821037
-          }
-        },
-        {
-          "instrument": "INTERACTIVE BROK",
-          "currency": "USD",
-          "weight": 1.16,
-          "ticker": "IBKR",
-          "performance": {
-            "d1": 0.5804376969819947,
-            "d7": 3.9035761059167617,
-            "d30": 19.23887762080312
+            "d1": -1.3962924899960094,
+            "d7": 11.20311331117405,
+            "d30": 6.810796963935406
           }
         },
         {
           "instrument": "APPLOVIN CO-CL A",
           "currency": "USD",
-          "weight": 1.16,
+          "weight": 1.21,
           "ticker": "APP",
           "performance": {
-            "d1": 2.10650429877437,
-            "d7": 0.7200028268914416,
-            "d30": 22.23925787189447
+            "d1": 2.564689743173809,
+            "d7": 2.631197313436884,
+            "d30": 25.37431558066674
+          }
+        },
+        {
+          "instrument": "INTERACTIVE BROK",
+          "currency": "USD",
+          "weight": 1.18,
+          "ticker": "IBKR",
+          "performance": {
+            "d1": -0.3768782362702394,
+            "d7": 0.8103833227316448,
+            "d30": 18.789492241877426
           }
         },
         {
           "instrument": "KARMAN HOLDINGS INC",
           "currency": "USD",
-          "weight": 1.01,
+          "weight": 1.1,
           "ticker": "KRMN",
           "performance": {
-            "d1": -3.3201848334935447,
-            "d7": -9.951010456779052,
-            "d30": -28.720307697968796
+            "d1": 6.2223731152690975,
+            "d7": -0.6519317083656939,
+            "d30": -24.285019287520658
           }
         },
         {
           "instrument": "ROBINHOOD MARK-A",
           "currency": "USD",
-          "weight": 0.88,
+          "weight": 0.87,
           "ticker": "HOOD",
           "performance": {
-            "d1": 4.868233233060715,
-            "d7": 5.525794329072764,
-            "d30": 16.750969690607608
+            "d1": -3.1072074451104825,
+            "d7": 1.609759682487244,
+            "d30": 13.123274868142376
           }
         },
         {
@@ -395,20 +403,20 @@
           "weight": 0.83,
           "ticker": "BWXT",
           "performance": {
-            "d1": 2.664004856535196,
-            "d7": -2.713674461315718,
-            "d30": -8.176157021222853
+            "d1": -1.8833022595964422,
+            "d7": 0.32986075901209055,
+            "d30": -9.905477530890462
           }
         },
         {
           "instrument": "KRATOS DEFENSE &",
           "currency": "USD",
-          "weight": 0.56,
+          "weight": 0.57,
           "ticker": "KTOS",
           "performance": {
-            "d1": -1.5546687176897334,
-            "d7": -7.976745684427399,
-            "d30": -18.979237069184318
+            "d1": 0.5965961441906087,
+            "d7": -3.3383906531622154,
+            "d30": -18.49587032154526
           }
         },
         {
@@ -417,9 +425,9 @@
           "weight": 0.5,
           "ticker": "PNG.V",
           "performance": {
-            "d1": -0.2873560462197666,
-            "d7": -10.3359139218958,
-            "d30": -14.95097810055187
+            "d1": -1.7291049649809875,
+            "d7": -3.5360678066469253,
+            "d30": -16.421564960882996
           }
         },
         {
@@ -439,79 +447,114 @@
         "current_week": "2026-05-11/2026-05-17",
         "changes": [
           {
-            "instrument": "LUMENTUM HOL",
-            "previous_weight": 9.74,
-            "current_weight": 10.7,
-            "change_pp": 0.9599999999999991,
+            "instrument": "COHERENT CORP",
+            "previous_weight": 5.05,
+            "current_weight": 5.68,
+            "change_pp": 0.6299999999999999,
             "action": "increased"
           },
           {
-            "instrument": "COHERENT CORP",
-            "previous_weight": 5.05,
-            "current_weight": 5.64,
-            "change_pp": 0.5899999999999999,
+            "instrument": "LUMENTUM HOL",
+            "previous_weight": 9.74,
+            "current_weight": 10.3,
+            "change_pp": 0.5600000000000005,
             "action": "increased"
           },
           {
             "instrument": "MICRON TECH",
             "previous_weight": 3.79,
-            "current_weight": 4.37,
-            "change_pp": 0.5800000000000001,
+            "current_weight": 4.31,
+            "change_pp": 0.5199999999999996,
             "action": "increased"
           },
           {
             "instrument": "NLIGHT INC",
             "previous_weight": 1.84,
-            "current_weight": 2.22,
-            "change_pp": 0.3800000000000001,
+            "current_weight": 2.24,
+            "change_pp": 0.40000000000000013,
             "action": "increased"
           },
           {
             "instrument": "BLOOM ENERGY C-A",
             "previous_weight": 5.68,
-            "current_weight": 5.85,
-            "change_pp": 0.16999999999999993,
-            "action": "increased"
-          },
-          {
-            "instrument": "CREDO TECHNOLOGY GROUP HOLDI",
-            "previous_weight": 2.78,
-            "current_weight": 2.91,
-            "change_pp": 0.13000000000000034,
+            "current_weight": 5.92,
+            "change_pp": 0.2400000000000002,
             "action": "increased"
           },
           {
             "instrument": "CIENA CORP",
             "previous_weight": 5.35,
-            "current_weight": 5.41,
-            "change_pp": 0.0600000000000005,
+            "current_weight": 5.5,
+            "change_pp": 0.15000000000000036,
             "action": "increased"
           },
           {
             "instrument": "VERTIV HOLDINGS",
             "previous_weight": 3.44,
-            "current_weight": 3.49,
-            "change_pp": 0.050000000000000266,
+            "current_weight": 3.57,
+            "change_pp": 0.1299999999999999,
             "action": "increased"
           },
           {
-            "instrument": "ROBINHOOD MARK-A",
-            "previous_weight": 0.88,
-            "current_weight": 0.88,
+            "instrument": "CREDO TECHNOLOGY GROUP HOLDI",
+            "previous_weight": 2.78,
+            "current_weight": 2.81,
+            "change_pp": 0.03000000000000025,
+            "action": "increased"
+          },
+          {
+            "instrument": "NVIDIA CORP",
+            "previous_weight": 5.57,
+            "current_weight": 5.58,
+            "change_pp": 0.009999999999999787,
+            "action": "increased"
+          },
+          {
+            "instrument": "KARMAN HOLDINGS INC",
+            "previous_weight": 1.1,
+            "current_weight": 1.1,
             "change_pp": 0.0,
             "action": "unchanged"
           },
           {
+            "instrument": "ROBINHOOD MARK-A",
+            "previous_weight": 0.88,
+            "current_weight": 0.87,
+            "change_pp": -0.010000000000000009,
+            "action": "trimmed"
+          },
+          {
+            "instrument": "COMFORT SYSTEMS",
+            "previous_weight": 7.18,
+            "current_weight": 7.16,
+            "change_pp": -0.019999999999999574,
+            "action": "trimmed"
+          },
+          {
             "instrument": "KRATOS DEFENSE &",
             "previous_weight": 0.59,
-            "current_weight": 0.56,
-            "change_pp": -0.029999999999999916,
+            "current_weight": 0.57,
+            "change_pp": -0.020000000000000018,
+            "action": "trimmed"
+          },
+          {
+            "instrument": "GE VERNOVA LLC",
+            "previous_weight": 2.12,
+            "current_weight": 2.09,
+            "change_pp": -0.03000000000000025,
             "action": "trimmed"
           },
           {
             "instrument": "INAV - ZAR.CASH",
             "previous_weight": 0.51,
             "current_weight": 0.47,
+            "change_pp": -0.040000000000000036,
+            "action": "trimmed"
+          },
+          {
+            "instrument": "INTERACTIVE BROK",
+            "previous_weight": 1.22,
+            "current_weight": 1.18,
             "change_pp": -0.040000000000000036,
             "action": "trimmed"
           },
@@ -530,10 +573,17 @@
             "action": "trimmed"
           },
           {
-            "instrument": "INTERACTIVE BROK",
-            "previous_weight": 1.22,
-            "current_weight": 1.16,
-            "change_pp": -0.06000000000000005,
+            "instrument": "GRAHAM CORP",
+            "previous_weight": 2.66,
+            "current_weight": 2.61,
+            "change_pp": -0.050000000000000266,
+            "action": "trimmed"
+          },
+          {
+            "instrument": "ELBIT SYSTEMS",
+            "previous_weight": 1.92,
+            "current_weight": 1.86,
+            "change_pp": -0.05999999999999983,
             "action": "trimmed"
           },
           {
@@ -544,366 +594,324 @@
             "action": "trimmed"
           },
           {
-            "instrument": "GE VERNOVA LLC",
-            "previous_weight": 2.12,
-            "current_weight": 2.04,
-            "change_pp": -0.08000000000000007,
-            "action": "trimmed"
-          },
-          {
-            "instrument": "KARMAN HOLDINGS INC",
-            "previous_weight": 1.1,
-            "current_weight": 1.01,
-            "change_pp": -0.09000000000000008,
-            "action": "trimmed"
-          },
-          {
-            "instrument": "CAMECO CORP",
-            "previous_weight": 2.15,
-            "current_weight": 2.05,
-            "change_pp": -0.10000000000000009,
-            "action": "trimmed"
-          },
-          {
-            "instrument": "Howmet Aerospace Inc",
-            "previous_weight": 1.59,
-            "current_weight": 1.49,
-            "change_pp": -0.10000000000000009,
-            "action": "trimmed"
-          },
-          {
-            "instrument": "FORMFACTOR INC",
-            "previous_weight": 5.53,
-            "current_weight": 5.43,
-            "change_pp": -0.10000000000000053,
-            "action": "trimmed"
-          },
-          {
             "instrument": "ALLEGHENY TECH",
             "previous_weight": 1.69,
-            "current_weight": 1.58,
-            "change_pp": -0.10999999999999988,
-            "action": "trimmed"
-          },
-          {
-            "instrument": "NEBIUS GROUP NV",
-            "previous_weight": 1.93,
-            "current_weight": 1.82,
-            "change_pp": -0.10999999999999988,
-            "action": "trimmed"
-          },
-          {
-            "instrument": "ELBIT SYSTEMS",
-            "previous_weight": 1.92,
-            "current_weight": 1.8,
-            "change_pp": -0.11999999999999988,
-            "action": "trimmed"
-          },
-          {
-            "instrument": "COMFORT SYSTEMS",
-            "previous_weight": 7.18,
-            "current_weight": 7.06,
-            "change_pp": -0.1200000000000001,
-            "action": "trimmed"
-          },
-          {
-            "instrument": "GENERAL ELECTRIC",
-            "previous_weight": 1.82,
-            "current_weight": 1.7,
-            "change_pp": -0.1200000000000001,
+            "current_weight": 1.61,
+            "change_pp": -0.07999999999999985,
             "action": "trimmed"
           },
           {
             "instrument": "APPLOVIN CO-CL A",
             "previous_weight": 1.29,
-            "current_weight": 1.16,
-            "change_pp": -0.13000000000000012,
+            "current_weight": 1.21,
+            "change_pp": -0.08000000000000007,
             "action": "trimmed"
           },
           {
-            "instrument": "GRAHAM CORP",
-            "previous_weight": 2.66,
-            "current_weight": 2.53,
-            "change_pp": -0.13000000000000034,
+            "instrument": "Howmet Aerospace Inc",
+            "previous_weight": 1.59,
+            "current_weight": 1.51,
+            "change_pp": -0.08000000000000007,
             "action": "trimmed"
           },
           {
-            "instrument": "NVIDIA CORP",
-            "previous_weight": 5.57,
-            "current_weight": 5.43,
-            "change_pp": -0.14000000000000057,
+            "instrument": "GENERAL ELECTRIC",
+            "previous_weight": 1.82,
+            "current_weight": 1.72,
+            "change_pp": -0.10000000000000009,
             "action": "trimmed"
           },
           {
-            "instrument": "CARPENTER TECH",
-            "previous_weight": 1.7,
-            "current_weight": 1.54,
-            "change_pp": -0.15999999999999992,
+            "instrument": "CAMECO CORP",
+            "previous_weight": 2.15,
+            "current_weight": 2.04,
+            "change_pp": -0.10999999999999988,
             "action": "trimmed"
           },
           {
             "instrument": "META PLATFORMS-A",
             "previous_weight": 2.04,
-            "current_weight": 1.86,
-            "change_pp": -0.17999999999999994,
+            "current_weight": 1.92,
+            "change_pp": -0.1200000000000001,
             "action": "trimmed"
           },
           {
-            "instrument": "ADV ENERGY INDS",
-            "previous_weight": 3.52,
-            "current_weight": 3.33,
-            "change_pp": -0.18999999999999995,
+            "instrument": "NEBIUS GROUP NV",
+            "previous_weight": 1.93,
+            "current_weight": 1.8,
+            "change_pp": -0.1299999999999999,
             "action": "trimmed"
           },
           {
-            "instrument": "ARGAN INC",
-            "previous_weight": 4.79,
-            "current_weight": 4.46,
-            "change_pp": -0.33000000000000007,
+            "instrument": "CARPENTER TECH",
+            "previous_weight": 1.7,
+            "current_weight": 1.56,
+            "change_pp": -0.1399999999999999,
             "action": "trimmed"
           },
           {
             "instrument": "INAV - USD.CASH",
             "previous_weight": 5.86,
-            "current_weight": 5.5,
-            "change_pp": -0.3600000000000003,
+            "current_weight": 5.62,
+            "change_pp": -0.2400000000000002,
+            "action": "trimmed"
+          },
+          {
+            "instrument": "ARGAN INC",
+            "previous_weight": 4.79,
+            "current_weight": 4.54,
+            "change_pp": -0.25,
+            "action": "trimmed"
+          },
+          {
+            "instrument": "ADV ENERGY INDS",
+            "previous_weight": 3.52,
+            "current_weight": 3.26,
+            "change_pp": -0.26000000000000023,
+            "action": "trimmed"
+          },
+          {
+            "instrument": "FORMFACTOR INC",
+            "previous_weight": 5.53,
+            "current_weight": 4.84,
+            "change_pp": -0.6900000000000004,
             "action": "trimmed"
           }
         ]
       },
       "snapshot_changes": {
-        "previous_snapshot": "2026-05-11",
-        "current_snapshot": "2026-05-12",
+        "previous_snapshot": "2026-05-12",
+        "current_snapshot": "2026-05-13",
         "changes": [
           {
-            "instrument": "LUMENTUM HOL",
-            "previous_weight": 9.75,
-            "current_weight": 10.7,
-            "change_pp": 0.9499999999999993,
+            "instrument": "NVIDIA CORP",
+            "previous_weight": 5.43,
+            "current_weight": 5.58,
+            "change_pp": 0.15000000000000036,
             "action": "increased"
           },
           {
-            "instrument": "COHERENT CORP",
-            "previous_weight": 5.25,
-            "current_weight": 5.64,
-            "change_pp": 0.3899999999999997,
+            "instrument": "INAV - USD.CASH",
+            "previous_weight": 5.5,
+            "current_weight": 5.62,
+            "change_pp": 0.1200000000000001,
             "action": "increased"
           },
           {
-            "instrument": "NLIGHT INC",
-            "previous_weight": 2.03,
-            "current_weight": 2.22,
-            "change_pp": 0.1900000000000004,
+            "instrument": "COMFORT SYSTEMS",
+            "previous_weight": 7.06,
+            "current_weight": 7.16,
+            "change_pp": 0.10000000000000053,
             "action": "increased"
           },
           {
-            "instrument": "BLOOM ENERGY C-A",
-            "previous_weight": 5.67,
-            "current_weight": 5.85,
-            "change_pp": 0.17999999999999972,
-            "action": "increased"
-          },
-          {
-            "instrument": "CREDO TECHNOLOGY GROUP HOLDI",
-            "previous_weight": 2.75,
-            "current_weight": 2.91,
-            "change_pp": 0.16000000000000014,
-            "action": "increased"
-          },
-          {
-            "instrument": "VERTIV HOLDINGS",
-            "previous_weight": 3.4,
-            "current_weight": 3.49,
-            "change_pp": 0.0900000000000003,
-            "action": "increased"
-          },
-          {
-            "instrument": "MICRON TECH",
-            "previous_weight": 4.32,
-            "current_weight": 4.37,
-            "change_pp": 0.04999999999999982,
+            "instrument": "KARMAN HOLDINGS INC",
+            "previous_weight": 1.01,
+            "current_weight": 1.1,
+            "change_pp": 0.09000000000000008,
             "action": "increased"
           },
           {
             "instrument": "CIENA CORP",
-            "previous_weight": 5.38,
-            "current_weight": 5.41,
-            "change_pp": 0.03000000000000025,
+            "previous_weight": 5.41,
+            "current_weight": 5.5,
+            "change_pp": 0.08999999999999986,
             "action": "increased"
           },
           {
-            "instrument": "ROBINHOOD MARK-A",
-            "previous_weight": 0.88,
-            "current_weight": 0.88,
+            "instrument": "ARGAN INC",
+            "previous_weight": 4.46,
+            "current_weight": 4.54,
+            "change_pp": 0.08000000000000007,
+            "action": "increased"
+          },
+          {
+            "instrument": "GRAHAM CORP",
+            "previous_weight": 2.53,
+            "current_weight": 2.61,
+            "change_pp": 0.08000000000000007,
+            "action": "increased"
+          },
+          {
+            "instrument": "VERTIV HOLDINGS",
+            "previous_weight": 3.49,
+            "current_weight": 3.57,
+            "change_pp": 0.07999999999999963,
+            "action": "increased"
+          },
+          {
+            "instrument": "BLOOM ENERGY C-A",
+            "previous_weight": 5.85,
+            "current_weight": 5.92,
+            "change_pp": 0.07000000000000028,
+            "action": "increased"
+          },
+          {
+            "instrument": "ELBIT SYSTEMS",
+            "previous_weight": 1.8,
+            "current_weight": 1.86,
+            "change_pp": 0.06000000000000005,
+            "action": "increased"
+          },
+          {
+            "instrument": "META PLATFORMS-A",
+            "previous_weight": 1.86,
+            "current_weight": 1.92,
+            "change_pp": 0.05999999999999983,
+            "action": "increased"
+          },
+          {
+            "instrument": "APPLOVIN CO-CL A",
+            "previous_weight": 1.16,
+            "current_weight": 1.21,
+            "change_pp": 0.050000000000000044,
+            "action": "increased"
+          },
+          {
+            "instrument": "GE VERNOVA LLC",
+            "previous_weight": 2.04,
+            "current_weight": 2.09,
+            "change_pp": 0.04999999999999982,
+            "action": "increased"
+          },
+          {
+            "instrument": "COHERENT CORP",
+            "previous_weight": 5.64,
+            "current_weight": 5.68,
+            "change_pp": 0.040000000000000036,
+            "action": "increased"
+          },
+          {
+            "instrument": "ALLEGHENY TECH",
+            "previous_weight": 1.58,
+            "current_weight": 1.61,
+            "change_pp": 0.030000000000000027,
+            "action": "increased"
+          },
+          {
+            "instrument": "CARPENTER TECH",
+            "previous_weight": 1.54,
+            "current_weight": 1.56,
+            "change_pp": 0.020000000000000018,
+            "action": "increased"
+          },
+          {
+            "instrument": "GENERAL ELECTRIC",
+            "previous_weight": 1.7,
+            "current_weight": 1.72,
+            "change_pp": 0.020000000000000018,
+            "action": "increased"
+          },
+          {
+            "instrument": "Howmet Aerospace Inc",
+            "previous_weight": 1.49,
+            "current_weight": 1.51,
+            "change_pp": 0.020000000000000018,
+            "action": "increased"
+          },
+          {
+            "instrument": "INTERACTIVE BROK",
+            "previous_weight": 1.16,
+            "current_weight": 1.18,
+            "change_pp": 0.020000000000000018,
+            "action": "increased"
+          },
+          {
+            "instrument": "NLIGHT INC",
+            "previous_weight": 2.22,
+            "current_weight": 2.24,
+            "change_pp": 0.020000000000000018,
+            "action": "increased"
+          },
+          {
+            "instrument": "KRATOS DEFENSE &",
+            "previous_weight": 0.56,
+            "current_weight": 0.57,
+            "change_pp": 0.009999999999999898,
+            "action": "increased"
+          },
+          {
+            "instrument": "BWX TECHNOLOGIES",
+            "previous_weight": 0.83,
+            "current_weight": 0.83,
+            "change_pp": 0.0,
+            "action": "unchanged"
+          },
+          {
+            "instrument": "INAV - ZAR.CASH",
+            "previous_weight": 0.47,
+            "current_weight": 0.47,
+            "change_pp": 0.0,
+            "action": "unchanged"
+          },
+          {
+            "instrument": "KRAKEN ROBOTICS INC",
+            "previous_weight": 0.5,
+            "current_weight": 0.5,
             "change_pp": 0.0,
             "action": "unchanged"
           },
           {
             "instrument": "QUANTA SERVICES",
-            "previous_weight": 3.0,
+            "previous_weight": 2.99,
             "current_weight": 2.99,
+            "change_pp": 0.0,
+            "action": "unchanged"
+          },
+          {
+            "instrument": "CAMECO CORP",
+            "previous_weight": 2.05,
+            "current_weight": 2.04,
             "change_pp": -0.009999999999999787,
             "action": "trimmed"
           },
           {
-            "instrument": "NEBIUS GROUP NV",
-            "previous_weight": 1.83,
-            "current_weight": 1.82,
+            "instrument": "ROBINHOOD MARK-A",
+            "previous_weight": 0.88,
+            "current_weight": 0.87,
             "change_pp": -0.010000000000000009,
             "action": "trimmed"
           },
           {
-            "instrument": "BWX TECHNOLOGIES",
-            "previous_weight": 0.85,
-            "current_weight": 0.83,
+            "instrument": "NEBIUS GROUP NV",
+            "previous_weight": 1.82,
+            "current_weight": 1.8,
             "change_pp": -0.020000000000000018,
             "action": "trimmed"
           },
           {
-            "instrument": "APPLOVIN CO-CL A",
-            "previous_weight": 1.19,
-            "current_weight": 1.16,
-            "change_pp": -0.030000000000000027,
-            "action": "trimmed"
-          },
-          {
-            "instrument": "INAV - ZAR.CASH",
-            "previous_weight": 0.5,
-            "current_weight": 0.47,
-            "change_pp": -0.030000000000000027,
-            "action": "trimmed"
-          },
-          {
-            "instrument": "KRAKEN ROBOTICS INC",
-            "previous_weight": 0.53,
-            "current_weight": 0.5,
-            "change_pp": -0.030000000000000027,
-            "action": "trimmed"
-          },
-          {
-            "instrument": "KRATOS DEFENSE &",
-            "previous_weight": 0.6,
-            "current_weight": 0.56,
-            "change_pp": -0.039999999999999925,
-            "action": "trimmed"
-          },
-          {
-            "instrument": "CAMECO CORP",
-            "previous_weight": 2.09,
-            "current_weight": 2.05,
-            "change_pp": -0.040000000000000036,
-            "action": "trimmed"
-          },
-          {
-            "instrument": "ALLEGHENY TECH",
-            "previous_weight": 1.63,
-            "current_weight": 1.58,
-            "change_pp": -0.04999999999999982,
-            "action": "trimmed"
-          },
-          {
-            "instrument": "GE VERNOVA LLC",
-            "previous_weight": 2.09,
-            "current_weight": 2.04,
-            "change_pp": -0.04999999999999982,
-            "action": "trimmed"
-          },
-          {
-            "instrument": "INTERACTIVE BROK",
-            "previous_weight": 1.21,
-            "current_weight": 1.16,
-            "change_pp": -0.050000000000000044,
-            "action": "trimmed"
-          },
-          {
-            "instrument": "ELBIT SYSTEMS",
-            "previous_weight": 1.87,
-            "current_weight": 1.8,
-            "change_pp": -0.07000000000000006,
-            "action": "trimmed"
-          },
-          {
-            "instrument": "GENERAL ELECTRIC",
-            "previous_weight": 1.77,
-            "current_weight": 1.7,
-            "change_pp": -0.07000000000000006,
-            "action": "trimmed"
-          },
-          {
-            "instrument": "Howmet Aerospace Inc",
-            "previous_weight": 1.56,
-            "current_weight": 1.49,
-            "change_pp": -0.07000000000000006,
-            "action": "trimmed"
-          },
-          {
-            "instrument": "CARPENTER TECH",
-            "previous_weight": 1.62,
-            "current_weight": 1.54,
-            "change_pp": -0.08000000000000007,
-            "action": "trimmed"
-          },
-          {
-            "instrument": "COMFORT SYSTEMS",
-            "previous_weight": 7.14,
-            "current_weight": 7.06,
-            "change_pp": -0.08000000000000007,
-            "action": "trimmed"
-          },
-          {
-            "instrument": "KARMAN HOLDINGS INC",
-            "previous_weight": 1.1,
-            "current_weight": 1.01,
-            "change_pp": -0.09000000000000008,
-            "action": "trimmed"
-          },
-          {
-            "instrument": "GRAHAM CORP",
-            "previous_weight": 2.66,
-            "current_weight": 2.53,
-            "change_pp": -0.13000000000000034,
-            "action": "trimmed"
-          },
-          {
-            "instrument": "META PLATFORMS-A",
-            "previous_weight": 2.0,
-            "current_weight": 1.86,
-            "change_pp": -0.1399999999999999,
-            "action": "trimmed"
-          },
-          {
-            "instrument": "FORMFACTOR INC",
-            "previous_weight": 5.58,
-            "current_weight": 5.43,
-            "change_pp": -0.15000000000000036,
-            "action": "trimmed"
-          },
-          {
-            "instrument": "NVIDIA CORP",
-            "previous_weight": 5.6,
-            "current_weight": 5.43,
-            "change_pp": -0.16999999999999993,
+            "instrument": "MICRON TECH",
+            "previous_weight": 4.37,
+            "current_weight": 4.31,
+            "change_pp": -0.0600000000000005,
             "action": "trimmed"
           },
           {
             "instrument": "ADV ENERGY INDS",
-            "previous_weight": 3.53,
-            "current_weight": 3.33,
-            "change_pp": -0.19999999999999973,
+            "previous_weight": 3.33,
+            "current_weight": 3.26,
+            "change_pp": -0.07000000000000028,
             "action": "trimmed"
           },
           {
-            "instrument": "ARGAN INC",
-            "previous_weight": 4.67,
-            "current_weight": 4.46,
-            "change_pp": -0.20999999999999996,
+            "instrument": "CREDO TECHNOLOGY GROUP HOLDI",
+            "previous_weight": 2.91,
+            "current_weight": 2.81,
+            "change_pp": -0.10000000000000009,
             "action": "trimmed"
           },
           {
-            "instrument": "INAV - USD.CASH",
-            "previous_weight": 5.79,
-            "current_weight": 5.5,
-            "change_pp": -0.29000000000000004,
+            "instrument": "LUMENTUM HOL",
+            "previous_weight": 10.7,
+            "current_weight": 10.3,
+            "change_pp": -0.3999999999999986,
+            "action": "trimmed"
+          },
+          {
+            "instrument": "FORMFACTOR INC",
+            "previous_weight": 5.43,
+            "current_weight": 4.84,
+            "change_pp": -0.5899999999999999,
             "action": "trimmed"
           }
         ]
@@ -921,7 +929,7 @@
           {
             "instrument": "LUMENTUM HOL",
             "weights": [
-              10.7
+              10.3
             ],
             "active_months": 1,
             "first_month": "2026-05",
@@ -930,7 +938,7 @@
           {
             "instrument": "COMFORT SYSTEMS",
             "weights": [
-              7.06
+              7.16
             ],
             "active_months": 1,
             "first_month": "2026-05",
@@ -939,7 +947,7 @@
           {
             "instrument": "BLOOM ENERGY C-A",
             "weights": [
-              5.85
+              5.92
             ],
             "active_months": 1,
             "first_month": "2026-05",
@@ -948,7 +956,7 @@
           {
             "instrument": "COHERENT CORP",
             "weights": [
-              5.64
+              5.68
             ],
             "active_months": 1,
             "first_month": "2026-05",
@@ -956,6 +964,24 @@
           },
           {
             "instrument": "INAV - USD.CASH",
+            "weights": [
+              5.62
+            ],
+            "active_months": 1,
+            "first_month": "2026-05",
+            "last_month": "2026-05"
+          },
+          {
+            "instrument": "NVIDIA CORP",
+            "weights": [
+              5.58
+            ],
+            "active_months": 1,
+            "first_month": "2026-05",
+            "last_month": "2026-05"
+          },
+          {
+            "instrument": "CIENA CORP",
             "weights": [
               5.5
             ],
@@ -966,25 +992,7 @@
           {
             "instrument": "FORMFACTOR INC",
             "weights": [
-              5.43
-            ],
-            "active_months": 1,
-            "first_month": "2026-05",
-            "last_month": "2026-05"
-          },
-          {
-            "instrument": "NVIDIA CORP",
-            "weights": [
-              5.43
-            ],
-            "active_months": 1,
-            "first_month": "2026-05",
-            "last_month": "2026-05"
-          },
-          {
-            "instrument": "CIENA CORP",
-            "weights": [
-              5.41
+              4.84
             ],
             "active_months": 1,
             "first_month": "2026-05",
@@ -993,7 +1001,7 @@
           {
             "instrument": "ARGAN INC",
             "weights": [
-              4.46
+              4.54
             ],
             "active_months": 1,
             "first_month": "2026-05",
@@ -1002,7 +1010,7 @@
           {
             "instrument": "MICRON TECH",
             "weights": [
-              4.37
+              4.31
             ],
             "active_months": 1,
             "first_month": "2026-05",
@@ -1011,7 +1019,7 @@
           {
             "instrument": "VERTIV HOLDINGS",
             "weights": [
-              3.49
+              3.57
             ],
             "active_months": 1,
             "first_month": "2026-05",
@@ -1020,7 +1028,7 @@
           {
             "instrument": "ADV ENERGY INDS",
             "weights": [
-              3.33
+              3.26
             ],
             "active_months": 1,
             "first_month": "2026-05",
@@ -1038,7 +1046,7 @@
           {
             "instrument": "CREDO TECHNOLOGY GROUP HOLDI",
             "weights": [
-              2.91
+              2.81
             ],
             "active_months": 1,
             "first_month": "2026-05",
@@ -1047,7 +1055,7 @@
           {
             "instrument": "GRAHAM CORP",
             "weights": [
-              2.53
+              2.61
             ],
             "active_months": 1,
             "first_month": "2026-05",
@@ -1056,16 +1064,7 @@
           {
             "instrument": "NLIGHT INC",
             "weights": [
-              2.22
-            ],
-            "active_months": 1,
-            "first_month": "2026-05",
-            "last_month": "2026-05"
-          },
-          {
-            "instrument": "CAMECO CORP",
-            "weights": [
-              2.05
+              2.24
             ],
             "active_months": 1,
             "first_month": "2026-05",
@@ -1073,6 +1072,15 @@
           },
           {
             "instrument": "GE VERNOVA LLC",
+            "weights": [
+              2.09
+            ],
+            "active_months": 1,
+            "first_month": "2026-05",
+            "last_month": "2026-05"
+          },
+          {
+            "instrument": "CAMECO CORP",
             "weights": [
               2.04
             ],
@@ -1083,6 +1091,15 @@
           {
             "instrument": "META PLATFORMS-A",
             "weights": [
+              1.92
+            ],
+            "active_months": 1,
+            "first_month": "2026-05",
+            "last_month": "2026-05"
+          },
+          {
+            "instrument": "ELBIT SYSTEMS",
+            "weights": [
               1.86
             ],
             "active_months": 1,
@@ -1091,15 +1108,6 @@
           },
           {
             "instrument": "NEBIUS GROUP NV",
-            "weights": [
-              1.82
-            ],
-            "active_months": 1,
-            "first_month": "2026-05",
-            "last_month": "2026-05"
-          },
-          {
-            "instrument": "ELBIT SYSTEMS",
             "weights": [
               1.8
             ],
@@ -1110,7 +1118,7 @@
           {
             "instrument": "GENERAL ELECTRIC",
             "weights": [
-              1.7
+              1.72
             ],
             "active_months": 1,
             "first_month": "2026-05",
@@ -1119,7 +1127,7 @@
           {
             "instrument": "ALLEGHENY TECH",
             "weights": [
-              1.58
+              1.61
             ],
             "active_months": 1,
             "first_month": "2026-05",
@@ -1128,7 +1136,7 @@
           {
             "instrument": "CARPENTER TECH",
             "weights": [
-              1.54
+              1.56
             ],
             "active_months": 1,
             "first_month": "2026-05",
@@ -1137,7 +1145,7 @@
           {
             "instrument": "Howmet Aerospace Inc",
             "weights": [
-              1.49
+              1.51
             ],
             "active_months": 1,
             "first_month": "2026-05",
@@ -1146,7 +1154,7 @@
           {
             "instrument": "APPLOVIN CO-CL A",
             "weights": [
-              1.16
+              1.21
             ],
             "active_months": 1,
             "first_month": "2026-05",
@@ -1155,7 +1163,7 @@
           {
             "instrument": "INTERACTIVE BROK",
             "weights": [
-              1.16
+              1.18
             ],
             "active_months": 1,
             "first_month": "2026-05",
@@ -1164,7 +1172,7 @@
           {
             "instrument": "KARMAN HOLDINGS INC",
             "weights": [
-              1.01
+              1.1
             ],
             "active_months": 1,
             "first_month": "2026-05",
@@ -1173,7 +1181,7 @@
           {
             "instrument": "ROBINHOOD MARK-A",
             "weights": [
-              0.88
+              0.87
             ],
             "active_months": 1,
             "first_month": "2026-05",
@@ -1191,7 +1199,7 @@
           {
             "instrument": "KRATOS DEFENSE &",
             "weights": [
-              0.56
+              0.57
             ],
             "active_months": 1,
             "first_month": "2026-05",
@@ -1221,7 +1229,8 @@
         "snapshots": [
           "2026-05-08",
           "2026-05-11",
-          "2026-05-12"
+          "2026-05-12",
+          "2026-05-13"
         ],
         "rows": [
           {
@@ -1229,12 +1238,13 @@
             "weights": [
               9.74,
               9.75,
-              10.7
+              10.7,
+              10.3
             ],
-            "active_snapshots": 3,
+            "active_snapshots": 4,
             "first_snapshot": "2026-05-08",
-            "last_snapshot": "2026-05-12",
-            "latest_weight": 10.7,
+            "last_snapshot": "2026-05-13",
+            "latest_weight": 10.3,
             "max_weight": 10.7
           },
           {
@@ -1242,12 +1252,13 @@
             "weights": [
               7.18,
               7.14,
-              7.06
+              7.06,
+              7.16
             ],
-            "active_snapshots": 3,
+            "active_snapshots": 4,
             "first_snapshot": "2026-05-08",
-            "last_snapshot": "2026-05-12",
-            "latest_weight": 7.06,
+            "last_snapshot": "2026-05-13",
+            "latest_weight": 7.16,
             "max_weight": 7.18
           },
           {
@@ -1255,38 +1266,41 @@
             "weights": [
               5.68,
               5.67,
-              5.85
+              5.85,
+              5.92
             ],
-            "active_snapshots": 3,
+            "active_snapshots": 4,
             "first_snapshot": "2026-05-08",
-            "last_snapshot": "2026-05-12",
-            "latest_weight": 5.85,
-            "max_weight": 5.85
+            "last_snapshot": "2026-05-13",
+            "latest_weight": 5.92,
+            "max_weight": 5.92
           },
           {
             "instrument": "COHERENT CORP",
             "weights": [
               5.05,
               5.25,
-              5.64
+              5.64,
+              5.68
             ],
-            "active_snapshots": 3,
+            "active_snapshots": 4,
             "first_snapshot": "2026-05-08",
-            "last_snapshot": "2026-05-12",
-            "latest_weight": 5.64,
-            "max_weight": 5.64
+            "last_snapshot": "2026-05-13",
+            "latest_weight": 5.68,
+            "max_weight": 5.68
           },
           {
             "instrument": "INAV - USD.CASH",
             "weights": [
               5.86,
               5.79,
-              5.5
+              5.5,
+              5.62
             ],
-            "active_snapshots": 3,
+            "active_snapshots": 4,
             "first_snapshot": "2026-05-08",
-            "last_snapshot": "2026-05-12",
-            "latest_weight": 5.5,
+            "last_snapshot": "2026-05-13",
+            "latest_weight": 5.62,
             "max_weight": 5.86
           },
           {
@@ -1294,51 +1308,55 @@
             "weights": [
               5.57,
               5.6,
-              5.43
+              5.43,
+              5.58
             ],
-            "active_snapshots": 3,
+            "active_snapshots": 4,
             "first_snapshot": "2026-05-08",
-            "last_snapshot": "2026-05-12",
-            "latest_weight": 5.43,
+            "last_snapshot": "2026-05-13",
+            "latest_weight": 5.58,
             "max_weight": 5.6
-          },
-          {
-            "instrument": "FORMFACTOR INC",
-            "weights": [
-              5.53,
-              5.58,
-              5.43
-            ],
-            "active_snapshots": 3,
-            "first_snapshot": "2026-05-08",
-            "last_snapshot": "2026-05-12",
-            "latest_weight": 5.43,
-            "max_weight": 5.58
           },
           {
             "instrument": "CIENA CORP",
             "weights": [
               5.35,
               5.38,
-              5.41
+              5.41,
+              5.5
             ],
-            "active_snapshots": 3,
+            "active_snapshots": 4,
             "first_snapshot": "2026-05-08",
-            "last_snapshot": "2026-05-12",
-            "latest_weight": 5.41,
-            "max_weight": 5.41
+            "last_snapshot": "2026-05-13",
+            "latest_weight": 5.5,
+            "max_weight": 5.5
+          },
+          {
+            "instrument": "FORMFACTOR INC",
+            "weights": [
+              5.53,
+              5.58,
+              5.43,
+              4.84
+            ],
+            "active_snapshots": 4,
+            "first_snapshot": "2026-05-08",
+            "last_snapshot": "2026-05-13",
+            "latest_weight": 4.84,
+            "max_weight": 5.58
           },
           {
             "instrument": "ARGAN INC",
             "weights": [
               4.79,
               4.67,
-              4.46
+              4.46,
+              4.54
             ],
-            "active_snapshots": 3,
+            "active_snapshots": 4,
             "first_snapshot": "2026-05-08",
-            "last_snapshot": "2026-05-12",
-            "latest_weight": 4.46,
+            "last_snapshot": "2026-05-13",
+            "latest_weight": 4.54,
             "max_weight": 4.79
           },
           {
@@ -1346,12 +1364,13 @@
             "weights": [
               3.79,
               4.32,
-              4.37
+              4.37,
+              4.31
             ],
-            "active_snapshots": 3,
+            "active_snapshots": 4,
             "first_snapshot": "2026-05-08",
-            "last_snapshot": "2026-05-12",
-            "latest_weight": 4.37,
+            "last_snapshot": "2026-05-13",
+            "latest_weight": 4.31,
             "max_weight": 4.37
           },
           {
@@ -1359,25 +1378,27 @@
             "weights": [
               3.44,
               3.4,
-              3.49
+              3.49,
+              3.57
             ],
-            "active_snapshots": 3,
+            "active_snapshots": 4,
             "first_snapshot": "2026-05-08",
-            "last_snapshot": "2026-05-12",
-            "latest_weight": 3.49,
-            "max_weight": 3.49
+            "last_snapshot": "2026-05-13",
+            "latest_weight": 3.57,
+            "max_weight": 3.57
           },
           {
             "instrument": "ADV ENERGY INDS",
             "weights": [
               3.52,
               3.53,
-              3.33
+              3.33,
+              3.26
             ],
-            "active_snapshots": 3,
+            "active_snapshots": 4,
             "first_snapshot": "2026-05-08",
-            "last_snapshot": "2026-05-12",
-            "latest_weight": 3.33,
+            "last_snapshot": "2026-05-13",
+            "latest_weight": 3.26,
             "max_weight": 3.53
           },
           {
@@ -1385,11 +1406,12 @@
             "weights": [
               3.06,
               3.0,
+              2.99,
               2.99
             ],
-            "active_snapshots": 3,
+            "active_snapshots": 4,
             "first_snapshot": "2026-05-08",
-            "last_snapshot": "2026-05-12",
+            "last_snapshot": "2026-05-13",
             "latest_weight": 2.99,
             "max_weight": 3.06
           },
@@ -1398,12 +1420,13 @@
             "weights": [
               2.78,
               2.75,
-              2.91
+              2.91,
+              2.81
             ],
-            "active_snapshots": 3,
+            "active_snapshots": 4,
             "first_snapshot": "2026-05-08",
-            "last_snapshot": "2026-05-12",
-            "latest_weight": 2.91,
+            "last_snapshot": "2026-05-13",
+            "latest_weight": 2.81,
             "max_weight": 2.91
           },
           {
@@ -1411,12 +1434,13 @@
             "weights": [
               2.66,
               2.66,
-              2.53
+              2.53,
+              2.61
             ],
-            "active_snapshots": 3,
+            "active_snapshots": 4,
             "first_snapshot": "2026-05-08",
-            "last_snapshot": "2026-05-12",
-            "latest_weight": 2.53,
+            "last_snapshot": "2026-05-13",
+            "latest_weight": 2.61,
             "max_weight": 2.66
           },
           {
@@ -1424,90 +1448,97 @@
             "weights": [
               1.84,
               2.03,
-              2.22
+              2.22,
+              2.24
             ],
-            "active_snapshots": 3,
+            "active_snapshots": 4,
             "first_snapshot": "2026-05-08",
-            "last_snapshot": "2026-05-12",
-            "latest_weight": 2.22,
-            "max_weight": 2.22
-          },
-          {
-            "instrument": "CAMECO CORP",
-            "weights": [
-              2.15,
-              2.09,
-              2.05
-            ],
-            "active_snapshots": 3,
-            "first_snapshot": "2026-05-08",
-            "last_snapshot": "2026-05-12",
-            "latest_weight": 2.05,
-            "max_weight": 2.15
+            "last_snapshot": "2026-05-13",
+            "latest_weight": 2.24,
+            "max_weight": 2.24
           },
           {
             "instrument": "GE VERNOVA LLC",
             "weights": [
               2.12,
               2.09,
+              2.04,
+              2.09
+            ],
+            "active_snapshots": 4,
+            "first_snapshot": "2026-05-08",
+            "last_snapshot": "2026-05-13",
+            "latest_weight": 2.09,
+            "max_weight": 2.12
+          },
+          {
+            "instrument": "CAMECO CORP",
+            "weights": [
+              2.15,
+              2.09,
+              2.05,
               2.04
             ],
-            "active_snapshots": 3,
+            "active_snapshots": 4,
             "first_snapshot": "2026-05-08",
-            "last_snapshot": "2026-05-12",
+            "last_snapshot": "2026-05-13",
             "latest_weight": 2.04,
-            "max_weight": 2.12
+            "max_weight": 2.15
           },
           {
             "instrument": "META PLATFORMS-A",
             "weights": [
               2.04,
               2.0,
-              1.86
+              1.86,
+              1.92
             ],
-            "active_snapshots": 3,
+            "active_snapshots": 4,
             "first_snapshot": "2026-05-08",
-            "last_snapshot": "2026-05-12",
-            "latest_weight": 1.86,
+            "last_snapshot": "2026-05-13",
+            "latest_weight": 1.92,
             "max_weight": 2.04
-          },
-          {
-            "instrument": "NEBIUS GROUP NV",
-            "weights": [
-              1.93,
-              1.83,
-              1.82
-            ],
-            "active_snapshots": 3,
-            "first_snapshot": "2026-05-08",
-            "last_snapshot": "2026-05-12",
-            "latest_weight": 1.82,
-            "max_weight": 1.93
           },
           {
             "instrument": "ELBIT SYSTEMS",
             "weights": [
               1.92,
               1.87,
+              1.8,
+              1.86
+            ],
+            "active_snapshots": 4,
+            "first_snapshot": "2026-05-08",
+            "last_snapshot": "2026-05-13",
+            "latest_weight": 1.86,
+            "max_weight": 1.92
+          },
+          {
+            "instrument": "NEBIUS GROUP NV",
+            "weights": [
+              1.93,
+              1.83,
+              1.82,
               1.8
             ],
-            "active_snapshots": 3,
+            "active_snapshots": 4,
             "first_snapshot": "2026-05-08",
-            "last_snapshot": "2026-05-12",
+            "last_snapshot": "2026-05-13",
             "latest_weight": 1.8,
-            "max_weight": 1.92
+            "max_weight": 1.93
           },
           {
             "instrument": "GENERAL ELECTRIC",
             "weights": [
               1.82,
               1.77,
-              1.7
+              1.7,
+              1.72
             ],
-            "active_snapshots": 3,
+            "active_snapshots": 4,
             "first_snapshot": "2026-05-08",
-            "last_snapshot": "2026-05-12",
-            "latest_weight": 1.7,
+            "last_snapshot": "2026-05-13",
+            "latest_weight": 1.72,
             "max_weight": 1.82
           },
           {
@@ -1515,12 +1546,13 @@
             "weights": [
               1.69,
               1.63,
-              1.58
+              1.58,
+              1.61
             ],
-            "active_snapshots": 3,
+            "active_snapshots": 4,
             "first_snapshot": "2026-05-08",
-            "last_snapshot": "2026-05-12",
-            "latest_weight": 1.58,
+            "last_snapshot": "2026-05-13",
+            "latest_weight": 1.61,
             "max_weight": 1.69
           },
           {
@@ -1528,12 +1560,13 @@
             "weights": [
               1.7,
               1.62,
-              1.54
+              1.54,
+              1.56
             ],
-            "active_snapshots": 3,
+            "active_snapshots": 4,
             "first_snapshot": "2026-05-08",
-            "last_snapshot": "2026-05-12",
-            "latest_weight": 1.54,
+            "last_snapshot": "2026-05-13",
+            "latest_weight": 1.56,
             "max_weight": 1.7
           },
           {
@@ -1541,12 +1574,13 @@
             "weights": [
               1.59,
               1.56,
-              1.49
+              1.49,
+              1.51
             ],
-            "active_snapshots": 3,
+            "active_snapshots": 4,
             "first_snapshot": "2026-05-08",
-            "last_snapshot": "2026-05-12",
-            "latest_weight": 1.49,
+            "last_snapshot": "2026-05-13",
+            "latest_weight": 1.51,
             "max_weight": 1.59
           },
           {
@@ -1554,12 +1588,13 @@
             "weights": [
               1.29,
               1.19,
-              1.16
+              1.16,
+              1.21
             ],
-            "active_snapshots": 3,
+            "active_snapshots": 4,
             "first_snapshot": "2026-05-08",
-            "last_snapshot": "2026-05-12",
-            "latest_weight": 1.16,
+            "last_snapshot": "2026-05-13",
+            "latest_weight": 1.21,
             "max_weight": 1.29
           },
           {
@@ -1567,12 +1602,13 @@
             "weights": [
               1.22,
               1.21,
-              1.16
+              1.16,
+              1.18
             ],
-            "active_snapshots": 3,
+            "active_snapshots": 4,
             "first_snapshot": "2026-05-08",
-            "last_snapshot": "2026-05-12",
-            "latest_weight": 1.16,
+            "last_snapshot": "2026-05-13",
+            "latest_weight": 1.18,
             "max_weight": 1.22
           },
           {
@@ -1580,12 +1616,13 @@
             "weights": [
               1.1,
               1.1,
-              1.01
+              1.01,
+              1.1
             ],
-            "active_snapshots": 3,
+            "active_snapshots": 4,
             "first_snapshot": "2026-05-08",
-            "last_snapshot": "2026-05-12",
-            "latest_weight": 1.01,
+            "last_snapshot": "2026-05-13",
+            "latest_weight": 1.1,
             "max_weight": 1.1
           },
           {
@@ -1593,12 +1630,13 @@
             "weights": [
               0.88,
               0.88,
-              0.88
+              0.88,
+              0.87
             ],
-            "active_snapshots": 3,
+            "active_snapshots": 4,
             "first_snapshot": "2026-05-08",
-            "last_snapshot": "2026-05-12",
-            "latest_weight": 0.88,
+            "last_snapshot": "2026-05-13",
+            "latest_weight": 0.87,
             "max_weight": 0.88
           },
           {
@@ -1606,11 +1644,12 @@
             "weights": [
               0.88,
               0.85,
+              0.83,
               0.83
             ],
-            "active_snapshots": 3,
+            "active_snapshots": 4,
             "first_snapshot": "2026-05-08",
-            "last_snapshot": "2026-05-12",
+            "last_snapshot": "2026-05-13",
             "latest_weight": 0.83,
             "max_weight": 0.88
           },
@@ -1619,12 +1658,13 @@
             "weights": [
               0.59,
               0.6,
-              0.56
+              0.56,
+              0.57
             ],
-            "active_snapshots": 3,
+            "active_snapshots": 4,
             "first_snapshot": "2026-05-08",
-            "last_snapshot": "2026-05-12",
-            "latest_weight": 0.56,
+            "last_snapshot": "2026-05-13",
+            "latest_weight": 0.57,
             "max_weight": 0.6
           },
           {
@@ -1632,11 +1672,12 @@
             "weights": [
               0.55,
               0.53,
+              0.5,
               0.5
             ],
-            "active_snapshots": 3,
+            "active_snapshots": 4,
             "first_snapshot": "2026-05-08",
-            "last_snapshot": "2026-05-12",
+            "last_snapshot": "2026-05-13",
             "latest_weight": 0.5,
             "max_weight": 0.55
           },
@@ -1645,11 +1686,12 @@
             "weights": [
               0.51,
               0.5,
+              0.47,
               0.47
             ],
-            "active_snapshots": 3,
+            "active_snapshots": 4,
             "first_snapshot": "2026-05-08",
-            "last_snapshot": "2026-05-12",
+            "last_snapshot": "2026-05-13",
             "latest_weight": 0.47,
             "max_weight": 0.51
           }
@@ -1662,32 +1704,32 @@
       "name": "EasyETFs AI World Actively Managed ETF",
       "instrument_page": "https://etfs.easyequities.co.za/easyetf-instrument-page/easyai",
       "market_ticker": "EASYAI.JO",
-      "snapshot_date": "2026-05-12",
-      "captured_at_utc": "2026-05-12T07:43:29Z",
+      "snapshot_date": "2026-05-13",
+      "captured_at_utc": "2026-05-13T11:37:32Z",
       "holdings_count": 31,
-      "total_weight": 99.86,
+      "total_weight": 99.84,
       "latest_nav": {
-        "value_zac": 11494.01,
-        "nav_date": "2026-05-12",
+        "value_zac": 11274.39,
+        "nav_date": "2026-05-13",
         "source_url": "https://etfs.easyequities.co.za/easyetf-instrument-page/easyai",
-        "captured_at_utc": "2026-05-12T07:43:31Z"
+        "captured_at_utc": "2026-05-13T11:37:33Z"
       },
       "latest_market_price": {
         "ticker": "EASYAI.JO",
-        "value_zac": 11551.0,
+        "value_zac": 11546.0,
         "source": "yfinance",
-        "price_at_utc": "2026-05-11T22:00:00Z",
-        "captured_at_utc": "2026-05-12T07:43:33Z"
+        "price_at_utc": "2026-05-12T22:00:00Z",
+        "captured_at_utc": "2026-05-13T11:37:35Z"
       },
       "etf_performance": {
-        "d1": 2.0045920169551312,
-        "d7": 3.2260947274352025,
-        "d30": 22.026199028100567
+        "d1": 2.640234687527787,
+        "d7": 4.763633064150263,
+        "d30": 19.896157840083074
       },
       "estimated_nav_gap": {
         "status": "premium",
-        "difference_zac": 56.98999999999978,
-        "difference_pct": 0.49582347675006183,
+        "difference_zac": 271.6100000000006,
+        "difference_pct": 2.40908820787644,
         "label": "estimated premium/discount to NAV"
       },
       "nav_price_history": [
@@ -1722,216 +1764,246 @@
           "difference_zac": 56.98999999999978,
           "difference_pct": 0.49582347675006183,
           "status": "premium"
+        },
+        {
+          "captured_hour_utc": "2026-05-13T11:00:00Z",
+          "nav_zac": 11274.39,
+          "market_price_zac": 11546.0,
+          "difference_zac": 271.6100000000006,
+          "difference_pct": 2.40908820787644,
+          "status": "premium"
         }
       ],
       "holdings": [
         {
           "instrument": "LUMENTUM HOL",
           "currency": "USD",
-          "weight": 9.48,
+          "weight": 8.98,
           "ticker": "LITE",
           "performance": {
-            "d1": 16.518032755444256,
-            "d7": 7.878667225468883,
-            "d30": 17.36208404622075
+            "d1": -5.765886360509254,
+            "d7": -0.22019812246442116,
+            "d30": 10.595119649790297
           }
         },
         {
           "instrument": "COMFORT SYSTEMS",
           "currency": "USD",
-          "weight": 7.63,
+          "weight": 7.6,
           "ticker": "FIX",
           "performance": {
-            "d1": 4.128827299803084,
-            "d7": 7.454215647169793,
-            "d30": 27.63240652501868
+            "d1": -0.8199747186470763,
+            "d7": 2.494361064382833,
+            "d30": 26.585853058712683
           }
         },
         {
           "instrument": "BLOOM ENERGY C-A",
           "currency": "USD",
-          "weight": 6.02,
+          "weight": 5.98,
           "ticker": "BE",
           "performance": {
-            "d1": 8.769112651987253,
-            "d7": -1.6352553288400018,
-            "d30": 70.31794758573824
+            "d1": -1.1376482225865514,
+            "d7": -4.931413228990267,
+            "d30": 68.38032848228319
           }
         },
         {
           "instrument": "NVIDIA CORP",
           "currency": "USD",
-          "weight": 5.56,
+          "weight": 5.62,
           "ticker": "NVDA",
           "performance": {
-            "d1": 1.9702628035742187,
-            "d7": 10.560261570460616,
-            "d30": 16.333561342870475
-          }
-        },
-        {
-          "instrument": "FORMFACTOR INC",
-          "currency": "USD",
-          "weight": 5.41,
-          "ticker": "FORM",
-          "performance": {
-            "d1": 2.387231281437008,
-            "d7": 12.673959513390297,
-            "d30": 22.29401467234833
-          }
-        },
-        {
-          "instrument": "VICOR CORP",
-          "currency": "USD",
-          "weight": 5.34,
-          "ticker": "VICR",
-          "performance": {
-            "d1": 22.025964036925714,
-            "d7": 24.675319149220698,
-            "d30": 68.61159982002833
+            "d1": 0.6106436032548013,
+            "d7": 12.356233475469146,
+            "d30": 17.043944793649214
           }
         },
         {
           "instrument": "COHERENT CORP",
           "currency": "USD",
-          "weight": 5.25,
+          "weight": 5.2,
           "ticker": "COHR",
           "performance": {
-            "d1": 13.252398550856558,
-            "d7": 15.095936700612288,
-            "d30": 23.47642355818089
+            "d1": -1.4959552896465333,
+            "d7": 11.402018743226305,
+            "d30": 21.629271468495936
+          }
+        },
+        {
+          "instrument": "VICOR CORP",
+          "currency": "USD",
+          "weight": 5.02,
+          "ticker": "VICR",
+          "performance": {
+            "d1": -6.527988635478266,
+            "d7": 9.969545520876455,
+            "d30": 57.6046537456788
+          }
+        },
+        {
+          "instrument": "FORMFACTOR INC",
+          "currency": "USD",
+          "weight": 4.74,
+          "ticker": "FORM",
+          "performance": {
+            "d1": -12.800522064270348,
+            "d7": -8.951721191406248,
+            "d30": 6.639742340932364
           }
         },
         {
           "instrument": "GE VERNOVA LLC",
           "currency": "USD",
-          "weight": 4.5,
+          "weight": 4.52,
           "ticker": "GEV",
           "performance": {
-            "d1": 3.1658828887856982,
-            "d7": -0.08100890700150076,
-            "d30": 8.247583840374206
+            "d1": -0.10250639570061892,
+            "d7": -2.1210527019737024,
+            "d30": 8.136623143746435
           }
         },
         {
           "instrument": "MICRON TECH",
           "currency": "USD",
-          "weight": 4.03,
+          "weight": 3.91,
           "ticker": "MU",
           "performance": {
-            "d1": 6.496969736595304,
-            "d7": 37.97033571823432,
-            "d30": 89.0986528483424
+            "d1": -3.614851619104964,
+            "d7": 19.74070641566046,
+            "d30": 82.26301713414841
           }
         },
         {
           "instrument": "ARGAN INC",
           "currency": "USD",
-          "weight": 3.7,
+          "weight": 3.71,
           "ticker": "AGX",
           "performance": {
-            "d1": 0.47922995896056975,
-            "d7": -1.9551035509563608,
-            "d30": 13.287589209690331
-          }
-        },
-        {
-          "instrument": "ADV ENERGY INDS",
-          "currency": "USD",
-          "weight": 3.58,
-          "ticker": "AEIS",
-          "performance": {
-            "d1": -0.6354241058462162,
-            "d7": -8.28359498222666,
-            "d30": -6.498264797134157
+            "d1": -0.3672181785321138,
+            "d7": -5.415276421440973,
+            "d30": 12.871576588091571
           }
         },
         {
           "instrument": "FABRINET",
           "currency": "USD",
-          "weight": 3.56,
+          "weight": 3.5,
           "ticker": "FN",
           "performance": {
-            "d1": 4.547063911256166,
-            "d7": -9.511000230858812,
-            "d30": -1.9029458706024793
+            "d1": -2.317067440964493,
+            "d7": -3.9132582034245744,
+            "d30": -4.17592077238006
+          }
+        },
+        {
+          "instrument": "ADV ENERGY INDS",
+          "currency": "USD",
+          "weight": 3.44,
+          "ticker": "AEIS",
+          "performance": {
+            "d1": -4.380648432119349,
+            "d7": -1.7967165371489235,
+            "d30": -10.594247094302878
           }
         },
         {
           "instrument": "CIENA CORP",
           "currency": "USD",
-          "weight": 3.22,
+          "weight": 3.21,
           "ticker": "CIEN",
           "performance": {
-            "d1": 6.086367014489813,
-            "d7": 7.977560334708977,
-            "d30": 17.227124628458835
+            "d1": -0.7429354062495674,
+            "d7": 5.947686904830207,
+            "d30": 16.356202813865718
           }
         },
         {
           "instrument": "QUANTA SERVICES",
           "currency": "USD",
-          "weight": 3.21,
+          "weight": 3.16,
           "ticker": "PWR",
           "performance": {
-            "d1": 4.883222131921139,
-            "d7": 3.1742648182956135,
-            "d30": 33.48708904547377
+            "d1": -1.9926293515219684,
+            "d7": -0.7516735012606302,
+            "d30": 30.8271861286614
           }
         },
         {
           "instrument": "AXT INC",
           "currency": "USD",
-          "weight": 3.04,
+          "weight": 2.99,
           "ticker": "AXTI",
           "performance": {
-            "d1": 8.121344876824876,
-            "d7": 18.68867694206957,
-            "d30": 96.02679488994616
+            "d1": -2.313008575776787,
+            "d7": 14.272429603497084,
+            "d30": 91.49267831332133
+          }
+        },
+        {
+          "instrument": "INAV - ZAR.CASH",
+          "currency": "ZAR",
+          "weight": 2.86,
+          "ticker": null,
+          "performance": {
+            "d1": null,
+            "d7": null,
+            "d30": null
           }
         },
         {
           "instrument": "CREDO TECHNOLOGY GROUP HOLDI",
           "currency": "USD",
-          "weight": 2.77,
+          "weight": 2.63,
           "ticker": "CRDO",
           "performance": {
-            "d1": 11.519586098729917,
-            "d7": 16.74997449241602,
-            "d30": 75.7839348257405
+            "d1": -5.541810402832903,
+            "d7": 2.5830447955841107,
+            "d30": 66.04232243905864
           }
         },
         {
           "instrument": "ONTO INNOVATION",
           "currency": "USD",
-          "weight": 2.65,
+          "weight": 2.57,
           "ticker": "ONTO",
           "performance": {
-            "d1": 1.001150613519397,
-            "d7": -4.016023792199686,
-            "d30": 11.814565075283978
+            "d1": -3.331937582889266,
+            "d7": -8.87213034707992,
+            "d30": 8.088973558396395
           }
         },
         {
           "instrument": "CAMTEK LTD",
           "currency": "USD",
-          "weight": 2.6,
+          "weight": 2.2,
           "ticker": "CAMT",
           "performance": {
-            "d1": 0.9341313079939129,
-            "d7": 13.546056094650428,
-            "d30": 18.867821099461636
+            "d1": -15.824737669238797,
+            "d7": -11.445229419224322,
+            "d30": 0.057300237331747716
           }
         },
         {
           "instrument": "BWX TECHNOLOGIES",
           "currency": "USD",
-          "weight": 2.23,
+          "weight": 2.2,
           "ticker": "BWXT",
           "performance": {
-            "d1": 2.664004856535196,
-            "d7": -2.713674461315718,
-            "d30": -8.176157021222853
+            "d1": -1.8833022595964422,
+            "d7": 0.32986075901209055,
+            "d30": -9.905477530890462
+          }
+        },
+        {
+          "instrument": "META PLATFORMS-A",
+          "currency": "USD",
+          "weight": 2.19,
+          "ticker": "META",
+          "performance": {
+            "d1": 0.6913159586054318,
+            "d7": -0.323991983183447,
+            "d30": -4.264437490273387
           }
         },
         {
@@ -1940,15 +2012,15 @@
           "weight": 2.19,
           "ticker": "VRT",
           "performance": {
-            "d1": 8.22131720642214,
-            "d7": 11.164157497885018,
-            "d30": 24.67216688362266
+            "d1": -0.21472290609084732,
+            "d7": 7.656447337488426,
+            "d30": 24.404467183803714
           }
         },
         {
           "instrument": "MKS INC",
           "currency": "USD",
-          "weight": 2.18,
+          "weight": 2.14,
           "ticker": null,
           "performance": {
             "d1": null,
@@ -1957,69 +2029,58 @@
           }
         },
         {
-          "instrument": "META PLATFORMS-A",
+          "instrument": "AMPHENOL CORP",
           "currency": "USD",
-          "weight": 2.17,
-          "ticker": "META",
+          "weight": 1.89,
+          "ticker": "APH",
           "performance": {
-            "d1": -1.7666485318944103,
-            "d7": -1.8921689194344116,
-            "d30": -4.9217287525730065
+            "d1": 4.409244281909963,
+            "d7": -6.4525565420229025,
+            "d30": -9.150974958023427
           }
         },
         {
           "instrument": "NEBIUS GROUP NV",
           "currency": "USD",
-          "weight": 1.83,
+          "weight": 1.77,
           "ticker": "NBIS",
           "performance": {
-            "d1": 5.111552045052603,
-            "d7": 5.486910800951517,
-            "d30": 28.371390312810952
-          }
-        },
-        {
-          "instrument": "AMPHENOL CORP",
-          "currency": "USD",
-          "weight": 1.8,
-          "ticker": "APH",
-          "performance": {
-            "d1": -4.342730306651255,
-            "d7": -13.160318881969912,
-            "d30": -12.9875657401754
+            "d1": -3.7560479655631807,
+            "d7": 1.8133256449575086,
+            "d30": 23.549699318601448
           }
         },
         {
           "instrument": "GENERAL ELECTRIC",
           "currency": "USD",
-          "weight": 1.39,
+          "weight": 1.38,
           "ticker": "GE",
           "performance": {
-            "d1": 1.2182383279632836,
-            "d7": 7.218736914684909,
-            "d30": -2.4582509939367614
+            "d1": -1.103825823024418,
+            "d7": 3.7568089180992414,
+            "d30": -3.534942007695363
           }
         },
         {
           "instrument": "IREN LTD",
           "currency": "USD",
-          "weight": 1.28,
+          "weight": 1.32,
           "ticker": "IREN",
           "performance": {
-            "d1": -9.885619545162182,
-            "d7": 11.459179539406916,
-            "d30": 40.259414938750425
+            "d1": 2.5566632971904424,
+            "d7": 3.3248075246957054,
+            "d30": 43.845375921343496
           }
         },
         {
           "instrument": "APPLOVIN CO-CL A",
           "currency": "USD",
-          "weight": 1.28,
+          "weight": 1.32,
           "ticker": "APP",
           "performance": {
-            "d1": 2.10650429877437,
-            "d7": 0.7200028268914416,
-            "d30": 22.23925787189447
+            "d1": 2.564689743173809,
+            "d7": 2.631197313436884,
+            "d30": 25.37431558066674
           }
         },
         {
@@ -2028,31 +2089,20 @@
           "weight": 0.82,
           "ticker": "AXON",
           "performance": {
-            "d1": -2.274873122608223,
-            "d7": 0.15491691468254576,
-            "d30": 13.996641778470643
+            "d1": -0.1774981528181896,
+            "d7": 3.4314233707714914,
+            "d30": 13.794299845039081
           }
         },
         {
           "instrument": "KARMAN HOLDINGS INC",
           "currency": "USD",
-          "weight": 0.73,
+          "weight": 0.78,
           "ticker": "KRMN",
           "performance": {
-            "d1": -3.3201848334935447,
-            "d7": -9.951010456779052,
-            "d30": -28.720307697968796
-          }
-        },
-        {
-          "instrument": "INAV - ZAR.CASH",
-          "currency": "ZAR",
-          "weight": 0.41,
-          "ticker": null,
-          "performance": {
-            "d1": null,
-            "d7": null,
-            "d30": null
+            "d1": 6.2223731152690975,
+            "d7": -0.6519317083656939,
+            "d30": -24.285019287520658
           }
         },
         {
@@ -2072,59 +2122,59 @@
         "current_week": "2026-05-11/2026-05-17",
         "changes": [
           {
-            "instrument": "LUMENTUM HOL",
-            "previous_weight": 8.62,
-            "current_weight": 9.48,
-            "change_pp": 0.8600000000000012,
-            "action": "increased"
-          },
-          {
-            "instrument": "VICOR CORP",
-            "previous_weight": 4.78,
-            "current_weight": 5.34,
-            "change_pp": 0.5599999999999996,
-            "action": "increased"
-          },
-          {
-            "instrument": "MICRON TECH",
-            "previous_weight": 3.51,
-            "current_weight": 4.03,
-            "change_pp": 0.5200000000000005,
+            "instrument": "INAV - ZAR.CASH",
+            "previous_weight": 0.45,
+            "current_weight": 2.86,
+            "change_pp": 2.4099999999999997,
             "action": "increased"
           },
           {
             "instrument": "COHERENT CORP",
             "previous_weight": 4.73,
-            "current_weight": 5.25,
-            "change_pp": 0.5199999999999996,
+            "current_weight": 5.2,
+            "change_pp": 0.46999999999999975,
+            "action": "increased"
+          },
+          {
+            "instrument": "MICRON TECH",
+            "previous_weight": 3.51,
+            "current_weight": 3.91,
+            "change_pp": 0.40000000000000036,
+            "action": "increased"
+          },
+          {
+            "instrument": "LUMENTUM HOL",
+            "previous_weight": 8.62,
+            "current_weight": 8.98,
+            "change_pp": 0.3600000000000012,
+            "action": "increased"
+          },
+          {
+            "instrument": "VICOR CORP",
+            "previous_weight": 4.78,
+            "current_weight": 5.02,
+            "change_pp": 0.23999999999999932,
             "action": "increased"
           },
           {
             "instrument": "AXT INC",
             "previous_weight": 2.81,
-            "current_weight": 3.04,
-            "change_pp": 0.22999999999999998,
+            "current_weight": 2.99,
+            "change_pp": 0.18000000000000016,
             "action": "increased"
           },
           {
             "instrument": "BLOOM ENERGY C-A",
             "previous_weight": 5.87,
-            "current_weight": 6.02,
-            "change_pp": 0.14999999999999947,
-            "action": "increased"
-          },
-          {
-            "instrument": "CREDO TECHNOLOGY GROUP HOLDI",
-            "previous_weight": 2.66,
-            "current_weight": 2.77,
-            "change_pp": 0.10999999999999988,
+            "current_weight": 5.98,
+            "change_pp": 0.11000000000000032,
             "action": "increased"
           },
           {
             "instrument": "CIENA CORP",
             "previous_weight": 3.19,
-            "current_weight": 3.22,
-            "change_pp": 0.03000000000000025,
+            "current_weight": 3.21,
+            "change_pp": 0.020000000000000018,
             "action": "increased"
           },
           {
@@ -2135,13 +2185,6 @@
             "action": "increased"
           },
           {
-            "instrument": "CAMTEK LTD",
-            "previous_weight": 2.59,
-            "current_weight": 2.6,
-            "change_pp": 0.010000000000000231,
-            "action": "increased"
-          },
-          {
             "instrument": "INAV - USD.CASH",
             "previous_weight": 0.0,
             "current_weight": 0.0,
@@ -2149,73 +2192,52 @@
             "action": "unchanged"
           },
           {
-            "instrument": "MKS INC",
-            "previous_weight": 2.2,
-            "current_weight": 2.18,
+            "instrument": "KARMAN HOLDINGS INC",
+            "previous_weight": 0.8,
+            "current_weight": 0.78,
             "change_pp": -0.020000000000000018,
             "action": "trimmed"
           },
           {
-            "instrument": "INAV - ZAR.CASH",
-            "previous_weight": 0.45,
-            "current_weight": 0.41,
-            "change_pp": -0.040000000000000036,
+            "instrument": "CREDO TECHNOLOGY GROUP HOLDI",
+            "previous_weight": 2.66,
+            "current_weight": 2.63,
+            "change_pp": -0.03000000000000025,
             "action": "trimmed"
           },
           {
-            "instrument": "ONTO INNOVATION",
-            "previous_weight": 2.7,
-            "current_weight": 2.65,
-            "change_pp": -0.050000000000000266,
-            "action": "trimmed"
-          },
-          {
-            "instrument": "KARMAN HOLDINGS INC",
-            "previous_weight": 0.8,
-            "current_weight": 0.73,
-            "change_pp": -0.07000000000000006,
-            "action": "trimmed"
-          },
-          {
-            "instrument": "QUANTA SERVICES",
-            "previous_weight": 3.31,
-            "current_weight": 3.21,
-            "change_pp": -0.10000000000000009,
-            "action": "trimmed"
-          },
-          {
-            "instrument": "GENERAL ELECTRIC",
-            "previous_weight": 1.5,
-            "current_weight": 1.39,
-            "change_pp": -0.1100000000000001,
-            "action": "trimmed"
-          },
-          {
-            "instrument": "NEBIUS GROUP NV",
-            "previous_weight": 1.95,
-            "current_weight": 1.83,
-            "change_pp": -0.11999999999999988,
-            "action": "trimmed"
-          },
-          {
-            "instrument": "FABRINET",
-            "previous_weight": 3.68,
-            "current_weight": 3.56,
-            "change_pp": -0.1200000000000001,
-            "action": "trimmed"
-          },
-          {
-            "instrument": "FORMFACTOR INC",
-            "previous_weight": 5.54,
-            "current_weight": 5.41,
-            "change_pp": -0.1299999999999999,
+            "instrument": "MKS INC",
+            "previous_weight": 2.2,
+            "current_weight": 2.14,
+            "change_pp": -0.06000000000000005,
             "action": "trimmed"
           },
           {
             "instrument": "IREN LTD",
             "previous_weight": 1.41,
-            "current_weight": 1.28,
-            "change_pp": -0.1299999999999999,
+            "current_weight": 1.32,
+            "change_pp": -0.08999999999999986,
+            "action": "trimmed"
+          },
+          {
+            "instrument": "APPLOVIN CO-CL A",
+            "previous_weight": 1.43,
+            "current_weight": 1.32,
+            "change_pp": -0.10999999999999988,
+            "action": "trimmed"
+          },
+          {
+            "instrument": "GENERAL ELECTRIC",
+            "previous_weight": 1.5,
+            "current_weight": 1.38,
+            "change_pp": -0.1200000000000001,
+            "action": "trimmed"
+          },
+          {
+            "instrument": "NVIDIA CORP",
+            "previous_weight": 5.74,
+            "current_weight": 5.62,
+            "change_pp": -0.1200000000000001,
             "action": "trimmed"
           },
           {
@@ -2226,136 +2248,171 @@
             "action": "trimmed"
           },
           {
-            "instrument": "APPLOVIN CO-CL A",
-            "previous_weight": 1.43,
-            "current_weight": 1.28,
+            "instrument": "ONTO INNOVATION",
+            "previous_weight": 2.7,
+            "current_weight": 2.57,
+            "change_pp": -0.13000000000000034,
+            "action": "trimmed"
+          },
+          {
+            "instrument": "QUANTA SERVICES",
+            "previous_weight": 3.31,
+            "current_weight": 3.16,
             "change_pp": -0.1499999999999999,
             "action": "trimmed"
           },
           {
             "instrument": "BWX TECHNOLOGIES",
             "previous_weight": 2.38,
-            "current_weight": 2.23,
-            "change_pp": -0.1499999999999999,
-            "action": "trimmed"
-          },
-          {
-            "instrument": "COMFORT SYSTEMS",
-            "previous_weight": 7.81,
-            "current_weight": 7.63,
+            "current_weight": 2.2,
             "change_pp": -0.17999999999999972,
             "action": "trimmed"
           },
           {
-            "instrument": "NVIDIA CORP",
-            "previous_weight": 5.74,
-            "current_weight": 5.56,
-            "change_pp": -0.1800000000000006,
+            "instrument": "NEBIUS GROUP NV",
+            "previous_weight": 1.95,
+            "current_weight": 1.77,
+            "change_pp": -0.17999999999999994,
+            "action": "trimmed"
+          },
+          {
+            "instrument": "FABRINET",
+            "previous_weight": 3.68,
+            "current_weight": 3.5,
+            "change_pp": -0.18000000000000016,
             "action": "trimmed"
           },
           {
             "instrument": "GE VERNOVA LLC",
             "previous_weight": 4.7,
-            "current_weight": 4.5,
-            "change_pp": -0.20000000000000018,
-            "action": "trimmed"
-          },
-          {
-            "instrument": "ADV ENERGY INDS",
-            "previous_weight": 3.8,
-            "current_weight": 3.58,
-            "change_pp": -0.21999999999999975,
+            "current_weight": 4.52,
+            "change_pp": -0.1800000000000006,
             "action": "trimmed"
           },
           {
             "instrument": "META PLATFORMS-A",
             "previous_weight": 2.39,
-            "current_weight": 2.17,
-            "change_pp": -0.2200000000000002,
+            "current_weight": 2.19,
+            "change_pp": -0.20000000000000018,
             "action": "trimmed"
           },
           {
-            "instrument": "ARGAN INC",
-            "previous_weight": 4.01,
-            "current_weight": 3.7,
-            "change_pp": -0.3099999999999996,
+            "instrument": "COMFORT SYSTEMS",
+            "previous_weight": 7.81,
+            "current_weight": 7.6,
+            "change_pp": -0.20999999999999996,
             "action": "trimmed"
           },
           {
             "instrument": "AMPHENOL CORP",
             "previous_weight": 2.15,
-            "current_weight": 1.8,
-            "change_pp": -0.34999999999999987,
+            "current_weight": 1.89,
+            "change_pp": -0.26,
+            "action": "trimmed"
+          },
+          {
+            "instrument": "ARGAN INC",
+            "previous_weight": 4.01,
+            "current_weight": 3.71,
+            "change_pp": -0.2999999999999998,
+            "action": "trimmed"
+          },
+          {
+            "instrument": "ADV ENERGY INDS",
+            "previous_weight": 3.8,
+            "current_weight": 3.44,
+            "change_pp": -0.3599999999999999,
+            "action": "trimmed"
+          },
+          {
+            "instrument": "CAMTEK LTD",
+            "previous_weight": 2.59,
+            "current_weight": 2.2,
+            "change_pp": -0.3899999999999997,
+            "action": "trimmed"
+          },
+          {
+            "instrument": "FORMFACTOR INC",
+            "previous_weight": 5.54,
+            "current_weight": 4.74,
+            "change_pp": -0.7999999999999998,
             "action": "trimmed"
           }
         ]
       },
       "snapshot_changes": {
-        "previous_snapshot": "2026-05-11",
-        "current_snapshot": "2026-05-12",
+        "previous_snapshot": "2026-05-12",
+        "current_snapshot": "2026-05-13",
         "changes": [
           {
-            "instrument": "LUMENTUM HOL",
-            "previous_weight": 8.61,
-            "current_weight": 9.48,
-            "change_pp": 0.870000000000001,
+            "instrument": "INAV - ZAR.CASH",
+            "previous_weight": 0.41,
+            "current_weight": 2.86,
+            "change_pp": 2.4499999999999997,
             "action": "increased"
           },
           {
-            "instrument": "VICOR CORP",
-            "previous_weight": 4.63,
-            "current_weight": 5.34,
-            "change_pp": 0.71,
+            "instrument": "AMPHENOL CORP",
+            "previous_weight": 1.8,
+            "current_weight": 1.89,
+            "change_pp": 0.08999999999999986,
             "action": "increased"
           },
           {
-            "instrument": "COHERENT CORP",
-            "previous_weight": 4.91,
-            "current_weight": 5.25,
-            "change_pp": 0.33999999999999986,
+            "instrument": "NVIDIA CORP",
+            "previous_weight": 5.56,
+            "current_weight": 5.62,
+            "change_pp": 0.0600000000000005,
             "action": "increased"
           },
           {
-            "instrument": "BLOOM ENERGY C-A",
-            "previous_weight": 5.85,
-            "current_weight": 6.02,
-            "change_pp": 0.16999999999999993,
+            "instrument": "KARMAN HOLDINGS INC",
+            "previous_weight": 0.73,
+            "current_weight": 0.78,
+            "change_pp": 0.050000000000000044,
             "action": "increased"
           },
           {
-            "instrument": "CREDO TECHNOLOGY GROUP HOLDI",
-            "previous_weight": 2.63,
-            "current_weight": 2.77,
-            "change_pp": 0.14000000000000012,
+            "instrument": "APPLOVIN CO-CL A",
+            "previous_weight": 1.28,
+            "current_weight": 1.32,
+            "change_pp": 0.040000000000000036,
             "action": "increased"
           },
           {
-            "instrument": "AXT INC",
-            "previous_weight": 2.98,
-            "current_weight": 3.04,
-            "change_pp": 0.06000000000000005,
+            "instrument": "IREN LTD",
+            "previous_weight": 1.28,
+            "current_weight": 1.32,
+            "change_pp": 0.040000000000000036,
             "action": "increased"
           },
           {
-            "instrument": "VERTIV HOLDINGS",
-            "previous_weight": 2.14,
+            "instrument": "META PLATFORMS-A",
+            "previous_weight": 2.17,
             "current_weight": 2.19,
-            "change_pp": 0.04999999999999982,
+            "change_pp": 0.020000000000000018,
             "action": "increased"
           },
           {
-            "instrument": "MICRON TECH",
-            "previous_weight": 4.0,
-            "current_weight": 4.03,
-            "change_pp": 0.03000000000000025,
+            "instrument": "GE VERNOVA LLC",
+            "previous_weight": 4.5,
+            "current_weight": 4.52,
+            "change_pp": 0.019999999999999574,
             "action": "increased"
           },
           {
-            "instrument": "CIENA CORP",
-            "previous_weight": 3.21,
-            "current_weight": 3.22,
-            "change_pp": 0.010000000000000231,
+            "instrument": "ARGAN INC",
+            "previous_weight": 3.7,
+            "current_weight": 3.71,
+            "change_pp": 0.009999999999999787,
             "action": "increased"
+          },
+          {
+            "instrument": "AXON ENTERPRISE",
+            "previous_weight": 0.82,
+            "current_weight": 0.82,
+            "change_pp": 0.0,
+            "action": "unchanged"
           },
           {
             "instrument": "INAV - USD.CASH",
@@ -2365,150 +2422,143 @@
             "action": "unchanged"
           },
           {
-            "instrument": "NEBIUS GROUP NV",
-            "previous_weight": 1.84,
-            "current_weight": 1.83,
+            "instrument": "VERTIV HOLDINGS",
+            "previous_weight": 2.19,
+            "current_weight": 2.19,
+            "change_pp": 0.0,
+            "action": "unchanged"
+          },
+          {
+            "instrument": "GENERAL ELECTRIC",
+            "previous_weight": 1.39,
+            "current_weight": 1.38,
             "change_pp": -0.010000000000000009,
             "action": "trimmed"
           },
           {
-            "instrument": "INAV - ZAR.CASH",
-            "previous_weight": 0.44,
-            "current_weight": 0.41,
-            "change_pp": -0.030000000000000027,
-            "action": "trimmed"
-          },
-          {
-            "instrument": "QUANTA SERVICES",
-            "previous_weight": 3.24,
+            "instrument": "CIENA CORP",
+            "previous_weight": 3.22,
             "current_weight": 3.21,
-            "change_pp": -0.03000000000000025,
-            "action": "trimmed"
-          },
-          {
-            "instrument": "APPLOVIN CO-CL A",
-            "previous_weight": 1.32,
-            "current_weight": 1.28,
-            "change_pp": -0.040000000000000036,
-            "action": "trimmed"
-          },
-          {
-            "instrument": "FABRINET",
-            "previous_weight": 3.6,
-            "current_weight": 3.56,
-            "change_pp": -0.040000000000000036,
-            "action": "trimmed"
-          },
-          {
-            "instrument": "AXON ENTERPRISE",
-            "previous_weight": 0.88,
-            "current_weight": 0.82,
-            "change_pp": -0.06000000000000005,
-            "action": "trimmed"
-          },
-          {
-            "instrument": "GENERAL ELECTRIC",
-            "previous_weight": 1.45,
-            "current_weight": 1.39,
-            "change_pp": -0.06000000000000005,
+            "change_pp": -0.010000000000000231,
             "action": "trimmed"
           },
           {
             "instrument": "BWX TECHNOLOGIES",
-            "previous_weight": 2.3,
-            "current_weight": 2.23,
-            "change_pp": -0.06999999999999984,
-            "action": "trimmed"
-          },
-          {
-            "instrument": "KARMAN HOLDINGS INC",
-            "previous_weight": 0.8,
-            "current_weight": 0.73,
-            "change_pp": -0.07000000000000006,
-            "action": "trimmed"
-          },
-          {
-            "instrument": "MKS INC",
-            "previous_weight": 2.26,
-            "current_weight": 2.18,
-            "change_pp": -0.07999999999999963,
-            "action": "trimmed"
-          },
-          {
-            "instrument": "GE VERNOVA LLC",
-            "previous_weight": 4.61,
-            "current_weight": 4.5,
-            "change_pp": -0.11000000000000032,
+            "previous_weight": 2.23,
+            "current_weight": 2.2,
+            "change_pp": -0.029999999999999805,
             "action": "trimmed"
           },
           {
             "instrument": "COMFORT SYSTEMS",
-            "previous_weight": 7.75,
-            "current_weight": 7.63,
-            "change_pp": -0.1200000000000001,
+            "previous_weight": 7.63,
+            "current_weight": 7.6,
+            "change_pp": -0.03000000000000025,
+            "action": "trimmed"
+          },
+          {
+            "instrument": "BLOOM ENERGY C-A",
+            "previous_weight": 6.02,
+            "current_weight": 5.98,
+            "change_pp": -0.03999999999999915,
+            "action": "trimmed"
+          },
+          {
+            "instrument": "MKS INC",
+            "previous_weight": 2.18,
+            "current_weight": 2.14,
+            "change_pp": -0.040000000000000036,
+            "action": "trimmed"
+          },
+          {
+            "instrument": "AXT INC",
+            "previous_weight": 3.04,
+            "current_weight": 2.99,
+            "change_pp": -0.04999999999999982,
+            "action": "trimmed"
+          },
+          {
+            "instrument": "COHERENT CORP",
+            "previous_weight": 5.25,
+            "current_weight": 5.2,
+            "change_pp": -0.04999999999999982,
+            "action": "trimmed"
+          },
+          {
+            "instrument": "QUANTA SERVICES",
+            "previous_weight": 3.21,
+            "current_weight": 3.16,
+            "change_pp": -0.04999999999999982,
+            "action": "trimmed"
+          },
+          {
+            "instrument": "FABRINET",
+            "previous_weight": 3.56,
+            "current_weight": 3.5,
+            "change_pp": -0.06000000000000005,
+            "action": "trimmed"
+          },
+          {
+            "instrument": "NEBIUS GROUP NV",
+            "previous_weight": 1.83,
+            "current_weight": 1.77,
+            "change_pp": -0.06000000000000005,
             "action": "trimmed"
           },
           {
             "instrument": "ONTO INNOVATION",
-            "previous_weight": 2.77,
-            "current_weight": 2.65,
+            "previous_weight": 2.65,
+            "current_weight": 2.57,
+            "change_pp": -0.08000000000000007,
+            "action": "trimmed"
+          },
+          {
+            "instrument": "MICRON TECH",
+            "previous_weight": 4.03,
+            "current_weight": 3.91,
             "change_pp": -0.1200000000000001,
             "action": "trimmed"
           },
           {
-            "instrument": "CAMTEK LTD",
-            "previous_weight": 2.73,
-            "current_weight": 2.6,
-            "change_pp": -0.1299999999999999,
+            "instrument": "ADV ENERGY INDS",
+            "previous_weight": 3.58,
+            "current_weight": 3.44,
+            "change_pp": -0.14000000000000012,
             "action": "trimmed"
           },
           {
-            "instrument": "META PLATFORMS-A",
-            "previous_weight": 2.33,
-            "current_weight": 2.17,
-            "change_pp": -0.16000000000000014,
+            "instrument": "CREDO TECHNOLOGY GROUP HOLDI",
+            "previous_weight": 2.77,
+            "current_weight": 2.63,
+            "change_pp": -0.14000000000000012,
+            "action": "trimmed"
+          },
+          {
+            "instrument": "VICOR CORP",
+            "previous_weight": 5.34,
+            "current_weight": 5.02,
+            "change_pp": -0.3200000000000003,
+            "action": "trimmed"
+          },
+          {
+            "instrument": "CAMTEK LTD",
+            "previous_weight": 2.6,
+            "current_weight": 2.2,
+            "change_pp": -0.3999999999999999,
+            "action": "trimmed"
+          },
+          {
+            "instrument": "LUMENTUM HOL",
+            "previous_weight": 9.48,
+            "current_weight": 8.98,
+            "change_pp": -0.5,
             "action": "trimmed"
           },
           {
             "instrument": "FORMFACTOR INC",
-            "previous_weight": 5.59,
-            "current_weight": 5.41,
-            "change_pp": -0.17999999999999972,
-            "action": "trimmed"
-          },
-          {
-            "instrument": "AMPHENOL CORP",
-            "previous_weight": 1.99,
-            "current_weight": 1.8,
-            "change_pp": -0.18999999999999995,
-            "action": "trimmed"
-          },
-          {
-            "instrument": "ARGAN INC",
-            "previous_weight": 3.9,
-            "current_weight": 3.7,
-            "change_pp": -0.19999999999999973,
-            "action": "trimmed"
-          },
-          {
-            "instrument": "NVIDIA CORP",
-            "previous_weight": 5.77,
-            "current_weight": 5.56,
-            "change_pp": -0.20999999999999996,
-            "action": "trimmed"
-          },
-          {
-            "instrument": "IREN LTD",
-            "previous_weight": 1.5,
-            "current_weight": 1.28,
-            "change_pp": -0.21999999999999997,
-            "action": "trimmed"
-          },
-          {
-            "instrument": "ADV ENERGY INDS",
-            "previous_weight": 3.81,
-            "current_weight": 3.58,
-            "change_pp": -0.22999999999999998,
+            "previous_weight": 5.41,
+            "current_weight": 4.74,
+            "change_pp": -0.6699999999999999,
             "action": "trimmed"
           }
         ]
@@ -2526,7 +2576,7 @@
           {
             "instrument": "LUMENTUM HOL",
             "weights": [
-              9.48
+              8.98
             ],
             "active_months": 1,
             "first_month": "2026-05",
@@ -2535,7 +2585,7 @@
           {
             "instrument": "COMFORT SYSTEMS",
             "weights": [
-              7.63
+              7.6
             ],
             "active_months": 1,
             "first_month": "2026-05",
@@ -2544,7 +2594,7 @@
           {
             "instrument": "BLOOM ENERGY C-A",
             "weights": [
-              6.02
+              5.98
             ],
             "active_months": 1,
             "first_month": "2026-05",
@@ -2553,25 +2603,7 @@
           {
             "instrument": "NVIDIA CORP",
             "weights": [
-              5.56
-            ],
-            "active_months": 1,
-            "first_month": "2026-05",
-            "last_month": "2026-05"
-          },
-          {
-            "instrument": "FORMFACTOR INC",
-            "weights": [
-              5.41
-            ],
-            "active_months": 1,
-            "first_month": "2026-05",
-            "last_month": "2026-05"
-          },
-          {
-            "instrument": "VICOR CORP",
-            "weights": [
-              5.34
+              5.62
             ],
             "active_months": 1,
             "first_month": "2026-05",
@@ -2580,7 +2612,25 @@
           {
             "instrument": "COHERENT CORP",
             "weights": [
-              5.25
+              5.2
+            ],
+            "active_months": 1,
+            "first_month": "2026-05",
+            "last_month": "2026-05"
+          },
+          {
+            "instrument": "VICOR CORP",
+            "weights": [
+              5.02
+            ],
+            "active_months": 1,
+            "first_month": "2026-05",
+            "last_month": "2026-05"
+          },
+          {
+            "instrument": "FORMFACTOR INC",
+            "weights": [
+              4.74
             ],
             "active_months": 1,
             "first_month": "2026-05",
@@ -2589,7 +2639,7 @@
           {
             "instrument": "GE VERNOVA LLC",
             "weights": [
-              4.5
+              4.52
             ],
             "active_months": 1,
             "first_month": "2026-05",
@@ -2598,7 +2648,7 @@
           {
             "instrument": "MICRON TECH",
             "weights": [
-              4.03
+              3.91
             ],
             "active_months": 1,
             "first_month": "2026-05",
@@ -2607,16 +2657,7 @@
           {
             "instrument": "ARGAN INC",
             "weights": [
-              3.7
-            ],
-            "active_months": 1,
-            "first_month": "2026-05",
-            "last_month": "2026-05"
-          },
-          {
-            "instrument": "ADV ENERGY INDS",
-            "weights": [
-              3.58
+              3.71
             ],
             "active_months": 1,
             "first_month": "2026-05",
@@ -2625,7 +2666,16 @@
           {
             "instrument": "FABRINET",
             "weights": [
-              3.56
+              3.5
+            ],
+            "active_months": 1,
+            "first_month": "2026-05",
+            "last_month": "2026-05"
+          },
+          {
+            "instrument": "ADV ENERGY INDS",
+            "weights": [
+              3.44
             ],
             "active_months": 1,
             "first_month": "2026-05",
@@ -2634,7 +2684,7 @@
           {
             "instrument": "CIENA CORP",
             "weights": [
-              3.22
+              3.21
             ],
             "active_months": 1,
             "first_month": "2026-05",
@@ -2643,7 +2693,7 @@
           {
             "instrument": "QUANTA SERVICES",
             "weights": [
-              3.21
+              3.16
             ],
             "active_months": 1,
             "first_month": "2026-05",
@@ -2652,7 +2702,16 @@
           {
             "instrument": "AXT INC",
             "weights": [
-              3.04
+              2.99
+            ],
+            "active_months": 1,
+            "first_month": "2026-05",
+            "last_month": "2026-05"
+          },
+          {
+            "instrument": "INAV - ZAR.CASH",
+            "weights": [
+              2.86
             ],
             "active_months": 1,
             "first_month": "2026-05",
@@ -2661,7 +2720,7 @@
           {
             "instrument": "CREDO TECHNOLOGY GROUP HOLDI",
             "weights": [
-              2.77
+              2.63
             ],
             "active_months": 1,
             "first_month": "2026-05",
@@ -2670,16 +2729,7 @@
           {
             "instrument": "ONTO INNOVATION",
             "weights": [
-              2.65
-            ],
-            "active_months": 1,
-            "first_month": "2026-05",
-            "last_month": "2026-05"
-          },
-          {
-            "instrument": "CAMTEK LTD",
-            "weights": [
-              2.6
+              2.57
             ],
             "active_months": 1,
             "first_month": "2026-05",
@@ -2688,7 +2738,25 @@
           {
             "instrument": "BWX TECHNOLOGIES",
             "weights": [
-              2.23
+              2.2
+            ],
+            "active_months": 1,
+            "first_month": "2026-05",
+            "last_month": "2026-05"
+          },
+          {
+            "instrument": "CAMTEK LTD",
+            "weights": [
+              2.2
+            ],
+            "active_months": 1,
+            "first_month": "2026-05",
+            "last_month": "2026-05"
+          },
+          {
+            "instrument": "META PLATFORMS-A",
+            "weights": [
+              2.19
             ],
             "active_months": 1,
             "first_month": "2026-05",
@@ -2706,25 +2774,7 @@
           {
             "instrument": "MKS INC",
             "weights": [
-              2.18
-            ],
-            "active_months": 1,
-            "first_month": "2026-05",
-            "last_month": "2026-05"
-          },
-          {
-            "instrument": "META PLATFORMS-A",
-            "weights": [
-              2.17
-            ],
-            "active_months": 1,
-            "first_month": "2026-05",
-            "last_month": "2026-05"
-          },
-          {
-            "instrument": "NEBIUS GROUP NV",
-            "weights": [
-              1.83
+              2.14
             ],
             "active_months": 1,
             "first_month": "2026-05",
@@ -2733,7 +2783,16 @@
           {
             "instrument": "AMPHENOL CORP",
             "weights": [
-              1.8
+              1.89
+            ],
+            "active_months": 1,
+            "first_month": "2026-05",
+            "last_month": "2026-05"
+          },
+          {
+            "instrument": "NEBIUS GROUP NV",
+            "weights": [
+              1.77
             ],
             "active_months": 1,
             "first_month": "2026-05",
@@ -2742,7 +2801,7 @@
           {
             "instrument": "GENERAL ELECTRIC",
             "weights": [
-              1.39
+              1.38
             ],
             "active_months": 1,
             "first_month": "2026-05",
@@ -2751,7 +2810,7 @@
           {
             "instrument": "APPLOVIN CO-CL A",
             "weights": [
-              1.28
+              1.32
             ],
             "active_months": 1,
             "first_month": "2026-05",
@@ -2760,7 +2819,7 @@
           {
             "instrument": "IREN LTD",
             "weights": [
-              1.28
+              1.32
             ],
             "active_months": 1,
             "first_month": "2026-05",
@@ -2778,16 +2837,7 @@
           {
             "instrument": "KARMAN HOLDINGS INC",
             "weights": [
-              0.73
-            ],
-            "active_months": 1,
-            "first_month": "2026-05",
-            "last_month": "2026-05"
-          },
-          {
-            "instrument": "INAV - ZAR.CASH",
-            "weights": [
-              0.41
+              0.78
             ],
             "active_months": 1,
             "first_month": "2026-05",
@@ -2808,7 +2858,8 @@
         "snapshots": [
           "2026-05-08",
           "2026-05-11",
-          "2026-05-12"
+          "2026-05-12",
+          "2026-05-13"
         ],
         "rows": [
           {
@@ -2816,12 +2867,13 @@
             "weights": [
               8.62,
               8.61,
-              9.48
+              9.48,
+              8.98
             ],
-            "active_snapshots": 3,
+            "active_snapshots": 4,
             "first_snapshot": "2026-05-08",
-            "last_snapshot": "2026-05-12",
-            "latest_weight": 9.48,
+            "last_snapshot": "2026-05-13",
+            "latest_weight": 8.98,
             "max_weight": 9.48
           },
           {
@@ -2829,12 +2881,13 @@
             "weights": [
               7.81,
               7.75,
-              7.63
+              7.63,
+              7.6
             ],
-            "active_snapshots": 3,
+            "active_snapshots": 4,
             "first_snapshot": "2026-05-08",
-            "last_snapshot": "2026-05-12",
-            "latest_weight": 7.63,
+            "last_snapshot": "2026-05-13",
+            "latest_weight": 7.6,
             "max_weight": 7.81
           },
           {
@@ -2842,12 +2895,13 @@
             "weights": [
               5.87,
               5.85,
-              6.02
+              6.02,
+              5.98
             ],
-            "active_snapshots": 3,
+            "active_snapshots": 4,
             "first_snapshot": "2026-05-08",
-            "last_snapshot": "2026-05-12",
-            "latest_weight": 6.02,
+            "last_snapshot": "2026-05-13",
+            "latest_weight": 5.98,
             "max_weight": 6.02
           },
           {
@@ -2855,64 +2909,69 @@
             "weights": [
               5.74,
               5.77,
-              5.56
+              5.56,
+              5.62
             ],
-            "active_snapshots": 3,
+            "active_snapshots": 4,
             "first_snapshot": "2026-05-08",
-            "last_snapshot": "2026-05-12",
-            "latest_weight": 5.56,
+            "last_snapshot": "2026-05-13",
+            "latest_weight": 5.62,
             "max_weight": 5.77
-          },
-          {
-            "instrument": "FORMFACTOR INC",
-            "weights": [
-              5.54,
-              5.59,
-              5.41
-            ],
-            "active_snapshots": 3,
-            "first_snapshot": "2026-05-08",
-            "last_snapshot": "2026-05-12",
-            "latest_weight": 5.41,
-            "max_weight": 5.59
-          },
-          {
-            "instrument": "VICOR CORP",
-            "weights": [
-              4.78,
-              4.63,
-              5.34
-            ],
-            "active_snapshots": 3,
-            "first_snapshot": "2026-05-08",
-            "last_snapshot": "2026-05-12",
-            "latest_weight": 5.34,
-            "max_weight": 5.34
           },
           {
             "instrument": "COHERENT CORP",
             "weights": [
               4.73,
               4.91,
-              5.25
+              5.25,
+              5.2
             ],
-            "active_snapshots": 3,
+            "active_snapshots": 4,
             "first_snapshot": "2026-05-08",
-            "last_snapshot": "2026-05-12",
-            "latest_weight": 5.25,
+            "last_snapshot": "2026-05-13",
+            "latest_weight": 5.2,
             "max_weight": 5.25
+          },
+          {
+            "instrument": "VICOR CORP",
+            "weights": [
+              4.78,
+              4.63,
+              5.34,
+              5.02
+            ],
+            "active_snapshots": 4,
+            "first_snapshot": "2026-05-08",
+            "last_snapshot": "2026-05-13",
+            "latest_weight": 5.02,
+            "max_weight": 5.34
+          },
+          {
+            "instrument": "FORMFACTOR INC",
+            "weights": [
+              5.54,
+              5.59,
+              5.41,
+              4.74
+            ],
+            "active_snapshots": 4,
+            "first_snapshot": "2026-05-08",
+            "last_snapshot": "2026-05-13",
+            "latest_weight": 4.74,
+            "max_weight": 5.59
           },
           {
             "instrument": "GE VERNOVA LLC",
             "weights": [
               4.7,
               4.61,
-              4.5
+              4.5,
+              4.52
             ],
-            "active_snapshots": 3,
+            "active_snapshots": 4,
             "first_snapshot": "2026-05-08",
-            "last_snapshot": "2026-05-12",
-            "latest_weight": 4.5,
+            "last_snapshot": "2026-05-13",
+            "latest_weight": 4.52,
             "max_weight": 4.7
           },
           {
@@ -2920,12 +2979,13 @@
             "weights": [
               3.51,
               4.0,
-              4.03
+              4.03,
+              3.91
             ],
-            "active_snapshots": 3,
+            "active_snapshots": 4,
             "first_snapshot": "2026-05-08",
-            "last_snapshot": "2026-05-12",
-            "latest_weight": 4.03,
+            "last_snapshot": "2026-05-13",
+            "latest_weight": 3.91,
             "max_weight": 4.03
           },
           {
@@ -2933,51 +2993,55 @@
             "weights": [
               4.01,
               3.9,
-              3.7
+              3.7,
+              3.71
             ],
-            "active_snapshots": 3,
+            "active_snapshots": 4,
             "first_snapshot": "2026-05-08",
-            "last_snapshot": "2026-05-12",
-            "latest_weight": 3.7,
+            "last_snapshot": "2026-05-13",
+            "latest_weight": 3.71,
             "max_weight": 4.01
-          },
-          {
-            "instrument": "ADV ENERGY INDS",
-            "weights": [
-              3.8,
-              3.81,
-              3.58
-            ],
-            "active_snapshots": 3,
-            "first_snapshot": "2026-05-08",
-            "last_snapshot": "2026-05-12",
-            "latest_weight": 3.58,
-            "max_weight": 3.81
           },
           {
             "instrument": "FABRINET",
             "weights": [
               3.68,
               3.6,
-              3.56
+              3.56,
+              3.5
             ],
-            "active_snapshots": 3,
+            "active_snapshots": 4,
             "first_snapshot": "2026-05-08",
-            "last_snapshot": "2026-05-12",
-            "latest_weight": 3.56,
+            "last_snapshot": "2026-05-13",
+            "latest_weight": 3.5,
             "max_weight": 3.68
+          },
+          {
+            "instrument": "ADV ENERGY INDS",
+            "weights": [
+              3.8,
+              3.81,
+              3.58,
+              3.44
+            ],
+            "active_snapshots": 4,
+            "first_snapshot": "2026-05-08",
+            "last_snapshot": "2026-05-13",
+            "latest_weight": 3.44,
+            "max_weight": 3.81
           },
           {
             "instrument": "CIENA CORP",
             "weights": [
               3.19,
               3.21,
-              3.22
+              3.22,
+              3.21
             ],
-            "active_snapshots": 3,
+            "active_snapshots": 4,
             "first_snapshot": "2026-05-08",
-            "last_snapshot": "2026-05-12",
-            "latest_weight": 3.22,
+            "last_snapshot": "2026-05-13",
+            "latest_weight": 3.21,
             "max_weight": 3.22
           },
           {
@@ -2985,12 +3049,13 @@
             "weights": [
               3.31,
               3.24,
-              3.21
+              3.21,
+              3.16
             ],
-            "active_snapshots": 3,
+            "active_snapshots": 4,
             "first_snapshot": "2026-05-08",
-            "last_snapshot": "2026-05-12",
-            "latest_weight": 3.21,
+            "last_snapshot": "2026-05-13",
+            "latest_weight": 3.16,
             "max_weight": 3.31
           },
           {
@@ -2998,25 +3063,41 @@
             "weights": [
               2.81,
               2.98,
-              3.04
+              3.04,
+              2.99
             ],
-            "active_snapshots": 3,
+            "active_snapshots": 4,
             "first_snapshot": "2026-05-08",
-            "last_snapshot": "2026-05-12",
-            "latest_weight": 3.04,
+            "last_snapshot": "2026-05-13",
+            "latest_weight": 2.99,
             "max_weight": 3.04
+          },
+          {
+            "instrument": "INAV - ZAR.CASH",
+            "weights": [
+              0.45,
+              0.44,
+              0.41,
+              2.86
+            ],
+            "active_snapshots": 4,
+            "first_snapshot": "2026-05-08",
+            "last_snapshot": "2026-05-13",
+            "latest_weight": 2.86,
+            "max_weight": 2.86
           },
           {
             "instrument": "CREDO TECHNOLOGY GROUP HOLDI",
             "weights": [
               2.66,
               2.63,
-              2.77
+              2.77,
+              2.63
             ],
-            "active_snapshots": 3,
+            "active_snapshots": 4,
             "first_snapshot": "2026-05-08",
-            "last_snapshot": "2026-05-12",
-            "latest_weight": 2.77,
+            "last_snapshot": "2026-05-13",
+            "latest_weight": 2.63,
             "max_weight": 2.77
           },
           {
@@ -3024,12 +3105,13 @@
             "weights": [
               2.7,
               2.77,
-              2.65
+              2.65,
+              2.57
             ],
-            "active_snapshots": 3,
+            "active_snapshots": 4,
             "first_snapshot": "2026-05-08",
-            "last_snapshot": "2026-05-12",
-            "latest_weight": 2.65,
+            "last_snapshot": "2026-05-13",
+            "latest_weight": 2.57,
             "max_weight": 2.77
           },
           {
@@ -3037,12 +3119,13 @@
             "weights": [
               2.59,
               2.73,
-              2.6
+              2.6,
+              2.2
             ],
-            "active_snapshots": 3,
+            "active_snapshots": 4,
             "first_snapshot": "2026-05-08",
-            "last_snapshot": "2026-05-12",
-            "latest_weight": 2.6,
+            "last_snapshot": "2026-05-13",
+            "latest_weight": 2.2,
             "max_weight": 2.73
           },
           {
@@ -3050,24 +3133,40 @@
             "weights": [
               2.38,
               2.3,
-              2.23
+              2.23,
+              2.2
             ],
-            "active_snapshots": 3,
+            "active_snapshots": 4,
             "first_snapshot": "2026-05-08",
-            "last_snapshot": "2026-05-12",
-            "latest_weight": 2.23,
+            "last_snapshot": "2026-05-13",
+            "latest_weight": 2.2,
             "max_weight": 2.38
+          },
+          {
+            "instrument": "META PLATFORMS-A",
+            "weights": [
+              2.39,
+              2.33,
+              2.17,
+              2.19
+            ],
+            "active_snapshots": 4,
+            "first_snapshot": "2026-05-08",
+            "last_snapshot": "2026-05-13",
+            "latest_weight": 2.19,
+            "max_weight": 2.39
           },
           {
             "instrument": "VERTIV HOLDINGS",
             "weights": [
               2.17,
               2.14,
+              2.19,
               2.19
             ],
-            "active_snapshots": 3,
+            "active_snapshots": 4,
             "first_snapshot": "2026-05-08",
-            "last_snapshot": "2026-05-12",
+            "last_snapshot": "2026-05-13",
             "latest_weight": 2.19,
             "max_weight": 2.19
           },
@@ -3076,64 +3175,55 @@
             "weights": [
               2.2,
               2.26,
-              2.18
+              2.18,
+              2.14
             ],
-            "active_snapshots": 3,
+            "active_snapshots": 4,
             "first_snapshot": "2026-05-08",
-            "last_snapshot": "2026-05-12",
-            "latest_weight": 2.18,
+            "last_snapshot": "2026-05-13",
+            "latest_weight": 2.14,
             "max_weight": 2.26
-          },
-          {
-            "instrument": "META PLATFORMS-A",
-            "weights": [
-              2.39,
-              2.33,
-              2.17
-            ],
-            "active_snapshots": 3,
-            "first_snapshot": "2026-05-08",
-            "last_snapshot": "2026-05-12",
-            "latest_weight": 2.17,
-            "max_weight": 2.39
-          },
-          {
-            "instrument": "NEBIUS GROUP NV",
-            "weights": [
-              1.95,
-              1.84,
-              1.83
-            ],
-            "active_snapshots": 3,
-            "first_snapshot": "2026-05-08",
-            "last_snapshot": "2026-05-12",
-            "latest_weight": 1.83,
-            "max_weight": 1.95
           },
           {
             "instrument": "AMPHENOL CORP",
             "weights": [
               2.15,
               1.99,
-              1.8
+              1.8,
+              1.89
             ],
-            "active_snapshots": 3,
+            "active_snapshots": 4,
             "first_snapshot": "2026-05-08",
-            "last_snapshot": "2026-05-12",
-            "latest_weight": 1.8,
+            "last_snapshot": "2026-05-13",
+            "latest_weight": 1.89,
             "max_weight": 2.15
+          },
+          {
+            "instrument": "NEBIUS GROUP NV",
+            "weights": [
+              1.95,
+              1.84,
+              1.83,
+              1.77
+            ],
+            "active_snapshots": 4,
+            "first_snapshot": "2026-05-08",
+            "last_snapshot": "2026-05-13",
+            "latest_weight": 1.77,
+            "max_weight": 1.95
           },
           {
             "instrument": "GENERAL ELECTRIC",
             "weights": [
               1.5,
               1.45,
-              1.39
+              1.39,
+              1.38
             ],
-            "active_snapshots": 3,
+            "active_snapshots": 4,
             "first_snapshot": "2026-05-08",
-            "last_snapshot": "2026-05-12",
-            "latest_weight": 1.39,
+            "last_snapshot": "2026-05-13",
+            "latest_weight": 1.38,
             "max_weight": 1.5
           },
           {
@@ -3141,12 +3231,13 @@
             "weights": [
               1.41,
               1.5,
-              1.28
+              1.28,
+              1.32
             ],
-            "active_snapshots": 3,
+            "active_snapshots": 4,
             "first_snapshot": "2026-05-08",
-            "last_snapshot": "2026-05-12",
-            "latest_weight": 1.28,
+            "last_snapshot": "2026-05-13",
+            "latest_weight": 1.32,
             "max_weight": 1.5
           },
           {
@@ -3154,12 +3245,13 @@
             "weights": [
               1.43,
               1.32,
-              1.28
+              1.28,
+              1.32
             ],
-            "active_snapshots": 3,
+            "active_snapshots": 4,
             "first_snapshot": "2026-05-08",
-            "last_snapshot": "2026-05-12",
-            "latest_weight": 1.28,
+            "last_snapshot": "2026-05-13",
+            "latest_weight": 1.32,
             "max_weight": 1.43
           },
           {
@@ -3167,11 +3259,12 @@
             "weights": [
               0.95,
               0.88,
+              0.82,
               0.82
             ],
-            "active_snapshots": 3,
+            "active_snapshots": 4,
             "first_snapshot": "2026-05-08",
-            "last_snapshot": "2026-05-12",
+            "last_snapshot": "2026-05-13",
             "latest_weight": 0.82,
             "max_weight": 0.95
           },
@@ -3180,30 +3273,19 @@
             "weights": [
               0.8,
               0.8,
-              0.73
+              0.73,
+              0.78
             ],
-            "active_snapshots": 3,
+            "active_snapshots": 4,
             "first_snapshot": "2026-05-08",
-            "last_snapshot": "2026-05-12",
-            "latest_weight": 0.73,
+            "last_snapshot": "2026-05-13",
+            "latest_weight": 0.78,
             "max_weight": 0.8
-          },
-          {
-            "instrument": "INAV - ZAR.CASH",
-            "weights": [
-              0.45,
-              0.44,
-              0.41
-            ],
-            "active_snapshots": 3,
-            "first_snapshot": "2026-05-08",
-            "last_snapshot": "2026-05-12",
-            "latest_weight": 0.41,
-            "max_weight": 0.45
           },
           {
             "instrument": "INAV - USD.CASH",
             "weights": [
+              0.0,
               0.0,
               0.0,
               0.0
@@ -3223,32 +3305,32 @@
       "name": "EasyETFs Balanced Actively Managed ETF",
       "instrument_page": "https://etfs.easyequities.co.za/easyetf-instrument-page/easybf",
       "market_ticker": "EASYBF.JO",
-      "snapshot_date": "2026-05-12",
-      "captured_at_utc": "2026-05-12T07:43:30Z",
+      "snapshot_date": "2026-05-13",
+      "captured_at_utc": "2026-05-13T11:37:32Z",
       "holdings_count": 32,
-      "total_weight": 99.83,
+      "total_weight": 99.67,
       "latest_nav": {
-        "value_zac": 1493.43,
-        "nav_date": "2026-05-12",
+        "value_zac": 1486.29,
+        "nav_date": "2026-05-13",
         "source_url": "https://etfs.easyequities.co.za/easyetf-instrument-page/easybf",
-        "captured_at_utc": "2026-05-12T07:43:31Z"
+        "captured_at_utc": "2026-05-13T11:37:33Z"
       },
       "latest_market_price": {
         "ticker": "EASYBF.JO",
-        "value_zac": 1509.0,
+        "value_zac": 1516.0,
         "source": "yfinance",
-        "price_at_utc": "2026-05-10T22:00:00Z",
-        "captured_at_utc": "2026-05-12T07:43:33Z"
+        "price_at_utc": "2026-05-12T22:00:00Z",
+        "captured_at_utc": "2026-05-13T11:37:35Z"
       },
       "etf_performance": {
-        "d1": 1.959459459459456,
-        "d7": 2.862985685071573,
-        "d30": 7.70877944325481
+        "d1": 0.9993337774816702,
+        "d7": 2.0188425302826385,
+        "d30": 7.900355871886111
       },
       "estimated_nav_gap": {
         "status": "premium",
-        "difference_zac": 15.569999999999936,
-        "difference_pct": 1.0425664410116267,
+        "difference_zac": 29.710000000000036,
+        "difference_pct": 1.9989369503932635,
         "label": "estimated premium/discount to NAV"
       },
       "nav_price_history": [
@@ -3283,46 +3365,54 @@
           "difference_zac": 15.569999999999936,
           "difference_pct": 1.0425664410116267,
           "status": "premium"
+        },
+        {
+          "captured_hour_utc": "2026-05-13T11:00:00Z",
+          "nav_zac": 1486.29,
+          "market_price_zac": 1516.0,
+          "difference_zac": 29.710000000000036,
+          "difference_pct": 1.9989369503932635,
+          "status": "premium"
         }
       ],
       "holdings": [
         {
-          "instrument": "AI ACTIVELY MANAGED ETF",
+          "instrument": "EGE ACTIVELY MANAGED ETF",
           "currency": "ZAR",
           "weight": 21.9,
-          "ticker": "EASYAI.JO",
+          "ticker": "EASYGE.JO",
           "performance": {
-            "d1": 2.0045920169551312,
-            "d7": 3.2260947274352025,
-            "d30": 22.026199028100567
+            "d1": 2.400000000000002,
+            "d7": 4.632152588555849,
+            "d30": 15.802171290711708
           }
         },
         {
-          "instrument": "EGE ACTIVELY MANAGED ETF",
+          "instrument": "AI ACTIVELY MANAGED ETF",
           "currency": "ZAR",
           "weight": 21.8,
-          "ticker": "EASYGE.JO",
+          "ticker": "EASYAI.JO",
           "performance": {
-            "d1": 3.087100330760739,
-            "d7": 2.297592997811826,
-            "d30": 14.723926380368102
+            "d1": 2.640234687527787,
+            "d7": 4.763633064150263,
+            "d30": 19.896157840083074
           }
         },
         {
           "instrument": "Satrix SA Bond Portfolio",
           "currency": "ZAR",
-          "weight": 7.26,
+          "weight": 7.22,
           "ticker": "STXGOV.JO",
           "performance": {
-            "d1": 0.31914893617022155,
-            "d7": 0.6403415154749181,
-            "d30": -4.032702933180355
+            "d1": -0.21367521367521292,
+            "d7": -1.684210526315788,
+            "d30": -4.560255060546947
           }
         },
         {
           "instrument": "INAV - ZAR.CASH",
           "currency": "ZAR",
-          "weight": 6.04,
+          "weight": 6.07,
           "ticker": null,
           "performance": {
             "d1": null,
@@ -3333,51 +3423,51 @@
         {
           "instrument": "Pan African Resource",
           "currency": "ZAR",
-          "weight": 4.78,
+          "weight": 4.81,
           "ticker": "PAN.JO",
           "performance": {
-            "d1": -1.7945007235889987,
-            "d7": 9.029562982005146,
-            "d30": -2.049653579676669
+            "d1": -2.6855327750505364,
+            "d7": 0.837821663674454,
+            "d30": -3.327596098680441
           }
         },
         {
           "instrument": "SATRIX NAS 100",
           "currency": "ZAR",
-          "weight": 4.66,
+          "weight": 4.71,
           "ticker": "STXNDQ.JO",
           "performance": {
-            "d1": 1.2611221413339146,
-            "d7": 3.444260817307687,
-            "d30": 17.53644602960227
+            "d1": 1.0384783559247879,
+            "d7": 4.181695220919757,
+            "d30": 17.496365596420404
           }
         },
         {
           "instrument": "Capitec Bank Holdings Ltd",
           "currency": "ZAR",
-          "weight": 4.16,
+          "weight": 4.19,
           "ticker": "CPI.JO",
           "performance": {
-            "d1": -1.1087083455458946,
-            "d7": -0.3372540080894493,
-            "d30": -1.2998230969097246
+            "d1": -2.3028754023059372,
+            "d7": -3.277441697914818,
+            "d30": -0.6673444202296652
           }
         },
         {
           "instrument": "New Gold Issuer Ltd",
           "currency": "ZAR",
-          "weight": 3.38,
+          "weight": 3.39,
           "ticker": "GLD.JO",
           "performance": {
-            "d1": 0.7148964801861446,
-            "d7": 2.1380339754069277,
-            "d30": -0.6608873588009989
+            "d1": 0.15421929984438254,
+            "d7": 0.4414886886098701,
+            "d30": -0.5637370897246696
           }
         },
         {
           "instrument": "NewPlat ETF",
           "currency": "ZAR",
-          "weight": 3.34,
+          "weight": 3.37,
           "ticker": null,
           "performance": {
             "d1": null,
@@ -3388,95 +3478,95 @@
         {
           "instrument": "BHP GROUP LTD",
           "currency": "ZAR",
-          "weight": 2.51,
+          "weight": 2.53,
           "ticker": "BHG.JO",
           "performance": {
-            "d1": 0.00280112044817038,
-            "d7": 8.702006515848115,
-            "d30": 12.224946561046156
+            "d1": 2.2957829136740937,
+            "d7": 6.974399438891821,
+            "d30": 14.351540900641968
           }
         },
         {
           "instrument": "ANGLOGOLD ASHANTI PLC",
           "currency": "ZAR",
-          "weight": 2.16,
+          "weight": 2.05,
           "ticker": "ANG.JO",
           "performance": {
-            "d1": -2.7757847533632307,
-            "d7": 12.999120492524185,
-            "d30": -3.371587743732596
+            "d1": 0.5972255994496356,
+            "d7": 5.295830255324696,
+            "d30": -5.514705882352944
           }
         },
         {
           "instrument": "Naspers Ltd - N Shares",
           "currency": "ZAR",
-          "weight": 1.76,
+          "weight": 1.68,
           "ticker": "NPN.JO",
           "performance": {
-            "d1": -5.202623775721094,
-            "d7": -4.695227986178551,
-            "d30": -6.051026314617747
+            "d1": 0.6652041610643256,
+            "d7": -7.4736568232080085,
+            "d30": -4.476776720761055
           }
         },
         {
           "instrument": "Sibanye Stillwater Ltd",
           "currency": "ZAR",
-          "weight": 1.68,
+          "weight": 1.64,
           "ticker": "SSW.JO",
           "performance": {
-            "d1": -2.68396729470316,
-            "d7": 9.587670136108883,
-            "d30": 2.971600526612761
+            "d1": 1.8423932871214799,
+            "d7": 0.3956122999460465,
+            "d30": 4.374649467190128
           }
         },
         {
           "instrument": "Gold Fields Ltd",
           "currency": "ZAR",
-          "weight": 1.26,
+          "weight": 1.23,
           "ticker": "GFI.JO",
           "performance": {
-            "d1": -2.692420642336546,
-            "d7": 3.221375775254165,
-            "d30": -9.646752602875551
-          }
-        },
-        {
-          "instrument": "Vukile Property Fund Ltd",
-          "currency": "ZAR",
-          "weight": 1.19,
-          "ticker": "VKE.JO",
-          "performance": {
-            "d1": -1.3025210084033567,
-            "d7": 1.2499999999999956,
-            "d30": 0.9454232917920136
+            "d1": 0.3565671193201947,
+            "d7": -4.390097875885046,
+            "d30": -8.723906560636186
           }
         },
         {
           "instrument": "Fortress Real Estate Investments Limited B",
           "currency": "ZAR",
-          "weight": 1.18,
+          "weight": 1.2,
           "ticker": "FFB.JO",
           "performance": {
-            "d1": -1.3682092555332037,
-            "d7": 1.2809917355371958,
-            "d30": 4.386712095400336
+            "d1": -1.7821782178217838,
+            "d7": 0.4048582995951344,
+            "d30": 6.529209621993126
+          }
+        },
+        {
+          "instrument": "Vukile Property Fund Ltd",
+          "currency": "ZAR",
+          "weight": 1.2,
+          "ticker": "VKE.JO",
+          "performance": {
+            "d1": -1.3439731205375893,
+            "d7": -2.3690773067331694,
+            "d30": 0.6858122588941251
           }
         },
         {
           "instrument": "NORTHAM PLATINUM",
           "currency": "ZAR",
-          "weight": 1.18,
+          "weight": 1.16,
           "ticker": "NPH.JO",
           "performance": {
-            "d1": -1.9638693001432839,
-            "d7": 4.164303412042147,
-            "d30": -2.525280741940894
+            "d1": 4.029747492217228,
+            "d7": 1.3194834362717511,
+            "d30": 2.0183175033921197
           }
         },
         {
           "instrument": "OPTASIA GROUP",
           "currency": "ZAR",
-          "weight": 1.18,
+          "weight": 1.16,
           "ticker": "OPT.JO",
           "performance": {
             "d1": null,
@@ -3487,34 +3577,34 @@
         {
           "instrument": "MTN Group Ltd",
           "currency": "ZAR",
-          "weight": 1.05,
+          "weight": 1.04,
           "ticker": "MTN.JO",
           "performance": {
-            "d1": -2.833294690470667,
-            "d7": -1.137060627506492,
-            "d30": 2.7257574271987384
+            "d1": 1.0088213213213182,
+            "d7": -1.7928832116788307,
+            "d30": 6.833746898263038
           }
         },
         {
           "instrument": "Impala Platinum Holdings Ltd",
           "currency": "ZAR",
-          "weight": 1.04,
+          "weight": 1.02,
           "ticker": "IMP.JO",
           "performance": {
-            "d1": -2.7635882547499158,
-            "d7": 7.921034384304759,
-            "d30": 4.767372797465841
+            "d1": 3.049033279312563,
+            "d7": 1.4131523311449845,
+            "d30": 8.841208550615033
           }
         },
         {
           "instrument": "Lewis Group Ltd",
           "currency": "ZAR",
-          "weight": 1.02,
+          "weight": 1.0,
           "ticker": "LEW.JO",
           "performance": {
-            "d1": -1.0477299185098987,
-            "d7": 1.4925373134328401,
-            "d30": -3.409090909090906
+            "d1": 0.7894097643915465,
+            "d7": -3.500000000000003,
+            "d30": -4.762451227909114
           }
         },
         {
@@ -3523,9 +3613,9 @@
           "weight": 0.69,
           "ticker": "STXGOV.JO",
           "performance": {
-            "d1": 0.31914893617022155,
-            "d7": 0.6403415154749181,
-            "d30": -4.032702933180355
+            "d1": -0.21367521367521292,
+            "d7": -1.684210526315788,
+            "d30": -4.560255060546947
           }
         },
         {
@@ -3534,15 +3624,26 @@
           "weight": 0.67,
           "ticker": "NY1.JO",
           "performance": {
-            "d1": -0.3230669825543875,
-            "d7": -1.5528610933843834,
-            "d30": -0.6653788366602242
+            "d1": -0.7761966364812412,
+            "d7": -4.759933774834435,
+            "d30": -2.168367346938771
+          }
+        },
+        {
+          "instrument": "Purple Group Ltd",
+          "currency": "ZAR",
+          "weight": 0.66,
+          "ticker": "PPE.JO",
+          "performance": {
+            "d1": -2.617801047120416,
+            "d7": -2.1052631578947323,
+            "d30": -4.61538461538461
           }
         },
         {
           "instrument": "NewPall ETF",
           "currency": "ZAR",
-          "weight": 0.66,
+          "weight": 0.65,
           "ticker": null,
           "performance": {
             "d1": null,
@@ -3551,36 +3652,25 @@
           }
         },
         {
-          "instrument": "Purple Group Ltd",
-          "currency": "ZAR",
-          "weight": 0.65,
-          "ticker": "PPE.JO",
-          "performance": {
-            "d1": 0.5319148936170137,
-            "d7": 1.0695187165775444,
-            "d30": -5.025125628140703
-          }
-        },
-        {
           "instrument": "Ninety One Plc",
           "currency": "ZAR",
           "weight": 0.58,
           "ticker": "N91.JO",
           "performance": {
-            "d1": -0.7799671592775059,
-            "d7": -0.698438783894828,
-            "d30": 1.7684210526315747
+            "d1": -1.0968543046357637,
+            "d7": -3.435037381289152,
+            "d30": -0.8506224066390011
           }
         },
         {
           "instrument": "Attacq Limited",
           "currency": "ZAR",
-          "weight": 0.55,
+          "weight": 0.56,
           "ticker": "ATT.JO",
           "performance": {
-            "d1": -1.328502415458932,
-            "d7": 0.1225490196078427,
-            "d30": -6.09195402298851
+            "d1": -2.0945541591861128,
+            "d7": -1.7417417417417425,
+            "d30": -4.88372093023256
           }
         },
         {
@@ -3589,20 +3679,20 @@
           "weight": 0.42,
           "ticker": "VAL.JO",
           "performance": {
-            "d1": -2.5182432432432456,
-            "d7": 4.954823878599179,
-            "d30": -5.711932973015365
+            "d1": 2.808526961858826,
+            "d7": 1.0047714868329782,
+            "d30": -1.1434593597681508
           }
         },
         {
           "instrument": "SOUTHERN SUN LTD",
           "currency": "ZAR",
-          "weight": 0.4,
+          "weight": 0.39,
           "ticker": "SSU.JO",
           "performance": {
-            "d1": 0.19342359767891004,
-            "d7": 2.5742574257425765,
-            "d30": -0.2887391722810384
+            "d1": -0.87890625,
+            "d7": -2.0270270270270285,
+            "d30": -2.497598463016326
           }
         },
         {
@@ -3622,9 +3712,9 @@
           "weight": 0.23,
           "ticker": "VOD.JO",
           "performance": {
-            "d1": 0.1243862520458272,
-            "d7": 2.609862462260981,
-            "d30": 3.9135752140236457
+            "d1": -0.5708787684413075,
+            "d7": 1.240937887793092,
+            "d30": 7.355079991689184
           }
         },
         {
@@ -3633,9 +3723,9 @@
           "weight": 0.17,
           "ticker": "GRT.JO",
           "performance": {
-            "d1": -1.535626535626533,
-            "d7": -0.5583126550868456,
-            "d30": -7.359343518429684
+            "d1": -1.159243441122637,
+            "d7": -1.5795868772782495,
+            "d30": -6.214342865647415
           }
         }
       ],
@@ -3644,45 +3734,45 @@
         "current_week": "2026-05-11/2026-05-17",
         "changes": [
           {
-            "instrument": "AI ACTIVELY MANAGED ETF",
+            "instrument": "EGE ACTIVELY MANAGED ETF",
             "previous_weight": 21.5,
             "current_weight": 21.9,
             "change_pp": 0.3999999999999986,
             "action": "increased"
           },
           {
-            "instrument": "EGE ACTIVELY MANAGED ETF",
+            "instrument": "AI ACTIVELY MANAGED ETF",
             "previous_weight": 21.5,
             "current_weight": 21.8,
             "change_pp": 0.3000000000000007,
             "action": "increased"
           },
           {
-            "instrument": "ANGLOGOLD ASHANTI PLC",
-            "previous_weight": 2.05,
-            "current_weight": 2.16,
-            "change_pp": 0.11000000000000032,
+            "instrument": "NewPlat ETF",
+            "previous_weight": 3.3,
+            "current_weight": 3.37,
+            "change_pp": 0.07000000000000028,
             "action": "increased"
           },
           {
             "instrument": "BHP GROUP LTD",
             "previous_weight": 2.46,
-            "current_weight": 2.51,
-            "change_pp": 0.04999999999999982,
+            "current_weight": 2.53,
+            "change_pp": 0.06999999999999984,
             "action": "increased"
           },
           {
-            "instrument": "NewPlat ETF",
-            "previous_weight": 3.3,
-            "current_weight": 3.34,
-            "change_pp": 0.040000000000000036,
+            "instrument": "SATRIX NAS 100",
+            "previous_weight": 4.65,
+            "current_weight": 4.71,
+            "change_pp": 0.05999999999999961,
             "action": "increased"
           },
           {
-            "instrument": "MTN Group Ltd",
-            "previous_weight": 1.04,
-            "current_weight": 1.05,
-            "change_pp": 0.010000000000000009,
+            "instrument": "Fortress Real Estate Investments Limited B",
+            "previous_weight": 1.18,
+            "current_weight": 1.2,
+            "change_pp": 0.020000000000000018,
             "action": "increased"
           },
           {
@@ -3693,23 +3783,23 @@
             "action": "increased"
           },
           {
-            "instrument": "SATRIX NAS 100",
-            "previous_weight": 4.65,
-            "current_weight": 4.66,
-            "change_pp": 0.009999999999999787,
-            "action": "increased"
+            "instrument": "ANGLOGOLD ASHANTI PLC",
+            "previous_weight": 2.05,
+            "current_weight": 2.05,
+            "change_pp": 0.0,
+            "action": "unchanged"
+          },
+          {
+            "instrument": "Attacq Limited",
+            "previous_weight": 0.56,
+            "current_weight": 0.56,
+            "change_pp": 0.0,
+            "action": "unchanged"
           },
           {
             "instrument": "CELL C HOLDINGS LTD",
             "previous_weight": 0.28,
             "current_weight": 0.28,
-            "change_pp": 0.0,
-            "action": "unchanged"
-          },
-          {
-            "instrument": "Fortress Real Estate Investments Limited B",
-            "previous_weight": 1.18,
-            "current_weight": 1.18,
             "change_pp": 0.0,
             "action": "unchanged"
           },
@@ -3721,44 +3811,30 @@
             "action": "unchanged"
           },
           {
-            "instrument": "SOUTHERN SUN LTD",
-            "previous_weight": 0.41,
-            "current_weight": 0.4,
-            "change_pp": -0.009999999999999953,
-            "action": "trimmed"
-          },
-          {
-            "instrument": "Attacq Limited",
-            "previous_weight": 0.56,
-            "current_weight": 0.55,
-            "change_pp": -0.010000000000000009,
-            "action": "trimmed"
-          },
-          {
-            "instrument": "Impala Platinum Holdings Ltd",
-            "previous_weight": 1.05,
+            "instrument": "MTN Group Ltd",
+            "previous_weight": 1.04,
             "current_weight": 1.04,
-            "change_pp": -0.010000000000000009,
-            "action": "trimmed"
+            "change_pp": 0.0,
+            "action": "unchanged"
           },
           {
-            "instrument": "NewPall ETF",
-            "previous_weight": 0.67,
+            "instrument": "Purple Group Ltd",
+            "previous_weight": 0.66,
             "current_weight": 0.66,
-            "change_pp": -0.010000000000000009,
-            "action": "trimmed"
+            "change_pp": 0.0,
+            "action": "unchanged"
+          },
+          {
+            "instrument": "Vukile Property Fund Ltd",
+            "previous_weight": 1.2,
+            "current_weight": 1.2,
+            "change_pp": 0.0,
+            "action": "unchanged"
           },
           {
             "instrument": "Ninety One Plc",
             "previous_weight": 0.59,
             "current_weight": 0.58,
-            "change_pp": -0.010000000000000009,
-            "action": "trimmed"
-          },
-          {
-            "instrument": "Purple Group Ltd",
-            "previous_weight": 0.66,
-            "current_weight": 0.65,
             "change_pp": -0.010000000000000009,
             "action": "trimmed"
           },
@@ -3770,13 +3846,6 @@
             "action": "trimmed"
           },
           {
-            "instrument": "Vukile Property Fund Ltd",
-            "previous_weight": 1.2,
-            "current_weight": 1.19,
-            "change_pp": -0.010000000000000009,
-            "action": "trimmed"
-          },
-          {
             "instrument": "NINETY ONE LTD",
             "previous_weight": 0.69,
             "current_weight": 0.67,
@@ -3784,9 +3853,16 @@
             "action": "trimmed"
           },
           {
-            "instrument": "Sibanye Stillwater Ltd",
-            "previous_weight": 1.7,
-            "current_weight": 1.68,
+            "instrument": "SOUTHERN SUN LTD",
+            "previous_weight": 0.41,
+            "current_weight": 0.39,
+            "change_pp": -0.019999999999999962,
+            "action": "trimmed"
+          },
+          {
+            "instrument": "NewPall ETF",
+            "previous_weight": 0.67,
+            "current_weight": 0.65,
             "change_pp": -0.020000000000000018,
             "action": "trimmed"
           },
@@ -3798,303 +3874,317 @@
             "action": "trimmed"
           },
           {
-            "instrument": "Gold Fields Ltd",
-            "previous_weight": 1.29,
-            "current_weight": 1.26,
-            "change_pp": -0.030000000000000027,
-            "action": "trimmed"
-          },
-          {
-            "instrument": "Lewis Group Ltd",
+            "instrument": "Impala Platinum Holdings Ltd",
             "previous_weight": 1.05,
             "current_weight": 1.02,
             "change_pp": -0.030000000000000027,
             "action": "trimmed"
           },
           {
-            "instrument": "NORTHAM PLATINUM",
-            "previous_weight": 1.22,
-            "current_weight": 1.18,
+            "instrument": "New Gold Issuer Ltd",
+            "previous_weight": 3.43,
+            "current_weight": 3.39,
             "change_pp": -0.040000000000000036,
             "action": "trimmed"
           },
           {
-            "instrument": "New Gold Issuer Ltd",
-            "previous_weight": 3.43,
-            "current_weight": 3.38,
-            "change_pp": -0.050000000000000266,
-            "action": "trimmed"
-          },
-          {
-            "instrument": "Satrix SA Bond Portfolio",
-            "previous_weight": 7.33,
-            "current_weight": 7.26,
-            "change_pp": -0.07000000000000028,
-            "action": "trimmed"
-          },
-          {
-            "instrument": "OPTASIA GROUP",
-            "previous_weight": 1.26,
-            "current_weight": 1.18,
-            "change_pp": -0.08000000000000007,
+            "instrument": "Lewis Group Ltd",
+            "previous_weight": 1.05,
+            "current_weight": 1.0,
+            "change_pp": -0.050000000000000044,
             "action": "trimmed"
           },
           {
             "instrument": "INAV - ZAR.CASH",
             "previous_weight": 6.13,
-            "current_weight": 6.04,
-            "change_pp": -0.08999999999999986,
+            "current_weight": 6.07,
+            "change_pp": -0.05999999999999961,
             "action": "trimmed"
           },
           {
-            "instrument": "Naspers Ltd - N Shares",
-            "previous_weight": 1.85,
-            "current_weight": 1.76,
-            "change_pp": -0.09000000000000008,
+            "instrument": "Gold Fields Ltd",
+            "previous_weight": 1.29,
+            "current_weight": 1.23,
+            "change_pp": -0.06000000000000005,
+            "action": "trimmed"
+          },
+          {
+            "instrument": "NORTHAM PLATINUM",
+            "previous_weight": 1.22,
+            "current_weight": 1.16,
+            "change_pp": -0.06000000000000005,
+            "action": "trimmed"
+          },
+          {
+            "instrument": "Sibanye Stillwater Ltd",
+            "previous_weight": 1.7,
+            "current_weight": 1.64,
+            "change_pp": -0.06000000000000005,
             "action": "trimmed"
           },
           {
             "instrument": "Pan African Resource",
             "previous_weight": 4.9,
-            "current_weight": 4.78,
-            "change_pp": -0.1200000000000001,
+            "current_weight": 4.81,
+            "change_pp": -0.09000000000000075,
             "action": "trimmed"
           },
           {
             "instrument": "Capitec Bank Holdings Ltd",
             "previous_weight": 4.29,
-            "current_weight": 4.16,
-            "change_pp": -0.1299999999999999,
+            "current_weight": 4.19,
+            "change_pp": -0.09999999999999964,
+            "action": "trimmed"
+          },
+          {
+            "instrument": "OPTASIA GROUP",
+            "previous_weight": 1.26,
+            "current_weight": 1.16,
+            "change_pp": -0.10000000000000009,
+            "action": "trimmed"
+          },
+          {
+            "instrument": "Satrix SA Bond Portfolio",
+            "previous_weight": 7.33,
+            "current_weight": 7.22,
+            "change_pp": -0.11000000000000032,
+            "action": "trimmed"
+          },
+          {
+            "instrument": "Naspers Ltd - N Shares",
+            "previous_weight": 1.85,
+            "current_weight": 1.68,
+            "change_pp": -0.17000000000000015,
             "action": "trimmed"
           }
         ]
       },
       "snapshot_changes": {
-        "previous_snapshot": "2026-05-11",
-        "current_snapshot": "2026-05-12",
+        "previous_snapshot": "2026-05-12",
+        "current_snapshot": "2026-05-13",
         "changes": [
           {
-            "instrument": "AI ACTIVELY MANAGED ETF",
-            "previous_weight": 21.4,
-            "current_weight": 21.9,
-            "change_pp": 0.5,
-            "action": "increased"
-          },
-          {
             "instrument": "EGE ACTIVELY MANAGED ETF",
-            "previous_weight": 21.6,
-            "current_weight": 21.8,
-            "change_pp": 0.1999999999999993,
+            "previous_weight": 21.8,
+            "current_weight": 21.9,
+            "change_pp": 0.09999999999999787,
             "action": "increased"
           },
           {
-            "instrument": "NewPlat ETF",
-            "previous_weight": 3.29,
-            "current_weight": 3.34,
+            "instrument": "SATRIX NAS 100",
+            "previous_weight": 4.66,
+            "current_weight": 4.71,
             "change_pp": 0.04999999999999982,
             "action": "increased"
           },
           {
-            "instrument": "BHP GROUP LTD",
-            "previous_weight": 2.48,
-            "current_weight": 2.51,
-            "change_pp": 0.029999999999999805,
+            "instrument": "Capitec Bank Holdings Ltd",
+            "previous_weight": 4.16,
+            "current_weight": 4.19,
+            "change_pp": 0.03000000000000025,
             "action": "increased"
           },
           {
-            "instrument": "ANGLOGOLD ASHANTI PLC",
-            "previous_weight": 2.14,
-            "current_weight": 2.16,
+            "instrument": "INAV - ZAR.CASH",
+            "previous_weight": 6.04,
+            "current_weight": 6.07,
+            "change_pp": 0.03000000000000025,
+            "action": "increased"
+          },
+          {
+            "instrument": "NewPlat ETF",
+            "previous_weight": 3.34,
+            "current_weight": 3.37,
+            "change_pp": 0.03000000000000025,
+            "action": "increased"
+          },
+          {
+            "instrument": "Pan African Resource",
+            "previous_weight": 4.78,
+            "current_weight": 4.81,
+            "change_pp": 0.02999999999999936,
+            "action": "increased"
+          },
+          {
+            "instrument": "BHP GROUP LTD",
+            "previous_weight": 2.51,
+            "current_weight": 2.53,
             "change_pp": 0.020000000000000018,
             "action": "increased"
           },
           {
-            "instrument": "MTN Group Ltd",
-            "previous_weight": 1.04,
-            "current_weight": 1.05,
-            "change_pp": 0.010000000000000009,
+            "instrument": "Fortress Real Estate Investments Limited B",
+            "previous_weight": 1.18,
+            "current_weight": 1.2,
+            "change_pp": 0.020000000000000018,
             "action": "increased"
           },
           {
-            "instrument": "Sibanye Stillwater Ltd",
-            "previous_weight": 1.67,
-            "current_weight": 1.68,
-            "change_pp": 0.010000000000000009,
+            "instrument": "New Gold Issuer Ltd",
+            "previous_weight": 3.38,
+            "current_weight": 3.39,
+            "change_pp": 0.010000000000000231,
             "action": "increased"
-          },
-          {
-            "instrument": "Vodacom Group Limited",
-            "previous_weight": 0.22,
-            "current_weight": 0.23,
-            "change_pp": 0.010000000000000009,
-            "action": "increased"
-          },
-          {
-            "instrument": "Gold Fields Ltd",
-            "previous_weight": 1.26,
-            "current_weight": 1.26,
-            "change_pp": 0.0,
-            "action": "unchanged"
-          },
-          {
-            "instrument": "Impala Platinum Holdings Ltd",
-            "previous_weight": 1.04,
-            "current_weight": 1.04,
-            "change_pp": 0.0,
-            "action": "unchanged"
-          },
-          {
-            "instrument": "NewPall ETF",
-            "previous_weight": 0.66,
-            "current_weight": 0.66,
-            "change_pp": 0.0,
-            "action": "unchanged"
-          },
-          {
-            "instrument": "SOUTHERN SUN LTD",
-            "previous_weight": 0.4,
-            "current_weight": 0.4,
-            "change_pp": 0.0,
-            "action": "unchanged"
-          },
-          {
-            "instrument": "CELL C HOLDINGS LTD",
-            "previous_weight": 0.29,
-            "current_weight": 0.28,
-            "change_pp": -0.009999999999999953,
-            "action": "trimmed"
-          },
-          {
-            "instrument": "Growthpoint Properties Ltd",
-            "previous_weight": 0.18,
-            "current_weight": 0.17,
-            "change_pp": -0.009999999999999981,
-            "action": "trimmed"
           },
           {
             "instrument": "Attacq Limited",
-            "previous_weight": 0.56,
-            "current_weight": 0.55,
-            "change_pp": -0.010000000000000009,
-            "action": "trimmed"
-          },
-          {
-            "instrument": "Fortress Real Estate Investments Limited B",
-            "previous_weight": 1.19,
-            "current_weight": 1.18,
-            "change_pp": -0.010000000000000009,
-            "action": "trimmed"
-          },
-          {
-            "instrument": "Ninety One Plc",
-            "previous_weight": 0.59,
-            "current_weight": 0.58,
-            "change_pp": -0.010000000000000009,
-            "action": "trimmed"
+            "previous_weight": 0.55,
+            "current_weight": 0.56,
+            "change_pp": 0.010000000000000009,
+            "action": "increased"
           },
           {
             "instrument": "Purple Group Ltd",
+            "previous_weight": 0.65,
+            "current_weight": 0.66,
+            "change_pp": 0.010000000000000009,
+            "action": "increased"
+          },
+          {
+            "instrument": "Vukile Property Fund Ltd",
+            "previous_weight": 1.19,
+            "current_weight": 1.2,
+            "change_pp": 0.010000000000000009,
+            "action": "increased"
+          },
+          {
+            "instrument": "CELL C HOLDINGS LTD",
+            "previous_weight": 0.28,
+            "current_weight": 0.28,
+            "change_pp": 0.0,
+            "action": "unchanged"
+          },
+          {
+            "instrument": "Growthpoint Properties Ltd",
+            "previous_weight": 0.17,
+            "current_weight": 0.17,
+            "change_pp": 0.0,
+            "action": "unchanged"
+          },
+          {
+            "instrument": "NINETY ONE LTD",
+            "previous_weight": 0.67,
+            "current_weight": 0.67,
+            "change_pp": 0.0,
+            "action": "unchanged"
+          },
+          {
+            "instrument": "Ninety One Plc",
+            "previous_weight": 0.58,
+            "current_weight": 0.58,
+            "change_pp": 0.0,
+            "action": "unchanged"
+          },
+          {
+            "instrument": "SATRIX GOVI ETF",
+            "previous_weight": 0.69,
+            "current_weight": 0.69,
+            "change_pp": 0.0,
+            "action": "unchanged"
+          },
+          {
+            "instrument": "VALTERRA PLATINUM LIMITED",
+            "previous_weight": 0.42,
+            "current_weight": 0.42,
+            "change_pp": 0.0,
+            "action": "unchanged"
+          },
+          {
+            "instrument": "Vodacom Group Limited",
+            "previous_weight": 0.23,
+            "current_weight": 0.23,
+            "change_pp": 0.0,
+            "action": "unchanged"
+          },
+          {
+            "instrument": "MTN Group Ltd",
+            "previous_weight": 1.05,
+            "current_weight": 1.04,
+            "change_pp": -0.010000000000000009,
+            "action": "trimmed"
+          },
+          {
+            "instrument": "NewPall ETF",
             "previous_weight": 0.66,
             "current_weight": 0.65,
             "change_pp": -0.010000000000000009,
             "action": "trimmed"
           },
           {
-            "instrument": "SATRIX GOVI ETF",
-            "previous_weight": 0.7,
-            "current_weight": 0.69,
+            "instrument": "SOUTHERN SUN LTD",
+            "previous_weight": 0.4,
+            "current_weight": 0.39,
             "change_pp": -0.010000000000000009,
             "action": "trimmed"
           },
           {
-            "instrument": "VALTERRA PLATINUM LIMITED",
-            "previous_weight": 0.43,
-            "current_weight": 0.42,
-            "change_pp": -0.010000000000000009,
-            "action": "trimmed"
-          },
-          {
-            "instrument": "Vukile Property Fund Ltd",
-            "previous_weight": 1.2,
-            "current_weight": 1.19,
-            "change_pp": -0.010000000000000009,
-            "action": "trimmed"
-          },
-          {
-            "instrument": "Pan African Resource",
-            "previous_weight": 4.8,
-            "current_weight": 4.78,
-            "change_pp": -0.019999999999999574,
-            "action": "trimmed"
-          },
-          {
-            "instrument": "NINETY ONE LTD",
-            "previous_weight": 0.69,
-            "current_weight": 0.67,
-            "change_pp": -0.019999999999999907,
-            "action": "trimmed"
-          },
-          {
-            "instrument": "NORTHAM PLATINUM",
-            "previous_weight": 1.21,
-            "current_weight": 1.18,
-            "change_pp": -0.030000000000000027,
-            "action": "trimmed"
-          },
-          {
-            "instrument": "OPTASIA GROUP",
-            "previous_weight": 1.21,
-            "current_weight": 1.18,
-            "change_pp": -0.030000000000000027,
+            "instrument": "Impala Platinum Holdings Ltd",
+            "previous_weight": 1.04,
+            "current_weight": 1.02,
+            "change_pp": -0.020000000000000018,
             "action": "trimmed"
           },
           {
             "instrument": "Lewis Group Ltd",
-            "previous_weight": 1.06,
-            "current_weight": 1.02,
+            "previous_weight": 1.02,
+            "current_weight": 1.0,
+            "change_pp": -0.020000000000000018,
+            "action": "trimmed"
+          },
+          {
+            "instrument": "NORTHAM PLATINUM",
+            "previous_weight": 1.18,
+            "current_weight": 1.16,
+            "change_pp": -0.020000000000000018,
+            "action": "trimmed"
+          },
+          {
+            "instrument": "OPTASIA GROUP",
+            "previous_weight": 1.18,
+            "current_weight": 1.16,
+            "change_pp": -0.020000000000000018,
+            "action": "trimmed"
+          },
+          {
+            "instrument": "Gold Fields Ltd",
+            "previous_weight": 1.26,
+            "current_weight": 1.23,
+            "change_pp": -0.030000000000000027,
+            "action": "trimmed"
+          },
+          {
+            "instrument": "Satrix SA Bond Portfolio",
+            "previous_weight": 7.26,
+            "current_weight": 7.22,
+            "change_pp": -0.040000000000000036,
+            "action": "trimmed"
+          },
+          {
+            "instrument": "Sibanye Stillwater Ltd",
+            "previous_weight": 1.68,
+            "current_weight": 1.64,
             "change_pp": -0.040000000000000036,
             "action": "trimmed"
           },
           {
             "instrument": "Naspers Ltd - N Shares",
-            "previous_weight": 1.8,
-            "current_weight": 1.76,
-            "change_pp": -0.040000000000000036,
-            "action": "trimmed"
-          },
-          {
-            "instrument": "New Gold Issuer Ltd",
-            "previous_weight": 3.44,
-            "current_weight": 3.38,
-            "change_pp": -0.06000000000000005,
-            "action": "trimmed"
-          },
-          {
-            "instrument": "SATRIX NAS 100",
-            "previous_weight": 4.74,
-            "current_weight": 4.66,
+            "previous_weight": 1.76,
+            "current_weight": 1.68,
             "change_pp": -0.08000000000000007,
             "action": "trimmed"
           },
           {
-            "instrument": "Capitec Bank Holdings Ltd",
-            "previous_weight": 4.26,
-            "current_weight": 4.16,
-            "change_pp": -0.09999999999999964,
+            "instrument": "AI ACTIVELY MANAGED ETF",
+            "previous_weight": 21.9,
+            "current_weight": 21.8,
+            "change_pp": -0.09999999999999787,
             "action": "trimmed"
           },
           {
-            "instrument": "Satrix SA Bond Portfolio",
-            "previous_weight": 7.36,
-            "current_weight": 7.26,
-            "change_pp": -0.10000000000000053,
-            "action": "trimmed"
-          },
-          {
-            "instrument": "INAV - ZAR.CASH",
-            "previous_weight": 6.17,
-            "current_weight": 6.04,
-            "change_pp": -0.1299999999999999,
+            "instrument": "ANGLOGOLD ASHANTI PLC",
+            "previous_weight": 2.16,
+            "current_weight": 2.05,
+            "change_pp": -0.11000000000000032,
             "action": "trimmed"
           }
         ]
@@ -4110,7 +4200,7 @@
         ],
         "rows": [
           {
-            "instrument": "AI ACTIVELY MANAGED ETF",
+            "instrument": "EGE ACTIVELY MANAGED ETF",
             "weights": [
               21.9
             ],
@@ -4119,7 +4209,7 @@
             "last_month": "2026-05"
           },
           {
-            "instrument": "EGE ACTIVELY MANAGED ETF",
+            "instrument": "AI ACTIVELY MANAGED ETF",
             "weights": [
               21.8
             ],
@@ -4130,7 +4220,7 @@
           {
             "instrument": "Satrix SA Bond Portfolio",
             "weights": [
-              7.26
+              7.22
             ],
             "active_months": 1,
             "first_month": "2026-05",
@@ -4139,7 +4229,7 @@
           {
             "instrument": "INAV - ZAR.CASH",
             "weights": [
-              6.04
+              6.07
             ],
             "active_months": 1,
             "first_month": "2026-05",
@@ -4148,7 +4238,7 @@
           {
             "instrument": "Pan African Resource",
             "weights": [
-              4.78
+              4.81
             ],
             "active_months": 1,
             "first_month": "2026-05",
@@ -4157,7 +4247,7 @@
           {
             "instrument": "SATRIX NAS 100",
             "weights": [
-              4.66
+              4.71
             ],
             "active_months": 1,
             "first_month": "2026-05",
@@ -4166,7 +4256,7 @@
           {
             "instrument": "Capitec Bank Holdings Ltd",
             "weights": [
-              4.16
+              4.19
             ],
             "active_months": 1,
             "first_month": "2026-05",
@@ -4175,7 +4265,7 @@
           {
             "instrument": "New Gold Issuer Ltd",
             "weights": [
-              3.38
+              3.39
             ],
             "active_months": 1,
             "first_month": "2026-05",
@@ -4184,7 +4274,7 @@
           {
             "instrument": "NewPlat ETF",
             "weights": [
-              3.34
+              3.37
             ],
             "active_months": 1,
             "first_month": "2026-05",
@@ -4193,7 +4283,7 @@
           {
             "instrument": "BHP GROUP LTD",
             "weights": [
-              2.51
+              2.53
             ],
             "active_months": 1,
             "first_month": "2026-05",
@@ -4202,7 +4292,7 @@
           {
             "instrument": "ANGLOGOLD ASHANTI PLC",
             "weights": [
-              2.16
+              2.05
             ],
             "active_months": 1,
             "first_month": "2026-05",
@@ -4211,7 +4301,7 @@
           {
             "instrument": "Naspers Ltd - N Shares",
             "weights": [
-              1.76
+              1.68
             ],
             "active_months": 1,
             "first_month": "2026-05",
@@ -4220,7 +4310,7 @@
           {
             "instrument": "Sibanye Stillwater Ltd",
             "weights": [
-              1.68
+              1.64
             ],
             "active_months": 1,
             "first_month": "2026-05",
@@ -4229,16 +4319,7 @@
           {
             "instrument": "Gold Fields Ltd",
             "weights": [
-              1.26
-            ],
-            "active_months": 1,
-            "first_month": "2026-05",
-            "last_month": "2026-05"
-          },
-          {
-            "instrument": "Vukile Property Fund Ltd",
-            "weights": [
-              1.19
+              1.23
             ],
             "active_months": 1,
             "first_month": "2026-05",
@@ -4247,7 +4328,16 @@
           {
             "instrument": "Fortress Real Estate Investments Limited B",
             "weights": [
-              1.18
+              1.2
+            ],
+            "active_months": 1,
+            "first_month": "2026-05",
+            "last_month": "2026-05"
+          },
+          {
+            "instrument": "Vukile Property Fund Ltd",
+            "weights": [
+              1.2
             ],
             "active_months": 1,
             "first_month": "2026-05",
@@ -4256,7 +4346,7 @@
           {
             "instrument": "NORTHAM PLATINUM",
             "weights": [
-              1.18
+              1.16
             ],
             "active_months": 1,
             "first_month": "2026-05",
@@ -4265,7 +4355,7 @@
           {
             "instrument": "OPTASIA GROUP",
             "weights": [
-              1.18
+              1.16
             ],
             "active_months": 1,
             "first_month": "2026-05",
@@ -4274,7 +4364,7 @@
           {
             "instrument": "MTN Group Ltd",
             "weights": [
-              1.05
+              1.04
             ],
             "active_months": 1,
             "first_month": "2026-05",
@@ -4283,7 +4373,7 @@
           {
             "instrument": "Impala Platinum Holdings Ltd",
             "weights": [
-              1.04
+              1.02
             ],
             "active_months": 1,
             "first_month": "2026-05",
@@ -4292,7 +4382,7 @@
           {
             "instrument": "Lewis Group Ltd",
             "weights": [
-              1.02
+              1.0
             ],
             "active_months": 1,
             "first_month": "2026-05",
@@ -4317,7 +4407,7 @@
             "last_month": "2026-05"
           },
           {
-            "instrument": "NewPall ETF",
+            "instrument": "Purple Group Ltd",
             "weights": [
               0.66
             ],
@@ -4326,7 +4416,7 @@
             "last_month": "2026-05"
           },
           {
-            "instrument": "Purple Group Ltd",
+            "instrument": "NewPall ETF",
             "weights": [
               0.65
             ],
@@ -4346,7 +4436,7 @@
           {
             "instrument": "Attacq Limited",
             "weights": [
-              0.55
+              0.56
             ],
             "active_months": 1,
             "first_month": "2026-05",
@@ -4364,7 +4454,7 @@
           {
             "instrument": "SOUTHERN SUN LTD",
             "weights": [
-              0.4
+              0.39
             ],
             "active_months": 1,
             "first_month": "2026-05",
@@ -4403,46 +4493,50 @@
         "snapshots": [
           "2026-05-08",
           "2026-05-11",
-          "2026-05-12"
+          "2026-05-12",
+          "2026-05-13"
         ],
         "rows": [
-          {
-            "instrument": "AI ACTIVELY MANAGED ETF",
-            "weights": [
-              21.5,
-              21.4,
-              21.9
-            ],
-            "active_snapshots": 3,
-            "first_snapshot": "2026-05-08",
-            "last_snapshot": "2026-05-12",
-            "latest_weight": 21.9,
-            "max_weight": 21.9
-          },
           {
             "instrument": "EGE ACTIVELY MANAGED ETF",
             "weights": [
               21.5,
               21.6,
+              21.8,
+              21.9
+            ],
+            "active_snapshots": 4,
+            "first_snapshot": "2026-05-08",
+            "last_snapshot": "2026-05-13",
+            "latest_weight": 21.9,
+            "max_weight": 21.9
+          },
+          {
+            "instrument": "AI ACTIVELY MANAGED ETF",
+            "weights": [
+              21.5,
+              21.4,
+              21.9,
               21.8
             ],
-            "active_snapshots": 3,
+            "active_snapshots": 4,
             "first_snapshot": "2026-05-08",
-            "last_snapshot": "2026-05-12",
+            "last_snapshot": "2026-05-13",
             "latest_weight": 21.8,
-            "max_weight": 21.8
+            "max_weight": 21.9
           },
           {
             "instrument": "Satrix SA Bond Portfolio",
             "weights": [
               7.33,
               7.36,
-              7.26
+              7.26,
+              7.22
             ],
-            "active_snapshots": 3,
+            "active_snapshots": 4,
             "first_snapshot": "2026-05-08",
-            "last_snapshot": "2026-05-12",
-            "latest_weight": 7.26,
+            "last_snapshot": "2026-05-13",
+            "latest_weight": 7.22,
             "max_weight": 7.36
           },
           {
@@ -4450,12 +4544,13 @@
             "weights": [
               6.13,
               6.17,
-              6.04
+              6.04,
+              6.07
             ],
-            "active_snapshots": 3,
+            "active_snapshots": 4,
             "first_snapshot": "2026-05-08",
-            "last_snapshot": "2026-05-12",
-            "latest_weight": 6.04,
+            "last_snapshot": "2026-05-13",
+            "latest_weight": 6.07,
             "max_weight": 6.17
           },
           {
@@ -4463,12 +4558,13 @@
             "weights": [
               4.9,
               4.8,
-              4.78
+              4.78,
+              4.81
             ],
-            "active_snapshots": 3,
+            "active_snapshots": 4,
             "first_snapshot": "2026-05-08",
-            "last_snapshot": "2026-05-12",
-            "latest_weight": 4.78,
+            "last_snapshot": "2026-05-13",
+            "latest_weight": 4.81,
             "max_weight": 4.9
           },
           {
@@ -4476,12 +4572,13 @@
             "weights": [
               4.65,
               4.74,
-              4.66
+              4.66,
+              4.71
             ],
-            "active_snapshots": 3,
+            "active_snapshots": 4,
             "first_snapshot": "2026-05-08",
-            "last_snapshot": "2026-05-12",
-            "latest_weight": 4.66,
+            "last_snapshot": "2026-05-13",
+            "latest_weight": 4.71,
             "max_weight": 4.74
           },
           {
@@ -4489,12 +4586,13 @@
             "weights": [
               4.29,
               4.26,
-              4.16
+              4.16,
+              4.19
             ],
-            "active_snapshots": 3,
+            "active_snapshots": 4,
             "first_snapshot": "2026-05-08",
-            "last_snapshot": "2026-05-12",
-            "latest_weight": 4.16,
+            "last_snapshot": "2026-05-13",
+            "latest_weight": 4.19,
             "max_weight": 4.29
           },
           {
@@ -4502,12 +4600,13 @@
             "weights": [
               3.43,
               3.44,
-              3.38
+              3.38,
+              3.39
             ],
-            "active_snapshots": 3,
+            "active_snapshots": 4,
             "first_snapshot": "2026-05-08",
-            "last_snapshot": "2026-05-12",
-            "latest_weight": 3.38,
+            "last_snapshot": "2026-05-13",
+            "latest_weight": 3.39,
             "max_weight": 3.44
           },
           {
@@ -4515,38 +4614,41 @@
             "weights": [
               3.3,
               3.29,
-              3.34
+              3.34,
+              3.37
             ],
-            "active_snapshots": 3,
+            "active_snapshots": 4,
             "first_snapshot": "2026-05-08",
-            "last_snapshot": "2026-05-12",
-            "latest_weight": 3.34,
-            "max_weight": 3.34
+            "last_snapshot": "2026-05-13",
+            "latest_weight": 3.37,
+            "max_weight": 3.37
           },
           {
             "instrument": "BHP GROUP LTD",
             "weights": [
               2.46,
               2.48,
-              2.51
+              2.51,
+              2.53
             ],
-            "active_snapshots": 3,
+            "active_snapshots": 4,
             "first_snapshot": "2026-05-08",
-            "last_snapshot": "2026-05-12",
-            "latest_weight": 2.51,
-            "max_weight": 2.51
+            "last_snapshot": "2026-05-13",
+            "latest_weight": 2.53,
+            "max_weight": 2.53
           },
           {
             "instrument": "ANGLOGOLD ASHANTI PLC",
             "weights": [
               2.05,
               2.14,
-              2.16
+              2.16,
+              2.05
             ],
-            "active_snapshots": 3,
+            "active_snapshots": 4,
             "first_snapshot": "2026-05-08",
-            "last_snapshot": "2026-05-12",
-            "latest_weight": 2.16,
+            "last_snapshot": "2026-05-13",
+            "latest_weight": 2.05,
             "max_weight": 2.16
           },
           {
@@ -4554,12 +4656,13 @@
             "weights": [
               1.85,
               1.8,
-              1.76
+              1.76,
+              1.68
             ],
-            "active_snapshots": 3,
+            "active_snapshots": 4,
             "first_snapshot": "2026-05-08",
-            "last_snapshot": "2026-05-12",
-            "latest_weight": 1.76,
+            "last_snapshot": "2026-05-13",
+            "latest_weight": 1.68,
             "max_weight": 1.85
           },
           {
@@ -4567,12 +4670,13 @@
             "weights": [
               1.7,
               1.67,
-              1.68
+              1.68,
+              1.64
             ],
-            "active_snapshots": 3,
+            "active_snapshots": 4,
             "first_snapshot": "2026-05-08",
-            "last_snapshot": "2026-05-12",
-            "latest_weight": 1.68,
+            "last_snapshot": "2026-05-13",
+            "latest_weight": 1.64,
             "max_weight": 1.7
           },
           {
@@ -4580,25 +4684,41 @@
             "weights": [
               1.29,
               1.26,
-              1.26
+              1.26,
+              1.23
             ],
-            "active_snapshots": 3,
+            "active_snapshots": 4,
             "first_snapshot": "2026-05-08",
-            "last_snapshot": "2026-05-12",
-            "latest_weight": 1.26,
+            "last_snapshot": "2026-05-13",
+            "latest_weight": 1.23,
             "max_weight": 1.29
+          },
+          {
+            "instrument": "Fortress Real Estate Investments Limited B",
+            "weights": [
+              1.18,
+              1.19,
+              1.18,
+              1.2
+            ],
+            "active_snapshots": 4,
+            "first_snapshot": "2026-05-08",
+            "last_snapshot": "2026-05-13",
+            "latest_weight": 1.2,
+            "max_weight": 1.2
           },
           {
             "instrument": "Vukile Property Fund Ltd",
             "weights": [
               1.2,
               1.2,
-              1.19
+              1.19,
+              1.2
             ],
-            "active_snapshots": 3,
+            "active_snapshots": 4,
             "first_snapshot": "2026-05-08",
-            "last_snapshot": "2026-05-12",
-            "latest_weight": 1.19,
+            "last_snapshot": "2026-05-13",
+            "latest_weight": 1.2,
             "max_weight": 1.2
           },
           {
@@ -4606,12 +4726,13 @@
             "weights": [
               1.26,
               1.21,
-              1.18
+              1.18,
+              1.16
             ],
-            "active_snapshots": 3,
+            "active_snapshots": 4,
             "first_snapshot": "2026-05-08",
-            "last_snapshot": "2026-05-12",
-            "latest_weight": 1.18,
+            "last_snapshot": "2026-05-13",
+            "latest_weight": 1.16,
             "max_weight": 1.26
           },
           {
@@ -4619,38 +4740,27 @@
             "weights": [
               1.22,
               1.21,
-              1.18
-            ],
-            "active_snapshots": 3,
-            "first_snapshot": "2026-05-08",
-            "last_snapshot": "2026-05-12",
-            "latest_weight": 1.18,
-            "max_weight": 1.22
-          },
-          {
-            "instrument": "Fortress Real Estate Investments Limited B",
-            "weights": [
               1.18,
-              1.19,
-              1.18
+              1.16
             ],
-            "active_snapshots": 3,
+            "active_snapshots": 4,
             "first_snapshot": "2026-05-08",
-            "last_snapshot": "2026-05-12",
-            "latest_weight": 1.18,
-            "max_weight": 1.19
+            "last_snapshot": "2026-05-13",
+            "latest_weight": 1.16,
+            "max_weight": 1.22
           },
           {
             "instrument": "MTN Group Ltd",
             "weights": [
               1.04,
               1.04,
-              1.05
+              1.05,
+              1.04
             ],
-            "active_snapshots": 3,
+            "active_snapshots": 4,
             "first_snapshot": "2026-05-08",
-            "last_snapshot": "2026-05-12",
-            "latest_weight": 1.05,
+            "last_snapshot": "2026-05-13",
+            "latest_weight": 1.04,
             "max_weight": 1.05
           },
           {
@@ -4658,12 +4768,13 @@
             "weights": [
               1.05,
               1.04,
-              1.04
+              1.04,
+              1.02
             ],
-            "active_snapshots": 3,
+            "active_snapshots": 4,
             "first_snapshot": "2026-05-08",
-            "last_snapshot": "2026-05-12",
-            "latest_weight": 1.04,
+            "last_snapshot": "2026-05-13",
+            "latest_weight": 1.02,
             "max_weight": 1.05
           },
           {
@@ -4671,12 +4782,13 @@
             "weights": [
               1.05,
               1.06,
-              1.02
+              1.02,
+              1.0
             ],
-            "active_snapshots": 3,
+            "active_snapshots": 4,
             "first_snapshot": "2026-05-08",
-            "last_snapshot": "2026-05-12",
-            "latest_weight": 1.02,
+            "last_snapshot": "2026-05-13",
+            "latest_weight": 1.0,
             "max_weight": 1.06
           },
           {
@@ -4684,11 +4796,12 @@
             "weights": [
               0.7,
               0.7,
+              0.69,
               0.69
             ],
-            "active_snapshots": 3,
+            "active_snapshots": 4,
             "first_snapshot": "2026-05-08",
-            "last_snapshot": "2026-05-12",
+            "last_snapshot": "2026-05-13",
             "latest_weight": 0.69,
             "max_weight": 0.7
           },
@@ -4697,50 +4810,54 @@
             "weights": [
               0.69,
               0.69,
+              0.67,
               0.67
             ],
-            "active_snapshots": 3,
+            "active_snapshots": 4,
             "first_snapshot": "2026-05-08",
-            "last_snapshot": "2026-05-12",
+            "last_snapshot": "2026-05-13",
             "latest_weight": 0.67,
             "max_weight": 0.69
-          },
-          {
-            "instrument": "NewPall ETF",
-            "weights": [
-              0.67,
-              0.66,
-              0.66
-            ],
-            "active_snapshots": 3,
-            "first_snapshot": "2026-05-08",
-            "last_snapshot": "2026-05-12",
-            "latest_weight": 0.66,
-            "max_weight": 0.67
           },
           {
             "instrument": "Purple Group Ltd",
             "weights": [
               0.66,
               0.66,
+              0.65,
+              0.66
+            ],
+            "active_snapshots": 4,
+            "first_snapshot": "2026-05-08",
+            "last_snapshot": "2026-05-13",
+            "latest_weight": 0.66,
+            "max_weight": 0.66
+          },
+          {
+            "instrument": "NewPall ETF",
+            "weights": [
+              0.67,
+              0.66,
+              0.66,
               0.65
             ],
-            "active_snapshots": 3,
+            "active_snapshots": 4,
             "first_snapshot": "2026-05-08",
-            "last_snapshot": "2026-05-12",
+            "last_snapshot": "2026-05-13",
             "latest_weight": 0.65,
-            "max_weight": 0.66
+            "max_weight": 0.67
           },
           {
             "instrument": "Ninety One Plc",
             "weights": [
               0.59,
               0.59,
+              0.58,
               0.58
             ],
-            "active_snapshots": 3,
+            "active_snapshots": 4,
             "first_snapshot": "2026-05-08",
-            "last_snapshot": "2026-05-12",
+            "last_snapshot": "2026-05-13",
             "latest_weight": 0.58,
             "max_weight": 0.59
           },
@@ -4749,12 +4866,13 @@
             "weights": [
               0.56,
               0.56,
-              0.55
+              0.55,
+              0.56
             ],
-            "active_snapshots": 3,
+            "active_snapshots": 4,
             "first_snapshot": "2026-05-08",
-            "last_snapshot": "2026-05-12",
-            "latest_weight": 0.55,
+            "last_snapshot": "2026-05-13",
+            "latest_weight": 0.56,
             "max_weight": 0.56
           },
           {
@@ -4762,11 +4880,12 @@
             "weights": [
               0.44,
               0.43,
+              0.42,
               0.42
             ],
-            "active_snapshots": 3,
+            "active_snapshots": 4,
             "first_snapshot": "2026-05-08",
-            "last_snapshot": "2026-05-12",
+            "last_snapshot": "2026-05-13",
             "latest_weight": 0.42,
             "max_weight": 0.44
           },
@@ -4775,12 +4894,13 @@
             "weights": [
               0.41,
               0.4,
-              0.4
+              0.4,
+              0.39
             ],
-            "active_snapshots": 3,
+            "active_snapshots": 4,
             "first_snapshot": "2026-05-08",
-            "last_snapshot": "2026-05-12",
-            "latest_weight": 0.4,
+            "last_snapshot": "2026-05-13",
+            "latest_weight": 0.39,
             "max_weight": 0.41
           },
           {
@@ -4788,11 +4908,12 @@
             "weights": [
               0.28,
               0.29,
+              0.28,
               0.28
             ],
-            "active_snapshots": 3,
+            "active_snapshots": 4,
             "first_snapshot": "2026-05-08",
-            "last_snapshot": "2026-05-12",
+            "last_snapshot": "2026-05-13",
             "latest_weight": 0.28,
             "max_weight": 0.29
           },
@@ -4801,11 +4922,12 @@
             "weights": [
               0.22,
               0.22,
+              0.23,
               0.23
             ],
-            "active_snapshots": 3,
+            "active_snapshots": 4,
             "first_snapshot": "2026-05-08",
-            "last_snapshot": "2026-05-12",
+            "last_snapshot": "2026-05-13",
             "latest_weight": 0.23,
             "max_weight": 0.23
           },
@@ -4814,11 +4936,12 @@
             "weights": [
               0.17,
               0.18,
+              0.17,
               0.17
             ],
-            "active_snapshots": 3,
+            "active_snapshots": 4,
             "first_snapshot": "2026-05-08",
-            "last_snapshot": "2026-05-12",
+            "last_snapshot": "2026-05-13",
             "latest_weight": 0.17,
             "max_weight": 0.18
           }
