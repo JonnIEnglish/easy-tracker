@@ -419,6 +419,8 @@ def fetch_price_history(tickers: list[str]) -> dict[str, pd.DataFrame]:
 
 
 def close_on_or_before(prices: pd.DataFrame, target: pd.Timestamp) -> float | None:
+    if prices.empty or "date" not in prices.columns:
+        return None
     date_value = target.date()
     subset = prices[prices["date"] <= date_value]
     if subset.empty:
