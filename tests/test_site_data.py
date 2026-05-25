@@ -4,6 +4,7 @@ import pandas as pd
 import pytest
 
 from scripts.build_site_data import (
+    downloaded_price_history,
     derive_monthly_holdings_changes,
     derive_monthly_holdings_history,
     derive_nav_price_history,
@@ -204,6 +205,35 @@ def test_latest_market_price_by_fund_picks_latest_price_timestamp() -> None:
     latest = latest_market_price_by_fund(market_history)
     assert latest["EASYGE"]["value_zac"] == pytest.approx(100.0)
     assert latest["EASYGE"]["ticker"] == "EASYGE.JO"
+
+
+def test_downloaded_price_history_handles_multiindex_date_with_nan_suffix() -> None:
+    downloaded = pd.DataFrame(
+        {
+            ("Close", "EASYGE.JO"): [101.0, 102.5],
+            ("Open", "EASYGE.JO"): [100.0, 102.0],
+        },
+        index=pd.DatetimeIndex(["2026-05-20", "2026-05-21"], name=("Date", float("nan"))),
+    )
+
+    history = downloaded_price_history(downloaded)
+
+    assert list(history["date"].astype(str)) == ["2026-05-20", "2026-05-21"]
+    assert list(history["close"]) == pytest.approx([101.0, 102.5])
+
+
+def test_downloaded_price_history_uses_first_datetime_column_when_date_label_is_missing() -> None:
+    downloaded = pd.DataFrame(
+        {
+            "Close": [101.0, None, 103.0],
+        },
+        index=pd.DatetimeIndex(["2026-05-20", "2026-05-21", "2026-05-22"]),
+    )
+
+    history = downloaded_price_history(downloaded)
+
+    assert list(history["date"].astype(str)) == ["2026-05-20", "2026-05-22"]
+    assert list(history["close"]) == pytest.approx([101.0, 103.0])
 
 
 def test_estimate_premium_discount_to_nav_states_and_missing() -> None:

@@ -386,6 +386,52 @@ def derive_snapshot_holdings_history(history: pd.DataFrame) -> dict[str, dict[st
     return results
 
 
+def flatten_yfinance_columns(columns: pd.Index) -> list[str]:
+    flattened = []
+    for col in columns:
+        if isinstance(col, tuple):
+            parts = []
+            for part in col:
+                if pd.isna(part):
+                    continue
+                value = str(part).strip()
+                if value and value.lower() != "nan":
+                    parts.append(value)
+            flattened.append("_".join(parts))
+        else:
+            flattened.append(str(col).strip())
+    return flattened
+
+
+def downloaded_price_history(df: pd.DataFrame) -> pd.DataFrame:
+    if df.empty:
+        return pd.DataFrame(columns=["date", "close"])
+
+    frame = df.reset_index()
+    frame.columns = flatten_yfinance_columns(frame.columns)
+    date_col = next(
+        (
+            col
+            for col in frame.columns
+            if col.lower() in {"date", "datetime"} or col.lower().startswith(("date_", "datetime_"))
+        ),
+        None,
+    )
+    if date_col is None and len(frame.columns) > 0:
+        parsed_first_col = pd.to_datetime(frame[frame.columns[0]], errors="coerce")
+        if parsed_first_col.notna().any():
+            date_col = frame.columns[0]
+
+    close_col = next((col for col in frame.columns if col == "Close" or col.startswith("Close_")), None)
+    if not date_col or not close_col:
+        return pd.DataFrame(columns=["date", "close"])
+
+    out = frame[[date_col, close_col]].rename(columns={date_col: "date", close_col: "close"})
+    out["date"] = pd.to_datetime(out["date"]).dt.date
+    out["close"] = pd.to_numeric(out["close"], errors="coerce")
+    return out.dropna(subset=["close"]).sort_values("date")
+
+
 def fetch_price_history(tickers: list[str]) -> dict[str, pd.DataFrame]:
     if not tickers:
         return {}
@@ -398,21 +444,7 @@ def fetch_price_history(tickers: list[str]) -> dict[str, pd.DataFrame]:
                 df = yf.download(ticker, period="45d", interval="1d", auto_adjust=True, progress=False, threads=False)
         except Exception:
             continue
-        if df.empty:
-            continue
-        frame = df.reset_index()
-        frame.columns = [
-            "_".join(str(part) for part in col if str(part).strip()) if isinstance(col, tuple) else str(col)
-            for col in frame.columns
-        ]
-        date_col = "Date" if "Date" in frame.columns else "date"
-        close_col = next((col for col in frame.columns if col == "Close" or col.startswith("Close_")), None)
-        if not close_col:
-            continue
-        out = frame[[date_col, close_col]].rename(columns={date_col: "date", close_col: "close"})
-        out["date"] = pd.to_datetime(out["date"]).dt.date
-        out["close"] = pd.to_numeric(out["close"], errors="coerce")
-        out = out.dropna(subset=["close"]).sort_values("date")
+        out = downloaded_price_history(df)
         if not out.empty:
             prices[ticker] = out
     return prices
