@@ -9,7 +9,7 @@ from typing import Any
 
 import pandas as pd
 
-from scripts.utils import load_funds_config, read_csv_if_exists, write_csv
+from scripts.utils import load_funds_config, read_csv_if_exists, reconcile_zac_scale, write_csv
 
 HISTORY_PATH = Path("data/holdings_history.csv")
 TICKER_MAP_PATH = Path("config/ticker_map.csv")
@@ -612,6 +612,15 @@ def derive_nav_price_history(nav_history: pd.DataFrame, price_history: pd.DataFr
     if combined.empty:
         return pd.DataFrame(columns=columns)
 
+    # A market price should always trade close to its paired NAV. When the two are
+    # off by ~100x, it's a ZAC (cents) vs ZAR (rand) unit mix-up rather than a real
+    # premium/discount, so rescale the market price back onto the NAV's units.
+    combined["market_price_zac"] = combined.apply(
+        lambda row: reconcile_zac_scale(row["market_price_zac"], row["nav_zac"])
+        if pd.notna(row["market_price_zac"]) and pd.notna(row["nav_zac"])
+        else row["market_price_zac"],
+        axis=1,
+    )
     combined["difference_zac"] = combined["market_price_zac"] - combined["nav_zac"]
     combined["difference_pct"] = (combined["difference_zac"] / combined["nav_zac"]) * 100
     combined["status"] = combined["difference_pct"].map(
@@ -676,6 +685,11 @@ def build_payload() -> dict[str, Any]:
     market_price_history = read_csv_if_exists(MARKET_PRICE_HISTORY_PATH)
     latest_navs = latest_nav_by_fund(nav_history)
     latest_market_prices = latest_market_price_by_fund(market_price_history)
+    for code, market_price in latest_market_prices.items():
+        nav = latest_navs.get(code)
+        if nav is None:
+            continue
+        market_price["value_zac"] = reconcile_zac_scale(market_price["value_zac"], nav["value_zac"])
     nav_price_history = derive_nav_price_history(nav_history, market_price_history)
     nav_price_history_series = nav_price_history_by_fund(nav_price_history)
     ticker_map = read_csv_if_exists(TICKER_MAP_PATH)

@@ -7,9 +7,10 @@ from typing import Any
 import pandas as pd
 import yfinance as yf
 
-from scripts.utils import load_funds_config, read_csv_if_exists, utc_now_iso, write_csv
+from scripts.utils import load_funds_config, read_csv_if_exists, reconcile_zac_scale, utc_now_iso, write_csv
 
 MARKET_PRICE_HISTORY_PATH = Path("data/market_price_history.csv")
+NAV_HISTORY_PATH = Path("data/nav_history.csv")
 MARKET_SOURCE = "yfinance"
 DEFAULT_SUFFIX = ".JO"
 
@@ -74,9 +75,22 @@ def fetch_latest_price(ticker: str) -> tuple[float | None, str | None]:
     return close_value, timestamp.tz_convert("UTC").isoformat().replace("+00:00", "Z")
 
 
+def last_known_nav_zac(nav_history: pd.DataFrame, fund_code: str) -> float | None:
+    if nav_history.empty:
+        return None
+    rows = nav_history[nav_history["fund_code"].astype(str) == fund_code]
+    if rows.empty:
+        return None
+    rows = rows.assign(_sort_key=pd.to_datetime(rows["captured_at_utc"], utc=True, errors="coerce"))
+    rows = rows.sort_values("_sort_key")
+    value = rows.iloc[-1]["nav_zac"]
+    return float(value) if pd.notna(value) else None
+
+
 def main() -> None:
     captured_at_utc = utc_now_iso()
     history = read_csv_if_exists(MARKET_PRICE_HISTORY_PATH)
+    nav_history = read_csv_if_exists(NAV_HISTORY_PATH)
     rows: list[dict[str, Any]] = []
     for entry in configured_fund_tickers():
         try:
@@ -88,6 +102,14 @@ def main() -> None:
         if observation is None:
             print(f"{entry.fund_code}: market price unavailable for {entry.ticker}")
             continue
+        # yfinance occasionally reports a JSE-listed ETF's price in rand instead of the
+        # usual cents convention; an ETF's market price should stay close to its NAV,
+        # so a wildly-off ratio against the fund's own last NAV flags that flip.
+        reference = last_known_nav_zac(nav_history, entry.fund_code)
+        reconciled = reconcile_zac_scale(observation["price"], reference)
+        if reconciled != observation["price"]:
+            print(f"{entry.fund_code}: corrected apparent ZAC/ZAR scale mismatch ({observation['price']} -> {reconciled})")
+            observation["price"] = reconciled
         rows.append(observation)
         print(f"{entry.fund_code}: captured market price {observation['price']} ({entry.ticker})")
 

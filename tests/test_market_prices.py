@@ -1,4 +1,17 @@
-from scripts.fetch_market_prices import configured_fund_tickers, parse_price_observation
+import pandas as pd
+
+from scripts.fetch_market_prices import configured_fund_tickers, last_known_nav_zac, parse_price_observation
+
+
+def test_last_known_nav_zac_picks_latest_capture() -> None:
+    nav_history = pd.DataFrame(
+        [
+            {"fund_code": "EASYGE", "nav_zac": 1000.0, "captured_at_utc": "2026-05-08T10:00:00Z"},
+            {"fund_code": "EASYGE", "nav_zac": 1010.0, "captured_at_utc": "2026-05-09T10:00:00Z"},
+        ]
+    )
+    assert last_known_nav_zac(nav_history, "EASYGE") == 1010.0
+    assert last_known_nav_zac(nav_history, "EASYBF") is None
 
 
 def test_configured_fund_tickers_maps_expected_funds() -> None:

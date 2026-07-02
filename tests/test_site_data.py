@@ -292,3 +292,37 @@ def test_derive_nav_price_history_combines_hourly_nav_and_market_price() -> None
     assert row["difference_zac"] == pytest.approx(2.0)
     assert row["difference_pct"] == pytest.approx(2.0)
     assert row["status"] == "premium"
+
+
+def test_derive_nav_price_history_corrects_zac_zar_scale_mismatch() -> None:
+    nav_history = pd.DataFrame(
+        [
+            {
+                "fund_code": "EASYGE",
+                "nav_zac": 11500.0,
+                "nav_date": "2026-05-09",
+                "source_url": "u1",
+                "captured_at_utc": "2026-05-09T10:05:00Z",
+            },
+        ]
+    )
+    # Market price reported in rand (115.02) rather than the expected cents (11502.0).
+    market_history = pd.DataFrame(
+        [
+            {
+                "fund_code": "EASYGE",
+                "ticker": "EASYGE.JO",
+                "price": 115.02,
+                "source": "yfinance",
+                "price_at_utc": "2026-05-09T10:00:00Z",
+                "captured_at_utc": "2026-05-09T10:08:00Z",
+            },
+        ]
+    )
+
+    history = derive_nav_price_history(nav_history, market_history)
+
+    row = history.iloc[0]
+    assert row["market_price_zac"] == pytest.approx(11502.0)
+    assert row["difference_pct"] == pytest.approx(0.017391, rel=1e-3)
+    assert row["status"] == "near_nav"
