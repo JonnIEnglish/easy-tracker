@@ -77,10 +77,59 @@
       font-weight: 700;
     }
     .summary {
+      margin-bottom: 16px;
+    }
+    .summary-group {
+      margin-bottom: 12px;
+    }
+    .summary-group-title {
+      margin: 0 0 8px;
+      font-size: 12px;
+      font-weight: 750;
+      text-transform: uppercase;
+      letter-spacing: 0.02em;
+      color: var(--muted);
+    }
+    .summary-grid {
       display: grid;
       grid-template-columns: repeat(4, minmax(0, 1fr));
       gap: 10px;
-      margin-bottom: 16px;
+    }
+    .metric.wide {
+      grid-column: 1 / -1;
+    }
+    .trend-card {
+      padding: 12px;
+    }
+    .trend-head {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 6px 14px;
+      margin-bottom: 6px;
+    }
+    .trend-head .label {
+      color: var(--muted);
+      font-size: 12px;
+      text-transform: uppercase;
+    }
+    .trend-legend {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+      font-size: 12px;
+      color: var(--muted);
+    }
+    .trend-card canvas {
+      display: block;
+      width: 100%;
+      height: 90px;
+    }
+    .trend-empty {
+      color: var(--muted);
+      font-size: 12px;
+      padding: 6px 0 2px;
     }
     .live-status {
       margin-bottom: 16px;
@@ -229,6 +278,24 @@
       font-size: 12px;
       font-weight: 700;
     }
+    .weight-cell {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      gap: 4px;
+    }
+    .weight-bar-track {
+      width: 100%;
+      height: 5px;
+      border-radius: 999px;
+      background: #eef2f6;
+      overflow: hidden;
+    }
+    .weight-bar-fill {
+      height: 100%;
+      border-radius: 999px;
+      background: var(--accent);
+    }
     .history-strip {
       display: grid;
       grid-auto-flow: column;
@@ -284,7 +351,7 @@
     @media (max-width: 860px) {
       .topbar, .toolbar { display: block; }
       .timestamp { margin-top: 8px; text-align: left; white-space: normal; }
-      .summary { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .summary-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
       .chart-head { display: block; }
       .toolbar > * + * { margin-top: 10px; }
       table { min-width: 980px; }
@@ -380,6 +447,17 @@
       return ((current / previous) - 1) * 100;
     }
 
+    // EasyEquities and Yahoo occasionally report a value in rand instead of the ZAC
+    // (cents) convention used everywhere else here, off by exactly 100x. Comparing
+    // against a trusted reference for the same fund (its NAV) catches that flip.
+    function reconcileZacScale(value, reference, factor = 100, tolerance = 20) {
+      if (!Number.isFinite(value) || !Number.isFinite(reference) || value <= 0 || reference <= 0) return value;
+      const ratio = value / reference;
+      if (ratio > tolerance) return value / factor;
+      if (ratio < 1 / tolerance) return value * factor;
+      return value;
+    }
+
     function fmtAge(durationMs) {
       if (!Number.isFinite(durationMs) || durationMs < 0) return "n/a";
       const totalSeconds = Math.floor(durationMs / 1000);
@@ -457,10 +535,12 @@
     }
 
     function parseNavValue(html) {
-      const match = html.match(/Price\s*\/\s*NAV\s*\(ZAC\)[\s\S]*?([0-9][0-9,\s]*(?:\.[0-9]+)?)/i);
+      const match = html.match(/Price\s*\/\s*NAV\s*\((ZAC|ZAR)\)[\s\S]*?([0-9][0-9,\s]*(?:\.[0-9]+)?)/i);
       if (!match) return null;
-      const value = Number(match[1].replace(/[,\s]/g, ""));
-      return Number.isFinite(value) && value > 0 ? value : null;
+      const value = Number(match[2].replace(/[,\s]/g, ""));
+      if (!Number.isFinite(value) || value <= 0) return null;
+      // The page occasionally labels this field ZAR (rand) instead of ZAC (cents).
+      return match[1].toUpperCase() === "ZAR" ? value * 100 : value;
     }
 
     function parseNavDate(html) {
@@ -572,11 +652,24 @@
       }
     }
 
+    function metricCard(label, value, { extraClass = "", note = "", wide = false } = {}) {
+      return `
+        <article class="metric ${extraClass} ${wide ? "wide" : ""}">
+          <div class="label">${label}</div>
+          <div class="value">${value}</div>
+          ${note ? `<div class="subtle">${note}</div>` : ""}
+        </article>
+      `;
+    }
+
     function renderSummary(fund) {
       const largest = fund.holdings[0];
       const liveMetrics = state.liveByFundCode.get(fund.code) || null;
       const latestNav = liveMetrics?.latest_nav || fund.latest_nav || null;
       const latestMarket = liveMetrics?.latest_market_price || fund.latest_market_price || null;
+      if (latestNav && latestMarket && Number.isFinite(latestNav.value_zac) && Number.isFinite(latestMarket.value_zac)) {
+        latestMarket.value_zac = reconcileZacScale(latestMarket.value_zac, latestNav.value_zac);
+      }
       const etfPerf = liveMetrics?.etf_performance || fund.etf_performance || { d1: null, d7: null, d30: null };
       const baseNavGap = fund.estimated_nav_gap || { status: "n/a", difference_zac: null, difference_pct: null, label: "n/a" };
       const navGap = (latestNav && latestMarket && Number.isFinite(latestNav.value_zac) && Number.isFinite(latestMarket.value_zac))
@@ -592,42 +685,148 @@
       const navStatusClass = navGap.status ? `status-${navGap.status.replace("/", "_")}` : "status-na";
       const holdingsCapturedAt = fund.captured_at_utc || null;
       const holdingsAge = holdingsCapturedAt ? fmtAge(Date.now() - new Date(holdingsCapturedAt).getTime()) : "n/a";
-      const rows = [
-        ["Fund 1d", `<span class="${cssFor(etfPerf.d1)}">${fmtPct(etfPerf.d1)}</span>`, "perf-card"],
-        ["Fund 7d", `<span class="${cssFor(etfPerf.d7)}">${fmtPct(etfPerf.d7)}</span>`, "perf-card"],
-        ["Fund 30d", `<span class="${cssFor(etfPerf.d30)}">${fmtPct(etfPerf.d30)}</span>`, "perf-card"],
-        ["Snapshot", fund.snapshot_date || "n/a"],
-        ["Last Holdings Update", holdingsCapturedAt ? fmtDateTime(holdingsCapturedAt) : "n/a"],
-        ["Time Since Holdings Update", holdingsAge],
-        ["Holdings", fund.holdings_count],
-        ["Total weight", fmtWeight(fund.total_weight)],
-        ["Largest holding", largest ? largest.instrument : "n/a"],
-        ["NAV (latest)", latestNav ? `<a href="${chartHref(fund, "nav")}">${fmtZac(latestNav.value_zac)}</a>` : "n/a"],
-        ["Market Price (latest)", latestMarket ? `<a href="${chartHref(fund, "nav")}">${fmtZac(latestMarket?.value_zac)}</a>` : "n/a"],
-        ["Difference (Price - NAV)", Number.isFinite(navGap.difference_zac) ? fmtZac(navGap.difference_zac) : "n/a"],
-        [
+
+      const performanceCards = [
+        metricCard("Fund 1d", `<span class="${cssFor(etfPerf.d1)}">${fmtPct(etfPerf.d1)}</span>`, { extraClass: "perf-card" }),
+        metricCard("Fund 7d", `<span class="${cssFor(etfPerf.d7)}">${fmtPct(etfPerf.d7)}</span>`, { extraClass: "perf-card" }),
+        metricCard("Fund 30d", `<span class="${cssFor(etfPerf.d30)}">${fmtPct(etfPerf.d30)}</span>`, { extraClass: "perf-card" }),
+      ].join("");
+
+      const navCards = [
+        metricCard(
+          "NAV (latest)",
+          latestNav ? `<a href="${chartHref(fund, "nav")}">${fmtZac(latestNav.value_zac)}</a>` : "n/a",
+          {
+            note: latestNav
+              ? `As of ${latestNav.nav_date} | Captured ${fmtDateTime(latestNav.captured_at_utc)}${liveMetrics?.latest_nav ? " | Live frontend NAV" : ""}`
+              : "",
+          }
+        ),
+        metricCard(
+          "Market Price (latest)",
+          latestMarket ? `<a href="${chartHref(fund, "nav")}">${fmtZac(latestMarket?.value_zac)}</a>` : "n/a",
+          {
+            note: latestMarket
+              ? `Source ${latestMarket.source || "n/a"} | Price time ${fmtDateTime(latestMarket.price_at_utc || latestMarket.captured_at_utc)}${liveMetrics?.latest_market_price ? " | Live frontend quote" : ""}`
+              : "",
+          }
+        ),
+        metricCard("Difference (Price - NAV)", Number.isFinite(navGap.difference_zac) ? fmtZac(navGap.difference_zac) : "n/a"),
+        metricCard(
           "Estimated Premium/Discount to NAV",
           Number.isFinite(navGap.difference_pct)
             ? `<a href="${chartHref(fund, "premium")}" aria-label="View premium discount chart"><span class="status-pill ${navStatusClass}">${fmtPct(navGap.difference_pct)}</span></a>`
-            : `<span class="status-pill ${navStatusClass}">n/a</span>`,
-        ],
-      ];
-      summary.innerHTML = rows.map(([label, value, extraClass]) => `
-        <article class="metric ${extraClass || ""}">
-          <div class="label">${label}</div>
-          <div class="value">${value}</div>
-          ${
-            label === "NAV (latest)" && latestNav
-              ? `<div class="subtle">As of ${latestNav.nav_date} | Captured ${fmtDateTime(latestNav.captured_at_utc)}${liveMetrics?.latest_nav ? " | Live frontend NAV" : ""}</div>`
-              : ""
+            : `<span class="status-pill ${navStatusClass}">n/a</span>`
+        ),
+      ].join("");
+
+      const holdingsCards = [
+        metricCard("Holdings", fund.holdings_count),
+        metricCard("Total weight", fmtWeight(fund.total_weight)),
+        metricCard("Largest holding", largest ? largest.instrument : "n/a"),
+        metricCard("Snapshot", fund.snapshot_date || "n/a"),
+        metricCard("Last Holdings Update", holdingsCapturedAt ? fmtDateTime(holdingsCapturedAt) : "n/a"),
+        metricCard("Time Since Holdings Update", holdingsAge),
+      ].join("");
+
+      summary.innerHTML = `
+        <div class="summary-group">
+          <h2 class="summary-group-title">Fund Performance</h2>
+          <div class="summary-grid">${performanceCards}</div>
+        </div>
+        <div class="summary-group">
+          <h2 class="summary-group-title">NAV vs Market Price</h2>
+          <div class="summary-grid">
+            ${navCards}
+            <div class="metric wide trend-card">
+              <div class="trend-head">
+                <div class="label">Recent NAV / Price Trend</div>
+                <div id="trendLegend" class="trend-legend"></div>
+              </div>
+              <div id="trendBody"></div>
+            </div>
+          </div>
+        </div>
+        <div class="summary-group">
+          <h2 class="summary-group-title">Holdings Snapshot</h2>
+          <div class="summary-grid">${holdingsCards}</div>
+        </div>
+      `;
+      renderTrendSparkline(fund);
+    }
+
+    function renderTrendSparkline(fund) {
+      const trendBody = document.querySelector("#trendBody");
+      const trendLegend = document.querySelector("#trendLegend");
+      const rows = (fund.nav_price_history || []).slice(-30);
+      const points = rows
+        .map(row => ({
+          date: row.captured_hour_utc,
+          nav: Number(row.nav_zac),
+          price: Number(row.market_price_zac),
+        }))
+        .filter(row => row.date && (Number.isFinite(row.nav) || Number.isFinite(row.price)));
+
+      if (points.length < 2) {
+        trendBody.innerHTML = '<div class="trend-empty">Not enough hourly NAV/price history yet.</div>';
+        trendLegend.innerHTML = "";
+        return;
+      }
+
+      trendBody.innerHTML = '<canvas id="trendChart"></canvas>';
+      trendLegend.innerHTML = `
+        <span class="legend-item"><span class="legend-swatch" style="background:#0f766e"></span>NAV</span>
+        <span class="legend-item"><span class="legend-swatch" style="background:#2563eb"></span>Market price</span>
+      `;
+      drawSparkline(document.querySelector("#trendChart"), points, chartHref(fund, "nav"));
+    }
+
+    function drawSparkline(canvas, points, href) {
+      const ctx = canvas.getContext("2d");
+      const rect = canvas.getBoundingClientRect();
+      const ratio = window.devicePixelRatio || 1;
+      canvas.width = Math.max(1, Math.floor(rect.width * ratio));
+      canvas.height = Math.max(1, Math.floor(rect.height * ratio));
+      ctx.setTransform(ratio, 0, 0, ratio, 0, 0);
+
+      const width = rect.width;
+      const height = rect.height;
+      const pad = { top: 6, right: 6, bottom: 6, left: 6 };
+      ctx.clearRect(0, 0, width, height);
+
+      const values = points.flatMap(p => [p.nav, p.price]).filter(Number.isFinite);
+      let min = Math.min(...values);
+      let max = Math.max(...values);
+      if (min === max) {
+        min -= Math.abs(min || 1) * 0.02;
+        max += Math.abs(max || 1) * 0.02;
+      }
+      const xFor = index => pad.left + (points.length === 1 ? 0 : (index / (points.length - 1)) * (width - pad.left - pad.right));
+      const yFor = value => pad.top + ((max - value) / (max - min)) * (height - pad.top - pad.bottom);
+
+      const drawSeries = (key, color) => {
+        ctx.strokeStyle = color;
+        ctx.lineWidth = 2;
+        ctx.beginPath();
+        let started = false;
+        points.forEach((point, index) => {
+          const value = point[key];
+          if (!Number.isFinite(value)) return;
+          const x = xFor(index);
+          const y = yFor(value);
+          if (!started) {
+            ctx.moveTo(x, y);
+            started = true;
+          } else {
+            ctx.lineTo(x, y);
           }
-          ${
-            label === "Market Price (latest)" && latestMarket
-              ? `<div class="subtle">Source ${latestMarket.source || "n/a"} | Price time ${fmtDateTime(latestMarket.price_at_utc || latestMarket.captured_at_utc)}${liveMetrics?.latest_market_price ? " | Live frontend quote" : ""}</div>`
-              : ""
-          }
-        </article>
-      `).join("");
+        });
+        ctx.stroke();
+      };
+      drawSeries("nav", "#0f766e");
+      drawSeries("price", "#2563eb");
+
+      canvas.title = href ? "View full NAV/price chart" : "";
     }
 
     function renderLiveStatus(fund) {
@@ -803,11 +1002,23 @@
       holdingsChartCtx.fillText(fmtDate(snapshots[snapshots.length - 1]), width - pad.right, height - pad.bottom + 14);
     }
 
+    function renderWeightCell(weight, maxWeight) {
+      const safeWeight = Number.isFinite(weight) ? weight : 0;
+      const fillPct = maxWeight > 0 ? Math.max(2, (safeWeight / maxWeight) * 100) : 0;
+      return `
+        <div class="weight-cell">
+          <span>${fmtWeight(weight)}</span>
+          <div class="weight-bar-track"><div class="weight-bar-fill" style="width:${fillPct}%"></div></div>
+        </div>
+      `;
+    }
+
     function renderTable(fund) {
       const rows = visibleHoldings(fund);
       const weeklyChangeMap = weeklyChangeByInstrument(fund);
       const snapshotChangeMap = snapshotChangeByInstrument(fund);
       const monthlyHistoryMap = monthlyHistoryByInstrument(fund);
+      const maxWeight = Math.max(0, ...rows.map(row => row.weight).filter(Number.isFinite));
       if (!rows.length) {
         tablePanel.className = "empty";
         tablePanel.textContent = "No holdings match the current filters.";
@@ -838,7 +1049,7 @@
                   <td class="instrument">${row.instrument}</td>
                   <td>${row.ticker ? `<span class="ticker">${row.ticker}</span>` : "<span class=\"subtle\">n/a</span>"}</td>
                   <td>${row.currency}</td>
-                  <td class="num">${fmtWeight(row.weight)}</td>
+                  <td class="num">${renderWeightCell(row.weight, maxWeight)}</td>
                   <td>${renderHistoryStrip(monthlyHistoryMap.get(row.instrument))}</td>
                   <td class="num ${cssFor(snapshotChangeMap.get(row.instrument))}">${fmtWeight(snapshotChangeMap.get(row.instrument))}</td>
                   <td class="num ${cssFor(weeklyChangeMap.get(row.instrument))}">${fmtWeight(weeklyChangeMap.get(row.instrument))}</td>
@@ -896,7 +1107,9 @@
       });
 
     window.addEventListener("resize", () => {
-      if (state.data) drawHoldingsSnapshotChart(activeFund());
+      if (!state.data) return;
+      drawHoldingsSnapshotChart(activeFund());
+      renderTrendSparkline(activeFund());
     });
   </script>
 </body>

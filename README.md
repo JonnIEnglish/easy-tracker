@@ -1,5 +1,7 @@
 # EasyETFs Holdings Tracker
 
+**Live dashboard: https://jonnienglish.github.io/easy-tracker/**
+
 This repository captures historical holdings CSVs for three EasyETFs funds and publishes a GitHub Pages viewer for the latest holdings plus 1d, 7d, and 30d stock performance.
 
 Tracked funds:

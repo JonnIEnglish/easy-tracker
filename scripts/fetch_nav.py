@@ -9,7 +9,7 @@ from typing import Any
 import pandas as pd
 import requests
 
-from scripts.utils import load_funds_config, read_csv_if_exists, utc_now_iso, write_csv
+from scripts.utils import load_funds_config, read_csv_if_exists, reconcile_zac_scale, utc_now_iso, write_csv
 
 NAV_HISTORY_PATH = Path("data/nav_history.csv")
 
@@ -31,17 +31,21 @@ def configured_funds() -> list[Fund]:
 
 def parse_nav_value(html: str) -> float | None:
     match = re.search(
-        r"Price\s*/\s*NAV\s*\(ZAC\).*?([0-9][0-9,\s]*(?:\.[0-9]+)?)",
+        r"Price\s*/\s*NAV\s*\((ZAC|ZAR)\).*?([0-9][0-9,\s]*(?:\.[0-9]+)?)",
         html,
         flags=re.IGNORECASE | re.DOTALL,
     )
     if not match:
         return None
-    raw = re.sub(r"[,\s]", "", match.group(1))
+    currency = match.group(1).upper()
+    raw = re.sub(r"[,\s]", "", match.group(2))
     try:
-        return float(raw)
+        value = float(raw)
     except ValueError:
         return None
+    # The page occasionally labels the same field ZAR (rand) instead of ZAC (cents).
+    # Everything downstream is stored in ZAC, so normalize rand readings up by 100x.
+    return value * 100 if currency == "ZAR" else value
 
 
 def _parse_date_value(raw: str) -> date | None:
@@ -98,6 +102,18 @@ def fetch_and_parse(fund: Fund, captured_at_utc: str) -> dict[str, Any] | None:
     return parse_nav_observation(response.text, fund.code, fund.instrument_page, captured_at_utc)
 
 
+def last_known_nav_zac(history: pd.DataFrame, fund_code: str) -> float | None:
+    if history.empty:
+        return None
+    rows = history[history["fund_code"].astype(str) == fund_code]
+    if rows.empty:
+        return None
+    rows = rows.assign(_sort_key=pd.to_datetime(rows["captured_at_utc"], utc=True, errors="coerce"))
+    rows = rows.sort_values("_sort_key")
+    value = rows.iloc[-1]["nav_zac"]
+    return float(value) if pd.notna(value) else None
+
+
 def main() -> None:
     captured_at_utc = utc_now_iso()
     history = read_csv_if_exists(NAV_HISTORY_PATH)
@@ -111,6 +127,11 @@ def main() -> None:
         if observation is None:
             print(f"{fund.code}: NAV not found on page")
             continue
+        reference = last_known_nav_zac(history, fund.code)
+        reconciled = reconcile_zac_scale(observation["nav_zac"], reference)
+        if reconciled != observation["nav_zac"]:
+            print(f"{fund.code}: corrected apparent ZAC/ZAR scale mismatch ({observation['nav_zac']} -> {reconciled})")
+            observation["nav_zac"] = reconciled
         rows.append(observation)
         print(f"{fund.code}: captured NAV {observation['nav_zac']} ({observation['nav_date']})")
 
