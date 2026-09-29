@@ -1,1116 +1,420 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>EasyETFs Holdings Tracker</title>
-  <style>
-    :root {
-      color-scheme: light;
-      --bg: #f7f8fa;
-      --panel: #ffffff;
-      --ink: #17202a;
-      --muted: #647282;
-      --line: #dde3ea;
-      --accent: #0f766e;
-      --accent-soft: #d9f0ed;
-      --good: #0a7a3d;
-      --bad: #b42318;
-      --warn: #8a5a00;
-    }
-    * { box-sizing: border-box; }
-    body {
-      margin: 0;
-      background: var(--bg);
-      color: var(--ink);
-      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      font-size: 14px;
-    }
-    header {
-      border-bottom: 1px solid var(--line);
-      background: #ffffff;
-    }
-    .wrap {
-      width: min(1280px, calc(100vw - 32px));
-      margin: 0 auto;
-    }
-    .topbar {
-      min-height: 82px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 18px;
-    }
-    h1 {
-      margin: 0;
-      font-size: 24px;
-      line-height: 1.1;
-      letter-spacing: 0;
-    }
-    .subtle { color: var(--muted); }
-    .timestamp {
-      text-align: right;
-      line-height: 1.5;
-      white-space: nowrap;
-    }
-    main { padding: 20px 0 32px; }
-    .tabs {
-      display: flex;
-      gap: 8px;
-      flex-wrap: wrap;
-      margin-bottom: 16px;
-    }
-    .tab {
-      min-height: 38px;
-      border: 1px solid var(--line);
-      background: #ffffff;
-      color: var(--ink);
-      border-radius: 8px;
-      padding: 0 14px;
-      font: inherit;
-      cursor: pointer;
-    }
-    .tab[aria-selected="true"] {
-      border-color: var(--accent);
-      background: var(--accent-soft);
-      color: #064e49;
-      font-weight: 700;
-    }
-    .summary {
-      margin-bottom: 16px;
-    }
-    .summary-group {
-      margin-bottom: 12px;
-    }
-    .summary-group-title {
-      margin: 0 0 8px;
-      font-size: 12px;
-      font-weight: 750;
-      text-transform: uppercase;
-      letter-spacing: 0.02em;
-      color: var(--muted);
-    }
-    .summary-grid {
-      display: grid;
-      grid-template-columns: repeat(4, minmax(0, 1fr));
-      gap: 10px;
-    }
-    .metric.wide {
-      grid-column: 1 / -1;
-    }
-    .trend-card {
-      padding: 12px;
-    }
-    .trend-head {
-      display: flex;
-      align-items: baseline;
-      justify-content: space-between;
-      flex-wrap: wrap;
-      gap: 6px 14px;
-      margin-bottom: 6px;
-    }
-    .trend-head .label {
-      color: var(--muted);
-      font-size: 12px;
-      text-transform: uppercase;
-    }
-    .trend-legend {
-      display: flex;
-      gap: 14px;
-      flex-wrap: wrap;
-      font-size: 12px;
-      color: var(--muted);
-    }
-    .trend-card canvas {
-      display: block;
-      width: 100%;
-      height: 90px;
-    }
-    .trend-empty {
-      color: var(--muted);
-      font-size: 12px;
-      padding: 6px 0 2px;
-    }
-    .live-status {
-      margin-bottom: 16px;
-    }
-    .notice {
-      border: 1px solid #f2c94c;
-      background: #fff8db;
-      color: #6b4e00;
-      border-radius: 8px;
-      padding: 10px 12px;
-      line-height: 1.45;
-    }
-    .notice strong {
-      display: block;
-      color: #533b00;
-      margin-bottom: 2px;
-    }
-    .metric, .toolbar, .chart-panel, .table-panel, .empty {
-      background: var(--panel);
-      border: 1px solid var(--line);
-      border-radius: 8px;
-    }
-    .metric {
-      padding: 12px;
-      min-height: 78px;
-    }
-    .metric.perf-card {
-      border-color: #cfe3f1;
-      background: #f8fbfe;
-    }
-    .metric .label {
-      color: var(--muted);
-      font-size: 12px;
-      text-transform: uppercase;
-    }
-    .metric .value {
-      margin-top: 5px;
-      font-size: 22px;
-      font-weight: 750;
-      overflow-wrap: anywhere;
-    }
-    .metric .value a {
-      color: inherit;
-      text-decoration-color: var(--accent);
-      text-underline-offset: 3px;
-    }
-    .toolbar {
-      display: grid;
-      grid-template-columns: minmax(220px, 1fr) 190px;
-      gap: 10px;
-      padding: 10px;
-      margin-bottom: 12px;
-    }
-    .chart-panel {
-      overflow: hidden;
-      margin-bottom: 12px;
-    }
-    .chart-head {
-      padding: 12px;
-      border-bottom: 1px solid var(--line);
-      background: #f0f3f6;
-      display: flex;
-      justify-content: space-between;
-      gap: 12px;
-    }
-    .chart-title {
-      margin: 0;
-      color: var(--muted);
-      font-size: 12px;
-      font-weight: 750;
-      text-transform: uppercase;
-    }
-    .chart-note {
-      margin-top: 3px;
-      color: var(--muted);
-      font-size: 12px;
-    }
-    .chart-body { padding: 14px; }
-    .chart-body canvas {
-      display: block;
-      width: 100%;
-      height: 340px;
-    }
-    .legend {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px 14px;
-      padding: 0 14px 14px;
-      color: var(--muted);
-      font-size: 12px;
-    }
-    .legend-item {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-    }
-    .legend-swatch {
-      width: 18px;
-      height: 3px;
-      border-radius: 999px;
-    }
-    input, select {
-      width: 100%;
-      min-height: 38px;
-      border: 1px solid var(--line);
-      border-radius: 6px;
-      background: #ffffff;
-      color: var(--ink);
-      font: inherit;
-      padding: 0 10px;
-    }
-    .table-panel { overflow: hidden; }
-    table {
-      width: 100%;
-      border-collapse: collapse;
-      table-layout: fixed;
-    }
-    th, td {
-      padding: 10px 12px;
-      border-bottom: 1px solid var(--line);
-      text-align: left;
-      vertical-align: middle;
-      overflow-wrap: anywhere;
-    }
-    th {
-      background: #f0f3f6;
-      color: var(--muted);
-      font-size: 12px;
-      text-transform: uppercase;
-      font-weight: 750;
-      position: sticky;
-      top: 0;
-      z-index: 1;
-    }
-    tbody tr:hover { background: #fafcfd; }
-    .num { text-align: right; font-variant-numeric: tabular-nums; }
-    .instrument { font-weight: 650; }
-    .ticker {
-      display: inline-flex;
-      align-items: center;
-      min-height: 24px;
-      padding: 0 8px;
-      border-radius: 999px;
-      background: #eef2f6;
-      color: #334155;
-      font-size: 12px;
-      font-weight: 700;
-    }
-    .weight-cell {
-      display: flex;
-      flex-direction: column;
-      align-items: flex-end;
-      gap: 4px;
-    }
-    .weight-bar-track {
-      width: 100%;
-      height: 5px;
-      border-radius: 999px;
-      background: #eef2f6;
-      overflow: hidden;
-    }
-    .weight-bar-fill {
-      height: 100%;
-      border-radius: 999px;
-      background: var(--accent);
-    }
-    .history-strip {
-      display: grid;
-      grid-auto-flow: column;
-      grid-auto-columns: minmax(18px, 1fr);
-      gap: 3px;
-      align-items: end;
-      min-height: 28px;
-    }
-    .history-cell {
-      min-width: 18px;
-      min-height: 22px;
-      border: 1px solid var(--line);
-      border-radius: 4px;
-      background: #fafcfd;
-    }
-    .history-cell-active {
-      border-color: rgba(15, 118, 110, 0.28);
-    }
-    .positive { color: var(--good); }
-    .negative { color: var(--bad); }
-    .missing { color: var(--warn); }
-    .status-pill {
-      display: inline-flex;
-      align-items: center;
-      min-height: 24px;
-      padding: 0 8px;
-      border-radius: 999px;
-      font-size: 12px;
-      font-weight: 700;
-    }
-    .status-premium {
-      background: #fee4e2;
-      color: #b42318;
-    }
-    .status-discount {
-      background: #dcfce7;
-      color: #166534;
-    }
-    .status-near_nav {
-      background: #fef3c7;
-      color: #92400e;
-    }
-    .status-na {
-      background: #eef2f6;
-      color: #475569;
-    }
-    .empty {
-      padding: 28px;
-      color: var(--muted);
-      text-align: center;
-    }
-    a { color: var(--accent); }
-    @media (max-width: 860px) {
-      .topbar, .toolbar { display: block; }
-      .timestamp { margin-top: 8px; text-align: left; white-space: normal; }
-      .summary-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-      .chart-head { display: block; }
-      .toolbar > * + * { margin-top: 10px; }
-      table { min-width: 980px; }
-      .table-panel { overflow-x: auto; }
-    }
-  </style>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>EasyETFs Tracker</title>
+<meta name="description" content="Daily NAV, premium/discount, holdings changes and look-through exposure for the EasyETFs actively managed funds.">
+<style>
+:root {
+  color-scheme: light;
+  --bg: #f4f4f2; --surface: #fcfcfb; --surface-2: #f0f0ed; --border: #e0dfdb; --grid: #e9e8e4;
+  --text: #0b0b0b; --text-2: #52514e; --text-3: #7d7b76;
+  --s1: #2a78d6; --s2: #eb6834; --s3: #1baf7a; --s4: #eda100; --s5: #e87ba4; --s6: #008300; --s7: #4a3aa7; --s8: #e34948;
+  --pos: #0a7a4f; --neg: #c62f2e; --pos-bg: #e3f4ec; --neg-bg: #fbe7e7; --warn-bg: #fdf1d6; --warn: #8a5b00; --info-bg: #e5eefb;
+  --shadow: 0 1px 2px rgba(0,0,0,.05);
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    color-scheme: dark;
+    --bg: #111110; --surface: #1a1a19; --surface-2: #232321; --border: #33322f; --grid: #2a2926;
+    --text: #ffffff; --text-2: #c3c2b7; --text-3: #8f8e85;
+    --s1: #3987e5; --s2: #d95926; --s3: #199e70; --s4: #c98500; --s5: #d55181; --s6: #008300; --s7: #9085e9; --s8: #e66767;
+    --pos: #3fcf9c; --neg: #f27b7a; --pos-bg: #12291f; --neg-bg: #33191a; --warn-bg: #33290f; --warn: #e6b34d; --info-bg: #172234;
+    --shadow: none;
+  }
+}
+* { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+body { margin: 0; background: var(--bg); color: var(--text); font: 14px/1.45 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; }
+.wrap { max-width: 1240px; margin: 0 auto; padding: 0 16px 48px; }
+header.top { display: flex; flex-wrap: wrap; align-items: baseline; gap: 6px 16px; padding: 22px 0 12px; }
+header.top h1 { font-size: 22px; margin: 0; letter-spacing: -.01em; }
+header.top .sub { color: var(--text-2); }
+.fresh { margin-left: auto; font-size: 12px; color: var(--text-2); display: flex; align-items: center; gap: 6px; }
+.dot { width: 8px; height: 8px; border-radius: 50%; background: var(--pos); display: inline-block; }
+.dot.stale { background: var(--s4); }
+nav.tabs { display: flex; gap: 4px; overflow-x: auto; border-bottom: 1px solid var(--border); margin-bottom: 18px; position: sticky; top: 0; background: var(--bg); z-index: 5; padding-top: 4px; }
+nav.tabs a { padding: 10px 14px; text-decoration: none; color: var(--text-2); border-bottom: 2px solid transparent; white-space: nowrap; font-weight: 600; }
+nav.tabs a small { font-weight: 400; color: var(--text-3); margin-left: 4px; }
+nav.tabs a.on { color: var(--text); border-color: var(--s1); }
+h2 { font-size: 15px; margin: 0 0 2px; }
+.hint { color: var(--text-3); font-size: 12px; margin: 0 0 10px; }
+.grid { display: grid; gap: 14px; }
+.g3 { grid-template-columns: repeat(3, 1fr); }
+.g2 { grid-template-columns: repeat(2, 1fr); }
+.g21 { grid-template-columns: 2fr 1fr; }
+@media (max-width: 900px) { .g3, .g2, .g21 { grid-template-columns: 1fr; } }
+.card { background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 14px 16px; box-shadow: var(--shadow); min-width: 0; }
+.mt { margin-top: 14px; }
+.row { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; }
+.spread { justify-content: space-between; }
+.kpis { display: grid; grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); gap: 10px; }
+.kpi { background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 10px 12px; }
+.kpi .l { font-size: 11px; color: var(--text-3); text-transform: uppercase; letter-spacing: .04em; }
+.kpi .v { font-size: 20px; font-weight: 650; font-variant-numeric: tabular-nums; margin-top: 2px; }
+.kpi .s { font-size: 11px; color: var(--text-3); }
+.pos { color: var(--pos); } .neg { color: var(--neg); } .muted { color: var(--text-3); }
+.pill { display: inline-block; padding: 1px 8px; border-radius: 99px; font-size: 11px; font-weight: 600; background: var(--surface-2); color: var(--text-2); white-space: nowrap; }
+.pill.pos { background: var(--pos-bg); color: var(--pos); } .pill.neg { background: var(--neg-bg); color: var(--neg); }
+.pill.warn { background: var(--warn-bg); color: var(--warn); } .pill.info { background: var(--info-bg); color: var(--s1); }
+.fundcard { text-decoration: none; color: inherit; display: block; }
+.fundcard:hover { border-color: var(--s1); }
+.fundcard .nm { font-weight: 650; }
+.fundcard .full { font-size: 11px; color: var(--text-3); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.fundcard .big { font-size: 26px; font-weight: 700; font-variant-numeric: tabular-nums; margin: 6px 0 2px; }
+.chips { display: flex; gap: 6px; flex-wrap: wrap; margin: 6px 0; }
+.chip { font-size: 12px; background: var(--surface-2); border-radius: 6px; padding: 2px 7px; font-variant-numeric: tabular-nums; }
+.chip b { font-weight: 500; color: var(--text-3); margin-right: 4px; }
+.seg { display: inline-flex; border: 1px solid var(--border); border-radius: 8px; overflow: hidden; }
+.seg button { background: var(--surface); color: var(--text-2); border: 0; padding: 4px 10px; font: inherit; font-size: 12px; cursor: pointer; }
+.seg button + button { border-left: 1px solid var(--border); }
+.seg button.on { background: var(--s1); color: #fff; }
+input[type=search], select { background: var(--surface); color: var(--text); border: 1px solid var(--border); border-radius: 8px; padding: 6px 10px; font: inherit; font-size: 13px; }
+input[type=search] { min-width: 200px; }
+.chart { position: relative; width: 100%; }
+.chart svg { display: block; width: 100%; height: auto; overflow: visible; }
+.chart text { fill: var(--text-3); font-size: 11px; font-family: inherit; }
+.tip { position: absolute; pointer-events: none; background: var(--surface); border: 1px solid var(--border); border-radius: 8px; padding: 6px 9px; font-size: 12px; box-shadow: 0 4px 14px rgba(0,0,0,.18); white-space: nowrap; z-index: 4; display: none; }
+.tip .d { color: var(--text-3); margin-bottom: 2px; }
+.tip i { display: inline-block; width: 8px; height: 8px; border-radius: 2px; margin-right: 6px; }
+.legend { display: flex; flex-wrap: wrap; gap: 4px 14px; font-size: 12px; color: var(--text-2); margin: 6px 0 0; }
+.legend button { background: none; border: 0; padding: 0; font: inherit; color: inherit; cursor: pointer; display: inline-flex; align-items: center; gap: 6px; }
+.legend button.off { opacity: .4; }
+.legend i { width: 10px; height: 10px; border-radius: 3px; display: inline-block; }
+.tablewrap { overflow-x: auto; }
+table { border-collapse: collapse; width: 100%; font-variant-numeric: tabular-nums; }
+th, td { padding: 6px 8px; text-align: right; border-bottom: 1px solid var(--border); white-space: nowrap; }
+th { font-size: 11px; text-transform: uppercase; letter-spacing: .04em; color: var(--text-3); font-weight: 600; cursor: pointer; user-select: none; position: sticky; top: 0; background: var(--surface); }
+th.on { color: var(--text); }
+th:first-child, td:first-child { text-align: left; }
+td.txt, th.txt { text-align: left; }
+tr:hover td { background: var(--surface-2); }
+.wbar { position: relative; min-width: 90px; }
+.wbar span { position: absolute; left: 0; top: 4px; bottom: 4px; background: var(--s1); opacity: .18; border-radius: 3px; }
+.wbar b { position: relative; font-weight: 600; }
+.stack { display: flex; height: 14px; border-radius: 4px; overflow: hidden; gap: 2px; background: var(--surface-2); }
+.stack div { min-width: 2px; }
+.split { display: flex; justify-content: space-between; font-size: 12px; padding: 2px 0; }
+.insights { list-style: none; margin: 0; padding: 0; display: grid; gap: 8px; }
+.insights li { display: flex; gap: 10px; align-items: flex-start; padding: 8px 10px; background: var(--surface-2); border-radius: 8px; }
+.insights .ic { font-size: 15px; line-height: 1.3; }
+.feed { display: grid; gap: 0; }
+.feed .it { display: grid; grid-template-columns: 62px 84px 1fr auto; gap: 8px; padding: 6px 0; border-bottom: 1px solid var(--border); align-items: center; }
+.feed .it:last-child { border: 0; }
+@media (max-width: 560px) { .feed .it { grid-template-columns: 54px 78px 1fr; } .feed .it .r { display: none; } }
+.bar2 { display: grid; grid-template-columns: 1fr 70px; align-items: center; gap: 8px; font-size: 12px; padding: 3px 0; }
+.bar2 .track { position: relative; height: 10px; background: var(--surface-2); border-radius: 3px; }
+.bar2 .fill { position: absolute; top: 0; bottom: 0; border-radius: 3px; }
+.foot { color: var(--text-3); font-size: 12px; margin-top: 22px; }
+.err { padding: 40px; text-align: center; color: var(--text-2); }
+a { color: var(--s1); }
+</style>
 </head>
 <body>
-  <header>
-    <div class="wrap topbar">
-      <div>
-        <h1>EasyETFs Holdings Tracker</h1>
-        <div class="subtle">Latest holdings and mapped stock performance for easyGE, easyAI, and easybalanced.</div>
-      </div>
-      <div class="timestamp">
-        <div class="subtle">Generated</div>
-        <strong id="generated">Loading...</strong>
-      </div>
-    </div>
+<div class="wrap">
+  <header class="top">
+    <h1>EasyETFs Tracker</h1>
+    <span class="sub">NAV, premium/discount, holdings moves &amp; look-through exposure</span>
+    <span class="fresh" id="fresh"></span>
   </header>
+  <nav class="tabs" id="tabs"></nav>
+  <main id="view"><div class="err">Loading…</div></main>
+  <p class="foot" id="foot"></p>
+</div>
+<script>
+"use strict";
+let D = null;
+const state = { range: "3M", table: { key: "weight", dir: -1, q: "", kind: "all" }, hidden: {}, evtype: "all" };
+const $ = (s, r = document) => r.querySelector(s);
+const esc = s => String(s ?? "").replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
+const css = n => getComputedStyle(document.documentElement).getPropertyValue(n).trim();
+const CAT = ["--s1", "--s2", "--s3", "--s4", "--s5", "--s6", "--s7", "--s8"];
 
-  <main class="wrap">
-    <nav id="tabs" class="tabs" aria-label="Funds"></nav>
-    <section id="summary" class="summary"></section>
-    <section id="liveStatus" class="live-status" aria-live="polite"></section>
-    <section id="holdingsChartPanel" class="chart-panel">
-      <div class="chart-head">
-        <div>
-          <h2 class="chart-title">Holding Weight Change By Snapshot</h2>
-          <div id="holdingsChartNote" class="chart-note">Top current holdings, sampled from each raw holdings snapshot.</div>
-        </div>
-      </div>
-      <div class="chart-body">
-        <canvas id="holdingsChart" width="1100" height="340"></canvas>
-      </div>
-      <div id="holdingsChartLegend" class="legend"></div>
-    </section>
-    <section class="toolbar">
-      <input id="search" type="search" placeholder="Search holdings" />
-      <select id="perfFilter" aria-label="Performance filter">
-        <option value="all">All holdings</option>
-        <option value="mapped">With performance</option>
-        <option value="missing">Missing performance</option>
-      </select>
-    </section>
-    <section id="tablePanel" class="table-panel"></section>
-  </main>
+/* ---------- formatting ---------- */
+const isN = v => typeof v === "number" && isFinite(v);
+const sign = v => (v > 0 ? "+" : v < 0 ? "−" : "");
+const cls = v => (!isN(v) || Math.abs(v) < 0.005 ? "" : v > 0 ? "pos" : "neg");
+const arrow = v => (!isN(v) || Math.abs(v) < 0.005 ? "" : v > 0 ? "▲" : "▼");
+const pct = (v, d = 2) => (isN(v) ? `${sign(v)}${Math.abs(v).toFixed(d)}%` : "–");
+const pp = (v, d = 2) => (isN(v) ? `${sign(v)}${Math.abs(v).toFixed(d)}pp` : "–");
+const num = (v, d = 2) => (isN(v) ? v.toLocaleString("en-ZA", { minimumFractionDigits: d, maximumFractionDigits: d }).replace(/ /g, " ") : "–");
+const rand = zac => (isN(zac) ? "R" + num(zac / 100, 2) : "–");
+const delta = (v, f = pct) => `<span class="${cls(v)}">${arrow(v)} ${f(v)}</span>`.replace("> ", ">");
+const fdate = (s, y = false) => { if (!s) return "–"; const d = new Date(s + (s.length === 10 ? "T00:00:00Z" : "")); return d.toLocaleDateString("en-GB", { day: "numeric", month: "short", ...(y ? { year: "numeric" } : {}), timeZone: "UTC" }); };
+const ago = iso => { const m = (Date.now() - new Date(iso)) / 60000; return m < 60 ? `${Math.round(m)}m ago` : m < 2880 ? `${Math.round(m / 60)}h ago` : `${Math.round(m / 1440)}d ago`; };
+const title = n => String(n).toLowerCase().replace(/\b([a-z])/g, c => c.toUpperCase()).replace(/\bEtf\b/, "ETF").replace(/\bInav\b/, "iNAV");
 
-  <script>
-    const state = {
-      data: null,
-      activeCode: null,
-      query: "",
-      perfFilter: "all",
-      liveByFundCode: new Map(),
-      liveStatusByFundCode: new Map(),
-      timerId: null,
-    };
-    const generated = document.querySelector("#generated");
-    const tabs = document.querySelector("#tabs");
-    const summary = document.querySelector("#summary");
-    const liveStatus = document.querySelector("#liveStatus");
-    const holdingsChartPanel = document.querySelector("#holdingsChartPanel");
-    const holdingsChartNote = document.querySelector("#holdingsChartNote");
-    const holdingsChartLegend = document.querySelector("#holdingsChartLegend");
-    const holdingsChart = document.querySelector("#holdingsChart");
-    const holdingsChartCtx = holdingsChart.getContext("2d");
-    const tablePanel = document.querySelector("#tablePanel");
-    const search = document.querySelector("#search");
-    const perfFilter = document.querySelector("#perfFilter");
+/* ---------- charts ---------- */
+function niceTicks(lo, hi, n = 5) {
+  const span = hi - lo || 1, raw = span / n, mag = Math.pow(10, Math.floor(Math.log10(raw)));
+  const step = [1, 2, 2.5, 5, 10].map(m => m * mag).find(s => s >= raw) || raw;
+  const out = []; for (let v = Math.ceil(lo / step) * step; v <= hi + 1e-9; v += step) out.push(+v.toFixed(10));
+  return out;
+}
+const ms = d => Date.parse(d + "T00:00:00Z");
+function cutRange(points, range, last) {
+  if (range === "ALL" || !points.length) return points;
+  const days = { "1M": 31, "3M": 92, "6M": 183 }[range] || 92;
+  const end = last || ms(points[points.length - 1][0]);
+  return points.filter(p => ms(p[0]) >= end - days * 864e5);
+}
+function attachHover(el, svgW, plot, getRows, drawX) {
+  const svg = $("svg", el), tip = $(".tip", el), cross = $(".cross", el);
+  const move = e => {
+    const r = svg.getBoundingClientRect(), x = ((e.touches ? e.touches[0].clientX : e.clientX) - r.left) * (svgW / r.width);
+    const rows = getRows(x); if (!rows) return;
+    cross.setAttribute("x1", rows.x); cross.setAttribute("x2", rows.x); cross.style.display = "";
+    tip.innerHTML = `<div class="d">${fdate(rows.date, true)}</div>` + rows.items.map(i => `<div>${i.color ? `<i style="background:${i.color}"></i>` : ""}${esc(i.label)}: <b>${esc(i.value)}</b></div>`).join("");
+    tip.style.display = "block";
+    const scale = r.width / svgW, tw = tip.offsetWidth;
+    let left = rows.x * scale + 12; if (left + tw > r.width) left = rows.x * scale - tw - 12;
+    tip.style.left = Math.max(0, left) + "px"; tip.style.top = "6px";
+  };
+  const leave = () => { tip.style.display = "none"; cross.style.display = "none"; };
+  svg.addEventListener("mousemove", move); svg.addEventListener("touchmove", move, { passive: true });
+  svg.addEventListener("mouseleave", leave); svg.addEventListener("touchend", leave);
+}
+function lineChart(el, o) {
+  const W = Math.max(320, el.clientWidth || 640), H = o.height || 250, m = { l: o.left || 48, r: 10, t: 8, b: 22 };
+  const all = o.series.flatMap(s => s.points);
+  if (!all.length) { el.innerHTML = `<div class="hint">No data yet.</div>`; return; }
+  const xs = all.map(p => ms(p[0])), x0 = Math.min(...xs), x1 = Math.max(...xs);
+  let ys = all.map(p => p[1]), lo = Math.min(...ys), hi = Math.max(...ys);
+  if (o.includeZero) { lo = Math.min(lo, 0); hi = Math.max(hi, 0); }
+  const padY = (hi - lo) * 0.08 || 1; lo -= padY; hi += padY;
+  const X = t => m.l + ((t - x0) / (x1 - x0 || 1)) * (W - m.l - m.r), Y = v => H - m.b - ((v - lo) / (hi - lo)) * (H - m.t - m.b);
+  const yt = niceTicks(lo, hi, 5), grid = css("--grid");
+  let g = yt.map(v => `<line x1="${m.l}" x2="${W - m.r}" y1="${Y(v)}" y2="${Y(v)}" stroke="${grid}"/><text x="${m.l - 6}" y="${Y(v) + 4}" text-anchor="end">${o.yFmt ? o.yFmt(v) : v}</text>`).join("");
+  const nx = W < 500 ? 4 : 7;
+  for (let i = 0; i <= nx; i++) { const t = x0 + ((x1 - x0) * i) / nx; g += `<text x="${X(t)}" y="${H - 5}" text-anchor="${i === 0 ? "start" : i === nx ? "end" : "middle"}">${fdate(new Date(t).toISOString().slice(0, 10))}</text>`; }
+  if (o.base != null) g += `<line x1="${m.l}" x2="${W - m.r}" y1="${Y(o.base)}" y2="${Y(o.base)}" stroke="${css("--text-3")}" stroke-dasharray="3 3"/>`;
+  const paths = o.series.map(s => `<path d="${s.points.map((p, i) => (i ? "L" : "M") + X(ms(p[0])).toFixed(1) + " " + Y(p[1]).toFixed(1)).join("")}" fill="none" stroke="${s.color}" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"${s.dash ? ` stroke-dasharray="${s.dash}"` : ""}/>`).join("");
+  const ends = o.series.filter(s => s.points.length).map(s => { const p = s.points[s.points.length - 1]; return `<circle cx="${X(ms(p[0]))}" cy="${Y(p[1])}" r="3.5" fill="${s.color}" stroke="${css("--surface")}" stroke-width="2"/>`; }).join("");
+  el.innerHTML = `<svg viewBox="0 0 ${W} ${H}" role="img" aria-label="${esc(o.label || "chart")}">${g}${paths}${ends}<line class="cross" y1="${m.t}" y2="${H - m.b}" stroke="${css("--text-3")}" style="display:none"/><rect x="${m.l}" y="0" width="${W - m.l - m.r}" height="${H}" fill="transparent"/></svg><div class="tip"></div>`;
+  attachHover(el, W, m, x => {
+    const t = x0 + ((x - m.l) / (W - m.l - m.r)) * (x1 - x0);
+    let best = null;
+    const items = o.series.map(s => { if (!s.points.length) return null; let b = s.points[0]; for (const p of s.points) if (Math.abs(ms(p[0]) - t) < Math.abs(ms(b[0]) - t)) b = p; if (!best || Math.abs(ms(b[0]) - t) < Math.abs(ms(best[0]) - t)) best = b; return { s, b }; }).filter(Boolean);
+    if (!best) return null;
+    return { x: X(ms(best[0])), date: best[0], items: items.filter(i => i.b[0] === best[0] || Math.abs(ms(i.b[0]) - ms(best[0])) < 4 * 864e5).map(i => ({ color: i.s.color, label: i.s.name, value: o.tipFmt ? o.tipFmt(i.b[1]) : num(i.b[1]) })) };
+  });
+}
+function barChart(el, o) {
+  const pts = o.points, W = Math.max(320, el.clientWidth || 640), H = o.height || 170, m = { l: 44, r: 10, t: 8, b: 22 };
+  if (!pts.length) { el.innerHTML = `<div class="hint">No data yet.</div>`; return; }
+  const vals = pts.map(p => p[1]); let lo = Math.min(0, ...vals), hi = Math.max(0, ...vals); const pad = (hi - lo) * 0.08 || 1; if (lo < 0) lo -= pad; hi += pad;
+  const Y = v => H - m.b - ((v - lo) / (hi - lo)) * (H - m.t - m.b), pw = (W - m.l - m.r) / pts.length, bw = Math.max(1, pw - (pw > 4 ? 2 : 0.5));
+  let g = niceTicks(lo, hi, 4).map(v => `<line x1="${m.l}" x2="${W - m.r}" y1="${Y(v)}" y2="${Y(v)}" stroke="${v === 0 ? css("--text-3") : css("--grid")}"/><text x="${m.l - 6}" y="${Y(v) + 4}" text-anchor="end">${o.yFmt ? o.yFmt(v) : v}</text>`).join("");
+  const xl = [0, Math.floor(pts.length / 2), pts.length - 1];
+  g += xl.map((i, k) => `<text x="${m.l + pw * i + pw / 2}" y="${H - 5}" text-anchor="${k === 0 ? "start" : k === 2 ? "end" : "middle"}">${fdate(pts[i][0])}</text>`).join("");
+  const pos = o.pos || css("--s1"), neg = o.neg || css("--s2");
+  const bars = pts.map((p, i) => { const y0 = Y(0), y1 = Y(p[1]), top = Math.min(y0, y1), h = Math.max(1, Math.abs(y0 - y1)); return `<rect x="${m.l + pw * i + (pw - bw) / 2}" y="${top}" width="${bw}" height="${h}" rx="${bw > 5 ? 2 : 0}" fill="${p[1] >= 0 ? pos : neg}"/>`; }).join("");
+  el.innerHTML = `<svg viewBox="0 0 ${W} ${H}" role="img" aria-label="${esc(o.label || "chart")}">${g}${bars}<line class="cross" y1="${m.t}" y2="${H - m.b}" stroke="${css("--text-3")}" style="display:none"/><rect x="${m.l}" y="0" width="${W - m.l - m.r}" height="${H}" fill="transparent"/></svg><div class="tip"></div>`;
+  attachHover(el, W, m, x => { const i = Math.max(0, Math.min(pts.length - 1, Math.floor((x - m.l) / pw))); const p = pts[i]; return { x: m.l + pw * i + pw / 2, date: p[0], items: [{ label: o.name, value: o.tipFmt(p[1]) }] }; });
+}
+function spark(vals, w = 90, h = 24, color = "var(--s1)") {
+  const v = vals.filter(isN); if (v.length < 2) return "";
+  const lo = Math.min(...v), hi = Math.max(...v), r = hi - lo || 1;
+  const pts = v.map((y, i) => `${((i / (v.length - 1)) * (w - 4) + 2).toFixed(1)},${(h - 3 - ((y - lo) / r) * (h - 6)).toFixed(1)}`).join(" ");
+  const last = pts.split(" ").pop().split(",");
+  return `<svg width="${w}" height="${h}" viewBox="0 0 ${w} ${h}" aria-hidden="true"><polyline points="${pts}" fill="none" stroke="${color}" stroke-width="1.6" stroke-linejoin="round"/><circle cx="${last[0]}" cy="${last[1]}" r="2.4" fill="${color}"/></svg>`;
+}
+const rangeSeg = () => `<div class="seg" role="group" aria-label="Range">${["1M", "3M", "6M", "ALL"].map(r => `<button data-range="${r}" class="${state.range === r ? "on" : ""}">${r}</button>`).join("")}</div>`;
 
-    const fmtDateTime = value => value ? new Date(value).toLocaleString(undefined, { dateStyle: "medium", timeStyle: "short" }) : "n/a";
-    const fmtPct = value => Number.isFinite(value) ? `${value.toFixed(2)}%` : "n/a";
-    const fmtWeight = value => Number.isFinite(value) ? `${value.toFixed(2)}%` : "n/a";
-    const fmtZac = value => Number.isFinite(value) ? `ZAC ${value.toFixed(2)}` : "n/a";
-    const fmtDate = value => value ? new Date(`${value}T00:00:00Z`).toLocaleDateString(undefined, { month: "short", day: "numeric", timeZone: "UTC" }) : "n/a";
-    const fmtMonth = value => {
-      if (!value || !/^\d{4}-\d{2}$/.test(value)) return value || "n/a";
-      const [year, month] = value.split("-").map(Number);
-      return new Date(Date.UTC(year, month - 1, 1)).toLocaleDateString(undefined, { month: "short", year: "2-digit", timeZone: "UTC" });
-    };
-    const cssFor = value => Number.isFinite(value) ? (value >= 0 ? "positive" : "negative") : "missing";
-    const chartHref = (fund, metric) => `chart.html?fund=${encodeURIComponent(fund.code)}&metric=${encodeURIComponent(metric)}`;
-    const LIVE_PRICE_LOOKBACK_DAYS = 45;
-    const FETCH_TIMEOUT_MS = 8000;
-    const CORS_TEXT_PROXIES = [
-      url => `https://corsproxy.io/?url=${encodeURIComponent(url)}`,
-      url => `https://api.allorigins.win/raw?url=${encodeURIComponent(url)}`,
-    ];
+/* ---------- derived helpers ---------- */
+const fund = code => D.funds.find(f => f.code === code);
+const lastDate = D_ => D_.funds.map(f => f.snapshot_date).filter(Boolean).sort().pop();
+function recentEvents(days, funds = D.funds) {
+  const cutoff = ms(lastDate(D)) - days * 864e5, out = [];
+  funds.forEach(f => f.events.forEach(e => { if (ms(e.date) >= cutoff) out.push({ ...e, fund: f.code }); }));
+  return out.sort((a, b) => (a.date < b.date ? 1 : a.date > b.date ? -1 : Math.abs(b.delta) - Math.abs(a.delta)));
+}
+function insights() {
+  const out = [], F = D.funds;
+  F.forEach(f => {
+    const p = f.premium;
+    if (p && isN(p.percentile) && (p.percentile <= 10 || p.percentile >= 90) && p.observations > 20)
+      out.push(["⚖️", `<b>${f.code}</b> is at a <b>${pct(p.current_pct)}</b> ${p.current_pct < 0 ? "discount" : "premium"} to NAV — more extreme than ${p.percentile <= 10 ? 100 - p.percentile : p.percentile}% of its history (avg ${pct(p.mean_pct)}). ${p.current_pct < 0 ? "Buying below NAV has historically been cheap here." : "You'd be paying more than usual over NAV."}`, p.current_pct < 0 ? "pos" : "warn"]);
+  });
+  const by7 = F.filter(f => isN(f.nav_returns.d7)).sort((a, b) => b.nav_returns.d7 - a.nav_returns.d7);
+  if (by7.length > 1) out.push(["📈", `Best 7-day NAV move: <b>${by7[0].code}</b> ${pct(by7[0].nav_returns.d7)}; weakest: <b>${by7[by7.length - 1].code}</b> ${pct(by7[by7.length - 1].nav_returns.d7)}.`, ""]);
+  F.forEach(f => { const r = f.risk; if (r && isN(r.current_drawdown_pct) && r.current_drawdown_pct < -10) out.push(["📉", `<b>${f.code}</b> is ${pct(r.current_drawdown_pct, 1)} below its high of ${rand(r.high)} (${fdate(r.high_date)}); worst drawdown so far ${pct(r.max_drawdown_pct, 1)}.`, ""]); });
+  const ev = recentEvents(7);
+  const added = ev.filter(e => e.type === "added"), exited = ev.filter(e => e.type === "exited");
+  if (added.length || exited.length) out.push(["🔁", `Last 7 days: ${added.length} new position${added.length === 1 ? "" : "s"}${added.length ? " (" + [...new Set(added.map(e => title(e.instrument) + " · " + e.fund))].slice(0, 3).join(", ") + ")" : ""}, ${exited.length} exit${exited.length === 1 ? "" : "s"}${exited.length ? " (" + [...new Set(exited.map(e => title(e.instrument) + " · " + e.fund))].slice(0, 3).join(", ") + ")" : ""}.`, "info"]);
+  const lt = D.overview.look_through;
+  if (lt && lt.buckets) { const off = lt.buckets["Offshore equity"]; out.push(["🧩", `Look-through, <b>EASYBF</b> is really <b>${num(off, 0)}%</b> offshore equities, ${num(lt.buckets["SA equity"], 0)}% SA equities and ${num(lt.buckets["Funds & bonds (direct)"], 0)}% funds/bonds — its 2 sleeves alone are ${num(lt.sleeves.reduce((a, s) => a + s.weight, 0), 0)}% of the fund.`, ""]); }
+  const ov = D.overview.overlap; if (ov && ov.shared_count) out.push(["🔗", `EASYGE and EASYAI share <b>${ov.shared_count}</b> stocks with <b>${num(ov.overlap_pct, 1)}%</b> weighted overlap — holding both is less diversified than it looks.`, ""]);
+  const top = F.map(f => ({ f, h: f.holdings.filter(h => h.kind === "equity" && isN(h.chg_7d)).sort((a, b) => Math.abs(b.chg_7d) - Math.abs(a.chg_7d))[0] })).filter(x => x.h && Math.abs(x.h.chg_7d) >= 0.3);
+  top.forEach(({ f, h }) => out.push(["🎯", `<b>${f.code}</b>'s biggest 7-day shift: <b>${title(h.instrument)}</b> ${pp(h.chg_7d)} to ${num(h.weight)}%.`, ""]));
+  return out.slice(0, 9);
+}
 
-    function pctChange(current, previous) {
-      if (!Number.isFinite(current) || !Number.isFinite(previous) || previous === 0) return null;
-      return ((current / previous) - 1) * 100;
-    }
+/* ---------- views ---------- */
+function fundCard(f) {
+  const n = f.nav_returns, g = f.gap, series = f.series.nav.slice(-60).map(p => p[1]);
+  const gp = g.difference_pct, gcls = g.status === "premium" ? "warn" : g.status === "discount" ? "pos" : "";
+  return `<a class="card fundcard" href="#${f.slug}"><div class="row spread"><span class="nm">${f.code}</span>${isN(gp) ? `<span class="pill ${gcls}">${pct(gp)} ${g.status === "near_nav" ? "≈ NAV" : g.status}</span>` : ""}</div>
+  <div class="full">${esc(f.name)}</div>
+  <div class="big">${rand(f.nav?.value_zac)} <span class="muted" style="font-size:12px;font-weight:400">NAV ${fdate(f.nav?.nav_date)}</span></div>
+  <div class="chips"><span class="chip"><b>1d</b>${delta(n.d1)}</span><span class="chip"><b>7d</b>${delta(n.d7)}</span><span class="chip"><b>30d</b>${delta(n.d30)}</span><span class="chip"><b>90d</b>${delta(n.d90)}</span></div>
+  <div class="row spread"><span>${spark(series, 130, 30, css("--s1"))}</span><span class="muted" style="font-size:12px">${f.concentration.positions} positions · top10 ${num(f.concentration.top10_pct, 0)}%</span></div></a>`;
+}
+function feedRows(events, showFund = true) {
+  const icon = { added: "➕", exited: "➖", increased: "▲", decreased: "▼" }, label = { added: "New", exited: "Exited", increased: "Increased", decreased: "Trimmed" };
+  const col = { added: "info", exited: "warn", increased: "pos", decreased: "neg" };
+  if (!events.length) return `<div class="hint">No changes in this window.</div>`;
+  return `<div class="feed">${events.map(e => `<div class="it"><span class="muted">${fdate(e.date)}</span><span class="pill ${col[e.type]}">${icon[e.type]} ${label[e.type]}</span><span>${esc(title(e.instrument))}${showFund ? ` <span class="muted">· ${e.fund}</span>` : ""}</span><span class="r muted">${num(e.from)}% → <b style="color:var(--text)">${num(e.to)}%</b> <span class="${cls(e.delta)}">(${pp(e.delta)})</span></span></div>`).join("")}</div>`;
+}
+function viewOverview() {
+  const F = D.funds, ins = insights(), lt = D.overview.look_through, ov = D.overview.overlap, h = D.overview.health;
+  const ltMax = lt.rows?.[0]?.total || 1;
+  const bucketColors = { "Offshore equity": "--s1", "SA equity": "--s2", "Funds & bonds (direct)": "--s3", "Cash": "--s4" };
+  return `<div class="grid g3">${F.map(fundCard).join("")}</div>
+  <div class="grid g21 mt">
+    <section class="card"><div class="row spread"><div><h2>Performance compared</h2><p class="hint">Published NAV, rebased to 100 at the start of the common window. Past performance only — funds started tracking ${fdate(F[0].series.nav[0]?.[0], true)}.</p></div>${rangeSeg()}</div>
+      <div class="chart" id="cmp"></div><div class="legend" id="cmpLegend"></div></section>
+    <section class="card"><h2>Key takeaways</h2><p class="hint">Auto-generated from the latest data</p><ul class="insights">${ins.map(i => `<li><span class="ic">${i[0]}</span><span>${i[1]}</span></li>`).join("")}</ul></section>
+  </div>
+  <div class="grid g2 mt">
+    <section class="card"><div class="row spread"><div><h2>Premium / discount to NAV</h2><p class="hint">Market price vs published NAV, one reading per day. Negative = trading below NAV.</p></div></div>
+      <div class="chart" id="prem"></div><div class="legend" id="premLegend"></div></section>
+    <section class="card"><h2>What changed — last 14 days</h2><p class="hint">Positions added, exited or moved ≥ ${0.5}pp between daily snapshots</p>${feedRows(recentEvents(14).slice(0, 14))}</section>
+  </div>
+  <div class="grid g2 mt">
+    <section class="card"><h2>EASYBF look-through</h2><p class="hint">The Balanced fund holds ${lt.sleeves.map(s => `${s.fund} (${num(s.weight, 1)}%)`).join(" and ")}. Exposure below sees through those sleeves to the underlying stocks.</p>
+      <div class="stack" role="img" aria-label="Asset mix">${Object.entries(lt.buckets).map(([k, v]) => `<div style="flex:${v};background:var(${bucketColors[k]})" title="${esc(k)} ${v}%"></div>`).join("")}</div>
+      <div class="legend">${Object.entries(lt.buckets).map(([k, v]) => `<span><i style="background:var(${bucketColors[k]});display:inline-block;width:10px;height:10px;border-radius:3px;margin-right:6px"></i>${esc(k)} <b>${num(v, 1)}%</b></span>`).join("")}</div>
+      <div class="mt">${lt.rows.slice(0, 15).map(r => `<div class="bar2"><div><div class="split"><span>${esc(title(r.instrument))} <span class="muted">${Object.entries(r.sources).map(([k, v]) => k + " " + num(v, 1)).join(" · ")}</span></span></div><div class="track"><div class="fill" style="width:${(r.total / ltMax) * 100}%;background:var(--s1)"></div></div></div><b style="text-align:right">${num(r.total)}%</b></div>`).join("")}</div></section>
+    <section class="card"><h2>EASYGE ↔ EASYAI overlap</h2><p class="hint">${ov.shared_count} shared stocks · ${num(ov.overlap_pct, 1)}% weighted overlap (sum of the smaller weight in each fund)</p>
+      <div class="tablewrap"><table><thead><tr><th class="txt">Stock</th><th>EASYGE</th><th>EASYAI</th><th>Gap</th></tr></thead><tbody>${ov.rows.map(r => `<tr><td>${esc(title(r.instrument))}</td><td>${num(r.EASYGE)}%</td><td>${num(r.EASYAI)}%</td><td class="${cls(r.EASYGE - r.EASYAI)}">${pp(r.EASYGE - r.EASYAI)}</td></tr>`).join("")}</tbody></table></div>
+      <h2 class="mt">Pipeline health</h2><p class="hint">Snapshot coverage from the daily captures</p>
+      ${Object.entries(h).map(([k, v]) => `<div class="split"><span><b>${k}</b> · ${v.snapshots} snapshots since ${fdate(v.first, true)}</span><span class="${v.days_since_last > 3 ? "neg" : "muted"}">last ${fdate(v.last)}${v.gaps.length ? ` · ${v.gaps.length} gap${v.gaps.length > 1 ? "s" : ""}` : ""}</span></div>`).join("")}</section>
+  </div>`;
+}
+function drawOverview() {
+  const F = D.funds, cs = F.map((f, i) => css(CAT[i]));
+  const rb = D.overview.rebased_nav;
+  const cutAll = F.map(f => cutRange(rb[f.code] || [], state.range));
+  const lineSeries = F.map((f, i) => ({ name: f.code, color: cs[i], points: cutAll[i].length ? cutAll[i].map(p => [p[0], p[1] / (cutAll[i][0][1] / 100)]) : [] }));
+  lineChart($("#cmp"), { series: lineSeries, base: 100, height: 280, yFmt: v => v.toFixed(0), tipFmt: v => num(v, 1), label: "NAV rebased to 100" });
+  $("#cmpLegend").innerHTML = F.map((f, i) => `<span><i style="background:${cs[i]};display:inline-block;width:10px;height:10px;border-radius:3px;margin-right:6px"></i>${f.code} <b>${pct(lineSeries[i].points.length ? lineSeries[i].points.at(-1)[1] - 100 : null, 1)}</b></span>`).join("");
+  const ps = F.map((f, i) => ({ name: f.code, color: cs[i], points: cutRange(f.series.premium, state.range) }));
+  lineChart($("#prem"), { series: ps, base: 0, height: 250, yFmt: v => v.toFixed(0) + "%", tipFmt: v => pct(v), includeZero: true, label: "Premium/discount to NAV" });
+  $("#premLegend").innerHTML = F.map((f, i) => `<span><i style="background:${cs[i]};display:inline-block;width:10px;height:10px;border-radius:3px;margin-right:6px"></i>${f.code} <b>${pct(f.premium.current_pct)}</b> <span class="muted">now · avg ${pct(f.premium.mean_pct)}</span></span>`).join("");
+}
 
-    // EasyEquities and Yahoo occasionally report a value in rand instead of the ZAC
-    // (cents) convention used everywhere else here, off by exactly 100x. Comparing
-    // against a trusted reference for the same fund (its NAV) catches that flip.
-    function reconcileZacScale(value, reference, factor = 100, tolerance = 20) {
-      if (!Number.isFinite(value) || !Number.isFinite(reference) || value <= 0 || reference <= 0) return value;
-      const ratio = value / reference;
-      if (ratio > tolerance) return value / factor;
-      if (ratio < 1 / tolerance) return value * factor;
-      return value;
-    }
+function kpi(l, v, s = "") { return `<div class="kpi"><div class="l">${l}</div><div class="v">${v}</div><div class="s">${s}</div></div>`; }
+function bars(obj, colors) {
+  const tot = Object.values(obj).reduce((a, b) => a + b, 0) || 1;
+  return `<div class="stack">${Object.entries(obj).map(([k, v], i) => `<div style="flex:${v};background:var(${colors[i % colors.length]})" title="${esc(k)} ${v}%"></div>`).join("")}</div><div class="legend">${Object.entries(obj).map(([k, v], i) => `<span><i style="background:var(${colors[i % colors.length]});display:inline-block;width:10px;height:10px;border-radius:3px;margin-right:6px"></i>${esc(k)} <b>${num(v, 1)}%</b></span>`).join("")}</div>`;
+}
+function attrList(items, colorVar) {
+  const mx = Math.max(0.001, ...items.map(i => Math.abs(i.contrib)));
+  return items.map(i => `<div class="bar2"><div><div class="split"><span>${esc(title(i.instrument))}</span></div><div class="track"><div class="fill" style="width:${(Math.abs(i.contrib) / mx) * 100}%;background:var(${i.contrib >= 0 ? "--s3" : "--s2"})"></div></div></div><b class="${cls(i.contrib)}" style="text-align:right">${pp(i.contrib, 2)}</b></div>`).join("");
+}
+function viewFund(f) {
+  const n = f.nav_returns, r = f.risk, p = f.premium, c = f.concentration, at = f.attribution, g = f.gap;
+  const gp = g.difference_pct;
+  const newCut = ms(f.snapshot_date) - 30 * 864e5;
+  return `<div class="row spread" style="margin-bottom:12px"><div><h2 style="font-size:18px">${esc(f.name)} <span class="pill">${f.code}</span></h2><p class="hint" style="margin:0">Holdings as of ${fdate(f.snapshot_date, true)} · ${f.snapshots} daily snapshots · <a href="${esc(f.instrument_page)}" target="_blank" rel="noopener">EasyETFs page ↗</a></p></div></div>
+  <div class="kpis">
+    ${kpi("NAV", rand(f.nav?.value_zac), "published " + fdate(f.nav?.nav_date))}
+    ${kpi("Market price", rand(f.market?.value_zac), f.market_ticker + " · " + fdate(f.market?.price_at_utc))}
+    ${kpi("Premium / discount", `<span class="${gp > 0.25 ? "" : cls(gp)}">${pct(gp)}</span>`, p.percentile != null ? `${p.percentile}th percentile of history` : "")}
+    ${kpi("1 day", delta(n.d1), "NAV")}${kpi("7 days", delta(n.d7), "NAV")}${kpi("30 days", delta(n.d30), "NAV")}${kpi("90 days", delta(n.d90), "NAV")}
+    ${kpi("Since tracking", delta(n.since_start), "from " + fdate(f.series.nav[0]?.[0]))}
+  </div>
+  <section class="card mt"><div class="row spread"><div><h2>NAV vs market price</h2><p class="hint">Rand per unit. NAV is the fund's published value; market price is the last JSE close.</p></div>${rangeSeg()}</div>
+    <div class="chart" id="navchart"></div><div class="legend"><span><i style="background:var(--s1);display:inline-block;width:10px;height:10px;border-radius:3px;margin-right:6px"></i>NAV</span><span><i style="background:var(--s2);display:inline-block;width:10px;height:10px;border-radius:3px;margin-right:6px"></i>Market price</span></div></section>
+  <div class="grid g2 mt">
+    <section class="card"><h2>Premium / discount to NAV</h2><p class="hint">Blue = premium, orange = discount. Avg ${pct(p.mean_pct)}, range ${pct(p.min_pct)} to ${pct(p.max_pct)}; ${num(p.pct_days_premium, 0)}% of days at a premium, ${num(p.pct_days_discount, 0)}% at a discount.</p><div class="chart" id="premchart"></div></section>
+    <section class="card"><h2>Risk &amp; range</h2><p class="hint">Computed from ${r.observations} daily NAV changes</p>
+      <div class="kpis" style="grid-template-columns:repeat(2,1fr)">
+        ${kpi("Volatility (ann.)", num(r.vol_ann_pct, 1) + "%")}${kpi("Max drawdown", `<span class="neg">${pct(r.max_drawdown_pct, 1)}</span>`, fdate(r.max_drawdown_date))}
+        ${kpi("Below high", `<span class="${cls(r.current_drawdown_pct)}">${pct(r.current_drawdown_pct, 1)}</span>`, "high " + rand(r.high) + " · " + fdate(r.high_date))}
+        ${kpi("Range position", num(r.range_position_pct, 0) + "%", "low " + rand(r.low) + " → high " + rand(r.high))}
+        ${kpi("Best day", `<span class="pos">${pct(r.best_day_pct)}</span>`, fdate(r.best_day_date))}${kpi("Worst day", `<span class="neg">${pct(r.worst_day_pct)}</span>`, fdate(r.worst_day_date))}
+      </div></section>
+  </div>
+  <div class="grid g3 mt">
+    <section class="card"><h2>Concentration</h2><p class="hint">${c.positions} positions · effective N ${num(c.effective_n, 1)}</p>
+      <div class="split"><span>Top holding</span><b>${num(c.top1_pct)}%</b></div><div class="split"><span>Top 5</span><b>${num(c.top5_pct)}%</b></div><div class="split"><span>Top 10</span><b>${num(c.top10_pct)}%</b></div><div class="split"><span>Cash</span><b>${num(c.cash_pct)}%</b></div>
+      <div class="mt">${bars(c.kind, ["--s1", "--s3", "--s4"])}</div><div class="mt">${bars(c.currency, ["--s2", "--s1", "--s7", "--s4"])}</div></section>
+    <section class="card"><h2>What's driving 30-day return</h2><p class="hint">Estimated contribution = current weight × stock's 30-day price move, covering ${num(at.covered_weight, 0)}% of the fund. Approximate (ignores FX &amp; weight drift). Sum: <b class="${cls(at.implied_30d_pct)}">${pp(at.implied_30d_pct)}</b> vs NAV ${pct(n.d30)}.</p>
+      <div class="split"><b>Contributors</b></div>${attrList(at.top_contributors)}<div class="split mt"><b>Detractors</b></div>${attrList(at.top_detractors)}</section>
+    <section class="card"><h2>Portfolio churn</h2><p class="hint">Turnover per snapshot = half the sum of absolute weight changes</p><div class="chart" id="turnchart"></div>
+      <div class="split mt"><span>Avg daily turnover</span><b>${num(avg(f.snapshot_stats.map(s => s.turnover_pct)), 2)}%</b></div>
+      <div class="split"><span>Last 30 days: new / exits</span><b>${recentEvents(30, [f]).filter(e => e.type === "added").length} / ${recentEvents(30, [f]).filter(e => e.type === "exited").length}</b></div></section>
+  </div>
+  <section class="card mt"><div class="row spread"><div><h2>Holdings</h2><p class="hint">Weight changes are in percentage points. Stock moves are 1/7/30-day price changes (local currency) where a ticker is mapped.</p></div>
+    <div class="row"><input type="search" id="q" placeholder="Search holdings" value="${esc(state.table.q)}"><select id="kind"><option value="all">All types</option><option value="equity">Stocks</option><option value="fund">Funds/ETFs</option><option value="cash">Cash</option></select></div></div>
+    <div class="tablewrap" id="tbl"></div></section>
+  <section class="card mt"><div class="row spread"><div><h2>Top holdings — weight over time</h2><p class="hint">Click legend items to show/hide. Weight (% of fund) at each daily snapshot.</p></div>${rangeSeg()}</div><div class="chart" id="whist"></div><div class="legend" id="whistLegend"></div></section>
+  <section class="card mt"><div class="row spread"><div><h2>Activity log</h2><p class="hint">Every add, exit and ≥ 0.5pp move in the last 90 days</p></div>
+    <div class="seg" id="evseg">${["all", "added", "exited", "increased", "decreased"].map(t => `<button data-ev="${t}" class="${state.evtype === t ? "on" : ""}">${t === "all" ? "All" : title(t)}</button>`).join("")}</div></div><div id="evlist"></div></section>`;
+}
+const avg = a => { const v = a.filter(isN); return v.length ? v.reduce((x, y) => x + y, 0) / v.length : null; };
+function drawTable(f) {
+  const t = state.table, cut = ms(f.snapshot_date) - 30 * 864e5;
+  const cols = [
+    ["Holding", h => h.instrument, "txt"], ["Weight", h => h.weight], ["Δ 1d", h => h.chg_1], ["Δ 7d", h => h.chg_7d], ["Δ 30d", h => h.chg_30d], ["Δ since start", h => h.chg_start],
+    ["Stock 1d", h => h.perf?.d1], ["Stock 7d", h => h.perf?.d7], ["Stock 30d", h => h.perf?.d30], ["30d contrib", h => h.contrib_30d], ["Held", h => h.days_held], ["Trend", null],
+  ];
+  let rows = f.holdings.filter(h => (t.kind === "all" || h.kind === t.kind) && (!t.q || h.instrument.toLowerCase().includes(t.q.toLowerCase()) || (h.ticker || "").toLowerCase().includes(t.q.toLowerCase())));
+  const col = cols.find(c => c[0] === t.key) || cols[1];
+  if (col[1]) rows = rows.sort((a, b) => { const x = col[1](a), y = col[1](b); if (x == null) return 1; if (y == null) return -1; return (typeof x === "string" ? x.localeCompare(y) : x - y) * t.dir; });
+  const mx = Math.max(...f.holdings.map(h => h.weight), 1);
+  const cell = (v, fn) => `<td>${isN(v) ? delta(v, fn) : '<span class="muted">–</span>'}</td>`;
+  $("#tbl").innerHTML = `<table><thead><tr>${cols.map(c => `<th data-k="${c[0]}" class="${c[2] || ""} ${t.key === c[0] ? "on" : ""}">${c[0]}${t.key === c[0] ? (t.dir > 0 ? " ▲" : " ▼") : ""}</th>`).join("")}</tr></thead><tbody>${rows.map(h => {
+    const isNew = ms(h.held_since) >= cut && !h.since_start;
+    return `<tr><td class="txt">${esc(title(h.instrument))} ${h.ticker ? `<span class="muted">${esc(h.ticker)}</span>` : ""} ${isNew ? '<span class="pill info">NEW</span>' : ""} ${h.kind !== "equity" ? `<span class="pill">${h.kind}</span>` : ""}</td>
+      <td class="wbar"><span style="width:${(h.weight / mx) * 100}%"></span><b>${num(h.weight)}%</b></td>${cell(h.chg_1, pp)}${cell(h.chg_7d, pp)}${cell(h.chg_30d, pp)}${cell(h.chg_start, pp)}${cell(h.perf?.d1, pct)}${cell(h.perf?.d7, pct)}${cell(h.perf?.d30, pct)}${cell(h.contrib_30d, v => pp(v, 3))}
+      <td>${h.since_start ? "≥" : ""}${h.days_held}d</td><td>${spark(h.spark)}</td></tr>`;
+  }).join("") || `<tr><td class="txt muted" colspan="12">No matches</td></tr>`}</tbody></table>`;
+  $("#tbl").querySelectorAll("th").forEach(th => th.onclick = () => { const k = th.dataset.k; if (!cols.find(c => c[0] === k)[1]) return; t.dir = t.key === k ? -t.dir : (k === "Holding" ? 1 : -1); t.key = k; drawTable(f); });
+}
+function drawFund(f) {
+  const s1 = css("--s1"), s2 = css("--s2");
+  lineChart($("#navchart"), { series: [{ name: "NAV", color: s1, points: cutRange(f.series.nav, state.range) }, { name: "Market price", color: s2, points: cutRange(f.series.market, state.range), dash: "5 3" }], height: 300, left: 58, yFmt: v => "R" + (v / 100).toFixed(v > 5000 ? 0 : 2), tipFmt: v => rand(v), label: "NAV vs market price" });
+  barChart($("#premchart"), { points: cutRange(f.series.premium, state.range), pos: s1, neg: s2, name: "Premium/discount", yFmt: v => v.toFixed(0) + "%", tipFmt: v => pct(v), label: "Premium/discount" });
+  barChart($("#turnchart"), { points: f.snapshot_stats.filter(s => isN(s.turnover_pct)).map(s => [s.date, s.turnover_pct]), pos: s1, name: "Turnover", yFmt: v => v.toFixed(1) + "%", tipFmt: v => num(v) + "%", height: 130, label: "Turnover" });
+  const wh = f.weight_history, hid = state.hidden[f.code] || (state.hidden[f.code] = {});
+  const idx = wh.dates.map((d, i) => i).filter(i => ms(wh.dates[i]) >= (state.range === "ALL" ? 0 : ms(wh.dates.at(-1)) - ({ "1M": 31, "3M": 92, "6M": 183 }[state.range]) * 864e5));
+  const ser = wh.series.slice(0, 8).map((s, i) => ({ name: title(s.instrument), color: css(CAT[i]), off: hid[s.instrument], key: s.instrument, points: idx.map(k => [wh.dates[k], s.weights[k]]) }));
+  lineChart($("#whist"), { series: ser.filter(s => !s.off), height: 280, yFmt: v => v.toFixed(0) + "%", tipFmt: v => num(v) + "%", label: "Weight history" });
+  $("#whistLegend").innerHTML = ser.map(s => `<button data-k="${esc(s.key)}" class="${s.off ? "off" : ""}"><i style="background:${s.color}"></i>${esc(s.name)}</button>`).join("");
+  $("#whistLegend").querySelectorAll("button").forEach(b => b.onclick = () => { hid[b.dataset.k] = !hid[b.dataset.k]; drawFund(f); });
+  const ev = f.events.filter(e => state.evtype === "all" || e.type === state.evtype);
+  $("#evlist").innerHTML = feedRows(ev.slice(0, 40), false) + (ev.length > 40 ? `<p class="hint">Showing 40 of ${ev.length}.</p>` : "");
+}
 
-    function fmtAge(durationMs) {
-      if (!Number.isFinite(durationMs) || durationMs < 0) return "n/a";
-      const totalSeconds = Math.floor(durationMs / 1000);
-      const days = Math.floor(totalSeconds / 86400);
-      const hours = Math.floor((totalSeconds % 86400) / 3600);
-      const minutes = Math.floor((totalSeconds % 3600) / 60);
-      const seconds = totalSeconds % 60;
-      if (days > 0) return `${days}d ${hours}h ${minutes}m`;
-      if (hours > 0) return `${hours}h ${minutes}m ${seconds}s`;
-      if (minutes > 0) return `${minutes}m ${seconds}s`;
-      return `${seconds}s`;
-    }
-
-    function closeOnOrBefore(rows, targetDate) {
-      const target = new Date(targetDate);
-      const subset = rows.filter(row => row.date <= target && Number.isFinite(row.close));
-      if (!subset.length) return null;
-      return subset[subset.length - 1].close;
-    }
-
-    function computeEtfPerfFromRows(rows) {
-      if (!rows.length) return { d1: null, d7: null, d30: null };
-      const currentRow = rows[rows.length - 1];
-      const current = currentRow.close;
-      const currentDate = currentRow.date;
-      return {
-        d1: pctChange(current, closeOnOrBefore(rows, new Date(currentDate.getTime() - 1 * 86400000))),
-        d7: pctChange(current, closeOnOrBefore(rows, new Date(currentDate.getTime() - 7 * 86400000))),
-        d30: pctChange(current, closeOnOrBefore(rows, new Date(currentDate.getTime() - 30 * 86400000))),
-      };
-    }
-
-    async function fetchDailyHistoryViaYahoo(ticker) {
-      const symbol = String(ticker || "").trim();
-      const chartUrl = `https://query1.finance.yahoo.com/v8/finance/chart/${encodeURIComponent(symbol)}?range=${LIVE_PRICE_LOOKBACK_DAYS}d&interval=1d`;
-      const text = await fetchTextWithCorsFallback(chartUrl);
-      const data = JSON.parse(text);
-      const result = data?.chart?.result?.[0];
-      const timestamps = result?.timestamp || [];
-      const closes = result?.indicators?.quote?.[0]?.close || [];
-      const parsed = [];
-      for (let index = 0; index < timestamps.length; index += 1) {
-        const date = new Date(Number(timestamps[index]) * 1000);
-        const close = Number(closes[index]);
-        if (Number.isFinite(date.getTime()) && Number.isFinite(close) && close > 0) parsed.push({ date, close });
-      }
-      if (!parsed.length) throw new Error("No valid Yahoo closes");
-      return parsed.slice(-LIVE_PRICE_LOOKBACK_DAYS);
-    }
-
-    async function fetchWithTimeout(url) {
-      const controller = new AbortController();
-      const timeoutId = window.setTimeout(() => controller.abort(), FETCH_TIMEOUT_MS);
-      try {
-        return await fetch(url, { cache: "no-store", signal: controller.signal });
-      } finally {
-        window.clearTimeout(timeoutId);
-      }
-    }
-
-    async function fetchTextWithCorsFallback(url) {
-      const candidates = [() => url, ...CORS_TEXT_PROXIES];
-      const errors = [];
-      for (const candidate of candidates) {
-        const candidateUrl = candidate(url);
-        try {
-          const response = await fetchWithTimeout(candidateUrl);
-          if (response.ok) return response.text();
-          errors.push(`HTTP ${response.status}`);
-        } catch (error) {
-          errors.push(errorMessageFor(error));
-        }
-      }
-      throw new Error(errors.filter(Boolean).join(" | ") || "all fetch attempts failed");
-    }
-
-    function parseNavValue(html) {
-      const match = html.match(/Price\s*\/\s*NAV\s*\((ZAC|ZAR)\)[\s\S]*?([0-9][0-9,\s]*(?:\.[0-9]+)?)/i);
-      if (!match) return null;
-      const value = Number(match[2].replace(/[,\s]/g, ""));
-      if (!Number.isFinite(value) || value <= 0) return null;
-      // The page occasionally labels this field ZAR (rand) instead of ZAC (cents).
-      return match[1].toUpperCase() === "ZAR" ? value * 100 : value;
-    }
-
-    function parseNavDate(html) {
-      const patterns = [
-        /(?:As[\s-]*of|As[\s-]*at|NAV\s*Date|Date)\s*[:-]?\s*([0-9]{1,2}\s+[A-Za-z]{3,9}\s+[0-9]{4})/i,
-        /(?:As[\s-]*of|As[\s-]*at|NAV\s*Date|Date)\s*[:-]?\s*([0-9]{4}-[0-9]{2}-[0-9]{2})/i,
-        /(?:As[\s-]*of|As[\s-]*at|NAV\s*Date|Date)\s*[:-]?\s*([0-9]{1,2}[/-][0-9]{1,2}[/-][0-9]{4})/i,
-      ];
-      for (const pattern of patterns) {
-        const match = html.match(pattern);
-        if (!match) continue;
-        const parsed = new Date(match[1].replace(",", ""));
-        if (Number.isFinite(parsed.getTime())) return parsed.toISOString().slice(0, 10);
-      }
-      return new Date().toISOString().slice(0, 10);
-    }
-
-    async function fetchLiveNav(fund) {
-      if (!fund?.instrument_page) return null;
-      const html = await fetchTextWithCorsFallback(fund.instrument_page);
-      const value = parseNavValue(html);
-      if (!Number.isFinite(value)) throw new Error("NAV not found");
-      return {
-        value_zac: value,
-        nav_date: parseNavDate(html),
-        source_url: fund.instrument_page,
-        captured_at_utc: new Date().toISOString(),
-        source: "easyequities",
-      };
-    }
-
-    function mergeLiveFundMetrics(fundCode, patch) {
-      state.liveByFundCode.set(fundCode, { ...(state.liveByFundCode.get(fundCode) || {}), ...patch });
-      if (state.activeCode === fundCode) render();
-    }
-
-    function recordLiveStatus(fundCode, source, status, message = "") {
-      const current = state.liveStatusByFundCode.get(fundCode) || {};
-      state.liveStatusByFundCode.set(fundCode, {
-        ...current,
-        [source]: {
-          status,
-          message,
-          checked_at_utc: new Date().toISOString(),
-        },
-      });
-      if (state.activeCode === fundCode) renderLiveStatus(activeFund());
-    }
-
-    function errorMessageFor(error) {
-      if (!error) return "Unknown error";
-      return error.message || String(error);
-    }
-
-    async function fetchLiveFundMetrics(fund) {
-      if (fund?.market_ticker) {
-        try {
-          const rows = await fetchDailyHistoryViaYahoo(fund.market_ticker);
-          const latest = rows[rows.length - 1];
-          mergeLiveFundMetrics(fund.code, {
-            latest_market_price: {
-              value_zac: latest.close,
-              source: "yahoo",
-              price_at_utc: latest.date.toISOString(),
-              captured_at_utc: new Date().toISOString(),
-            },
-            etf_performance: computeEtfPerfFromRows(rows),
-          });
-          recordLiveStatus(fund.code, "price", "ok");
-        } catch (error) {
-          console.warn(`Live price fetch failed for ${fund.code}`, error);
-          recordLiveStatus(fund.code, "price", "error", errorMessageFor(error));
-        }
-      }
-
-      try {
-        const latestNav = await fetchLiveNav(fund);
-        if (latestNav) mergeLiveFundMetrics(fund.code, { latest_nav: latestNav });
-        recordLiveStatus(fund.code, "nav", "ok");
-      } catch (error) {
-        console.warn(`Live NAV fetch failed for ${fund.code}`, error);
-        recordLiveStatus(fund.code, "nav", "error", errorMessageFor(error));
-      }
-    }
-
-    async function refreshLiveMetricsSequentially(funds) {
-      for (const fund of funds || []) {
-        await fetchLiveFundMetrics(fund);
-      }
-    }
-
-    function activeFund() {
-      return state.data.funds.find(fund => fund.code === state.activeCode) || state.data.funds[0];
-    }
-
-    function renderTabs() {
-      tabs.innerHTML = "";
-      for (const fund of state.data.funds) {
-        const button = document.createElement("button");
-        button.className = "tab";
-        button.type = "button";
-        button.setAttribute("aria-selected", String(fund.code === state.activeCode));
-        button.textContent = fund.slug;
-        button.addEventListener("click", () => {
-          state.activeCode = fund.code;
-          render();
-        });
-        tabs.appendChild(button);
-      }
-    }
-
-    function metricCard(label, value, { extraClass = "", note = "", wide = false } = {}) {
-      return `
-        <article class="metric ${extraClass} ${wide ? "wide" : ""}">
-          <div class="label">${label}</div>
-          <div class="value">${value}</div>
-          ${note ? `<div class="subtle">${note}</div>` : ""}
-        </article>
-      `;
-    }
-
-    function renderSummary(fund) {
-      const largest = fund.holdings[0];
-      const liveMetrics = state.liveByFundCode.get(fund.code) || null;
-      const latestNav = liveMetrics?.latest_nav || fund.latest_nav || null;
-      const latestMarket = liveMetrics?.latest_market_price || fund.latest_market_price || null;
-      if (latestNav && latestMarket && Number.isFinite(latestNav.value_zac) && Number.isFinite(latestMarket.value_zac)) {
-        latestMarket.value_zac = reconcileZacScale(latestMarket.value_zac, latestNav.value_zac);
-      }
-      const etfPerf = liveMetrics?.etf_performance || fund.etf_performance || { d1: null, d7: null, d30: null };
-      const baseNavGap = fund.estimated_nav_gap || { status: "n/a", difference_zac: null, difference_pct: null, label: "n/a" };
-      const navGap = (latestNav && latestMarket && Number.isFinite(latestNav.value_zac) && Number.isFinite(latestMarket.value_zac))
-        ? (() => {
-            const differenceZac = latestMarket.value_zac - latestNav.value_zac;
-            const differencePct = latestNav.value_zac ? (differenceZac / latestNav.value_zac) * 100 : null;
-            const status = !Number.isFinite(differencePct)
-              ? "n/a"
-              : (Math.abs(differencePct) <= 0.25 ? "near_nav" : (differencePct > 0 ? "premium" : "discount"));
-            return { status, difference_zac: differenceZac, difference_pct: differencePct, label: "estimated premium/discount to NAV" };
-          })()
-        : baseNavGap;
-      const navStatusClass = navGap.status ? `status-${navGap.status.replace("/", "_")}` : "status-na";
-      const holdingsCapturedAt = fund.captured_at_utc || null;
-      const holdingsAge = holdingsCapturedAt ? fmtAge(Date.now() - new Date(holdingsCapturedAt).getTime()) : "n/a";
-
-      const performanceCards = [
-        metricCard("Fund 1d", `<span class="${cssFor(etfPerf.d1)}">${fmtPct(etfPerf.d1)}</span>`, { extraClass: "perf-card" }),
-        metricCard("Fund 7d", `<span class="${cssFor(etfPerf.d7)}">${fmtPct(etfPerf.d7)}</span>`, { extraClass: "perf-card" }),
-        metricCard("Fund 30d", `<span class="${cssFor(etfPerf.d30)}">${fmtPct(etfPerf.d30)}</span>`, { extraClass: "perf-card" }),
-      ].join("");
-
-      const navCards = [
-        metricCard(
-          "NAV (latest)",
-          latestNav ? `<a href="${chartHref(fund, "nav")}">${fmtZac(latestNav.value_zac)}</a>` : "n/a",
-          {
-            note: latestNav
-              ? `As of ${latestNav.nav_date} | Captured ${fmtDateTime(latestNav.captured_at_utc)}${liveMetrics?.latest_nav ? " | Live frontend NAV" : ""}`
-              : "",
-          }
-        ),
-        metricCard(
-          "Market Price (latest)",
-          latestMarket ? `<a href="${chartHref(fund, "nav")}">${fmtZac(latestMarket?.value_zac)}</a>` : "n/a",
-          {
-            note: latestMarket
-              ? `Source ${latestMarket.source || "n/a"} | Price time ${fmtDateTime(latestMarket.price_at_utc || latestMarket.captured_at_utc)}${liveMetrics?.latest_market_price ? " | Live frontend quote" : ""}`
-              : "",
-          }
-        ),
-        metricCard("Difference (Price - NAV)", Number.isFinite(navGap.difference_zac) ? fmtZac(navGap.difference_zac) : "n/a"),
-        metricCard(
-          "Estimated Premium/Discount to NAV",
-          Number.isFinite(navGap.difference_pct)
-            ? `<a href="${chartHref(fund, "premium")}" aria-label="View premium discount chart"><span class="status-pill ${navStatusClass}">${fmtPct(navGap.difference_pct)}</span></a>`
-            : `<span class="status-pill ${navStatusClass}">n/a</span>`
-        ),
-      ].join("");
-
-      const holdingsCards = [
-        metricCard("Holdings", fund.holdings_count),
-        metricCard("Total weight", fmtWeight(fund.total_weight)),
-        metricCard("Largest holding", largest ? largest.instrument : "n/a"),
-        metricCard("Snapshot", fund.snapshot_date || "n/a"),
-        metricCard("Last Holdings Update", holdingsCapturedAt ? fmtDateTime(holdingsCapturedAt) : "n/a"),
-        metricCard("Time Since Holdings Update", holdingsAge),
-      ].join("");
-
-      summary.innerHTML = `
-        <div class="summary-group">
-          <h2 class="summary-group-title">Fund Performance</h2>
-          <div class="summary-grid">${performanceCards}</div>
-        </div>
-        <div class="summary-group">
-          <h2 class="summary-group-title">NAV vs Market Price</h2>
-          <div class="summary-grid">
-            ${navCards}
-            <div class="metric wide trend-card">
-              <div class="trend-head">
-                <div class="label">Recent NAV / Price Trend</div>
-                <div id="trendLegend" class="trend-legend"></div>
-              </div>
-              <div id="trendBody"></div>
-            </div>
-          </div>
-        </div>
-        <div class="summary-group">
-          <h2 class="summary-group-title">Holdings Snapshot</h2>
-          <div class="summary-grid">${holdingsCards}</div>
-        </div>
-      `;
-      renderTrendSparkline(fund);
-    }
-
-    function renderTrendSparkline(fund) {
-      const trendBody = document.querySelector("#trendBody");
-      const trendLegend = document.querySelector("#trendLegend");
-      const rows = (fund.nav_price_history || []).slice(-30);
-      const points = rows
-        .map(row => ({
-          date: row.captured_hour_utc,
-          nav: Number(row.nav_zac),
-          price: Number(row.market_price_zac),
-        }))
-        .filter(row => row.date && (Number.isFinite(row.nav) || Number.isFinite(row.price)));
-
-      if (points.length < 2) {
-        trendBody.innerHTML = '<div class="trend-empty">Not enough hourly NAV/price history yet.</div>';
-        trendLegend.innerHTML = "";
-        return;
-      }
-
-      trendBody.innerHTML = '<canvas id="trendChart"></canvas>';
-      trendLegend.innerHTML = `
-        <span class="legend-item"><span class="legend-swatch" style="background:#0f766e"></span>NAV</span>
-        <span class="legend-item"><span class="legend-swatch" style="background:#2563eb"></span>Market price</span>
-      `;
-      drawSparkline(document.querySelector("#trendChart"), points, chartHref(fund, "nav"));
-    }
-
-    function drawSparkline(canvas, points, href) {
-      const ctx = canvas.getContext("2d");
-      const rect = canvas.getBoundingClientRect();
-      const ratio = window.devicePixelRatio || 1;
-      canvas.width = Math.max(1, Math.floor(rect.width * ratio));
-      canvas.height = Math.max(1, Math.floor(rect.height * ratio));
-      ctx.setTransform(ratio, 0, 0, ratio, 0, 0);
-
-      const width = rect.width;
-      const height = rect.height;
-      const pad = { top: 6, right: 6, bottom: 6, left: 6 };
-      ctx.clearRect(0, 0, width, height);
-
-      const values = points.flatMap(p => [p.nav, p.price]).filter(Number.isFinite);
-      let min = Math.min(...values);
-      let max = Math.max(...values);
-      if (min === max) {
-        min -= Math.abs(min || 1) * 0.02;
-        max += Math.abs(max || 1) * 0.02;
-      }
-      const xFor = index => pad.left + (points.length === 1 ? 0 : (index / (points.length - 1)) * (width - pad.left - pad.right));
-      const yFor = value => pad.top + ((max - value) / (max - min)) * (height - pad.top - pad.bottom);
-
-      const drawSeries = (key, color) => {
-        ctx.strokeStyle = color;
-        ctx.lineWidth = 2;
-        ctx.beginPath();
-        let started = false;
-        points.forEach((point, index) => {
-          const value = point[key];
-          if (!Number.isFinite(value)) return;
-          const x = xFor(index);
-          const y = yFor(value);
-          if (!started) {
-            ctx.moveTo(x, y);
-            started = true;
-          } else {
-            ctx.lineTo(x, y);
-          }
-        });
-        ctx.stroke();
-      };
-      drawSeries("nav", "#0f766e");
-      drawSeries("price", "#2563eb");
-
-      canvas.title = href ? "View full NAV/price chart" : "";
-    }
-
-    function renderLiveStatus(fund) {
-      const statuses = state.liveStatusByFundCode.get(fund.code) || {};
-      const failures = [
-        ["price", "market price"],
-        ["nav", "NAV"],
-      ]
-        .map(([source, label]) => ({ label, ...(statuses[source] || {}) }))
-        .filter(row => row.status === "error");
-
-      if (!failures.length) {
-        liveStatus.innerHTML = "";
-        return;
-      }
-
-      liveStatus.innerHTML = `
-        <div class="notice" role="status">
-          <strong>Live data refresh failed for ${fund.slug}</strong>
-          Showing the last built values from site/data.json for ${failures.map(row => row.label).join(" and ")}.
-          ${failures.map(row => `
-            <div>${row.label}: ${row.message || "unavailable"}${row.checked_at_utc ? ` (${fmtDateTime(row.checked_at_utc)})` : ""}</div>
-          `).join("")}
-        </div>
-      `;
-    }
-
-    function visibleHoldings(fund) {
-      const query = state.query.trim().toLowerCase();
-      return fund.holdings.filter(row => {
-        const hasPerf = row.performance && [row.performance.d1, row.performance.d7, row.performance.d30].some(Number.isFinite);
-        if (state.perfFilter === "mapped" && !hasPerf) return false;
-        if (state.perfFilter === "missing" && hasPerf) return false;
-        if (!query) return true;
-        return [row.instrument, row.currency, row.ticker].filter(Boolean).join(" ").toLowerCase().includes(query);
-      });
-    }
-
-    function monthlyChangeByInstrument(fund) {
-      const monthly = fund.monthly_changes || { changes: [] };
-      const map = new Map();
-      for (const row of (monthly.changes || [])) map.set(row.instrument, row.change_pp);
-      return map;
-    }
-
-    function weeklyChangeByInstrument(fund) {
-      const weekly = fund.weekly_changes || { changes: [] };
-      const map = new Map();
-      for (const row of (weekly.changes || [])) map.set(row.instrument, row.change_pp);
-      return map;
-    }
-
-    function snapshotChangeByInstrument(fund) {
-      const snapshot = fund.snapshot_changes || { changes: [] };
-      const map = new Map();
-      for (const row of (snapshot.changes || [])) map.set(row.instrument, row.change_pp);
-      return map;
-    }
-
-    function monthlyHistoryByInstrument(fund) {
-      const monthly = fund.monthly_holdings_history || { months: [], rows: [] };
-      const maxWeight = Math.max(
-        0,
-        ...monthly.rows.flatMap(row => (row.weights || []).filter(Number.isFinite))
-      );
-      const map = new Map();
-      for (const row of (monthly.rows || [])) map.set(row.instrument, { weights: row.weights || [], months: monthly.months || [], maxWeight });
-      return map;
-    }
-
-    function renderHistoryStrip(entry) {
-      if (!entry || !entry.weights.length) return '<span class="subtle">n/a</span>';
-      return `
-        <div class="history-strip">
-          ${entry.weights.map((weight, index) => {
-            const safeWeight = Number.isFinite(weight) ? weight : 0;
-            const intensity = entry.maxWeight > 0 ? safeWeight / entry.maxWeight : 0;
-            const alpha = safeWeight > 0 ? Math.max(0.14, Math.min(0.86, intensity * 0.86)) : 0;
-            const cls = safeWeight > 0 ? "history-cell history-cell-active" : "history-cell";
-            const style = safeWeight > 0 ? `background-color: rgba(15, 118, 110, ${alpha.toFixed(3)});` : "";
-            const month = entry.months[index] ? fmtMonth(entry.months[index]) : "n/a";
-            const title = `${month}: ${fmtWeight(safeWeight)}`;
-            return `<span class="${cls}" style="${style}" title="${title}" aria-label="${title}"></span>`;
-          }).join("")}
-        </div>
-      `;
-    }
-
-    function snapshotSeriesForChart(fund) {
-      const history = fund.snapshot_holdings_history || { snapshots: [], rows: [] };
-      const snapshots = history.snapshots || [];
-      const rows = (history.rows || [])
-        .filter(row => row.instrument && Array.isArray(row.weights))
-        .filter(row => !String(row.instrument).toUpperCase().includes(".CASH"))
-        .sort((a, b) => (Number(b.latest_weight) || 0) - (Number(a.latest_weight) || 0))
-        .slice(0, 8);
-      return { snapshots, rows };
-    }
-
-    function drawHoldingsSnapshotChart(fund) {
-      const { snapshots, rows } = snapshotSeriesForChart(fund);
-      if (!snapshots.length || !rows.length) {
-        holdingsChartPanel.className = "chart-panel";
-        holdingsChartNote.textContent = "No per-snapshot holdings history is available yet.";
-        holdingsChartLegend.innerHTML = "";
-        holdingsChartCtx.clearRect(0, 0, holdingsChart.width, holdingsChart.height);
-        return;
-      }
-
-      holdingsChartPanel.className = "chart-panel";
-      holdingsChartNote.textContent = `${rows.length} top current holdings across ${snapshots.length} raw snapshot${snapshots.length === 1 ? "" : "s"}.`;
-      const palette = ["#0f766e", "#2563eb", "#dc2626", "#9333ea", "#ea580c", "#16a34a", "#0891b2", "#be123c"];
-      holdingsChartLegend.innerHTML = rows.map((row, index) => `
-        <span class="legend-item"><span class="legend-swatch" style="background:${palette[index % palette.length]}"></span>${row.instrument}</span>
-      `).join("");
-
-      const rect = holdingsChart.getBoundingClientRect();
-      const ratio = window.devicePixelRatio || 1;
-      holdingsChart.width = Math.max(1, Math.floor(rect.width * ratio));
-      holdingsChart.height = Math.max(1, Math.floor(rect.height * ratio));
-      holdingsChartCtx.setTransform(ratio, 0, 0, ratio, 0, 0);
-
-      const width = rect.width;
-      const height = rect.height;
-      const pad = { top: 18, right: 20, bottom: 42, left: 58 };
-      const values = rows.flatMap(row => row.weights.map(Number).filter(Number.isFinite));
-      const max = Math.max(1, ...values);
-      const niceMax = Math.ceil(max / 2) * 2;
-      const xFor = index => pad.left + (snapshots.length === 1 ? 0 : (index / (snapshots.length - 1)) * (width - pad.left - pad.right));
-      const yFor = value => pad.top + ((niceMax - value) / niceMax) * (height - pad.top - pad.bottom);
-
-      holdingsChartCtx.clearRect(0, 0, width, height);
-      holdingsChartCtx.fillStyle = "#ffffff";
-      holdingsChartCtx.fillRect(0, 0, width, height);
-      holdingsChartCtx.strokeStyle = "#dde3ea";
-      holdingsChartCtx.lineWidth = 1;
-      holdingsChartCtx.beginPath();
-      for (let index = 0; index <= 4; index += 1) {
-        const y = pad.top + (index / 4) * (height - pad.top - pad.bottom);
-        holdingsChartCtx.moveTo(pad.left, y);
-        holdingsChartCtx.lineTo(width - pad.right, y);
-      }
-      holdingsChartCtx.stroke();
-
-      holdingsChartCtx.fillStyle = "#647282";
-      holdingsChartCtx.font = "12px system-ui, sans-serif";
-      holdingsChartCtx.textAlign = "right";
-      holdingsChartCtx.textBaseline = "middle";
-      for (let index = 0; index <= 4; index += 1) {
-        const value = niceMax - (index / 4) * niceMax;
-        const y = pad.top + (index / 4) * (height - pad.top - pad.bottom);
-        holdingsChartCtx.fillText(fmtWeight(value), pad.left - 8, y);
-      }
-
-      rows.forEach((row, rowIndex) => {
-        holdingsChartCtx.strokeStyle = palette[rowIndex % palette.length];
-        holdingsChartCtx.lineWidth = 2;
-        holdingsChartCtx.beginPath();
-        row.weights.forEach((weight, index) => {
-          const x = xFor(index);
-          const y = yFor(Number(weight) || 0);
-          if (index === 0) holdingsChartCtx.moveTo(x, y);
-          else holdingsChartCtx.lineTo(x, y);
-        });
-        holdingsChartCtx.stroke();
-      });
-
-      holdingsChartCtx.fillStyle = "#647282";
-      holdingsChartCtx.textBaseline = "top";
-      holdingsChartCtx.textAlign = "left";
-      holdingsChartCtx.fillText(fmtDate(snapshots[0]), pad.left, height - pad.bottom + 14);
-      holdingsChartCtx.textAlign = "right";
-      holdingsChartCtx.fillText(fmtDate(snapshots[snapshots.length - 1]), width - pad.right, height - pad.bottom + 14);
-    }
-
-    function renderWeightCell(weight, maxWeight) {
-      const safeWeight = Number.isFinite(weight) ? weight : 0;
-      const fillPct = maxWeight > 0 ? Math.max(2, (safeWeight / maxWeight) * 100) : 0;
-      return `
-        <div class="weight-cell">
-          <span>${fmtWeight(weight)}</span>
-          <div class="weight-bar-track"><div class="weight-bar-fill" style="width:${fillPct}%"></div></div>
-        </div>
-      `;
-    }
-
-    function renderTable(fund) {
-      const rows = visibleHoldings(fund);
-      const weeklyChangeMap = weeklyChangeByInstrument(fund);
-      const snapshotChangeMap = snapshotChangeByInstrument(fund);
-      const monthlyHistoryMap = monthlyHistoryByInstrument(fund);
-      const maxWeight = Math.max(0, ...rows.map(row => row.weight).filter(Number.isFinite));
-      if (!rows.length) {
-        tablePanel.className = "empty";
-        tablePanel.textContent = "No holdings match the current filters.";
-        return;
-      }
-      tablePanel.className = "table-panel";
-      tablePanel.innerHTML = `
-        <table>
-          <thead>
-            <tr>
-              <th style="width:28%">Instrument</th>
-              <th style="width:10%">Ticker</th>
-              <th style="width:9%">Currency</th>
-              <th class="num" style="width:10%">Weight</th>
-              <th style="width:17%">Weight History</th>
-              <th class="num" style="width:10%">Since last update (pp)</th>
-              <th class="num" style="width:10%">Weekly Δ (pp)</th>
-              <th class="num" style="width:8%">1d</th>
-              <th class="num" style="width:8%">7d</th>
-              <th class="num" style="width:8%">30d</th>
-            </tr>
-          </thead>
-          <tbody>
-            ${rows.map(row => {
-              const perf = row.performance || {};
-              return `
-                <tr>
-                  <td class="instrument">${row.instrument}</td>
-                  <td>${row.ticker ? `<span class="ticker">${row.ticker}</span>` : "<span class=\"subtle\">n/a</span>"}</td>
-                  <td>${row.currency}</td>
-                  <td class="num">${renderWeightCell(row.weight, maxWeight)}</td>
-                  <td>${renderHistoryStrip(monthlyHistoryMap.get(row.instrument))}</td>
-                  <td class="num ${cssFor(snapshotChangeMap.get(row.instrument))}">${fmtWeight(snapshotChangeMap.get(row.instrument))}</td>
-                  <td class="num ${cssFor(weeklyChangeMap.get(row.instrument))}">${fmtWeight(weeklyChangeMap.get(row.instrument))}</td>
-                  <td class="num ${cssFor(perf.d1)}">${fmtPct(perf.d1)}</td>
-                  <td class="num ${cssFor(perf.d7)}">${fmtPct(perf.d7)}</td>
-                  <td class="num ${cssFor(perf.d30)}">${fmtPct(perf.d30)}</td>
-                </tr>
-              `;
-            }).join("")}
-          </tbody>
-        </table>
-      `;
-    }
-
-    function render() {
-      const fund = activeFund();
-      renderTabs();
-      renderSummary(fund);
-      renderLiveStatus(fund);
-      drawHoldingsSnapshotChart(fund);
-      renderTable(fund);
-    }
-
-    function startUpdateTimer() {
-      if (state.timerId) clearInterval(state.timerId);
-      state.timerId = setInterval(() => {
-        if (!state.data || !state.activeCode) return;
-        renderSummary(activeFund());
-      }, 1000);
-    }
-
-    search.addEventListener("input", event => {
-      state.query = event.target.value;
-      renderTable(activeFund());
-    });
-    perfFilter.addEventListener("change", event => {
-      state.perfFilter = event.target.value;
-      renderTable(activeFund());
-    });
-
-    fetch(`data.json?ts=${Date.now()}`)
-      .then(response => response.json())
-      .then(data => {
-        state.data = data;
-        state.activeCode = data.funds[0]?.code;
-        generated.textContent = fmtDateTime(data.generated_at_utc);
-        render();
-        startUpdateTimer();
-        refreshLiveMetricsSequentially(data.funds);
-      })
-      .catch(error => {
-        generated.textContent = "Unable to load";
-        tablePanel.className = "empty";
-        tablePanel.textContent = `Could not load site/data.json: ${error.message}`;
-      });
-
-    window.addEventListener("resize", () => {
-      if (!state.data) return;
-      drawHoldingsSnapshotChart(activeFund());
-      renderTrendSparkline(activeFund());
-    });
-  </script>
+/* ---------- shell ---------- */
+function route() { return (location.hash || "#overview").slice(1); }
+function render() {
+  if (!D) return;
+  const r = route(), f = D.funds.find(x => x.slug === r);
+  $("#tabs").innerHTML = `<a href="#overview" class="${!f ? "on" : ""}">Overview</a>` + D.funds.map(x => `<a href="#${x.slug}" class="${f === x ? "on" : ""}">${x.code}<small>${pct(x.nav_returns.d1, 1)}</small></a>`).join("");
+  if (f) { $("#view").innerHTML = viewFund(f); document.title = f.code + " · EasyETFs Tracker"; drawFund(f); drawTable(f);
+    $("#q").oninput = e => { state.table.q = e.target.value; drawTable(f); };
+    $("#kind").value = state.table.kind; $("#kind").onchange = e => { state.table.kind = e.target.value; drawTable(f); };
+    $("#evseg").onclick = e => { const b = e.target.closest("button"); if (!b) return; state.evtype = b.dataset.ev; $("#evseg").querySelectorAll("button").forEach(x => x.classList.toggle("on", x === b)); drawFund(f); };
+  } else { $("#view").innerHTML = viewOverview(); document.title = "EasyETFs Tracker"; drawOverview(); }
+  $("#view").querySelectorAll("[data-range]").forEach(b => b.onclick = () => { state.range = b.dataset.range; const y = scrollY; render(); scrollTo(0, y); });
+}
+function redraw() { if (!D) return; const f = D.funds.find(x => x.slug === route()); f ? (drawFund(f), drawTable(f)) : drawOverview(); }
+async function init() {
+  try { D = await (await fetch("data.json?" + Date.now())).json(); } catch (e) { $("#view").innerHTML = `<div class="err">Couldn't load data.json.</div>`; return; }
+  const gen = D.generated_at_utc, stale = (Date.now() - new Date(gen)) > 3 * 864e5;
+  $("#fresh").innerHTML = `<span class="dot ${stale ? "stale" : ""}"></span>Updated ${ago(gen)} · ${new Date(gen).toLocaleString("en-GB", { dateStyle: "medium", timeStyle: "short" })}`;
+  $("#foot").innerHTML = `Data: EasyETFs daily PCF holdings files, EasyEquities published NAV and JSE closing prices (Yahoo Finance), captured by a scheduled GitHub Action. Premium/discount compares the latest published NAV with the most recent market close, so timing differences between the two add noise. Stock moves come from Yahoo Finance. Informational only — not investment advice.`;
+  window.addEventListener("hashchange", () => { scrollTo(0, 0); render(); });
+  let t; window.addEventListener("resize", () => { clearTimeout(t); t = setTimeout(redraw, 120); });
+  matchMedia("(prefers-color-scheme: dark)").addEventListener("change", render);
+  render();
+}
+init();
+</script>
 </body>
 </html>

@@ -2,7 +2,7 @@
 
 **Live dashboard: https://jonnienglish.github.io/easy-tracker/**
 
-This repository captures historical holdings CSVs for three EasyETFs funds and publishes a GitHub Pages viewer for the latest holdings plus 1d, 7d, and 30d stock performance.
+This repository captures historical holdings CSVs for three EasyETFs funds and publishes a GitHub Pages dashboard: NAV and premium/discount history, risk stats, holdings changes, return attribution, and look-through exposure for the fund-of-funds.
 
 Tracked funds:
 
@@ -20,8 +20,13 @@ The hourly GitHub Action:
 4. Captures published NAV observations into `data/nav_history.csv`.
 5. Captures latest public ETF market prices into `data/market_price_history.csv`.
 6. Combines hourly NAV and market price observations into `data/nav_price_history.csv`.
-7. Builds `site/data.json` for the static dashboard and chart pages.
+7. Builds `site/data.json` (analytics in `scripts/analytics.py`) for the static dashboard in `site/index.html`.
 8. Commits any changed data and deploys `site/` to GitHub Pages.
+
+## Dashboard
+
+- **Overview**: fund cards, rebased NAV comparison, premium/discount, auto-generated takeaways, 14-day change feed, EASYBF look-through (sees through the AI/EGE sleeves), EASYGE/EASYAI overlap, pipeline health.
+- **Per fund**: NAV vs market price, premium/discount percentile, volatility/drawdown, concentration, 30-day contribution estimate, sortable holdings table (weight deltas, stock moves, holding tenure, trend), top-holding weight history, turnover, and a 90-day activity log.
 
 No PNG plots are generated.
 
