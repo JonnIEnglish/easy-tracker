@@ -1,6 +1,6 @@
 {
   "schema": 2,
-  "generated_at_utc": "2026-10-19T16:28:27Z",
+  "generated_at_utc": "2026-10-20T14:19:04Z",
   "funds": [
     {
       "code": "EASYGE",
@@ -8,71 +8,71 @@
       "name": "EasyETFs Global Equity Actively Managed ETF",
       "instrument_page": "https://etfs.easyequities.co.za/easyetf-instrument-page/easyge",
       "market_ticker": "EASYGE.JO",
-      "snapshot_date": "2026-10-19",
-      "snapshots": 111,
+      "snapshot_date": "2026-10-20",
+      "snapshots": 112,
       "nav": {
-        "value_zac": 1419.86,
-        "nav_date": "2026-10-19",
+        "value_zac": 1439.77,
+        "nav_date": "2026-10-20",
         "source_url": "https://etfs.easyequities.co.za/easyetf-instrument-page/easyge",
-        "captured_at_utc": "2026-10-19T16:28:27Z"
+        "captured_at_utc": "2026-10-20T14:19:04Z"
       },
       "market": {
         "ticker": "EASYGE.JO",
-        "value_zac": 1460.0,
+        "value_zac": 1426.0,
         "source": "yfinance",
-        "price_at_utc": "2026-10-18T22:00:00Z",
-        "captured_at_utc": "2026-10-19T16:28:30Z"
+        "price_at_utc": "2026-10-19T22:00:00Z",
+        "captured_at_utc": "2026-10-20T14:19:06Z"
       },
       "gap": {
-        "status": "premium",
-        "difference_zac": 40.1400000000001,
-        "difference_pct": 2.8270392855633726,
+        "status": "discount",
+        "difference_zac": -13.769999999999982,
+        "difference_pct": -0.9564027587739696,
         "label": "estimated premium/discount to NAV"
       },
       "nav_returns": {
-        "d1": -4.254,
-        "d7": -16.036,
-        "d30": -6.795,
-        "d90": -12.409,
+        "d1": 1.402,
+        "d7": -10.995,
+        "d30": -5.488,
+        "d90": -15.725,
         "ytd": null,
-        "since_start": -20.137
+        "since_start": -19.018
       },
       "market_returns": {
-        "d1": -1.151,
-        "d7": -11.138,
-        "d30": -4.388,
-        "d90": -14.067,
+        "d1": -2.329,
+        "d7": -9.918,
+        "d30": -6.614,
+        "d90": -16.068,
         "ytd": null,
-        "since_start": -19.515
+        "since_start": -21.389
       },
       "risk": {
-        "vol_ann_pct": 47.04,
+        "vol_ann_pct": 46.89,
         "max_drawdown_pct": -27.29,
         "max_drawdown_date": "2026-10-19",
-        "current_drawdown_pct": -27.29,
+        "current_drawdown_pct": -26.28,
         "best_day_pct": 7.41,
         "best_day_date": "2026-07-31",
         "worst_day_pct": -6.43,
         "worst_day_date": "2026-07-03",
-        "up_days_pct": 50.9,
-        "observations": 110,
+        "up_days_pct": 51.4,
+        "observations": 111,
         "high": 1952.9,
         "high_date": "2026-06-22",
         "low": 1419.86,
         "low_date": "2026-10-19",
-        "range_position_pct": 0.0
+        "range_position_pct": 3.7
       },
       "premium": {
-        "current_pct": 2.827,
-        "mean_pct": 0.646,
-        "median_pct": 0.922,
+        "current_pct": -0.956,
+        "mean_pct": 0.632,
+        "median_pct": 0.917,
         "max_pct": 4.59,
         "min_pct": -6.199,
-        "pct_days_premium": 62.2,
-        "pct_days_discount": 28.8,
-        "zscore": 1.12,
-        "percentile": 87.0,
-        "observations": 111
+        "pct_days_premium": 61.6,
+        "pct_days_discount": 29.5,
+        "zscore": -0.82,
+        "percentile": 19.0,
+        "observations": 112
       },
       "series": {
         "nav": [
@@ -519,6 +519,10 @@
           [
             "2026-10-19",
             1419.86
+          ],
+          [
+            "2026-10-20",
+            1439.77
           ]
         ],
         "market": [
@@ -941,6 +945,10 @@
           [
             "2026-10-18",
             1460.0
+          ],
+          [
+            "2026-10-19",
+            1426.0
           ]
         ],
         "premium": [
@@ -1387,26 +1395,30 @@
           [
             "2026-10-19",
             2.827
+          ],
+          [
+            "2026-10-20",
+            -0.956
           ]
         ]
       },
       "concentration": {
         "positions": 33,
-        "total_weight": 99.81,
-        "cash_pct": 3.51,
-        "top1_pct": 8.73,
-        "top5_pct": 31.85,
-        "top10_pct": 49.34,
-        "hhi": 0.0418,
+        "total_weight": 99.86,
+        "cash_pct": 3.44,
+        "top1_pct": 8.72,
+        "top5_pct": 31.96,
+        "top10_pct": 49.6,
+        "hhi": 0.0419,
         "effective_n": 23.9,
         "currency": {
-          "USD": 94.54,
-          "EUR": 4.99,
-          "ZAR": 0.28
+          "USD": 94.7,
+          "EUR": 4.9,
+          "ZAR": 0.26
         },
         "kind": {
-          "equity": 96.3,
-          "cash": 3.51
+          "equity": 96.42,
+          "cash": 3.44
         }
       },
       "snapshot_stats": [
@@ -2186,6 +2198,13 @@
           "cash_pct": 3.51,
           "top10_pct": 49.34,
           "positions": 33
+        },
+        {
+          "date": "2026-10-20",
+          "turnover_pct": 0.68,
+          "cash_pct": 3.44,
+          "top10_pct": 49.6,
+          "positions": 33
         }
       ],
       "holdings": [
@@ -2194,24 +2213,23 @@
           "kind": "equity",
           "currency": "USD",
           "ticker": "LITE",
-          "weight": 8.73,
-          "chg_1": -0.14,
-          "chg_7d": -0.94,
-          "chg_30d": 0.18,
-          "chg_start": -1.01,
+          "weight": 8.72,
+          "chg_1": -0.01,
+          "chg_7d": -0.6,
+          "chg_30d": 0.17,
+          "chg_start": -1.02,
           "peak_weight": 10.7,
           "first_seen": "2026-05-08",
           "held_since": "2026-05-08",
-          "days_held": 164,
+          "days_held": 165,
           "since_start": true,
           "perf": {
-            "d1": 4.57,
-            "d7": -13.42,
-            "d30": -7.43
+            "d1": -1.21,
+            "d7": -16.56,
+            "d30": -11.44
           },
-          "contrib_30d": -0.648,
+          "contrib_30d": -0.998,
           "spark": [
-            8.05,
             8.19,
             7.78,
             7.68,
@@ -2255,7 +2273,8 @@
             9.32,
             8.95,
             8.87,
-            8.73
+            8.73,
+            8.72
           ]
         },
         {
@@ -2263,24 +2282,23 @@
           "kind": "equity",
           "currency": "USD",
           "ticker": "NVDA",
-          "weight": 7.78,
-          "chg_1": 0.19,
-          "chg_7d": 0.9,
-          "chg_30d": 0.59,
-          "chg_start": 2.21,
+          "weight": 7.77,
+          "chg_1": -0.01,
+          "chg_7d": 0.51,
+          "chg_30d": 0.58,
+          "chg_start": 2.2,
           "peak_weight": 7.78,
           "first_seen": "2026-05-08",
           "held_since": "2026-05-08",
-          "days_held": 164,
+          "days_held": 165,
           "since_start": true,
           "perf": {
-            "d1": 2.03,
-            "d7": -3.46,
-            "d30": -1.7
+            "d1": 0.13,
+            "d7": -4.88,
+            "d30": -2.2
           },
-          "contrib_30d": -0.132,
+          "contrib_30d": -0.171,
           "spark": [
-            6.71,
             6.52,
             6.71,
             6.92,
@@ -2324,7 +2342,8 @@
             7.39,
             7.57,
             7.59,
-            7.78
+            7.78,
+            7.77
           ]
         },
         {
@@ -2332,24 +2351,23 @@
           "kind": "equity",
           "currency": "USD",
           "ticker": "FIX",
-          "weight": 5.85,
-          "chg_1": 0.06,
-          "chg_7d": 0.09,
-          "chg_30d": 0.08,
-          "chg_start": -1.33,
+          "weight": 5.86,
+          "chg_1": 0.01,
+          "chg_7d": -0.02,
+          "chg_30d": 0.09,
+          "chg_start": -1.32,
           "peak_weight": 7.18,
           "first_seen": "2026-05-08",
           "held_since": "2026-05-08",
-          "days_held": 164,
+          "days_held": 165,
           "since_start": true,
           "perf": {
-            "d1": 2.72,
-            "d7": -9.76,
-            "d30": -10.48
+            "d1": -3.15,
+            "d7": -12.83,
+            "d30": -14.13
           },
-          "contrib_30d": -0.613,
+          "contrib_30d": -0.828,
           "spark": [
-            5.92,
             6.1,
             5.94,
             6.03,
@@ -2393,7 +2411,8 @@
             5.88,
             5.9,
             5.79,
-            5.85
+            5.85,
+            5.86
           ]
         },
         {
@@ -2401,24 +2420,23 @@
           "kind": "equity",
           "currency": "USD",
           "ticker": "FORM",
-          "weight": 5.44,
-          "chg_1": -0.21,
-          "chg_7d": -0.54,
-          "chg_30d": 0.22,
-          "chg_start": -0.09,
+          "weight": 5.63,
+          "chg_1": 0.19,
+          "chg_7d": -0.33,
+          "chg_30d": 0.41,
+          "chg_start": 0.1,
           "peak_weight": 6.57,
           "first_seen": "2026-05-08",
           "held_since": "2026-05-08",
-          "days_held": 164,
+          "days_held": 165,
           "since_start": true,
           "perf": {
-            "d1": 7.99,
-            "d7": -12.96,
-            "d30": -4.21
+            "d1": -2.49,
+            "d7": -16.14,
+            "d30": -9.26
           },
-          "contrib_30d": -0.229,
+          "contrib_30d": -0.521,
           "spark": [
-            5.6,
             5.71,
             5.42,
             5.21,
@@ -2462,7 +2480,8 @@
             5.91,
             5.84,
             5.65,
-            5.44
+            5.44,
+            5.63
           ]
         },
         {
@@ -2470,24 +2489,23 @@
           "kind": "equity",
           "currency": "USD",
           "ticker": "COHR",
-          "weight": 4.05,
-          "chg_1": -0.14,
+          "weight": 3.98,
+          "chg_1": -0.07,
           "chg_7d": -0.44,
-          "chg_30d": -0.6,
-          "chg_start": -1.0,
+          "chg_30d": -0.67,
+          "chg_start": -1.07,
           "peak_weight": 6.1,
           "first_seen": "2026-05-08",
           "held_since": "2026-05-08",
-          "days_held": 164,
+          "days_held": 165,
           "since_start": true,
           "perf": {
-            "d1": 2.66,
-            "d7": -16.99,
-            "d30": -24.66
+            "d1": -0.44,
+            "d7": -20.34,
+            "d30": -27.21
           },
-          "contrib_30d": -0.999,
+          "contrib_30d": -1.083,
           "spark": [
-            4.65,
             4.87,
             4.48,
             4.38,
@@ -2531,7 +2549,8 @@
             4.49,
             4.31,
             4.19,
-            4.05
+            4.05,
+            3.98
           ]
         },
         {
@@ -2539,24 +2558,23 @@
           "kind": "equity",
           "currency": "USD",
           "ticker": "BE",
-          "weight": 3.95,
-          "chg_1": -0.1,
-          "chg_7d": -0.18,
-          "chg_30d": -0.57,
-          "chg_start": -1.73,
+          "weight": 3.98,
+          "chg_1": 0.03,
+          "chg_7d": -0.15,
+          "chg_30d": -0.54,
+          "chg_start": -1.7,
           "peak_weight": 6.58,
           "first_seen": "2026-05-08",
           "held_since": "2026-05-08",
-          "days_held": 164,
+          "days_held": 165,
           "since_start": true,
           "perf": {
-            "d1": 3.54,
-            "d7": -12.63,
-            "d30": -13.73
+            "d1": -0.89,
+            "d7": -14.9,
+            "d30": -15.6
           },
-          "contrib_30d": -0.542,
+          "contrib_30d": -0.621,
           "spark": [
-            3.36,
             3.3,
             3.13,
             3.22,
@@ -2600,7 +2618,8 @@
             4.18,
             4.02,
             4.05,
-            3.95
+            3.95,
+            3.98
           ]
         },
         {
@@ -2608,24 +2627,23 @@
           "kind": "equity",
           "currency": "USD",
           "ticker": "CIEN",
-          "weight": 3.63,
-          "chg_1": -0.11,
-          "chg_7d": -0.42,
-          "chg_30d": 0.24,
-          "chg_start": -1.72,
+          "weight": 3.7,
+          "chg_1": 0.07,
+          "chg_7d": -0.2,
+          "chg_30d": 0.31,
+          "chg_start": -1.65,
           "peak_weight": 5.67,
           "first_seen": "2026-05-08",
           "held_since": "2026-05-08",
-          "days_held": 164,
+          "days_held": 165,
           "since_start": true,
           "perf": {
-            "d1": 5.94,
-            "d7": -12.97,
-            "d30": 1.06
+            "d1": -0.0,
+            "d7": -14.04,
+            "d30": -1.32
           },
-          "contrib_30d": 0.038,
+          "contrib_30d": -0.049,
           "spark": [
-            3.83,
             3.87,
             3.71,
             3.81,
@@ -2669,7 +2687,8 @@
             3.88,
             3.69,
             3.74,
-            3.63
+            3.63,
+            3.7
           ]
         },
         {
@@ -2677,20 +2696,19 @@
           "kind": "equity",
           "currency": "USD",
           "ticker": null,
-          "weight": 3.44,
-          "chg_1": 0.06,
-          "chg_7d": 0.5,
-          "chg_30d": 0.37,
-          "chg_start": 3.44,
+          "weight": 3.46,
+          "chg_1": 0.02,
+          "chg_7d": 0.38,
+          "chg_30d": 0.39,
+          "chg_start": 3.46,
           "peak_weight": 3.6,
           "first_seen": "2026-07-09",
           "held_since": "2026-07-09",
-          "days_held": 102,
+          "days_held": 103,
           "since_start": false,
           "perf": null,
           "contrib_30d": null,
           "spark": [
-            3.47,
             3.43,
             3.53,
             3.5,
@@ -2734,7 +2752,8 @@
             3.13,
             3.28,
             3.38,
-            3.44
+            3.44,
+            3.46
           ]
         },
         {
@@ -2742,20 +2761,19 @@
           "kind": "equity",
           "currency": "USD",
           "ticker": null,
-          "weight": 3.32,
-          "chg_1": 0.02,
-          "chg_7d": 0.18,
-          "chg_30d": 0.42,
-          "chg_start": 3.32,
-          "peak_weight": 3.32,
+          "weight": 3.39,
+          "chg_1": 0.07,
+          "chg_7d": 0.19,
+          "chg_30d": 0.49,
+          "chg_start": 3.39,
+          "peak_weight": 3.39,
           "first_seen": "2026-05-25",
           "held_since": "2026-05-25",
-          "days_held": 147,
+          "days_held": 148,
           "since_start": false,
           "perf": null,
           "contrib_30d": null,
           "spark": [
-            3.16,
             3.1,
             3.08,
             3.12,
@@ -2799,7 +2817,8 @@
             3.22,
             3.21,
             3.3,
-            3.32
+            3.32,
+            3.39
           ]
         },
         {
@@ -2807,20 +2826,19 @@
           "kind": "cash",
           "currency": "USD",
           "ticker": null,
-          "weight": 3.23,
-          "chg_1": 0.12,
-          "chg_7d": -1.38,
-          "chg_30d": -1.8,
-          "chg_start": -2.63,
+          "weight": 3.18,
+          "chg_1": -0.05,
+          "chg_7d": -1.75,
+          "chg_30d": -1.85,
+          "chg_start": -2.68,
           "peak_weight": 13.4,
           "first_seen": "2026-05-08",
           "held_since": "2026-05-26",
-          "days_held": 146,
+          "days_held": 147,
           "since_start": false,
           "perf": null,
           "contrib_30d": null,
           "spark": [
-            0.88,
             0.86,
             1.01,
             2.95,
@@ -2864,7 +2882,8 @@
             4.97,
             3.04,
             3.11,
-            3.23
+            3.23,
+            3.18
           ]
         },
         {
@@ -2872,20 +2891,19 @@
           "kind": "equity",
           "currency": "USD",
           "ticker": null,
-          "weight": 3.15,
-          "chg_1": 0.15,
-          "chg_7d": 0.59,
-          "chg_30d": 0.41,
-          "chg_start": 3.15,
+          "weight": 3.11,
+          "chg_1": -0.04,
+          "chg_7d": 0.31,
+          "chg_30d": 0.37,
+          "chg_start": 3.11,
           "peak_weight": 3.15,
           "first_seen": "2026-08-14",
           "held_since": "2026-08-14",
-          "days_held": 66,
+          "days_held": 67,
           "since_start": false,
           "perf": null,
           "contrib_30d": null,
           "spark": [
-            3.09,
             3.03,
             3.14,
             3.07,
@@ -2929,141 +2947,8 @@
             2.84,
             2.98,
             3.0,
-            3.15
-          ]
-        },
-        {
-          "instrument": "SOITEC Designs",
-          "kind": "equity",
-          "currency": "EUR",
-          "ticker": null,
-          "weight": 3.12,
-          "chg_1": 0.1,
-          "chg_7d": -0.08,
-          "chg_30d": -0.05,
-          "chg_start": 3.12,
-          "peak_weight": 3.35,
-          "first_seen": "2026-05-26",
-          "held_since": "2026-05-26",
-          "days_held": 146,
-          "since_start": false,
-          "perf": null,
-          "contrib_30d": null,
-          "spark": [
-            2.65,
-            2.66,
-            2.39,
-            2.41,
-            2.44,
-            2.45,
-            2.48,
-            2.48,
-            2.42,
-            2.43,
-            2.48,
-            2.63,
-            2.6,
-            2.64,
-            2.88,
-            2.91,
-            3.18,
-            3.17,
             3.15,
-            3.06,
-            3.1,
-            2.87,
-            2.87,
-            3.17,
-            3.17,
-            3.08,
-            3.31,
-            3.21,
-            3.19,
-            3.01,
-            3.04,
-            3.23,
-            3.25,
-            3.19,
-            3.35,
-            3.28,
-            3.24,
-            3.14,
-            3.1,
-            3.2,
-            3.29,
-            3.13,
-            3.18,
-            3.02,
-            3.12
-          ]
-        },
-        {
-          "instrument": "CREDO TECHNOLOGY GROUP HOLDI",
-          "kind": "equity",
-          "currency": "USD",
-          "ticker": "CRDO",
-          "weight": 3.06,
-          "chg_1": -0.04,
-          "chg_7d": -0.17,
-          "chg_30d": 0.32,
-          "chg_start": 0.28,
-          "peak_weight": 4.07,
-          "first_seen": "2026-05-08",
-          "held_since": "2026-05-08",
-          "days_held": 164,
-          "since_start": true,
-          "perf": {
-            "d1": 5.08,
-            "d7": -11.21,
-            "d30": 1.38
-          },
-          "contrib_30d": 0.042,
-          "spark": [
-            3.85,
-            4.07,
-            3.73,
-            3.71,
-            3.68,
-            3.69,
-            3.68,
-            3.69,
-            3.65,
-            3.8,
-            3.85,
-            3.73,
-            3.5,
-            2.81,
-            2.76,
-            2.79,
-            2.72,
-            2.61,
-            2.64,
-            2.59,
-            2.58,
-            2.53,
-            2.54,
-            2.66,
-            2.74,
-            2.8,
-            2.92,
-            2.98,
-            3.01,
-            3.26,
-            3.03,
-            2.95,
-            2.98,
-            3.14,
-            3.18,
-            3.1,
-            3.17,
-            3.23,
-            3.22,
-            3.23,
-            3.2,
-            3.19,
-            3.05,
-            3.1,
-            3.06
+            3.11
           ]
         },
         {
@@ -3071,24 +2956,23 @@
           "kind": "equity",
           "currency": "USD",
           "ticker": "MU",
-          "weight": 3.04,
-          "chg_1": -0.06,
-          "chg_7d": 0.09,
-          "chg_30d": -0.02,
-          "chg_start": -0.75,
+          "weight": 3.09,
+          "chg_1": 0.05,
+          "chg_7d": 0.06,
+          "chg_30d": 0.03,
+          "chg_start": -0.7,
           "peak_weight": 6.11,
           "first_seen": "2026-05-08",
           "held_since": "2026-05-08",
-          "days_held": 164,
+          "days_held": 165,
           "since_start": true,
           "perf": {
-            "d1": 4.02,
-            "d7": -7.55,
-            "d30": -9.99
+            "d1": 0.35,
+            "d7": -4.72,
+            "d30": -10.59
           },
-          "contrib_30d": -0.304,
+          "contrib_30d": -0.327,
           "spark": [
-            2.76,
             2.8,
             2.74,
             2.84,
@@ -3132,7 +3016,142 @@
             2.94,
             2.98,
             3.1,
-            3.04
+            3.04,
+            3.09
+          ]
+        },
+        {
+          "instrument": "CREDO TECHNOLOGY GROUP HOLDI",
+          "kind": "equity",
+          "currency": "USD",
+          "ticker": "CRDO",
+          "weight": 3.08,
+          "chg_1": 0.02,
+          "chg_7d": -0.12,
+          "chg_30d": 0.34,
+          "chg_start": 0.3,
+          "peak_weight": 4.07,
+          "first_seen": "2026-05-08",
+          "held_since": "2026-05-08",
+          "days_held": 165,
+          "since_start": true,
+          "perf": {
+            "d1": -0.95,
+            "d7": -13.69,
+            "d30": -2.69
+          },
+          "contrib_30d": -0.083,
+          "spark": [
+            4.07,
+            3.73,
+            3.71,
+            3.68,
+            3.69,
+            3.68,
+            3.69,
+            3.65,
+            3.8,
+            3.85,
+            3.73,
+            3.5,
+            2.81,
+            2.76,
+            2.79,
+            2.72,
+            2.61,
+            2.64,
+            2.59,
+            2.58,
+            2.53,
+            2.54,
+            2.66,
+            2.74,
+            2.8,
+            2.92,
+            2.98,
+            3.01,
+            3.26,
+            3.03,
+            2.95,
+            2.98,
+            3.14,
+            3.18,
+            3.1,
+            3.17,
+            3.23,
+            3.22,
+            3.23,
+            3.2,
+            3.19,
+            3.05,
+            3.1,
+            3.06,
+            3.08
+          ]
+        },
+        {
+          "instrument": "SOITEC Designs",
+          "kind": "equity",
+          "currency": "EUR",
+          "ticker": null,
+          "weight": 3.07,
+          "chg_1": -0.05,
+          "chg_7d": -0.22,
+          "chg_30d": -0.1,
+          "chg_start": 3.07,
+          "peak_weight": 3.35,
+          "first_seen": "2026-05-26",
+          "held_since": "2026-05-26",
+          "days_held": 147,
+          "since_start": false,
+          "perf": null,
+          "contrib_30d": null,
+          "spark": [
+            2.66,
+            2.39,
+            2.41,
+            2.44,
+            2.45,
+            2.48,
+            2.48,
+            2.42,
+            2.43,
+            2.48,
+            2.63,
+            2.6,
+            2.64,
+            2.88,
+            2.91,
+            3.18,
+            3.17,
+            3.15,
+            3.06,
+            3.1,
+            2.87,
+            2.87,
+            3.17,
+            3.17,
+            3.08,
+            3.31,
+            3.21,
+            3.19,
+            3.01,
+            3.04,
+            3.23,
+            3.25,
+            3.19,
+            3.35,
+            3.28,
+            3.24,
+            3.14,
+            3.1,
+            3.2,
+            3.29,
+            3.13,
+            3.18,
+            3.02,
+            3.12,
+            3.07
           ]
         },
         {
@@ -3140,20 +3159,19 @@
           "kind": "equity",
           "currency": "USD",
           "ticker": null,
-          "weight": 2.88,
-          "chg_1": -0.05,
-          "chg_7d": -0.07,
-          "chg_30d": 0.05,
-          "chg_start": 2.88,
+          "weight": 2.93,
+          "chg_1": 0.05,
+          "chg_7d": -0.08,
+          "chg_30d": 0.1,
+          "chg_start": 2.93,
           "peak_weight": 3.21,
           "first_seen": "2026-08-14",
           "held_since": "2026-08-14",
-          "days_held": 66,
+          "days_held": 67,
           "since_start": false,
           "perf": null,
           "contrib_30d": null,
           "spark": [
-            3.05,
             3.13,
             3.01,
             2.95,
@@ -3197,7 +3215,8 @@
             3.0,
             3.0,
             2.93,
-            2.88
+            2.88,
+            2.93
           ]
         },
         {
@@ -3205,24 +3224,23 @@
           "kind": "equity",
           "currency": "USD",
           "ticker": "PWR",
-          "weight": 2.83,
-          "chg_1": 0.06,
-          "chg_7d": 0.22,
-          "chg_30d": 0.34,
-          "chg_start": -0.23,
+          "weight": 2.73,
+          "chg_1": -0.1,
+          "chg_7d": -0.02,
+          "chg_30d": 0.24,
+          "chg_start": -0.33,
           "peak_weight": 3.06,
           "first_seen": "2026-05-08",
           "held_since": "2026-05-08",
-          "days_held": 164,
+          "days_held": 165,
           "since_start": true,
           "perf": {
-            "d1": -1.51,
-            "d7": -10.43,
-            "d30": -2.24
+            "d1": -2.98,
+            "d7": -12.91,
+            "d30": -5.75
           },
-          "contrib_30d": -0.063,
+          "contrib_30d": -0.157,
           "spark": [
-            2.52,
             2.58,
             2.62,
             2.65,
@@ -3266,7 +3284,8 @@
             2.74,
             2.78,
             2.77,
-            2.83
+            2.83,
+            2.73
           ]
         },
         {
@@ -3274,20 +3293,19 @@
           "kind": "equity",
           "currency": "USD",
           "ticker": null,
-          "weight": 2.71,
-          "chg_1": -0.09,
-          "chg_7d": 0.0,
-          "chg_30d": 0.07,
-          "chg_start": 2.71,
+          "weight": 2.68,
+          "chg_1": -0.03,
+          "chg_7d": -0.09,
+          "chg_30d": 0.04,
+          "chg_start": 2.68,
           "peak_weight": 2.8,
           "first_seen": "2026-08-14",
           "held_since": "2026-08-14",
-          "days_held": 66,
+          "days_held": 67,
           "since_start": false,
           "perf": null,
           "contrib_30d": null,
           "spark": [
-            2.12,
             2.03,
             2.13,
             2.1,
@@ -3331,7 +3349,8 @@
             2.77,
             2.8,
             2.8,
-            2.71
+            2.71,
+            2.68
           ]
         },
         {
@@ -3339,24 +3358,23 @@
           "kind": "equity",
           "currency": "USD",
           "ticker": "AGX",
-          "weight": 2.64,
-          "chg_1": -0.05,
-          "chg_7d": 0.17,
-          "chg_30d": 0.0,
-          "chg_start": -2.15,
+          "weight": 2.67,
+          "chg_1": 0.03,
+          "chg_7d": 0.06,
+          "chg_30d": 0.03,
+          "chg_start": -2.12,
           "peak_weight": 4.87,
           "first_seen": "2026-05-08",
           "held_since": "2026-05-08",
-          "days_held": 164,
+          "days_held": 165,
           "since_start": true,
           "perf": {
-            "d1": 2.06,
-            "d7": -9.08,
-            "d30": -9.53
+            "d1": -1.76,
+            "d7": -10.02,
+            "d30": -10.43
           },
-          "contrib_30d": -0.252,
+          "contrib_30d": -0.278,
           "spark": [
-            3.62,
             3.59,
             3.55,
             3.53,
@@ -3400,7 +3418,8 @@
             2.63,
             2.63,
             2.69,
-            2.64
+            2.64,
+            2.67
           ]
         },
         {
@@ -3408,24 +3427,23 @@
           "kind": "equity",
           "currency": "USD",
           "ticker": "GHM",
-          "weight": 2.58,
-          "chg_1": 0.0,
-          "chg_7d": 0.01,
-          "chg_30d": -0.27,
-          "chg_start": -0.08,
+          "weight": 2.57,
+          "chg_1": -0.01,
+          "chg_7d": -0.14,
+          "chg_30d": -0.28,
+          "chg_start": -0.09,
           "peak_weight": 3.53,
           "first_seen": "2026-05-08",
           "held_since": "2026-05-08",
-          "days_held": 164,
+          "days_held": 165,
           "since_start": true,
           "perf": {
-            "d1": 3.15,
-            "d7": -13.09,
-            "d30": -15.94
+            "d1": 0.69,
+            "d7": -10.14,
+            "d30": -17.05
           },
-          "contrib_30d": -0.411,
+          "contrib_30d": -0.438,
           "spark": [
-            3.53,
             3.47,
             3.53,
             3.46,
@@ -3469,7 +3487,8 @@
             2.6,
             2.61,
             2.58,
-            2.58
+            2.58,
+            2.57
           ]
         },
         {
@@ -3477,24 +3496,23 @@
           "kind": "equity",
           "currency": "USD",
           "ticker": "ONTO",
-          "weight": 2.38,
-          "chg_1": -0.03,
-          "chg_7d": -0.25,
-          "chg_30d": -0.06,
-          "chg_start": 2.38,
+          "weight": 2.41,
+          "chg_1": 0.03,
+          "chg_7d": -0.2,
+          "chg_30d": -0.03,
+          "chg_start": 2.41,
           "peak_weight": 3.03,
           "first_seen": "2026-08-14",
           "held_since": "2026-08-14",
-          "days_held": 66,
+          "days_held": 67,
           "since_start": false,
           "perf": {
-            "d1": 4.3,
-            "d7": -15.91,
-            "d30": -12.61
+            "d1": -2.8,
+            "d7": -16.54,
+            "d30": -16.51
           },
-          "contrib_30d": -0.3,
+          "contrib_30d": -0.398,
           "spark": [
-            2.94,
             3.03,
             2.87,
             2.83,
@@ -3538,7 +3556,8 @@
             2.53,
             2.46,
             2.41,
-            2.38
+            2.38,
+            2.41
           ]
         },
         {
@@ -3546,24 +3565,23 @@
           "kind": "equity",
           "currency": "USD",
           "ticker": "VRT",
-          "weight": 2.29,
-          "chg_1": -0.01,
-          "chg_7d": 0.06,
-          "chg_30d": -0.13,
-          "chg_start": -1.15,
+          "weight": 2.26,
+          "chg_1": -0.03,
+          "chg_7d": -0.09,
+          "chg_30d": -0.16,
+          "chg_start": -1.18,
           "peak_weight": 3.64,
           "first_seen": "2026-05-08",
           "held_since": "2026-05-08",
-          "days_held": 164,
+          "days_held": 165,
           "since_start": true,
           "perf": {
-            "d1": 1.39,
-            "d7": -12.56,
-            "d30": -16.08
+            "d1": -0.5,
+            "d7": -13.59,
+            "d30": -17.78
           },
-          "contrib_30d": -0.368,
+          "contrib_30d": -0.402,
           "spark": [
-            2.68,
             2.59,
             2.55,
             2.54,
@@ -3607,7 +3625,8 @@
             2.35,
             2.33,
             2.3,
-            2.29
+            2.29,
+            2.26
           ]
         },
         {
@@ -3615,24 +3634,23 @@
           "kind": "equity",
           "currency": "USD",
           "ticker": "GE",
-          "weight": 2.19,
-          "chg_1": 0.09,
-          "chg_7d": 0.41,
-          "chg_30d": 0.21,
-          "chg_start": 0.37,
+          "weight": 2.15,
+          "chg_1": -0.04,
+          "chg_7d": 0.24,
+          "chg_30d": 0.17,
+          "chg_start": 0.33,
           "peak_weight": 2.49,
           "first_seen": "2026-05-08",
           "held_since": "2026-05-08",
-          "days_held": 164,
+          "days_held": 165,
           "since_start": true,
           "perf": {
-            "d1": -0.49,
-            "d7": 1.18,
-            "d30": -0.48
+            "d1": -4.28,
+            "d7": -3.15,
+            "d30": -5.05
           },
-          "contrib_30d": -0.01,
+          "contrib_30d": -0.109,
           "spark": [
-            2.11,
             2.06,
             2.21,
             2.18,
@@ -3676,7 +3694,8 @@
             1.91,
             2.02,
             2.1,
-            2.19
+            2.19,
+            2.15
           ]
         },
         {
@@ -3684,24 +3703,23 @@
           "kind": "equity",
           "currency": "USD",
           "ticker": "GEV",
-          "weight": 2.05,
-          "chg_1": 0.06,
-          "chg_7d": 0.2,
-          "chg_30d": 0.19,
-          "chg_start": -0.07,
+          "weight": 2.0,
+          "chg_1": -0.05,
+          "chg_7d": 0.04,
+          "chg_30d": 0.14,
+          "chg_start": -0.12,
           "peak_weight": 2.21,
           "first_seen": "2026-05-08",
           "held_since": "2026-05-08",
-          "days_held": 164,
+          "days_held": 165,
           "since_start": true,
           "perf": {
-            "d1": -0.05,
-            "d7": -7.63,
-            "d30": -2.08
+            "d1": -0.29,
+            "d7": -9.78,
+            "d30": -3.67
           },
-          "contrib_30d": -0.043,
+          "contrib_30d": -0.073,
           "spark": [
-            1.94,
             1.92,
             1.88,
             1.93,
@@ -3745,7 +3763,8 @@
             1.99,
             1.98,
             1.99,
-            2.05
+            2.05,
+            2.0
           ]
         },
         {
@@ -3753,24 +3772,23 @@
           "kind": "equity",
           "currency": "USD",
           "ticker": "ESLT",
-          "weight": 2.01,
-          "chg_1": 0.11,
-          "chg_7d": 0.57,
-          "chg_30d": 0.21,
-          "chg_start": 0.09,
+          "weight": 1.99,
+          "chg_1": -0.02,
+          "chg_7d": 0.46,
+          "chg_30d": 0.19,
+          "chg_start": 0.07,
           "peak_weight": 2.1,
           "first_seen": "2026-05-08",
           "held_since": "2026-05-08",
-          "days_held": 164,
+          "days_held": 165,
           "since_start": true,
           "perf": {
-            "d1": 0.63,
-            "d7": 16.44,
-            "d30": 2.42
+            "d1": -1.09,
+            "d7": 12.51,
+            "d30": 1.21
           },
-          "contrib_30d": 0.049,
+          "contrib_30d": 0.024,
           "spark": [
-            1.71,
             1.66,
             1.78,
             1.75,
@@ -3814,7 +3832,8 @@
             1.58,
             1.76,
             1.9,
-            2.01
+            2.01,
+            1.99
           ]
         },
         {
@@ -3822,24 +3841,23 @@
           "kind": "equity",
           "currency": "USD",
           "ticker": "NBIS",
-          "weight": 1.9,
-          "chg_1": -0.18,
+          "weight": 1.93,
+          "chg_1": 0.03,
           "chg_7d": -0.2,
-          "chg_30d": -0.36,
-          "chg_start": -0.03,
+          "chg_30d": -0.33,
+          "chg_start": 0.0,
           "peak_weight": 2.64,
           "first_seen": "2026-05-08",
           "held_since": "2026-05-08",
-          "days_held": 164,
+          "days_held": 165,
           "since_start": true,
           "perf": {
-            "d1": 3.58,
-            "d7": -18.4,
-            "d30": -23.32
+            "d1": -0.21,
+            "d7": -17.88,
+            "d30": -24.0
           },
-          "contrib_30d": -0.443,
+          "contrib_30d": -0.463,
           "spark": [
-            2.62,
             2.46,
             2.4,
             2.25,
@@ -3883,7 +3901,8 @@
             2.11,
             2.01,
             2.08,
-            1.9
+            1.9,
+            1.93
           ]
         },
         {
@@ -3891,20 +3910,19 @@
           "kind": "equity",
           "currency": "EUR",
           "ticker": null,
-          "weight": 1.87,
-          "chg_1": 0.18,
-          "chg_7d": 0.17,
-          "chg_30d": 0.08,
-          "chg_start": 1.87,
+          "weight": 1.83,
+          "chg_1": -0.04,
+          "chg_7d": 0.06,
+          "chg_30d": 0.04,
+          "chg_start": 1.83,
           "peak_weight": 2.99,
           "first_seen": "2026-05-25",
           "held_since": "2026-05-25",
-          "days_held": 147,
+          "days_held": 148,
           "since_start": false,
           "perf": null,
           "contrib_30d": null,
           "spark": [
-            1.98,
             1.97,
             1.9,
             1.93,
@@ -3948,7 +3966,8 @@
             1.74,
             1.88,
             1.69,
-            1.87
+            1.87,
+            1.83
           ]
         },
         {
@@ -3956,24 +3975,23 @@
           "kind": "equity",
           "currency": "USD",
           "ticker": "CRS",
-          "weight": 1.58,
-          "chg_1": 0.04,
-          "chg_7d": 0.24,
-          "chg_30d": 0.04,
-          "chg_start": -0.12,
+          "weight": 1.57,
+          "chg_1": -0.01,
+          "chg_7d": 0.17,
+          "chg_30d": 0.03,
+          "chg_start": -0.13,
           "peak_weight": 2.27,
           "first_seen": "2026-05-08",
           "held_since": "2026-05-08",
-          "days_held": 164,
+          "days_held": 165,
           "since_start": true,
           "perf": {
-            "d1": 0.23,
-            "d7": 0.19,
-            "d30": -7.39
+            "d1": -2.44,
+            "d7": -2.93,
+            "d30": -9.52
           },
-          "contrib_30d": -0.117,
+          "contrib_30d": -0.149,
           "spark": [
-            1.88,
             1.82,
             1.88,
             1.88,
@@ -4017,7 +4035,8 @@
             1.42,
             1.5,
             1.54,
-            1.58
+            1.58,
+            1.57
           ]
         },
         {
@@ -4025,20 +4044,19 @@
           "kind": "equity",
           "currency": "USD",
           "ticker": null,
-          "weight": 1.42,
-          "chg_1": -0.06,
-          "chg_7d": -0.1,
-          "chg_30d": -0.15,
-          "chg_start": 1.42,
+          "weight": 1.48,
+          "chg_1": 0.06,
+          "chg_7d": 0.0,
+          "chg_30d": -0.09,
+          "chg_start": 1.48,
           "peak_weight": 2.63,
           "first_seen": "2026-05-25",
           "held_since": "2026-05-25",
-          "days_held": 147,
+          "days_held": 148,
           "since_start": false,
           "perf": null,
           "contrib_30d": null,
           "spark": [
-            1.74,
             1.71,
             1.6,
             1.55,
@@ -4082,7 +4100,8 @@
             1.57,
             1.48,
             1.48,
-            1.42
+            1.42,
+            1.48
           ]
         },
         {
@@ -4090,24 +4109,23 @@
           "kind": "equity",
           "currency": "USD",
           "ticker": "HWM",
-          "weight": 1.41,
-          "chg_1": 0.06,
-          "chg_7d": 0.22,
-          "chg_30d": 0.11,
-          "chg_start": -0.18,
+          "weight": 1.39,
+          "chg_1": -0.02,
+          "chg_7d": 0.14,
+          "chg_30d": 0.09,
+          "chg_start": -0.2,
           "peak_weight": 1.77,
           "first_seen": "2026-05-08",
           "held_since": "2026-05-08",
-          "days_held": 164,
+          "days_held": 165,
           "since_start": true,
           "perf": {
-            "d1": -0.37,
-            "d7": -0.3,
-            "d30": -4.15
+            "d1": -4.55,
+            "d7": -3.15,
+            "d30": -8.56
           },
-          "contrib_30d": -0.059,
+          "contrib_30d": -0.119,
           "spark": [
-            1.52,
             1.47,
             1.57,
             1.59,
@@ -4151,76 +4169,8 @@
             1.23,
             1.31,
             1.35,
-            1.41
-          ]
-        },
-        {
-          "instrument": "INTERACTIVE BROK",
-          "kind": "equity",
-          "currency": "USD",
-          "ticker": "IBKR",
-          "weight": 1.32,
-          "chg_1": 0.0,
-          "chg_7d": 0.16,
-          "chg_30d": 0.05,
-          "chg_start": 0.1,
-          "peak_weight": 1.42,
-          "first_seen": "2026-05-08",
-          "held_since": "2026-05-08",
-          "days_held": 164,
-          "since_start": true,
-          "perf": {
-            "d1": -0.42,
-            "d7": -6.31,
-            "d30": -9.21
-          },
-          "contrib_30d": -0.122,
-          "spark": [
-            1.21,
-            1.2,
-            1.21,
-            1.27,
-            1.26,
-            1.33,
-            1.36,
-            1.42,
-            1.38,
-            1.35,
-            1.4,
-            1.42,
-            1.35,
-            1.34,
-            1.38,
-            1.34,
-            1.31,
-            1.25,
-            1.25,
-            1.28,
-            1.28,
-            1.36,
-            1.33,
-            1.26,
-            1.27,
-            1.28,
-            1.28,
-            1.26,
-            1.26,
-            1.22,
-            1.21,
-            1.17,
-            1.16,
-            1.13,
-            1.14,
-            1.15,
-            1.15,
-            1.14,
-            1.16,
-            1.16,
-            1.24,
-            1.24,
-            1.27,
-            1.32,
-            1.32
+            1.41,
+            1.39
           ]
         },
         {
@@ -4229,23 +4179,22 @@
           "currency": "USD",
           "ticker": "AEIS",
           "weight": 1.28,
-          "chg_1": -0.02,
-          "chg_7d": 0.0,
+          "chg_1": 0.0,
+          "chg_7d": -0.05,
           "chg_30d": 0.04,
           "chg_start": -2.24,
           "peak_weight": 3.53,
           "first_seen": "2026-05-08",
           "held_since": "2026-05-08",
-          "days_held": 164,
+          "days_held": 165,
           "since_start": true,
           "perf": {
-            "d1": 3.34,
-            "d7": -12.38,
-            "d30": -6.17
+            "d1": -1.04,
+            "d7": -13.53,
+            "d30": -9.1
           },
-          "contrib_30d": -0.079,
+          "contrib_30d": -0.116,
           "spark": [
-            1.46,
             1.5,
             1.42,
             1.39,
@@ -4289,6 +4238,76 @@
             1.32,
             1.32,
             1.3,
+            1.28,
+            1.28
+          ]
+        },
+        {
+          "instrument": "INTERACTIVE BROK",
+          "kind": "equity",
+          "currency": "USD",
+          "ticker": "IBKR",
+          "weight": 1.28,
+          "chg_1": -0.04,
+          "chg_7d": 0.04,
+          "chg_30d": 0.01,
+          "chg_start": 0.06,
+          "peak_weight": 1.42,
+          "first_seen": "2026-05-08",
+          "held_since": "2026-05-08",
+          "days_held": 165,
+          "since_start": true,
+          "perf": {
+            "d1": 1.56,
+            "d7": -5.57,
+            "d30": -8.9
+          },
+          "contrib_30d": -0.114,
+          "spark": [
+            1.2,
+            1.21,
+            1.27,
+            1.26,
+            1.33,
+            1.36,
+            1.42,
+            1.38,
+            1.35,
+            1.4,
+            1.42,
+            1.35,
+            1.34,
+            1.38,
+            1.34,
+            1.31,
+            1.25,
+            1.25,
+            1.28,
+            1.28,
+            1.36,
+            1.33,
+            1.26,
+            1.27,
+            1.28,
+            1.28,
+            1.26,
+            1.26,
+            1.22,
+            1.21,
+            1.17,
+            1.16,
+            1.13,
+            1.14,
+            1.15,
+            1.15,
+            1.14,
+            1.16,
+            1.16,
+            1.24,
+            1.24,
+            1.27,
+            1.32,
+            1.32,
             1.28
           ]
         },
@@ -4297,20 +4316,19 @@
           "kind": "equity",
           "currency": "USD",
           "ticker": null,
-          "weight": 1.04,
-          "chg_1": -0.06,
-          "chg_7d": 0.0,
-          "chg_30d": 0.0,
-          "chg_start": 1.04,
+          "weight": 1.06,
+          "chg_1": 0.02,
+          "chg_7d": -0.02,
+          "chg_30d": 0.02,
+          "chg_start": 1.06,
           "peak_weight": 1.13,
           "first_seen": "2026-08-14",
           "held_since": "2026-08-14",
-          "days_held": 66,
+          "days_held": 67,
           "since_start": false,
           "perf": null,
           "contrib_30d": null,
           "spark": [
-            0.92,
             0.89,
             0.93,
             0.97,
@@ -4354,7 +4372,8 @@
             1.08,
             1.07,
             1.1,
-            1.04
+            1.04,
+            1.06
           ]
         },
         {
@@ -4362,24 +4381,23 @@
           "kind": "equity",
           "currency": "USD",
           "ticker": "LASR",
-          "weight": 1.03,
-          "chg_1": -0.01,
-          "chg_7d": 0.06,
-          "chg_30d": -0.03,
-          "chg_start": -0.81,
+          "weight": 1.05,
+          "chg_1": 0.02,
+          "chg_7d": 0.02,
+          "chg_30d": -0.01,
+          "chg_start": -0.79,
           "peak_weight": 2.24,
           "first_seen": "2026-05-08",
           "held_since": "2026-05-08",
-          "days_held": 164,
+          "days_held": 165,
           "since_start": true,
           "perf": {
-            "d1": 4.6,
-            "d7": -7.92,
-            "d30": -11.6
+            "d1": 0.49,
+            "d7": -9.38,
+            "d30": -12.25
           },
-          "contrib_30d": -0.119,
+          "contrib_30d": -0.129,
           "spark": [
-            1.32,
             1.31,
             1.28,
             1.28,
@@ -4423,7 +4441,8 @@
             1.05,
             1.03,
             1.04,
-            1.03
+            1.03,
+            1.05
           ]
         },
         {
@@ -4431,24 +4450,23 @@
           "kind": "equity",
           "currency": "USD",
           "ticker": "PNG.V",
-          "weight": 0.33,
-          "chg_1": 0.02,
-          "chg_7d": 0.03,
-          "chg_30d": -0.01,
-          "chg_start": -0.22,
+          "weight": 0.32,
+          "chg_1": -0.01,
+          "chg_7d": 0.01,
+          "chg_30d": -0.02,
+          "chg_start": -0.23,
           "peak_weight": 0.6,
           "first_seen": "2026-05-08",
           "held_since": "2026-05-08",
-          "days_held": 164,
+          "days_held": 165,
           "since_start": true,
           "perf": {
-            "d1": -1.48,
-            "d7": -11.33,
-            "d30": -13.64
+            "d1": 1.5,
+            "d7": -8.56,
+            "d30": -12.12
           },
-          "contrib_30d": -0.045,
+          "contrib_30d": -0.039,
           "spark": [
-            0.43,
             0.4,
             0.42,
             0.44,
@@ -4492,7 +4510,8 @@
             0.32,
             0.31,
             0.31,
-            0.33
+            0.33,
+            0.32
           ]
         },
         {
@@ -4500,20 +4519,19 @@
           "kind": "cash",
           "currency": "ZAR",
           "ticker": null,
-          "weight": 0.28,
-          "chg_1": 0.01,
-          "chg_7d": -0.11,
-          "chg_30d": -0.21,
-          "chg_start": -0.23,
+          "weight": 0.26,
+          "chg_1": -0.02,
+          "chg_7d": 2.06,
+          "chg_30d": -0.23,
+          "chg_start": -0.25,
           "peak_weight": 3.0,
           "first_seen": "2026-05-08",
           "held_since": "2026-10-15",
-          "days_held": 4,
+          "days_held": 5,
           "since_start": false,
           "perf": null,
           "contrib_30d": null,
           "spark": [
-            0.45,
             0.43,
             2.32,
             0.52,
@@ -4557,55 +4575,56 @@
             -1.8,
             0.26,
             0.27,
-            0.28
+            0.28,
+            0.26
           ]
         }
       ],
       "attribution": {
-        "covered_weight": 73.35,
-        "implied_30d_pct": -5.769,
+        "covered_weight": 73.41,
+        "implied_30d_pct": -7.641,
         "top_contributors": [
           {
             "instrument": "ELBIT SYSTEMS",
-            "contrib": 0.049
+            "contrib": 0.024
           },
           {
-            "instrument": "CREDO TECHNOLOGY GROUP HOLDI",
-            "contrib": 0.042
+            "instrument": "KRAKEN ROBOTICS INC",
+            "contrib": -0.039
           },
           {
             "instrument": "CIENA CORP",
-            "contrib": 0.038
-          },
-          {
-            "instrument": "GENERAL ELECTRIC",
-            "contrib": -0.01
+            "contrib": -0.049
           },
           {
             "instrument": "GE VERNOVA LLC",
-            "contrib": -0.043
+            "contrib": -0.073
+          },
+          {
+            "instrument": "CREDO TECHNOLOGY GROUP HOLDI",
+            "contrib": -0.083
           }
         ],
         "top_detractors": [
           {
             "instrument": "COHERENT CORP",
-            "contrib": -0.999
+            "contrib": -1.083
           },
           {
             "instrument": "LUMENTUM HOL",
-            "contrib": -0.648
+            "contrib": -0.998
           },
           {
             "instrument": "COMFORT SYSTEMS",
-            "contrib": -0.613
+            "contrib": -0.828
           },
           {
             "instrument": "BLOOM ENERGY C-A",
-            "contrib": -0.542
+            "contrib": -0.621
           },
           {
-            "instrument": "NEBIUS GROUP NV",
-            "contrib": -0.443
+            "instrument": "FORMFACTOR INC",
+            "contrib": -0.521
           }
         ]
       },
@@ -4721,7 +4740,8 @@
           "2026-10-14",
           "2026-10-15",
           "2026-10-16",
-          "2026-10-19"
+          "2026-10-19",
+          "2026-10-20"
         ],
         "series": [
           {
@@ -4837,7 +4857,8 @@
               9.32,
               8.95,
               8.87,
-              8.73
+              8.73,
+              8.72
             ]
           },
           {
@@ -4953,7 +4974,8 @@
               7.39,
               7.57,
               7.59,
-              7.78
+              7.78,
+              7.77
             ]
           },
           {
@@ -5069,7 +5091,8 @@
               5.88,
               5.9,
               5.79,
-              5.85
+              5.85,
+              5.86
             ]
           },
           {
@@ -5185,7 +5208,8 @@
               5.91,
               5.84,
               5.65,
-              5.44
+              5.44,
+              5.63
             ]
           },
           {
@@ -5301,7 +5325,8 @@
               4.49,
               4.31,
               4.19,
-              4.05
+              4.05,
+              3.98
             ]
           },
           {
@@ -5417,7 +5442,8 @@
               4.18,
               4.02,
               4.05,
-              3.95
+              3.95,
+              3.98
             ]
           },
           {
@@ -5533,7 +5559,8 @@
               3.88,
               3.69,
               3.74,
-              3.63
+              3.63,
+              3.7
             ]
           },
           {
@@ -5649,7 +5676,8 @@
               3.13,
               3.28,
               3.38,
-              3.44
+              3.44,
+              3.46
             ]
           },
           {
@@ -5765,7 +5793,8 @@
               3.22,
               3.21,
               3.3,
-              3.32
+              3.32,
+              3.39
             ]
           },
           {
@@ -5881,7 +5910,8 @@
               2.84,
               2.98,
               3.0,
-              3.15
+              3.15,
+              3.11
             ]
           }
         ]
@@ -6118,14 +6148,6 @@
           "from": 3.56,
           "to": 4.12,
           "delta": 0.56
-        },
-        {
-          "date": "2026-07-21",
-          "type": "decreased",
-          "instrument": "BLOOM ENERGY C-A",
-          "from": 4.8,
-          "to": 2.51,
-          "delta": -2.29
         }
       ]
     },
@@ -6135,71 +6157,71 @@
       "name": "EasyETFs AI World Actively Managed ETF",
       "instrument_page": "https://etfs.easyequities.co.za/easyetf-instrument-page/easyai",
       "market_ticker": "EASYAI.JO",
-      "snapshot_date": "2026-10-19",
-      "snapshots": 111,
+      "snapshot_date": "2026-10-20",
+      "snapshots": 112,
       "nav": {
-        "value_zac": 8354.66,
-        "nav_date": "2026-10-19",
+        "value_zac": 8478.36,
+        "nav_date": "2026-10-20",
         "source_url": "https://etfs.easyequities.co.za/easyetf-instrument-page/easyai",
-        "captured_at_utc": "2026-10-19T16:28:27Z"
+        "captured_at_utc": "2026-10-20T14:19:04Z"
       },
       "market": {
         "ticker": "EASYAI.JO",
-        "value_zac": 8620.0,
+        "value_zac": 8200.0,
         "source": "yfinance",
-        "price_at_utc": "2026-10-18T22:00:00Z",
-        "captured_at_utc": "2026-10-19T16:28:30Z"
+        "price_at_utc": "2026-10-19T22:00:00Z",
+        "captured_at_utc": "2026-10-20T14:19:06Z"
       },
       "gap": {
-        "status": "premium",
-        "difference_zac": 265.34000000000015,
-        "difference_pct": 3.1759521033770395,
+        "status": "discount",
+        "difference_zac": -278.3600000000006,
+        "difference_pct": -3.2831821248449056,
         "label": "estimated premium/discount to NAV"
       },
       "nav_returns": {
-        "d1": -5.105,
-        "d7": -17.837,
-        "d30": -7.168,
-        "d90": -12.34,
+        "d1": 1.481,
+        "d7": -12.545,
+        "d30": -5.793,
+        "d90": -15.174,
         "ytd": null,
-        "since_start": -21.866
+        "since_start": -20.709
       },
       "market_returns": {
-        "d1": -0.289,
-        "d7": -12.229,
-        "d30": -5.451,
-        "d90": -12.929,
+        "d1": -4.872,
+        "d7": -13.218,
+        "d30": -10.058,
+        "d90": -17.289,
         "ytd": null,
-        "since_start": -20.874
+        "since_start": -24.729
       },
       "risk": {
-        "vol_ann_pct": 53.86,
+        "vol_ann_pct": 53.67,
         "max_drawdown_pct": -29.68,
         "max_drawdown_date": "2026-07-30",
-        "current_drawdown_pct": -29.53,
+        "current_drawdown_pct": -28.48,
         "best_day_pct": 9.04,
         "best_day_date": "2026-07-31",
         "worst_day_pct": -8.24,
         "worst_day_date": "2026-07-03",
-        "up_days_pct": 52.7,
-        "observations": 110,
+        "up_days_pct": 53.2,
+        "observations": 111,
         "high": 11855.23,
         "high_date": "2026-06-22",
         "low": 8336.01,
         "low_date": "2026-07-30",
-        "range_position_pct": 0.5
+        "range_position_pct": 4.0
       },
       "premium": {
-        "current_pct": 3.176,
-        "mean_pct": 0.719,
-        "median_pct": 0.884,
+        "current_pct": -3.283,
+        "mean_pct": 0.683,
+        "median_pct": 0.852,
         "max_pct": 5.369,
         "min_pct": -7.618,
-        "pct_days_premium": 63.6,
-        "pct_days_discount": 30.0,
-        "zscore": 1.1,
-        "percentile": 87.0,
-        "observations": 110
+        "pct_days_premium": 63.1,
+        "pct_days_discount": 30.6,
+        "zscore": -1.75,
+        "percentile": 5.0,
+        "observations": 111
       },
       "series": {
         "nav": [
@@ -6646,6 +6668,10 @@
           [
             "2026-10-19",
             8354.66
+          ],
+          [
+            "2026-10-20",
+            8478.36
           ]
         ],
         "market": [
@@ -7080,6 +7106,10 @@
           [
             "2026-10-18",
             8620.0
+          ],
+          [
+            "2026-10-19",
+            8200.0
           ]
         ],
         "premium": [
@@ -7522,26 +7552,30 @@
           [
             "2026-10-19",
             3.176
+          ],
+          [
+            "2026-10-20",
+            -3.283
           ]
         ]
       },
       "concentration": {
         "positions": 29,
-        "total_weight": 99.83,
-        "cash_pct": 7.16,
-        "top1_pct": 8.48,
-        "top5_pct": 32.61,
-        "top10_pct": 51.75,
-        "hhi": 0.0458,
+        "total_weight": 99.82,
+        "cash_pct": 7.04,
+        "top1_pct": 8.46,
+        "top5_pct": 32.82,
+        "top10_pct": 51.72,
+        "hhi": 0.0457,
         "effective_n": 21.9,
         "currency": {
-          "USD": 96.67,
-          "EUR": 2.58,
-          "ZAR": 0.58
+          "USD": 96.74,
+          "EUR": 2.52,
+          "ZAR": 0.56
         },
         "kind": {
-          "equity": 92.67,
-          "cash": 7.16
+          "equity": 92.78,
+          "cash": 7.04
         }
       },
       "snapshot_stats": [
@@ -8321,6 +8355,13 @@
           "cash_pct": 7.16,
           "top10_pct": 51.75,
           "positions": 29
+        },
+        {
+          "date": "2026-10-20",
+          "turnover_pct": 0.74,
+          "cash_pct": 7.04,
+          "top10_pct": 51.72,
+          "positions": 29
         }
       ],
       "holdings": [
@@ -8329,24 +8370,23 @@
           "kind": "equity",
           "currency": "USD",
           "ticker": "LITE",
-          "weight": 8.48,
-          "chg_1": -0.05,
-          "chg_7d": -0.9,
-          "chg_30d": -0.09,
-          "chg_start": -0.14,
+          "weight": 8.46,
+          "chg_1": -0.02,
+          "chg_7d": -0.42,
+          "chg_30d": -0.11,
+          "chg_start": -0.16,
           "peak_weight": 9.48,
           "first_seen": "2026-05-08",
           "held_since": "2026-05-08",
-          "days_held": 164,
+          "days_held": 165,
           "since_start": true,
           "perf": {
-            "d1": 4.57,
-            "d7": -13.42,
-            "d30": -7.43
+            "d1": -1.21,
+            "d7": -16.56,
+            "d30": -11.44
           },
-          "contrib_30d": -0.63,
+          "contrib_30d": -0.968,
           "spark": [
-            7.94,
             8.01,
             7.84,
             7.75,
@@ -8390,7 +8430,8 @@
             8.86,
             8.56,
             8.53,
-            8.48
+            8.48,
+            8.46
           ]
         },
         {
@@ -8398,24 +8439,23 @@
           "kind": "equity",
           "currency": "USD",
           "ticker": "NVDA",
-          "weight": 8.01,
-          "chg_1": 0.26,
-          "chg_7d": 0.92,
-          "chg_30d": 0.36,
-          "chg_start": 2.27,
+          "weight": 8.0,
+          "chg_1": -0.01,
+          "chg_7d": 0.65,
+          "chg_30d": 0.35,
+          "chg_start": 2.26,
           "peak_weight": 8.22,
           "first_seen": "2026-05-08",
           "held_since": "2026-05-08",
-          "days_held": 164,
+          "days_held": 165,
           "since_start": true,
           "perf": {
-            "d1": 2.03,
-            "d7": -3.46,
-            "d30": -1.7
+            "d1": 0.13,
+            "d7": -4.88,
+            "d30": -2.2
           },
-          "contrib_30d": -0.136,
+          "contrib_30d": -0.176,
           "spark": [
-            7.02,
             6.76,
             7.17,
             7.42,
@@ -8459,7 +8499,8 @@
             7.46,
             7.69,
             7.75,
-            8.01
+            8.01,
+            8.0
           ]
         },
         {
@@ -8467,20 +8508,19 @@
           "kind": "cash",
           "currency": "USD",
           "ticker": null,
-          "weight": 6.58,
-          "chg_1": 0.31,
-          "chg_7d": 1.15,
-          "chg_30d": 2.0,
-          "chg_start": 6.58,
+          "weight": 6.48,
+          "chg_1": -0.1,
+          "chg_7d": 0.78,
+          "chg_30d": 1.9,
+          "chg_start": 6.48,
           "peak_weight": 13.6,
           "first_seen": "2026-05-18",
           "held_since": "2026-05-26",
-          "days_held": 146,
+          "days_held": 147,
           "since_start": false,
           "perf": null,
           "contrib_30d": null,
           "spark": [
-            2.99,
             5.26,
             5.83,
             3.0,
@@ -8524,7 +8564,8 @@
             5.73,
             6.1,
             6.27,
-            6.58
+            6.58,
+            6.48
           ]
         },
         {
@@ -8532,24 +8573,23 @@
           "kind": "equity",
           "currency": "USD",
           "ticker": "FIX",
-          "weight": 6.17,
-          "chg_1": 0.12,
-          "chg_7d": 0.1,
-          "chg_30d": -0.12,
-          "chg_start": -1.64,
+          "weight": 6.18,
+          "chg_1": 0.01,
+          "chg_7d": 0.09,
+          "chg_30d": -0.11,
+          "chg_start": -1.63,
           "peak_weight": 7.81,
           "first_seen": "2026-05-08",
           "held_since": "2026-05-08",
-          "days_held": 164,
+          "days_held": 165,
           "since_start": true,
           "perf": {
-            "d1": 2.72,
-            "d7": -9.76,
-            "d30": -10.48
+            "d1": -3.15,
+            "d7": -12.83,
+            "d30": -14.13
           },
-          "contrib_30d": -0.647,
+          "contrib_30d": -0.873,
           "spark": [
-            6.34,
             6.48,
             6.5,
             6.62,
@@ -8593,7 +8633,8 @@
             6.08,
             6.13,
             6.05,
-            6.17
+            6.17,
+            6.18
           ]
         },
         {
@@ -8601,24 +8642,23 @@
           "kind": "equity",
           "currency": "USD",
           "ticker": "MU",
-          "weight": 5.09,
-          "chg_1": -0.05,
-          "chg_7d": 0.17,
-          "chg_30d": -0.19,
-          "chg_start": 1.58,
+          "weight": 5.16,
+          "chg_1": 0.07,
+          "chg_7d": 0.19,
+          "chg_30d": -0.12,
+          "chg_start": 1.65,
           "peak_weight": 5.48,
           "first_seen": "2026-05-08",
           "held_since": "2026-05-08",
-          "days_held": 164,
+          "days_held": 165,
           "since_start": true,
           "perf": {
-            "d1": 4.02,
-            "d7": -7.55,
-            "d30": -9.99
+            "d1": 0.35,
+            "d7": -4.72,
+            "d30": -10.59
           },
-          "contrib_30d": -0.509,
+          "contrib_30d": -0.546,
           "spark": [
-            4.69,
             4.71,
             4.75,
             4.94,
@@ -8662,7 +8702,8 @@
             4.81,
             4.91,
             5.14,
-            5.09
+            5.09,
+            5.16
           ]
         },
         {
@@ -8670,24 +8711,23 @@
           "kind": "equity",
           "currency": "USD",
           "ticker": "FORM",
-          "weight": 4.86,
-          "chg_1": -0.14,
-          "chg_7d": -0.48,
-          "chg_30d": 0.05,
-          "chg_start": -0.68,
+          "weight": 5.02,
+          "chg_1": 0.16,
+          "chg_7d": -0.21,
+          "chg_30d": 0.21,
+          "chg_start": -0.52,
           "peak_weight": 5.88,
           "first_seen": "2026-05-08",
           "held_since": "2026-05-08",
-          "days_held": 164,
+          "days_held": 165,
           "since_start": true,
           "perf": {
-            "d1": 7.99,
-            "d7": -12.96,
-            "d30": -4.21
+            "d1": -2.49,
+            "d7": -16.14,
+            "d30": -9.26
           },
-          "contrib_30d": -0.204,
+          "contrib_30d": -0.465,
           "spark": [
-            5.07,
             5.13,
             5.02,
             4.84,
@@ -8731,7 +8771,8 @@
             5.17,
             5.14,
             5.0,
-            4.86
+            4.86,
+            5.02
           ]
         },
         {
@@ -8739,24 +8780,23 @@
           "kind": "equity",
           "currency": "USD",
           "ticker": "GEV",
-          "weight": 4.41,
-          "chg_1": 0.18,
-          "chg_7d": 0.44,
-          "chg_30d": 0.28,
-          "chg_start": -0.29,
+          "weight": 4.28,
+          "chg_1": -0.13,
+          "chg_7d": 0.14,
+          "chg_30d": 0.15,
+          "chg_start": -0.42,
           "peak_weight": 4.7,
           "first_seen": "2026-05-08",
           "held_since": "2026-05-08",
-          "days_held": 164,
+          "days_held": 165,
           "since_start": true,
           "perf": {
-            "d1": -0.05,
-            "d7": -7.63,
-            "d30": -2.08
+            "d1": -0.29,
+            "d7": -9.78,
+            "d30": -3.67
           },
-          "contrib_30d": -0.092,
+          "contrib_30d": -0.157,
           "spark": [
-            4.24,
             4.15,
             4.19,
             4.3,
@@ -8800,7 +8840,8 @@
             4.19,
             4.18,
             4.23,
-            4.41
+            4.41,
+            4.28
           ]
         },
         {
@@ -8808,24 +8849,23 @@
           "kind": "equity",
           "currency": "USD",
           "ticker": "BE",
-          "weight": 4.22,
-          "chg_1": -0.08,
-          "chg_7d": -0.2,
-          "chg_30d": -0.78,
-          "chg_start": -1.65,
+          "weight": 4.25,
+          "chg_1": 0.03,
+          "chg_7d": -0.09,
+          "chg_30d": -0.75,
+          "chg_start": -1.62,
           "peak_weight": 6.66,
           "first_seen": "2026-05-08",
           "held_since": "2026-05-08",
-          "days_held": 164,
+          "days_held": 165,
           "since_start": true,
           "perf": {
-            "d1": 3.54,
-            "d7": -12.63,
-            "d30": -13.73
+            "d1": -0.89,
+            "d7": -14.9,
+            "d30": -15.6
           },
-          "contrib_30d": -0.579,
+          "contrib_30d": -0.663,
           "spark": [
-            3.65,
             3.56,
             3.48,
             3.59,
@@ -8869,7 +8909,8 @@
             4.38,
             4.24,
             4.3,
-            4.22
+            4.22,
+            4.25
           ]
         },
         {
@@ -8877,24 +8918,23 @@
           "kind": "equity",
           "currency": "USD",
           "ticker": "VICR",
-          "weight": 3.73,
-          "chg_1": -0.36,
-          "chg_7d": -0.56,
-          "chg_30d": -0.2,
-          "chg_start": -1.05,
+          "weight": 3.66,
+          "chg_1": -0.07,
+          "chg_7d": -0.73,
+          "chg_30d": -0.27,
+          "chg_start": -1.12,
           "peak_weight": 5.72,
           "first_seen": "2026-05-08",
           "held_since": "2026-05-08",
-          "days_held": 164,
+          "days_held": 165,
           "since_start": true,
           "perf": {
-            "d1": 4.16,
-            "d7": -23.1,
-            "d30": -10.44
+            "d1": 6.08,
+            "d7": -24.31,
+            "d30": -9.18
           },
-          "contrib_30d": -0.389,
+          "contrib_30d": -0.336,
           "spark": [
-            3.81,
             3.97,
             4.12,
             3.86,
@@ -8938,7 +8978,8 @@
             4.54,
             4.44,
             4.09,
-            3.73
+            3.73,
+            3.66
           ]
         },
         {
@@ -8946,24 +8987,23 @@
           "kind": "equity",
           "currency": "USD",
           "ticker": "COHR",
-          "weight": 3.68,
-          "chg_1": -0.1,
-          "chg_7d": -0.4,
-          "chg_30d": -0.68,
-          "chg_start": -1.05,
+          "weight": 3.61,
+          "chg_1": -0.07,
+          "chg_7d": -0.34,
+          "chg_30d": -0.75,
+          "chg_start": -1.12,
           "peak_weight": 5.6,
           "first_seen": "2026-05-08",
           "held_since": "2026-05-08",
-          "days_held": 164,
+          "days_held": 165,
           "since_start": true,
           "perf": {
-            "d1": 2.66,
-            "d7": -16.99,
-            "d30": -24.66
+            "d1": -0.44,
+            "d7": -20.34,
+            "d30": -27.21
           },
-          "contrib_30d": -0.907,
+          "contrib_30d": -0.982,
           "spark": [
-            4.29,
             4.46,
             4.22,
             4.14,
@@ -9007,7 +9047,8 @@
             4.0,
             3.86,
             3.78,
-            3.68
+            3.68,
+            3.61
           ]
         },
         {
@@ -9016,19 +9057,18 @@
           "currency": "USD",
           "ticker": null,
           "weight": 3.1,
-          "chg_1": 0.08,
-          "chg_7d": 0.35,
+          "chg_1": 0.0,
+          "chg_7d": 0.27,
           "chg_30d": 0.36,
           "chg_start": 3.1,
           "peak_weight": 3.1,
           "first_seen": "2026-05-25",
           "held_since": "2026-05-25",
-          "days_held": 147,
+          "days_held": 148,
           "since_start": false,
           "perf": null,
           "contrib_30d": null,
           "spark": [
-            2.96,
             2.88,
             2.98,
             3.0,
@@ -9072,6 +9112,7 @@
             2.87,
             2.93,
             3.02,
+            3.1,
             3.1
           ]
         },
@@ -9080,20 +9121,19 @@
           "kind": "equity",
           "currency": "USD",
           "ticker": null,
-          "weight": 3.08,
-          "chg_1": -0.02,
-          "chg_7d": 0.03,
-          "chg_30d": 0.13,
-          "chg_start": 3.08,
+          "weight": 3.04,
+          "chg_1": -0.04,
+          "chg_7d": 0.01,
+          "chg_30d": 0.09,
+          "chg_start": 3.04,
           "peak_weight": 3.38,
           "first_seen": "2026-06-18",
           "held_since": "2026-06-18",
-          "days_held": 123,
+          "days_held": 124,
           "since_start": false,
           "perf": null,
           "contrib_30d": null,
           "spark": [
-            2.89,
             2.77,
             2.85,
             2.84,
@@ -9137,76 +9177,8 @@
             3.06,
             3.0,
             3.1,
-            3.08
-          ]
-        },
-        {
-          "instrument": "QUANTA SERVICES",
-          "kind": "equity",
-          "currency": "USD",
-          "ticker": "PWR",
-          "weight": 2.97,
-          "chg_1": 0.09,
-          "chg_7d": 0.23,
-          "chg_30d": 0.27,
-          "chg_start": -0.34,
-          "peak_weight": 3.31,
-          "first_seen": "2026-05-08",
-          "held_since": "2026-05-08",
-          "days_held": 164,
-          "since_start": true,
-          "perf": {
-            "d1": -1.51,
-            "d7": -10.43,
-            "d30": -2.24
-          },
-          "contrib_30d": -0.066,
-          "spark": [
-            2.68,
-            2.72,
-            2.85,
-            2.9,
-            2.84,
-            2.77,
-            2.73,
-            2.63,
-            2.65,
-            2.62,
-            2.67,
-            2.68,
-            2.78,
-            2.77,
-            2.8,
-            2.71,
-            2.71,
-            2.69,
-            2.65,
-            2.7,
-            2.76,
-            2.87,
-            2.83,
-            2.78,
-            2.7,
-            2.71,
-            2.66,
-            2.6,
-            2.59,
-            2.61,
-            2.65,
-            2.61,
-            2.56,
-            2.57,
-            2.55,
-            2.59,
-            2.69,
-            2.67,
-            2.69,
-            2.74,
-            2.83,
-            2.82,
-            2.88,
-            2.88,
-            2.97
+            3.08,
+            3.04
           ]
         },
         {
@@ -9214,24 +9186,23 @@
           "kind": "equity",
           "currency": "USD",
           "ticker": "ONTO",
-          "weight": 2.97,
-          "chg_1": -0.01,
-          "chg_7d": -0.31,
-          "chg_30d": -0.17,
-          "chg_start": 0.27,
+          "weight": 3.0,
+          "chg_1": 0.03,
+          "chg_7d": -0.2,
+          "chg_30d": -0.14,
+          "chg_start": 0.3,
           "peak_weight": 3.83,
           "first_seen": "2026-05-08",
           "held_since": "2026-05-08",
-          "days_held": 164,
+          "days_held": 165,
           "since_start": true,
           "perf": {
-            "d1": 4.3,
-            "d7": -15.91,
-            "d30": -12.61
+            "d1": -2.8,
+            "d7": -16.54,
+            "d30": -16.51
           },
-          "contrib_30d": -0.375,
+          "contrib_30d": -0.495,
           "spark": [
-            3.72,
             3.8,
             3.71,
             3.67,
@@ -9275,7 +9246,8 @@
             3.09,
             3.02,
             2.98,
-            2.97
+            2.97,
+            3.0
           ]
         },
         {
@@ -9283,20 +9255,19 @@
           "kind": "equity",
           "currency": "USD",
           "ticker": null,
-          "weight": 2.88,
-          "chg_1": -0.02,
-          "chg_7d": -0.07,
-          "chg_30d": -0.04,
-          "chg_start": 2.88,
+          "weight": 2.93,
+          "chg_1": 0.05,
+          "chg_7d": -0.02,
+          "chg_30d": 0.01,
+          "chg_start": 2.93,
           "peak_weight": 3.2,
           "first_seen": "2026-08-20",
           "held_since": "2026-08-20",
-          "days_held": 60,
+          "days_held": 61,
           "since_start": false,
           "perf": null,
           "contrib_30d": null,
           "spark": [
-            0.0,
             0.0,
             0.0,
             3.06,
@@ -9340,7 +9311,77 @@
             2.94,
             2.96,
             2.9,
-            2.88
+            2.88,
+            2.93
+          ]
+        },
+        {
+          "instrument": "QUANTA SERVICES",
+          "kind": "equity",
+          "currency": "USD",
+          "ticker": "PWR",
+          "weight": 2.86,
+          "chg_1": -0.11,
+          "chg_7d": 0.03,
+          "chg_30d": 0.16,
+          "chg_start": -0.45,
+          "peak_weight": 3.31,
+          "first_seen": "2026-05-08",
+          "held_since": "2026-05-08",
+          "days_held": 165,
+          "since_start": true,
+          "perf": {
+            "d1": -2.98,
+            "d7": -12.91,
+            "d30": -5.75
+          },
+          "contrib_30d": -0.165,
+          "spark": [
+            2.72,
+            2.85,
+            2.9,
+            2.84,
+            2.77,
+            2.73,
+            2.63,
+            2.65,
+            2.62,
+            2.67,
+            2.68,
+            2.78,
+            2.77,
+            2.8,
+            2.71,
+            2.71,
+            2.69,
+            2.65,
+            2.7,
+            2.76,
+            2.87,
+            2.83,
+            2.78,
+            2.7,
+            2.71,
+            2.66,
+            2.6,
+            2.59,
+            2.61,
+            2.65,
+            2.61,
+            2.56,
+            2.57,
+            2.55,
+            2.59,
+            2.69,
+            2.67,
+            2.69,
+            2.74,
+            2.83,
+            2.82,
+            2.88,
+            2.88,
+            2.97,
+            2.86
           ]
         },
         {
@@ -9348,24 +9389,23 @@
           "kind": "equity",
           "currency": "USD",
           "ticker": "AEIS",
-          "weight": 2.74,
-          "chg_1": -0.03,
-          "chg_7d": -0.01,
-          "chg_30d": 0.01,
-          "chg_start": -1.06,
+          "weight": 2.73,
+          "chg_1": -0.01,
+          "chg_7d": -0.07,
+          "chg_30d": 0.0,
+          "chg_start": -1.07,
           "peak_weight": 3.81,
           "first_seen": "2026-05-08",
           "held_since": "2026-05-08",
-          "days_held": 164,
+          "days_held": 165,
           "since_start": true,
           "perf": {
-            "d1": 3.34,
-            "d7": -12.38,
-            "d30": -6.17
+            "d1": -1.04,
+            "d7": -13.53,
+            "d30": -9.1
           },
-          "contrib_30d": -0.169,
+          "contrib_30d": -0.248,
           "spark": [
-            3.17,
             3.23,
             3.16,
             3.09,
@@ -9409,7 +9449,8 @@
             2.77,
             2.79,
             2.77,
-            2.74
+            2.74,
+            2.73
           ]
         },
         {
@@ -9419,22 +9460,21 @@
           "ticker": "CRDO",
           "weight": 2.56,
           "chg_1": 0.0,
-          "chg_7d": -0.13,
+          "chg_7d": -0.06,
           "chg_30d": 0.2,
           "chg_start": -0.1,
           "peak_weight": 3.46,
           "first_seen": "2026-05-08",
           "held_since": "2026-05-08",
-          "days_held": 164,
+          "days_held": 165,
           "since_start": true,
           "perf": {
-            "d1": 5.08,
-            "d7": -11.21,
-            "d30": 1.38
+            "d1": -0.95,
+            "d7": -13.69,
+            "d30": -2.69
           },
-          "contrib_30d": 0.035,
+          "contrib_30d": -0.069,
           "spark": [
-            3.26,
             3.42,
             3.23,
             3.22,
@@ -9478,141 +9518,8 @@
             2.6,
             2.5,
             2.56,
+            2.56,
             2.56
-          ]
-        },
-        {
-          "instrument": "INTEL CORP",
-          "kind": "equity",
-          "currency": "USD",
-          "ticker": null,
-          "weight": 2.29,
-          "chg_1": -0.03,
-          "chg_7d": 0.08,
-          "chg_30d": -0.3,
-          "chg_start": 2.29,
-          "peak_weight": 2.74,
-          "first_seen": "2026-06-18",
-          "held_since": "2026-06-18",
-          "days_held": 123,
-          "since_start": false,
-          "perf": null,
-          "contrib_30d": null,
-          "spark": [
-            2.18,
-            2.12,
-            2.15,
-            2.16,
-            2.14,
-            2.12,
-            2.1,
-            2.07,
-            2.06,
-            2.11,
-            2.16,
-            2.15,
-            2.2,
-            2.22,
-            2.25,
-            2.26,
-            2.26,
-            2.39,
-            2.44,
-            2.38,
-            2.37,
-            2.43,
-            2.43,
-            2.46,
-            2.59,
-            2.51,
-            2.74,
-            2.73,
-            2.72,
-            2.69,
-            2.59,
-            2.52,
-            2.61,
-            2.53,
-            2.45,
-            2.39,
-            2.28,
-            2.34,
-            2.28,
-            2.21,
-            2.24,
-            2.29,
-            2.32,
-            2.32,
-            2.29
-          ]
-        },
-        {
-          "instrument": "FABRINET",
-          "kind": "equity",
-          "currency": "USD",
-          "ticker": "FN",
-          "weight": 2.27,
-          "chg_1": -0.03,
-          "chg_7d": -0.24,
-          "chg_30d": 0.05,
-          "chg_start": -1.41,
-          "peak_weight": 4.12,
-          "first_seen": "2026-05-08",
-          "held_since": "2026-05-08",
-          "days_held": 164,
-          "since_start": true,
-          "perf": {
-            "d1": 1.17,
-            "d7": -19.42,
-            "d30": -5.35
-          },
-          "contrib_30d": -0.121,
-          "spark": [
-            2.97,
-            3.01,
-            2.63,
-            2.59,
-            2.54,
-            2.52,
-            2.49,
-            2.5,
-            2.51,
-            2.44,
-            2.45,
-            2.43,
-            2.44,
-            2.39,
-            2.38,
-            2.36,
-            2.35,
-            2.33,
-            2.36,
-            2.35,
-            2.35,
-            2.35,
-            2.3,
-            2.35,
-            2.22,
-            2.2,
-            2.21,
-            2.18,
-            2.18,
-            2.24,
-            2.24,
-            2.26,
-            2.26,
-            2.33,
-            2.33,
-            2.29,
-            2.43,
-            2.53,
-            2.55,
-            2.51,
-            2.48,
-            2.33,
-            2.28,
-            2.3,
-            2.27
           ]
         },
         {
@@ -9620,24 +9527,23 @@
           "kind": "equity",
           "currency": "USD",
           "ticker": "AXTI",
-          "weight": 2.24,
-          "chg_1": -0.17,
-          "chg_7d": -0.23,
-          "chg_30d": -0.51,
-          "chg_start": -0.57,
+          "weight": 2.44,
+          "chg_1": 0.2,
+          "chg_7d": 0.1,
+          "chg_30d": -0.31,
+          "chg_start": -0.37,
           "peak_weight": 3.38,
           "first_seen": "2026-05-08",
           "held_since": "2026-05-08",
-          "days_held": 164,
+          "days_held": 165,
           "since_start": true,
           "perf": {
-            "d1": 14.83,
-            "d7": -4.64,
-            "d30": -15.6
+            "d1": -1.8,
+            "d7": -13.71,
+            "d30": -20.36
           },
-          "contrib_30d": -0.349,
+          "contrib_30d": -0.497,
           "spark": [
-            2.97,
             3.36,
             3.13,
             2.92,
@@ -9681,6 +9587,141 @@
             2.46,
             2.49,
             2.41,
+            2.24,
+            2.44
+          ]
+        },
+        {
+          "instrument": "INTEL CORP",
+          "kind": "equity",
+          "currency": "USD",
+          "ticker": null,
+          "weight": 2.31,
+          "chg_1": 0.02,
+          "chg_7d": 0.07,
+          "chg_30d": -0.28,
+          "chg_start": 2.31,
+          "peak_weight": 2.74,
+          "first_seen": "2026-06-18",
+          "held_since": "2026-06-18",
+          "days_held": 124,
+          "since_start": false,
+          "perf": null,
+          "contrib_30d": null,
+          "spark": [
+            2.12,
+            2.15,
+            2.16,
+            2.14,
+            2.12,
+            2.1,
+            2.07,
+            2.06,
+            2.11,
+            2.16,
+            2.15,
+            2.2,
+            2.22,
+            2.25,
+            2.26,
+            2.26,
+            2.39,
+            2.44,
+            2.38,
+            2.37,
+            2.43,
+            2.43,
+            2.46,
+            2.59,
+            2.51,
+            2.74,
+            2.73,
+            2.72,
+            2.69,
+            2.59,
+            2.52,
+            2.61,
+            2.53,
+            2.45,
+            2.39,
+            2.28,
+            2.34,
+            2.28,
+            2.21,
+            2.24,
+            2.29,
+            2.32,
+            2.32,
+            2.29,
+            2.31
+          ]
+        },
+        {
+          "instrument": "FABRINET",
+          "kind": "equity",
+          "currency": "USD",
+          "ticker": "FN",
+          "weight": 2.24,
+          "chg_1": -0.03,
+          "chg_7d": -0.24,
+          "chg_30d": 0.02,
+          "chg_start": -1.44,
+          "peak_weight": 4.12,
+          "first_seen": "2026-05-08",
+          "held_since": "2026-05-08",
+          "days_held": 165,
+          "since_start": true,
+          "perf": {
+            "d1": -0.8,
+            "d7": -15.9,
+            "d30": -7.4
+          },
+          "contrib_30d": -0.166,
+          "spark": [
+            3.01,
+            2.63,
+            2.59,
+            2.54,
+            2.52,
+            2.49,
+            2.5,
+            2.51,
+            2.44,
+            2.45,
+            2.43,
+            2.44,
+            2.39,
+            2.38,
+            2.36,
+            2.35,
+            2.33,
+            2.36,
+            2.35,
+            2.35,
+            2.35,
+            2.3,
+            2.35,
+            2.22,
+            2.2,
+            2.21,
+            2.18,
+            2.18,
+            2.24,
+            2.24,
+            2.26,
+            2.26,
+            2.33,
+            2.33,
+            2.29,
+            2.43,
+            2.53,
+            2.55,
+            2.51,
+            2.48,
+            2.33,
+            2.28,
+            2.3,
+            2.27,
             2.24
           ]
         },
@@ -9689,24 +9730,23 @@
           "kind": "equity",
           "currency": "USD",
           "ticker": "AGX",
-          "weight": 2.14,
-          "chg_1": -0.02,
-          "chg_7d": 0.13,
-          "chg_30d": -0.07,
-          "chg_start": -1.87,
+          "weight": 2.16,
+          "chg_1": 0.02,
+          "chg_7d": 0.08,
+          "chg_30d": -0.05,
+          "chg_start": -1.85,
           "peak_weight": 4.01,
           "first_seen": "2026-05-08",
           "held_since": "2026-05-08",
-          "days_held": 164,
+          "days_held": 165,
           "since_start": true,
           "perf": {
-            "d1": 2.06,
-            "d7": -9.08,
-            "d30": -9.53
+            "d1": -1.76,
+            "d7": -10.02,
+            "d30": -10.43
           },
-          "contrib_30d": -0.204,
+          "contrib_30d": -0.225,
           "spark": [
-            2.98,
             2.93,
             2.98,
             2.98,
@@ -9750,7 +9790,8 @@
             2.09,
             2.1,
             2.16,
-            2.14
+            2.14,
+            2.16
           ]
         },
         {
@@ -9758,24 +9799,23 @@
           "kind": "equity",
           "currency": "USD",
           "ticker": "CIEN",
-          "weight": 2.1,
-          "chg_1": -0.05,
-          "chg_7d": -0.25,
-          "chg_30d": 0.07,
-          "chg_start": -1.09,
+          "weight": 2.14,
+          "chg_1": 0.04,
+          "chg_7d": -0.08,
+          "chg_30d": 0.11,
+          "chg_start": -1.05,
           "peak_weight": 3.32,
           "first_seen": "2026-05-08",
           "held_since": "2026-05-08",
-          "days_held": 164,
+          "days_held": 165,
           "since_start": true,
           "perf": {
-            "d1": 5.94,
-            "d7": -12.97,
-            "d30": 1.06
+            "d1": -0.0,
+            "d7": -14.04,
+            "d30": -1.32
           },
-          "contrib_30d": 0.022,
+          "contrib_30d": -0.028,
           "spark": [
-            2.26,
             2.26,
             2.23,
             2.3,
@@ -9819,7 +9859,8 @@
             2.2,
             2.11,
             2.15,
-            2.1
+            2.1,
+            2.14
           ]
         },
         {
@@ -9827,20 +9868,19 @@
           "kind": "equity",
           "currency": "USD",
           "ticker": null,
-          "weight": 2.04,
-          "chg_1": 0.03,
-          "chg_7d": 0.11,
-          "chg_30d": 0.2,
-          "chg_start": 2.04,
-          "peak_weight": 2.05,
+          "weight": 2.08,
+          "chg_1": 0.04,
+          "chg_7d": 0.15,
+          "chg_30d": 0.24,
+          "chg_start": 2.08,
+          "peak_weight": 2.08,
           "first_seen": "2026-05-25",
           "held_since": "2026-05-25",
-          "days_held": 147,
+          "days_held": 148,
           "since_start": false,
           "perf": null,
           "contrib_30d": null,
           "spark": [
-            1.97,
             1.92,
             1.96,
             2.0,
@@ -9884,7 +9924,8 @@
             1.94,
             1.95,
             2.01,
-            2.04
+            2.04,
+            2.08
           ]
         },
         {
@@ -9892,24 +9933,23 @@
           "kind": "equity",
           "currency": "USD",
           "ticker": "CAMT",
-          "weight": 1.96,
-          "chg_1": 0.07,
-          "chg_7d": 0.05,
-          "chg_30d": -0.07,
-          "chg_start": -0.63,
+          "weight": 1.92,
+          "chg_1": -0.04,
+          "chg_7d": -0.01,
+          "chg_30d": -0.11,
+          "chg_start": -0.67,
           "peak_weight": 2.73,
           "first_seen": "2026-05-08",
           "held_since": "2026-05-08",
-          "days_held": 164,
+          "days_held": 165,
           "since_start": true,
           "perf": {
-            "d1": 1.35,
-            "d7": -11.12,
-            "d30": -12.01
+            "d1": -0.26,
+            "d7": -9.93,
+            "d30": -13.76
           },
-          "contrib_30d": -0.235,
+          "contrib_30d": -0.264,
           "spark": [
-            2.08,
             2.08,
             2.05,
             2.07,
@@ -9953,7 +9993,8 @@
             1.88,
             1.9,
             1.89,
-            1.96
+            1.96,
+            1.92
           ]
         },
         {
@@ -9961,24 +10002,23 @@
           "kind": "equity",
           "currency": "USD",
           "ticker": "NBIS",
-          "weight": 1.86,
-          "chg_1": -0.16,
-          "chg_7d": -0.19,
-          "chg_30d": -0.43,
-          "chg_start": -0.09,
+          "weight": 1.88,
+          "chg_1": 0.02,
+          "chg_7d": -0.17,
+          "chg_30d": -0.41,
+          "chg_start": -0.07,
           "peak_weight": 2.61,
           "first_seen": "2026-05-08",
           "held_since": "2026-05-08",
-          "days_held": 164,
+          "days_held": 165,
           "since_start": true,
           "perf": {
-            "d1": 3.58,
-            "d7": -18.4,
-            "d30": -23.32
+            "d1": -0.21,
+            "d7": -17.88,
+            "d30": -24.0
           },
-          "contrib_30d": -0.434,
+          "contrib_30d": -0.451,
           "spark": [
-            2.6,
             2.43,
             2.44,
             2.29,
@@ -10022,7 +10062,8 @@
             2.03,
             1.94,
             2.02,
-            1.86
+            1.86,
+            1.88
           ]
         },
         {
@@ -10030,20 +10071,19 @@
           "kind": "equity",
           "currency": "USD",
           "ticker": null,
-          "weight": 1.67,
-          "chg_1": -0.03,
-          "chg_7d": -0.03,
-          "chg_30d": -0.07,
-          "chg_start": -0.53,
+          "weight": 1.65,
+          "chg_1": -0.02,
+          "chg_7d": -0.04,
+          "chg_30d": -0.09,
+          "chg_start": -0.55,
           "peak_weight": 2.57,
           "first_seen": "2026-05-08",
           "held_since": "2026-05-08",
-          "days_held": 164,
+          "days_held": 165,
           "since_start": true,
           "perf": null,
           "contrib_30d": null,
           "spark": [
-            2.02,
             2.01,
             2.04,
             2.0,
@@ -10087,7 +10127,8 @@
             1.68,
             1.69,
             1.7,
-            1.67
+            1.67,
+            1.65
           ]
         },
         {
@@ -10095,20 +10136,19 @@
           "kind": "equity",
           "currency": "EUR",
           "ticker": null,
-          "weight": 1.52,
-          "chg_1": 0.16,
-          "chg_7d": 0.13,
-          "chg_30d": 0.01,
-          "chg_start": 1.52,
+          "weight": 1.49,
+          "chg_1": -0.03,
+          "chg_7d": 0.07,
+          "chg_30d": -0.02,
+          "chg_start": 1.49,
           "peak_weight": 2.43,
           "first_seen": "2026-05-29",
           "held_since": "2026-05-29",
-          "days_held": 143,
+          "days_held": 144,
           "since_start": false,
           "perf": null,
           "contrib_30d": null,
           "spark": [
-            1.64,
             1.62,
             1.6,
             1.63,
@@ -10152,7 +10192,8 @@
             1.39,
             1.51,
             1.36,
-            1.52
+            1.52,
+            1.49
           ]
         },
         {
@@ -10160,24 +10201,23 @@
           "kind": "equity",
           "currency": "USD",
           "ticker": "VRT",
-          "weight": 1.4,
-          "chg_1": 0.01,
-          "chg_7d": 0.04,
-          "chg_30d": -0.13,
-          "chg_start": -0.77,
+          "weight": 1.38,
+          "chg_1": -0.02,
+          "chg_7d": -0.03,
+          "chg_30d": -0.15,
+          "chg_start": -0.79,
           "peak_weight": 2.23,
           "first_seen": "2026-05-08",
           "held_since": "2026-05-08",
-          "days_held": 164,
+          "days_held": 165,
           "since_start": true,
           "perf": {
-            "d1": 1.39,
-            "d7": -12.56,
-            "d30": -16.08
+            "d1": -0.5,
+            "d7": -13.59,
+            "d30": -17.78
           },
-          "contrib_30d": -0.225,
+          "contrib_30d": -0.245,
           "spark": [
-            1.66,
             1.59,
             1.61,
             1.61,
@@ -10221,7 +10261,8 @@
             1.4,
             1.4,
             1.39,
-            1.4
+            1.4,
+            1.38
           ]
         },
         {
@@ -10229,20 +10270,19 @@
           "kind": "equity",
           "currency": "USD",
           "ticker": null,
-          "weight": 1.17,
-          "chg_1": -0.04,
-          "chg_7d": -0.08,
-          "chg_30d": -0.17,
-          "chg_start": 1.17,
+          "weight": 1.22,
+          "chg_1": 0.05,
+          "chg_7d": 0.02,
+          "chg_30d": -0.12,
+          "chg_start": 1.22,
           "peak_weight": 2.19,
           "first_seen": "2026-05-26",
           "held_since": "2026-05-26",
-          "days_held": 146,
+          "days_held": 147,
           "since_start": false,
           "perf": null,
           "contrib_30d": null,
           "spark": [
-            1.46,
             1.42,
             1.37,
             1.33,
@@ -10286,7 +10326,8 @@
             1.27,
             1.2,
             1.21,
-            1.17
+            1.17,
+            1.22
           ]
         },
         {
@@ -10294,20 +10335,19 @@
           "kind": "equity",
           "currency": "EUR",
           "ticker": null,
-          "weight": 1.06,
-          "chg_1": 0.04,
-          "chg_7d": 0.04,
-          "chg_30d": -0.16,
-          "chg_start": 1.06,
+          "weight": 1.03,
+          "chg_1": -0.03,
+          "chg_7d": -0.01,
+          "chg_30d": -0.19,
+          "chg_start": 1.03,
           "peak_weight": 1.71,
           "first_seen": "2026-06-01",
           "held_since": "2026-06-01",
-          "days_held": 140,
+          "days_held": 141,
           "since_start": false,
           "perf": null,
           "contrib_30d": null,
           "spark": [
-            1.35,
             1.32,
             1.32,
             1.3,
@@ -10351,7 +10391,8 @@
             1.01,
             1.06,
             1.02,
-            1.06
+            1.06,
+            1.03
           ]
         },
         {
@@ -10359,20 +10400,19 @@
           "kind": "cash",
           "currency": "ZAR",
           "ticker": null,
-          "weight": 0.58,
-          "chg_1": 0.03,
-          "chg_7d": 0.09,
-          "chg_30d": 0.16,
-          "chg_start": 0.13,
+          "weight": 0.56,
+          "chg_1": -0.02,
+          "chg_7d": 0.05,
+          "chg_30d": 0.14,
+          "chg_start": 0.11,
           "peak_weight": 5.3,
           "first_seen": "2026-05-08",
           "held_since": "2026-05-08",
-          "days_held": 164,
+          "days_held": 165,
           "since_start": true,
           "perf": null,
           "contrib_30d": null,
           "spark": [
-            0.4,
             0.38,
             0.41,
             0.43,
@@ -10416,55 +10456,56 @@
             0.51,
             0.53,
             0.55,
-            0.58
+            0.58,
+            0.56
           ]
         }
       ],
       "attribution": {
-        "covered_weight": 73.86,
-        "implied_30d_pct": -6.214,
+        "covered_weight": 73.93,
+        "implied_30d_pct": -8.019,
         "top_contributors": [
           {
-            "instrument": "CREDO TECHNOLOGY GROUP HOLDI",
-            "contrib": 0.035
-          },
-          {
             "instrument": "CIENA CORP",
-            "contrib": 0.022
+            "contrib": -0.028
           },
           {
-            "instrument": "QUANTA SERVICES",
-            "contrib": -0.066
+            "instrument": "CREDO TECHNOLOGY GROUP HOLDI",
+            "contrib": -0.069
           },
           {
             "instrument": "GE VERNOVA LLC",
-            "contrib": -0.092
+            "contrib": -0.157
+          },
+          {
+            "instrument": "QUANTA SERVICES",
+            "contrib": -0.165
           },
           {
             "instrument": "FABRINET",
-            "contrib": -0.121
+            "contrib": -0.166
           }
         ],
         "top_detractors": [
           {
             "instrument": "COHERENT CORP",
-            "contrib": -0.907
-          },
-          {
-            "instrument": "COMFORT SYSTEMS",
-            "contrib": -0.647
+            "contrib": -0.982
           },
           {
             "instrument": "LUMENTUM HOL",
-            "contrib": -0.63
+            "contrib": -0.968
+          },
+          {
+            "instrument": "COMFORT SYSTEMS",
+            "contrib": -0.873
           },
           {
             "instrument": "BLOOM ENERGY C-A",
-            "contrib": -0.579
+            "contrib": -0.663
           },
           {
             "instrument": "MICRON TECH",
-            "contrib": -0.509
+            "contrib": -0.546
           }
         ]
       },
@@ -10580,7 +10621,8 @@
           "2026-10-14",
           "2026-10-15",
           "2026-10-16",
-          "2026-10-19"
+          "2026-10-19",
+          "2026-10-20"
         ],
         "series": [
           {
@@ -10696,7 +10738,8 @@
               8.86,
               8.56,
               8.53,
-              8.48
+              8.48,
+              8.46
             ]
           },
           {
@@ -10812,7 +10855,8 @@
               7.46,
               7.69,
               7.75,
-              8.01
+              8.01,
+              8.0
             ]
           },
           {
@@ -10928,7 +10972,8 @@
               6.08,
               6.13,
               6.05,
-              6.17
+              6.17,
+              6.18
             ]
           },
           {
@@ -11044,7 +11089,8 @@
               4.81,
               4.91,
               5.14,
-              5.09
+              5.09,
+              5.16
             ]
           },
           {
@@ -11160,7 +11206,8 @@
               5.17,
               5.14,
               5.0,
-              4.86
+              4.86,
+              5.02
             ]
           },
           {
@@ -11276,7 +11323,8 @@
               4.19,
               4.18,
               4.23,
-              4.41
+              4.41,
+              4.28
             ]
           },
           {
@@ -11392,7 +11440,8 @@
               4.38,
               4.24,
               4.3,
-              4.22
+              4.22,
+              4.25
             ]
           },
           {
@@ -11508,7 +11557,8 @@
               4.54,
               4.44,
               4.09,
-              3.73
+              3.73,
+              3.66
             ]
           },
           {
@@ -11624,7 +11674,8 @@
               4.0,
               3.86,
               3.78,
-              3.68
+              3.68,
+              3.61
             ]
           },
           {
@@ -11740,6 +11791,7 @@
               2.87,
               2.93,
               3.02,
+              3.1,
               3.1
             ]
           }
@@ -11953,14 +12005,6 @@
           "from": 3.59,
           "to": 4.09,
           "delta": 0.5
-        },
-        {
-          "date": "2026-07-21",
-          "type": "decreased",
-          "instrument": "BLOOM ENERGY C-A",
-          "from": 4.76,
-          "to": 2.53,
-          "delta": -2.23
         }
       ]
     },
@@ -11970,71 +12014,71 @@
       "name": "EasyETFs Balanced Actively Managed ETF",
       "instrument_page": "https://etfs.easyequities.co.za/easyetf-instrument-page/easybf",
       "market_ticker": "EASYBF.JO",
-      "snapshot_date": "2026-10-19",
-      "snapshots": 111,
+      "snapshot_date": "2026-10-20",
+      "snapshots": 112,
       "nav": {
-        "value_zac": 1291.25,
-        "nav_date": "2026-10-19",
+        "value_zac": 1281.01,
+        "nav_date": "2026-10-20",
         "source_url": "https://etfs.easyequities.co.za/easyetf-instrument-page/easybf",
-        "captured_at_utc": "2026-10-19T16:28:27Z"
+        "captured_at_utc": "2026-10-20T14:19:04Z"
       },
       "market": {
         "ticker": "EASYBF.JO",
-        "value_zac": 1286.0,
+        "value_zac": 1264.0,
         "source": "yfinance",
-        "price_at_utc": "2026-10-18T22:00:00Z",
-        "captured_at_utc": "2026-10-19T16:28:30Z"
+        "price_at_utc": "2026-10-19T22:00:00Z",
+        "captured_at_utc": "2026-10-20T14:19:06Z"
       },
       "gap": {
         "status": "discount",
-        "difference_zac": -5.25,
-        "difference_pct": -0.4065827686350436,
+        "difference_zac": -17.00999999999999,
+        "difference_pct": -1.3278584866628669,
         "label": "estimated premium/discount to NAV"
       },
       "nav_returns": {
-        "d1": 0.423,
-        "d7": -5.29,
-        "d30": -2.025,
-        "d90": -4.13,
+        "d1": -0.793,
+        "d7": -4.97,
+        "d30": -2.802,
+        "d90": -6.233,
         "ytd": null,
-        "since_start": -12.407
+        "since_start": -13.101
       },
       "market_returns": {
-        "d1": -1.077,
-        "d7": -5.022,
-        "d30": -3.308,
-        "d90": -6.268,
+        "d1": -1.711,
+        "d7": -5.105,
+        "d30": -4.962,
+        "d90": -8.273,
         "ytd": null,
-        "since_start": -13.108
+        "since_start": -14.595
       },
       "risk": {
-        "vol_ann_pct": 22.73,
-        "max_drawdown_pct": -14.22,
-        "max_drawdown_date": "2026-10-16",
-        "current_drawdown_pct": -13.85,
+        "vol_ann_pct": 22.65,
+        "max_drawdown_pct": -14.54,
+        "max_drawdown_date": "2026-10-20",
+        "current_drawdown_pct": -14.54,
         "best_day_pct": 2.93,
         "best_day_date": "2026-07-10",
         "worst_day_pct": -4.51,
         "worst_day_date": "2026-07-08",
-        "up_days_pct": 50.0,
-        "observations": 110,
+        "up_days_pct": 49.5,
+        "observations": 111,
         "high": 1498.92,
         "high_date": "2026-05-15",
-        "low": 1285.81,
-        "low_date": "2026-10-16",
-        "range_position_pct": 2.6
+        "low": 1281.01,
+        "low_date": "2026-10-20",
+        "range_position_pct": 0.0
       },
       "premium": {
-        "current_pct": -0.407,
-        "mean_pct": 0.685,
-        "median_pct": 0.554,
+        "current_pct": -1.328,
+        "mean_pct": 0.667,
+        "median_pct": 0.553,
         "max_pct": 3.762,
         "min_pct": -2.096,
-        "pct_days_premium": 68.5,
-        "pct_days_discount": 17.6,
-        "zscore": -0.96,
-        "percentile": 13.0,
-        "observations": 108
+        "pct_days_premium": 67.9,
+        "pct_days_discount": 18.3,
+        "zscore": -1.73,
+        "percentile": 5.0,
+        "observations": 109
       },
       "series": {
         "nav": [
@@ -12481,6 +12525,10 @@
           [
             "2026-10-19",
             1291.25
+          ],
+          [
+            "2026-10-20",
+            1281.01
           ]
         ],
         "market": [
@@ -12855,6 +12903,10 @@
           [
             "2026-10-18",
             1286.0
+          ],
+          [
+            "2026-10-19",
+            1264.0
           ]
         ],
         "premium": [
@@ -13289,25 +13341,29 @@
           [
             "2026-10-19",
             -0.407
+          ],
+          [
+            "2026-10-20",
+            -1.328
           ]
         ]
       },
       "concentration": {
         "positions": 27,
-        "total_weight": 99.76,
-        "cash_pct": 2.42,
-        "top1_pct": 18.0,
-        "top5_pct": 62.09,
-        "top10_pct": 77.84,
-        "hhi": 0.1041,
-        "effective_n": 9.6,
+        "total_weight": 99.71,
+        "cash_pct": 2.43,
+        "top1_pct": 18.1,
+        "top5_pct": 62.4,
+        "top10_pct": 77.99,
+        "hhi": 0.105,
+        "effective_n": 9.5,
         "currency": {
-          "ZAR": 99.76
+          "ZAR": 99.71
         },
         "kind": {
-          "fund": 62.83,
-          "equity": 34.51,
-          "cash": 2.42
+          "fund": 63.15,
+          "equity": 34.13,
+          "cash": 2.43
         }
       },
       "snapshot_stats": [
@@ -14087,6 +14143,13 @@
           "cash_pct": 2.42,
           "top10_pct": 77.84,
           "positions": 27
+        },
+        {
+          "date": "2026-10-20",
+          "turnover_pct": 0.43,
+          "cash_pct": 2.43,
+          "top10_pct": 77.99,
+          "positions": 27
         }
       ],
       "holdings": [
@@ -14095,24 +14158,23 @@
           "kind": "fund",
           "currency": "ZAR",
           "ticker": "EASYGE.JO",
-          "weight": 18.0,
-          "chg_1": 0.0,
-          "chg_7d": -1.8,
-          "chg_30d": -0.8,
-          "chg_start": -3.5,
+          "weight": 18.1,
+          "chg_1": 0.1,
+          "chg_7d": -1.4,
+          "chg_30d": -0.7,
+          "chg_start": -3.4,
           "peak_weight": 22.2,
           "first_seen": "2026-05-08",
           "held_since": "2026-05-08",
-          "days_held": 164,
+          "days_held": 165,
           "since_start": true,
           "perf": {
-            "d1": -0.21,
-            "d7": -11.14,
-            "d30": -5.44
+            "d1": -2.33,
+            "d7": -9.92,
+            "d30": -7.64
           },
-          "contrib_30d": -0.979,
+          "contrib_30d": -1.383,
           "spark": [
-            20.2,
             20.4,
             19.8,
             19.1,
@@ -14156,7 +14218,8 @@
             19.1,
             18.9,
             18.0,
-            18.0
+            18.0,
+            18.1
           ]
         },
         {
@@ -14164,24 +14227,23 @@
           "kind": "fund",
           "currency": "ZAR",
           "ticker": "EASYAI.JO",
-          "weight": 17.6,
-          "chg_1": -0.1,
-          "chg_7d": -2.2,
-          "chg_30d": -0.8,
-          "chg_start": -3.9,
+          "weight": 17.7,
+          "chg_1": 0.1,
+          "chg_7d": -1.6,
+          "chg_30d": -0.7,
+          "chg_start": -3.8,
           "peak_weight": 22.3,
           "first_seen": "2026-05-08",
           "held_since": "2026-05-08",
-          "days_held": 164,
+          "days_held": 165,
           "since_start": true,
           "perf": {
-            "d1": -0.1,
-            "d7": -12.23,
-            "d30": -5.98
+            "d1": -4.87,
+            "d7": -13.22,
+            "d30": -10.56
           },
-          "contrib_30d": -1.052,
+          "contrib_30d": -1.869,
           "spark": [
-            19.6,
             20.0,
             19.2,
             18.4,
@@ -14225,7 +14287,8 @@
             18.9,
             18.7,
             17.7,
-            17.6
+            17.6,
+            17.7
           ]
         },
         {
@@ -14233,24 +14296,23 @@
           "kind": "fund",
           "currency": "ZAR",
           "ticker": "STXGOV.JO",
-          "weight": 13.4,
+          "weight": 13.5,
           "chg_1": 0.1,
-          "chg_7d": 0.8,
-          "chg_30d": 0.2,
-          "chg_start": 6.07,
+          "chg_7d": 0.7,
+          "chg_30d": 0.3,
+          "chg_start": 6.17,
           "peak_weight": 13.5,
           "first_seen": "2026-05-08",
           "held_since": "2026-05-08",
-          "days_held": 164,
+          "days_held": 165,
           "since_start": true,
           "perf": {
-            "d1": -0.1,
-            "d7": 0.93,
+            "d1": 0.0,
+            "d7": 0.31,
             "d30": 0.93
           },
-          "contrib_30d": 0.125,
+          "contrib_30d": 0.126,
           "spark": [
-            12.5,
             12.3,
             12.6,
             12.9,
@@ -14294,7 +14356,8 @@
             13.0,
             13.0,
             13.3,
-            13.4
+            13.4,
+            13.5
           ]
         },
         {
@@ -14302,24 +14365,23 @@
           "kind": "fund",
           "currency": "ZAR",
           "ticker": "GLD.JO",
-          "weight": 8.04,
-          "chg_1": -0.01,
-          "chg_7d": 0.32,
-          "chg_30d": -0.22,
-          "chg_start": 4.61,
+          "weight": 8.02,
+          "chg_1": -0.02,
+          "chg_7d": 0.25,
+          "chg_30d": -0.24,
+          "chg_start": 4.59,
           "peak_weight": 8.33,
           "first_seen": "2026-05-08",
           "held_since": "2026-05-08",
-          "days_held": 164,
+          "days_held": 165,
           "since_start": true,
           "perf": {
-            "d1": -1.03,
-            "d7": -1.15,
-            "d30": -4.16
+            "d1": -0.69,
+            "d7": -1.63,
+            "d30": -4.82
           },
-          "contrib_30d": -0.334,
+          "contrib_30d": -0.387,
           "spark": [
-            4.55,
             4.52,
             4.65,
             4.78,
@@ -14363,7 +14425,8 @@
             7.86,
             7.77,
             8.05,
-            8.04
+            8.04,
+            8.02
           ]
         },
         {
@@ -14371,24 +14434,23 @@
           "kind": "fund",
           "currency": "ZAR",
           "ticker": "STXNDQ.JO",
-          "weight": 5.05,
-          "chg_1": -0.05,
-          "chg_7d": 0.02,
-          "chg_30d": 0.13,
-          "chg_start": 0.4,
+          "weight": 5.08,
+          "chg_1": 0.03,
+          "chg_7d": 0.0,
+          "chg_30d": 0.16,
+          "chg_start": 0.43,
           "peak_weight": 5.14,
           "first_seen": "2026-05-08",
           "held_since": "2026-05-08",
-          "days_held": 164,
+          "days_held": 165,
           "since_start": true,
           "perf": {
-            "d1": -0.24,
-            "d7": -4.24,
-            "d30": 1.71
+            "d1": -1.06,
+            "d7": -4.28,
+            "d30": 0.63
           },
-          "contrib_30d": 0.086,
+          "contrib_30d": 0.032,
           "spark": [
-            4.67,
             4.62,
             4.7,
             4.7,
@@ -14432,7 +14494,8 @@
             5.1,
             5.09,
             5.1,
-            5.05
+            5.05,
+            5.08
           ]
         },
         {
@@ -14440,20 +14503,19 @@
           "kind": "equity",
           "currency": "ZAR",
           "ticker": null,
-          "weight": 4.76,
-          "chg_1": 0.03,
-          "chg_7d": 0.49,
-          "chg_30d": -0.02,
-          "chg_start": 4.76,
+          "weight": 4.75,
+          "chg_1": -0.01,
+          "chg_7d": 0.36,
+          "chg_30d": -0.03,
+          "chg_start": 4.75,
           "peak_weight": 4.94,
           "first_seen": "2026-08-27",
           "held_since": "2026-08-27",
-          "days_held": 53,
+          "days_held": 54,
           "since_start": false,
           "perf": null,
           "contrib_30d": null,
           "spark": [
-            0.0,
             0.0,
             0.0,
             0.0,
@@ -14497,7 +14559,8 @@
             4.55,
             4.54,
             4.73,
-            4.76
+            4.76,
+            4.75
           ]
         },
         {
@@ -14505,24 +14568,23 @@
           "kind": "equity",
           "currency": "ZAR",
           "ticker": "PAN.JO",
-          "weight": 3.55,
-          "chg_1": 0.08,
-          "chg_7d": 0.25,
-          "chg_30d": -0.16,
-          "chg_start": -1.35,
+          "weight": 3.49,
+          "chg_1": -0.06,
+          "chg_7d": 0.17,
+          "chg_30d": -0.22,
+          "chg_start": -1.41,
           "peak_weight": 4.9,
           "first_seen": "2026-05-08",
           "held_since": "2026-05-08",
-          "days_held": 164,
+          "days_held": 165,
           "since_start": true,
           "perf": {
-            "d1": -2.47,
-            "d7": 0.31,
-            "d30": -8.68
+            "d1": -1.4,
+            "d7": -0.51,
+            "d30": -9.96
           },
-          "contrib_30d": -0.308,
+          "contrib_30d": -0.348,
           "spark": [
-            3.01,
             3.08,
             3.14,
             3.4,
@@ -14566,7 +14628,8 @@
             3.35,
             3.29,
             3.47,
-            3.55
+            3.55,
+            3.49
           ]
         },
         {
@@ -14574,24 +14637,23 @@
           "kind": "equity",
           "currency": "ZAR",
           "ticker": "BHG.JO",
-          "weight": 2.65,
-          "chg_1": 0.04,
-          "chg_7d": 0.07,
-          "chg_30d": 0.05,
-          "chg_start": 0.19,
+          "weight": 2.59,
+          "chg_1": -0.06,
+          "chg_7d": -0.03,
+          "chg_30d": -0.01,
+          "chg_start": 0.13,
           "peak_weight": 2.84,
           "first_seen": "2026-05-08",
           "held_since": "2026-05-08",
-          "days_held": 164,
+          "days_held": 165,
           "since_start": true,
           "perf": {
-            "d1": -2.95,
-            "d7": -5.32,
-            "d30": -2.5
+            "d1": -1.63,
+            "d7": -4.84,
+            "d30": -4.09
           },
-          "contrib_30d": -0.066,
+          "contrib_30d": -0.106,
           "spark": [
-            2.47,
             2.45,
             2.55,
             2.7,
@@ -14635,7 +14697,8 @@
             2.6,
             2.56,
             2.61,
-            2.65
+            2.65,
+            2.59
           ]
         },
         {
@@ -14643,24 +14706,23 @@
           "kind": "equity",
           "currency": "ZAR",
           "ticker": "ANG.JO",
-          "weight": 2.57,
-          "chg_1": 0.05,
-          "chg_7d": 0.1,
-          "chg_30d": -0.19,
-          "chg_start": 0.52,
+          "weight": 2.53,
+          "chg_1": -0.04,
+          "chg_7d": 0.05,
+          "chg_30d": -0.23,
+          "chg_start": 0.48,
           "peak_weight": 3.14,
           "first_seen": "2026-05-08",
           "held_since": "2026-05-08",
-          "days_held": 164,
+          "days_held": 165,
           "since_start": true,
           "perf": {
-            "d1": -2.38,
-            "d7": -2.23,
-            "d30": -7.32
+            "d1": -1.1,
+            "d7": -1.62,
+            "d30": -8.35
           },
-          "contrib_30d": -0.188,
+          "contrib_30d": -0.211,
           "spark": [
-            2.43,
             2.47,
             2.5,
             2.74,
@@ -14704,7 +14766,8 @@
             2.47,
             2.4,
             2.52,
-            2.57
+            2.57,
+            2.53
           ]
         },
         {
@@ -14712,20 +14775,19 @@
           "kind": "cash",
           "currency": "ZAR",
           "ticker": null,
-          "weight": 2.42,
-          "chg_1": -0.01,
+          "weight": 2.43,
+          "chg_1": 0.01,
           "chg_7d": 0.78,
-          "chg_30d": 1.66,
-          "chg_start": -3.71,
+          "chg_30d": 1.67,
+          "chg_start": -3.7,
           "peak_weight": 10.4,
           "first_seen": "2026-05-08",
           "held_since": "2026-05-08",
-          "days_held": 164,
+          "days_held": 165,
           "since_start": true,
           "perf": null,
           "contrib_30d": null,
           "spark": [
-            5.41,
             5.2,
             5.38,
             5.49,
@@ -14769,76 +14831,8 @@
             1.68,
             2.36,
             2.43,
-            2.42
-          ]
-        },
-        {
-          "instrument": "Vukile Property Fund Ltd",
-          "kind": "equity",
-          "currency": "ZAR",
-          "ticker": "VKE.JO",
-          "weight": 2.22,
-          "chg_1": -0.02,
-          "chg_7d": 0.13,
-          "chg_30d": 0.11,
-          "chg_start": 1.02,
-          "peak_weight": 2.27,
-          "first_seen": "2026-05-08",
-          "held_since": "2026-05-08",
-          "days_held": 164,
-          "since_start": true,
-          "perf": {
-            "d1": -0.73,
-            "d7": 0.57,
-            "d30": 1.83
-          },
-          "contrib_30d": 0.041,
-          "spark": [
-            2.08,
-            2.05,
-            2.09,
-            2.11,
-            2.09,
-            2.09,
-            2.1,
-            2.09,
-            2.07,
-            2.07,
-            2.06,
-            2.06,
-            2.1,
-            2.11,
-            2.13,
-            2.11,
-            2.09,
-            2.07,
-            2.06,
-            2.07,
-            2.07,
-            2.1,
-            2.14,
-            2.13,
-            2.11,
-            2.14,
-            2.1,
-            2.11,
-            2.09,
-            2.11,
-            2.14,
-            2.1,
-            2.13,
-            2.06,
-            2.02,
-            2.04,
-            2.05,
-            2.09,
-            2.08,
-            2.09,
-            2.11,
-            2.15,
-            2.16,
-            2.24,
-            2.22
+            2.42,
+            2.43
           ]
         },
         {
@@ -14846,20 +14840,19 @@
           "kind": "equity",
           "currency": "ZAR",
           "ticker": null,
-          "weight": 2.2,
-          "chg_1": -0.04,
-          "chg_7d": 0.1,
-          "chg_30d": -0.15,
-          "chg_start": 2.2,
+          "weight": 2.23,
+          "chg_1": 0.03,
+          "chg_7d": 0.07,
+          "chg_30d": -0.12,
+          "chg_start": 2.23,
           "peak_weight": 2.51,
           "first_seen": "2026-05-20",
           "held_since": "2026-05-20",
-          "days_held": 152,
+          "days_held": 153,
           "since_start": false,
           "perf": null,
           "contrib_30d": null,
           "spark": [
-            1.83,
             1.81,
             1.83,
             1.84,
@@ -14903,7 +14896,77 @@
             2.2,
             2.18,
             2.24,
-            2.2
+            2.2,
+            2.23
+          ]
+        },
+        {
+          "instrument": "Vukile Property Fund Ltd",
+          "kind": "equity",
+          "currency": "ZAR",
+          "ticker": "VKE.JO",
+          "weight": 2.22,
+          "chg_1": 0.0,
+          "chg_7d": 0.11,
+          "chg_30d": 0.11,
+          "chg_start": 1.02,
+          "peak_weight": 2.27,
+          "first_seen": "2026-05-08",
+          "held_since": "2026-05-08",
+          "days_held": 165,
+          "since_start": true,
+          "perf": {
+            "d1": 0.53,
+            "d7": 0.49,
+            "d30": 2.37
+          },
+          "contrib_30d": 0.053,
+          "spark": [
+            2.05,
+            2.09,
+            2.11,
+            2.09,
+            2.09,
+            2.1,
+            2.09,
+            2.07,
+            2.07,
+            2.06,
+            2.06,
+            2.1,
+            2.11,
+            2.13,
+            2.11,
+            2.09,
+            2.07,
+            2.06,
+            2.07,
+            2.07,
+            2.1,
+            2.14,
+            2.13,
+            2.11,
+            2.14,
+            2.1,
+            2.11,
+            2.09,
+            2.11,
+            2.14,
+            2.1,
+            2.13,
+            2.06,
+            2.02,
+            2.04,
+            2.05,
+            2.09,
+            2.08,
+            2.09,
+            2.11,
+            2.15,
+            2.16,
+            2.24,
+            2.22,
+            2.22
           ]
         },
         {
@@ -14911,24 +14974,23 @@
           "kind": "equity",
           "currency": "ZAR",
           "ticker": "FFB.JO",
-          "weight": 2.15,
-          "chg_1": -0.04,
-          "chg_7d": 0.1,
-          "chg_30d": 0.04,
-          "chg_start": 0.97,
+          "weight": 2.13,
+          "chg_1": -0.02,
+          "chg_7d": 0.05,
+          "chg_30d": 0.02,
+          "chg_start": 0.95,
           "peak_weight": 2.23,
           "first_seen": "2026-05-08",
           "held_since": "2026-05-08",
-          "days_held": 164,
+          "days_held": 165,
           "since_start": true,
           "perf": {
-            "d1": -1.75,
-            "d7": -5.75,
-            "d30": -6.97
+            "d1": 0.85,
+            "d7": -5.44,
+            "d30": -6.19
           },
-          "contrib_30d": -0.15,
+          "contrib_30d": -0.132,
           "spark": [
-            1.98,
             1.94,
             1.99,
             2.02,
@@ -14972,7 +15034,8 @@
             2.12,
             2.12,
             2.19,
-            2.15
+            2.15,
+            2.13
           ]
         },
         {
@@ -14980,20 +15043,19 @@
           "kind": "equity",
           "currency": "ZAR",
           "ticker": null,
-          "weight": 2.04,
-          "chg_1": 0.0,
+          "weight": 2.05,
+          "chg_1": 0.01,
           "chg_7d": 0.1,
-          "chg_30d": 0.04,
-          "chg_start": 2.04,
+          "chg_30d": 0.05,
+          "chg_start": 2.05,
           "peak_weight": 2.19,
           "first_seen": "2026-05-20",
           "held_since": "2026-05-20",
-          "days_held": 152,
+          "days_held": 153,
           "since_start": false,
           "perf": null,
           "contrib_30d": null,
           "spark": [
-            1.94,
             1.89,
             1.94,
             1.97,
@@ -15037,7 +15099,8 @@
             1.99,
             1.98,
             2.04,
-            2.04
+            2.04,
+            2.05
           ]
         },
         {
@@ -15045,20 +15108,19 @@
           "kind": "equity",
           "currency": "ZAR",
           "ticker": null,
-          "weight": 1.83,
-          "chg_1": 0.0,
-          "chg_7d": 0.06,
-          "chg_30d": 0.06,
-          "chg_start": 1.83,
+          "weight": 1.75,
+          "chg_1": -0.08,
+          "chg_7d": -0.05,
+          "chg_30d": -0.02,
+          "chg_start": 1.75,
           "peak_weight": 1.84,
           "first_seen": "2026-05-20",
           "held_since": "2026-05-20",
-          "days_held": 152,
+          "days_held": 153,
           "since_start": false,
           "perf": null,
           "contrib_30d": null,
           "spark": [
-            1.62,
             1.62,
             1.63,
             1.71,
@@ -15102,7 +15164,8 @@
             1.8,
             1.78,
             1.83,
-            1.83
+            1.83,
+            1.75
           ]
         },
         {
@@ -15110,20 +15173,19 @@
           "kind": "equity",
           "currency": "ZAR",
           "ticker": null,
-          "weight": 1.76,
-          "chg_1": 0.04,
-          "chg_7d": 0.1,
-          "chg_30d": 0.05,
-          "chg_start": 1.76,
+          "weight": 1.68,
+          "chg_1": -0.08,
+          "chg_7d": -0.01,
+          "chg_30d": -0.03,
+          "chg_start": 1.68,
           "peak_weight": 1.79,
           "first_seen": "2026-05-20",
           "held_since": "2026-05-20",
-          "days_held": 152,
+          "days_held": 153,
           "since_start": false,
           "perf": null,
           "contrib_30d": null,
           "spark": [
-            1.54,
             1.53,
             1.57,
             1.66,
@@ -15167,7 +15229,8 @@
             1.71,
             1.69,
             1.72,
-            1.76
+            1.76,
+            1.68
           ]
         },
         {
@@ -15175,20 +15238,19 @@
           "kind": "equity",
           "currency": "ZAR",
           "ticker": null,
-          "weight": 1.37,
-          "chg_1": -0.01,
-          "chg_7d": 0.07,
-          "chg_30d": 0.09,
-          "chg_start": 1.37,
+          "weight": 1.38,
+          "chg_1": 0.01,
+          "chg_7d": 0.06,
+          "chg_30d": 0.1,
+          "chg_start": 1.38,
           "peak_weight": 1.38,
           "first_seen": "2026-05-20",
           "held_since": "2026-05-20",
-          "days_held": 152,
+          "days_held": 153,
           "since_start": false,
           "perf": null,
           "contrib_30d": null,
           "spark": [
-            1.23,
             1.21,
             1.23,
             1.22,
@@ -15232,7 +15294,8 @@
             1.34,
             1.33,
             1.38,
-            1.37
+            1.37,
+            1.38
           ]
         },
         {
@@ -15240,24 +15303,23 @@
           "kind": "equity",
           "currency": "ZAR",
           "ticker": "NPN.JO",
-          "weight": 1.22,
-          "chg_1": 0.0,
-          "chg_7d": 0.05,
-          "chg_30d": 0.01,
-          "chg_start": -0.63,
+          "weight": 1.2,
+          "chg_1": -0.02,
+          "chg_7d": 0.03,
+          "chg_30d": -0.01,
+          "chg_start": -0.65,
           "peak_weight": 1.85,
           "first_seen": "2026-05-08",
           "held_since": "2026-05-08",
-          "days_held": 164,
+          "days_held": 165,
           "since_start": true,
           "perf": {
-            "d1": -2.74,
-            "d7": -2.38,
-            "d30": -1.92
+            "d1": 1.23,
+            "d7": -0.36,
+            "d30": -0.71
           },
-          "contrib_30d": -0.023,
+          "contrib_30d": -0.009,
           "spark": [
-            1.25,
             1.24,
             1.26,
             1.3,
@@ -15301,7 +15363,8 @@
             1.18,
             1.17,
             1.22,
-            1.22
+            1.22,
+            1.2
           ]
         },
         {
@@ -15309,24 +15372,23 @@
           "kind": "equity",
           "currency": "ZAR",
           "ticker": "LEW.JO",
-          "weight": 1.06,
-          "chg_1": 0.03,
-          "chg_7d": 0.09,
-          "chg_30d": 0.03,
-          "chg_start": 0.01,
+          "weight": 1.05,
+          "chg_1": -0.01,
+          "chg_7d": 0.07,
+          "chg_30d": 0.02,
+          "chg_start": 0.0,
           "peak_weight": 1.17,
           "first_seen": "2026-05-08",
           "held_since": "2026-05-08",
-          "days_held": 164,
+          "days_held": 165,
           "since_start": true,
           "perf": {
-            "d1": -1.49,
-            "d7": 2.62,
-            "d30": 2.62
+            "d1": 3.12,
+            "d7": 6.77,
+            "d30": 5.82
           },
-          "contrib_30d": 0.028,
+          "contrib_30d": 0.061,
           "spark": [
-            0.96,
             0.96,
             0.98,
             0.99,
@@ -15370,7 +15432,8 @@
             0.99,
             0.98,
             1.03,
-            1.06
+            1.06,
+            1.05
           ]
         },
         {
@@ -15378,20 +15441,19 @@
           "kind": "equity",
           "currency": "ZAR",
           "ticker": null,
-          "weight": 0.98,
-          "chg_1": 0.0,
-          "chg_7d": 0.08,
-          "chg_30d": 0.04,
-          "chg_start": 0.98,
+          "weight": 0.97,
+          "chg_1": -0.01,
+          "chg_7d": 0.06,
+          "chg_30d": 0.03,
+          "chg_start": 0.97,
           "peak_weight": 1.05,
           "first_seen": "2026-08-14",
           "held_since": "2026-08-14",
-          "days_held": 66,
+          "days_held": 67,
           "since_start": false,
           "perf": null,
           "contrib_30d": null,
           "spark": [
-            1.0,
             0.95,
             0.99,
             1.0,
@@ -15435,7 +15497,8 @@
             0.92,
             0.94,
             0.98,
-            0.98
+            0.98,
+            0.97
           ]
         },
         {
@@ -15443,24 +15506,23 @@
           "kind": "equity",
           "currency": "ZAR",
           "ticker": "PPE.JO",
-          "weight": 0.82,
-          "chg_1": -0.01,
-          "chg_7d": 0.1,
-          "chg_30d": -0.04,
-          "chg_start": 0.16,
+          "weight": 0.8,
+          "chg_1": -0.02,
+          "chg_7d": 0.07,
+          "chg_30d": -0.06,
+          "chg_start": 0.14,
           "peak_weight": 0.91,
           "first_seen": "2026-05-08",
           "held_since": "2026-05-08",
-          "days_held": 164,
+          "days_held": 165,
           "since_start": true,
           "perf": {
-            "d1": -3.26,
-            "d7": 4.71,
-            "d30": -9.64
+            "d1": 0.56,
+            "d7": -0.56,
+            "d30": -9.14
           },
-          "contrib_30d": -0.079,
+          "contrib_30d": -0.073,
           "spark": [
-            0.71,
             0.86,
             0.91,
             0.85,
@@ -15504,7 +15566,8 @@
             0.78,
             0.8,
             0.83,
-            0.82
+            0.82,
+            0.8
           ]
         },
         {
@@ -15512,24 +15575,23 @@
           "kind": "fund",
           "currency": "ZAR",
           "ticker": "STXGOV.JO",
-          "weight": 0.74,
-          "chg_1": -0.01,
-          "chg_7d": 0.03,
-          "chg_30d": 0.0,
-          "chg_start": 0.04,
+          "weight": 0.75,
+          "chg_1": 0.01,
+          "chg_7d": 0.04,
+          "chg_30d": 0.01,
+          "chg_start": 0.05,
           "peak_weight": 0.76,
           "first_seen": "2026-05-08",
           "held_since": "2026-05-08",
-          "days_held": 164,
+          "days_held": 165,
           "since_start": true,
           "perf": {
-            "d1": -0.1,
-            "d7": 0.93,
+            "d1": 0.0,
+            "d7": 0.31,
             "d30": 0.93
           },
           "contrib_30d": 0.007,
           "spark": [
-            0.7,
             0.69,
             0.7,
             0.71,
@@ -15573,7 +15635,8 @@
             0.72,
             0.72,
             0.75,
-            0.74
+            0.74,
+            0.75
           ]
         },
         {
@@ -15581,24 +15644,23 @@
           "kind": "equity",
           "currency": "ZAR",
           "ticker": "NY1.JO",
-          "weight": 0.64,
-          "chg_1": 0.0,
-          "chg_7d": 0.02,
-          "chg_30d": -0.02,
-          "chg_start": -0.05,
+          "weight": 0.63,
+          "chg_1": -0.01,
+          "chg_7d": 0.0,
+          "chg_30d": -0.03,
+          "chg_start": -0.06,
           "peak_weight": 0.72,
           "first_seen": "2026-05-08",
           "held_since": "2026-05-08",
-          "days_held": 164,
+          "days_held": 165,
           "since_start": true,
           "perf": {
-            "d1": -2.25,
-            "d7": -4.25,
-            "d30": -8.08
+            "d1": 0.42,
+            "d7": -2.06,
+            "d30": -7.69
           },
-          "contrib_30d": -0.052,
+          "contrib_30d": -0.048,
           "spark": [
-            0.65,
             0.64,
             0.66,
             0.67,
@@ -15642,7 +15704,8 @@
             0.63,
             0.62,
             0.64,
-            0.64
+            0.64,
+            0.63
           ]
         },
         {
@@ -15650,20 +15713,19 @@
           "kind": "equity",
           "currency": "ZAR",
           "ticker": null,
-          "weight": 0.6,
-          "chg_1": 0.0,
-          "chg_7d": 0.04,
-          "chg_30d": -0.05,
-          "chg_start": 0.6,
+          "weight": 0.59,
+          "chg_1": -0.01,
+          "chg_7d": 0.02,
+          "chg_30d": -0.06,
+          "chg_start": 0.59,
           "peak_weight": 0.66,
           "first_seen": "2026-08-14",
           "held_since": "2026-08-14",
-          "days_held": 66,
+          "days_held": 67,
           "since_start": false,
           "perf": null,
           "contrib_30d": null,
           "spark": [
-            0.63,
             0.61,
             0.63,
             0.62,
@@ -15707,7 +15769,8 @@
             0.58,
             0.58,
             0.6,
-            0.6
+            0.6,
+            0.59
           ]
         },
         {
@@ -15716,23 +15779,22 @@
           "currency": "ZAR",
           "ticker": "MTN.JO",
           "weight": 0.57,
-          "chg_1": 0.01,
+          "chg_1": 0.0,
           "chg_7d": 0.04,
           "chg_30d": -0.02,
           "chg_start": -0.47,
           "peak_weight": 1.47,
           "first_seen": "2026-05-08",
           "held_since": "2026-05-08",
-          "days_held": 164,
+          "days_held": 165,
           "since_start": true,
           "perf": {
-            "d1": 0.16,
-            "d7": 2.67,
-            "d30": -3.28
+            "d1": 2.57,
+            "d7": 3.74,
+            "d30": -0.8
           },
-          "contrib_30d": -0.019,
+          "contrib_30d": -0.005,
           "spark": [
-            0.54,
             0.53,
             0.54,
             0.56,
@@ -15776,76 +15838,8 @@
             0.55,
             0.55,
             0.56,
+            0.57,
             0.57
-          ]
-        },
-        {
-          "instrument": "Ninety One Plc",
-          "kind": "equity",
-          "currency": "ZAR",
-          "ticker": "N91.JO",
-          "weight": 0.56,
-          "chg_1": 0.01,
-          "chg_7d": 0.02,
-          "chg_30d": -0.02,
-          "chg_start": -0.03,
-          "peak_weight": 0.61,
-          "first_seen": "2026-05-08",
-          "held_since": "2026-05-08",
-          "days_held": 164,
-          "since_start": true,
-          "perf": {
-            "d1": -2.84,
-            "d7": -4.63,
-            "d30": -8.03
-          },
-          "contrib_30d": -0.045,
-          "spark": [
-            0.56,
-            0.55,
-            0.57,
-            0.58,
-            0.58,
-            0.57,
-            0.58,
-            0.57,
-            0.56,
-            0.56,
-            0.56,
-            0.57,
-            0.57,
-            0.57,
-            0.57,
-            0.57,
-            0.56,
-            0.56,
-            0.55,
-            0.56,
-            0.56,
-            0.57,
-            0.58,
-            0.58,
-            0.58,
-            0.58,
-            0.57,
-            0.57,
-            0.56,
-            0.55,
-            0.56,
-            0.55,
-            0.56,
-            0.54,
-            0.54,
-            0.53,
-            0.53,
-            0.53,
-            0.53,
-            0.54,
-            0.55,
-            0.55,
-            0.55,
-            0.55,
-            0.56
           ]
         },
         {
@@ -15854,19 +15848,18 @@
           "currency": "ZAR",
           "ticker": null,
           "weight": 0.55,
-          "chg_1": 0.01,
-          "chg_7d": 0.06,
+          "chg_1": 0.0,
+          "chg_7d": 0.05,
           "chg_30d": 0.04,
           "chg_start": 0.55,
           "peak_weight": 1.1,
           "first_seen": "2026-05-22",
           "held_since": "2026-05-22",
-          "days_held": 150,
+          "days_held": 151,
           "since_start": false,
           "perf": null,
           "contrib_30d": null,
           "spark": [
-            0.48,
             0.47,
             0.49,
             0.48,
@@ -15910,6 +15903,76 @@
             0.51,
             0.51,
             0.54,
+            0.55,
+            0.55
+          ]
+        },
+        {
+          "instrument": "Ninety One Plc",
+          "kind": "equity",
+          "currency": "ZAR",
+          "ticker": "N91.JO",
+          "weight": 0.55,
+          "chg_1": -0.01,
+          "chg_7d": 0.0,
+          "chg_30d": -0.03,
+          "chg_start": -0.04,
+          "peak_weight": 0.61,
+          "first_seen": "2026-05-08",
+          "held_since": "2026-05-08",
+          "days_held": 165,
+          "since_start": true,
+          "perf": {
+            "d1": 1.6,
+            "d7": -1.97,
+            "d30": -6.56
+          },
+          "contrib_30d": -0.036,
+          "spark": [
+            0.55,
+            0.57,
+            0.58,
+            0.58,
+            0.57,
+            0.58,
+            0.57,
+            0.56,
+            0.56,
+            0.56,
+            0.57,
+            0.57,
+            0.57,
+            0.57,
+            0.57,
+            0.56,
+            0.56,
+            0.55,
+            0.56,
+            0.56,
+            0.57,
+            0.58,
+            0.58,
+            0.58,
+            0.58,
+            0.57,
+            0.57,
+            0.56,
+            0.55,
+            0.56,
+            0.55,
+            0.56,
+            0.54,
+            0.54,
+            0.53,
+            0.53,
+            0.53,
+            0.53,
+            0.54,
+            0.55,
+            0.55,
+            0.55,
+            0.55,
+            0.56,
             0.55
           ]
         },
@@ -15918,24 +15981,23 @@
           "kind": "equity",
           "currency": "ZAR",
           "ticker": "SSU.JO",
-          "weight": 0.41,
-          "chg_1": -0.01,
-          "chg_7d": 0.01,
-          "chg_30d": 0.0,
-          "chg_start": 0.0,
+          "weight": 0.42,
+          "chg_1": 0.01,
+          "chg_7d": 0.02,
+          "chg_30d": 0.01,
+          "chg_start": 0.01,
           "peak_weight": 0.44,
           "first_seen": "2026-05-08",
           "held_since": "2026-05-08",
-          "days_held": 164,
+          "days_held": 165,
           "since_start": true,
           "perf": {
-            "d1": 0.98,
-            "d7": 0.19,
-            "d30": -6.28
+            "d1": -0.49,
+            "d7": 0.39,
+            "d30": -6.73
           },
-          "contrib_30d": -0.026,
+          "contrib_30d": -0.028,
           "spark": [
-            0.38,
             0.37,
             0.39,
             0.39,
@@ -15979,29 +16041,30 @@
             0.4,
             0.4,
             0.42,
-            0.41
+            0.41,
+            0.42
           ]
         }
       ],
       "attribution": {
-        "covered_weight": 81.25,
-        "implied_30d_pct": -3.034,
+        "covered_weight": 81.33,
+        "implied_30d_pct": -4.356,
         "top_contributors": [
           {
             "instrument": "Satrix SA Bond Portfolio",
-            "contrib": 0.125
-          },
-          {
-            "instrument": "SATRIX NAS 100",
-            "contrib": 0.086
-          },
-          {
-            "instrument": "Vukile Property Fund Ltd",
-            "contrib": 0.041
+            "contrib": 0.126
           },
           {
             "instrument": "Lewis Group Ltd",
-            "contrib": 0.028
+            "contrib": 0.061
+          },
+          {
+            "instrument": "Vukile Property Fund Ltd",
+            "contrib": 0.053
+          },
+          {
+            "instrument": "SATRIX NAS 100",
+            "contrib": 0.032
           },
           {
             "instrument": "SATRIX GOVI ETF",
@@ -16011,23 +16074,23 @@
         "top_detractors": [
           {
             "instrument": "AI ACTIVELY MANAGED ETF",
-            "contrib": -1.052
+            "contrib": -1.869
           },
           {
             "instrument": "EGE ACTIVELY MANAGED ETF",
-            "contrib": -0.979
+            "contrib": -1.383
           },
           {
             "instrument": "New Gold Issuer Ltd",
-            "contrib": -0.334
+            "contrib": -0.387
           },
           {
             "instrument": "Pan African Resource",
-            "contrib": -0.308
+            "contrib": -0.348
           },
           {
             "instrument": "ANGLOGOLD ASHANTI PLC",
-            "contrib": -0.188
+            "contrib": -0.211
           }
         ]
       },
@@ -16143,7 +16206,8 @@
           "2026-10-14",
           "2026-10-15",
           "2026-10-16",
-          "2026-10-19"
+          "2026-10-19",
+          "2026-10-20"
         ],
         "series": [
           {
@@ -16259,7 +16323,8 @@
               19.1,
               18.9,
               18.0,
-              18.0
+              18.0,
+              18.1
             ]
           },
           {
@@ -16375,7 +16440,8 @@
               18.9,
               18.7,
               17.7,
-              17.6
+              17.6,
+              17.7
             ]
           },
           {
@@ -16491,7 +16557,8 @@
               13.0,
               13.0,
               13.3,
-              13.4
+              13.4,
+              13.5
             ]
           },
           {
@@ -16607,7 +16674,8 @@
               7.86,
               7.77,
               8.05,
-              8.04
+              8.04,
+              8.02
             ]
           },
           {
@@ -16723,7 +16791,8 @@
               5.1,
               5.09,
               5.1,
-              5.05
+              5.05,
+              5.08
             ]
           },
           {
@@ -16839,7 +16908,8 @@
               4.55,
               4.54,
               4.73,
-              4.76
+              4.76,
+              4.75
             ]
           },
           {
@@ -16955,7 +17025,8 @@
               3.35,
               3.29,
               3.47,
-              3.55
+              3.55,
+              3.49
             ]
           },
           {
@@ -17071,7 +17142,8 @@
               2.6,
               2.56,
               2.61,
-              2.65
+              2.65,
+              2.59
             ]
           },
           {
@@ -17187,123 +17259,125 @@
               2.47,
               2.4,
               2.52,
-              2.57
+              2.57,
+              2.53
             ]
           },
           {
-            "instrument": "Vukile Property Fund Ltd",
+            "instrument": "Grindrod Ltd",
             "weights": [
-              1.2,
-              1.2,
-              1.19,
-              1.2,
-              1.18,
-              1.19,
-              1.2,
-              1.24,
-              1.24,
-              1.21,
-              1.2,
-              1.19,
-              1.18,
-              1.18,
-              1.19,
-              1.2,
-              1.17,
-              1.14,
-              1.13,
-              1.17,
-              1.16,
-              1.17,
-              1.2,
-              1.21,
-              1.21,
-              1.19,
-              1.21,
-              1.2,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.09,
+              2.36,
+              2.38,
+              2.39,
+              2.4,
+              2.46,
+              2.48,
+              2.49,
+              2.46,
+              2.37,
+              2.41,
+              2.45,
+              2.42,
+              2.46,
+              2.5,
+              2.51,
+              2.49,
+              2.44,
+              2.43,
+              2.49,
+              1.96,
               1.98,
-              2.02,
-              2.06,
-              2.07,
-              2.09,
-              2.14,
-              2.12,
-              2.06,
-              2.07,
-              2.12,
-              2.14,
-              2.15,
-              2.24,
-              2.11,
+              1.99,
+              1.99,
+              1.97,
               2.04,
+              2.04,
+              2.0,
+              2.01,
+              2.05,
+              2.06,
+              2.01,
+              2.1,
+              2.16,
+              2.06,
+              2.08,
+              2.11,
+              2.11,
+              2.12,
+              2.2,
+              2.22,
+              2.15,
+              2.12,
+              2.11,
+              2.08,
               2.12,
               2.17,
-              2.15,
-              2.16,
-              2.19,
               2.21,
-              2.19,
+              2.23,
+              2.18,
               2.16,
-              2.11,
-              2.07,
-              2.1,
-              2.15,
-              2.24,
-              2.27,
-              2.22,
-              2.25,
-              2.22,
-              2.15,
-              2.13,
-              2.14,
-              2.16,
-              2.11,
               2.12,
-              2.08,
-              2.05,
-              2.09,
-              2.11,
-              2.09,
-              2.09,
-              2.1,
               2.09,
               2.07,
-              2.07,
-              2.06,
-              2.06,
-              2.1,
-              2.11,
-              2.13,
-              2.11,
-              2.09,
-              2.07,
-              2.06,
-              2.07,
-              2.07,
-              2.1,
-              2.14,
-              2.13,
-              2.11,
-              2.14,
-              2.1,
-              2.11,
-              2.09,
-              2.11,
-              2.14,
-              2.1,
-              2.13,
-              2.06,
               2.02,
+              1.97,
+              1.71,
+              1.85,
+              1.83,
+              1.81,
+              1.83,
+              1.84,
+              1.9,
+              1.9,
+              1.91,
+              1.88,
+              1.91,
+              1.88,
+              1.91,
+              1.96,
+              1.97,
+              1.98,
+              2.03,
+              2.02,
+              2.02,
+              1.99,
+              2.0,
+              2.0,
               2.04,
-              2.05,
-              2.09,
-              2.08,
-              2.09,
-              2.11,
-              2.15,
               2.16,
+              2.18,
+              2.27,
+              2.35,
+              2.41,
+              2.39,
+              2.34,
+              2.28,
+              2.26,
+              2.25,
+              2.26,
+              2.28,
+              2.12,
+              2.05,
+              2.06,
+              2.1,
+              2.11,
+              2.08,
+              2.1,
+              2.16,
+              2.2,
+              2.18,
               2.24,
-              2.22
+              2.2,
+              2.23
             ]
           }
         ]
@@ -18062,6 +18136,10 @@
         [
           "2026-10-19",
           79.86
+        ],
+        [
+          "2026-10-20",
+          80.98
         ]
       ],
       "EASYAI": [
@@ -18508,6 +18586,10 @@
         [
           "2026-10-19",
           78.13
+        ],
+        [
+          "2026-10-20",
+          79.29
         ]
       ],
       "EASYBF": [
@@ -18954,114 +19036,118 @@
         [
           "2026-10-19",
           87.59
+        ],
+        [
+          "2026-10-20",
+          86.9
         ]
       ]
     },
     "overlap": {
       "a": "EASYGE",
       "b": "EASYAI",
-      "overlap_pct": 63.85,
+      "overlap_pct": 64.05,
       "shared_count": 20,
       "rows": [
         {
           "instrument": "LUMENTUM HOL",
-          "EASYGE": 8.73,
-          "EASYAI": 8.48
+          "EASYGE": 8.72,
+          "EASYAI": 8.46
         },
         {
           "instrument": "NVIDIA CORP",
-          "EASYGE": 7.78,
-          "EASYAI": 8.01
+          "EASYGE": 7.77,
+          "EASYAI": 8.0
         },
         {
           "instrument": "COMFORT SYSTEMS",
-          "EASYGE": 5.85,
-          "EASYAI": 6.17
+          "EASYGE": 5.86,
+          "EASYAI": 6.18
         },
         {
           "instrument": "FORMFACTOR INC",
-          "EASYGE": 5.44,
-          "EASYAI": 4.86
-        },
-        {
-          "instrument": "BLOOM ENERGY C-A",
-          "EASYGE": 3.95,
-          "EASYAI": 4.22
+          "EASYGE": 5.63,
+          "EASYAI": 5.02
         },
         {
           "instrument": "MICRON TECH",
-          "EASYGE": 3.04,
-          "EASYAI": 5.09
+          "EASYGE": 3.09,
+          "EASYAI": 5.16
+        },
+        {
+          "instrument": "BLOOM ENERGY C-A",
+          "EASYGE": 3.98,
+          "EASYAI": 4.25
         },
         {
           "instrument": "COHERENT CORP",
-          "EASYGE": 4.05,
-          "EASYAI": 3.68
+          "EASYGE": 3.98,
+          "EASYAI": 3.61
         },
         {
           "instrument": "GE VERNOVA LLC",
-          "EASYGE": 2.05,
-          "EASYAI": 4.41
-        },
-        {
-          "instrument": "QUANTA SERVICES",
-          "EASYGE": 2.83,
-          "EASYAI": 2.97
+          "EASYGE": 2.0,
+          "EASYAI": 4.28
         },
         {
           "instrument": "TERADYNE INC",
-          "EASYGE": 2.88,
-          "EASYAI": 2.88
+          "EASYGE": 2.93,
+          "EASYAI": 2.93
         },
         {
           "instrument": "CIENA CORP",
-          "EASYGE": 3.63,
-          "EASYAI": 2.1
+          "EASYGE": 3.7,
+          "EASYAI": 2.14
         },
         {
           "instrument": "CREDO TECHNOLOGY GROUP HOLDI",
-          "EASYGE": 3.06,
+          "EASYGE": 3.08,
           "EASYAI": 2.56
         },
         {
+          "instrument": "QUANTA SERVICES",
+          "EASYGE": 2.73,
+          "EASYAI": 2.86
+        },
+        {
           "instrument": "MONOLITHIC POWER",
-          "EASYGE": 3.32,
-          "EASYAI": 2.04
+          "EASYGE": 3.39,
+          "EASYAI": 2.08
         },
         {
           "instrument": "ONTO INNOVATION",
-          "EASYGE": 2.38,
-          "EASYAI": 2.97
+          "EASYGE": 2.41,
+          "EASYAI": 3.0
         },
         {
           "instrument": "ARGAN INC",
-          "EASYGE": 2.64,
-          "EASYAI": 2.14
+          "EASYGE": 2.67,
+          "EASYAI": 2.16
         },
         {
           "instrument": "ADV ENERGY INDS",
           "EASYGE": 1.28,
-          "EASYAI": 2.74
+          "EASYAI": 2.73
         },
         {
           "instrument": "NEBIUS GROUP NV",
-          "EASYGE": 1.9,
-          "EASYAI": 1.86
+          "EASYGE": 1.93,
+          "EASYAI": 1.88
         },
         {
           "instrument": "VERTIV HOLDINGS",
-          "EASYGE": 2.29,
-          "EASYAI": 1.4
+          "EASYGE": 2.26,
+          "EASYAI": 1.38
         },
         {
           "instrument": "AIXTRON SE",
-          "EASYGE": 1.87,
-          "EASYAI": 1.52
+          "EASYGE": 1.83,
+          "EASYAI": 1.49
         },
         {
           "instrument": "TTM TECHNOLOGIES",
-          "EASYGE": 1.42,
-          "EASYAI": 1.17
+          "EASYGE": 1.48,
+          "EASYAI": 1.22
         }
       ]
     },
@@ -19071,98 +19157,106 @@
         {
           "instrument": "AI ACTIVELY MANAGED ETF",
           "fund": "EASYAI",
-          "weight": 17.6
+          "weight": 17.7
         },
         {
           "instrument": "EGE ACTIVELY MANAGED ETF",
           "fund": "EASYGE",
-          "weight": 18.0
+          "weight": 18.1
         }
       ],
       "buckets": {
-        "Offshore equity": 33.64,
-        "SA equity": 34.51,
-        "Funds & bonds (direct)": 27.23,
-        "Cash": 4.31
+        "Offshore equity": 33.87,
+        "SA equity": 34.13,
+        "Funds & bonds (direct)": 27.35,
+        "Cash": 4.3
       },
       "currency": {
-        "ZAR": 64.31,
-        "USD": 34.03,
-        "EUR": 1.35
+        "ZAR": 64.06,
+        "USD": 34.26,
+        "EUR": 1.33
       },
       "rows": [
         {
           "instrument": "Satrix SA Bond Portfolio",
           "currency": "ZAR",
-          "total": 13.4,
+          "total": 13.5,
           "sources": {
-            "Direct": 13.4
+            "Direct": 13.5
           }
         },
         {
           "instrument": "New Gold Issuer Ltd",
           "currency": "ZAR",
-          "total": 8.04,
+          "total": 8.02,
           "sources": {
-            "Direct": 8.04
+            "Direct": 8.02
           }
         },
         {
           "instrument": "SATRIX NAS 100",
           "currency": "ZAR",
-          "total": 5.05,
+          "total": 5.08,
           "sources": {
-            "Direct": 5.05
+            "Direct": 5.08
           }
         },
         {
           "instrument": "CAPITEC LIMITED",
           "currency": "ZAR",
-          "total": 4.76,
+          "total": 4.75,
           "sources": {
-            "Direct": 4.76
+            "Direct": 4.75
           }
         },
         {
           "instrument": "Pan African Resource",
           "currency": "ZAR",
-          "total": 3.55,
+          "total": 3.49,
           "sources": {
-            "Direct": 3.55
+            "Direct": 3.49
           }
         },
         {
           "instrument": "LUMENTUM HOL",
           "currency": "USD",
-          "total": 3.06,
+          "total": 3.08,
           "sources": {
-            "via EASYAI": 1.49,
-            "via EASYGE": 1.57
+            "via EASYAI": 1.5,
+            "via EASYGE": 1.58
           }
         },
         {
           "instrument": "NVIDIA CORP",
           "currency": "USD",
-          "total": 2.81,
+          "total": 2.82,
           "sources": {
-            "via EASYAI": 1.41,
-            "via EASYGE": 1.4
+            "via EASYAI": 1.42,
+            "via EASYGE": 1.41
           }
         },
         {
           "instrument": "BHP GROUP LTD",
           "currency": "ZAR",
-          "total": 2.65,
+          "total": 2.59,
           "sources": {
-            "Direct": 2.65
+            "Direct": 2.59
           }
         },
         {
           "instrument": "ANGLOGOLD ASHANTI PLC",
           "currency": "ZAR",
-          "total": 2.57,
+          "total": 2.53,
           "sources": {
-            "Direct": 2.57
+            "Direct": 2.53
+          }
+        },
+        {
+          "instrument": "Grindrod Ltd",
+          "currency": "ZAR",
+          "total": 2.23,
+          "sources": {
+            "Direct": 2.23
           }
         },
         {
@@ -19174,183 +19268,175 @@
           }
         },
         {
-          "instrument": "Grindrod Ltd",
-          "currency": "ZAR",
-          "total": 2.2,
+          "instrument": "COMFORT SYSTEMS",
+          "currency": "USD",
+          "total": 2.15,
           "sources": {
-            "Direct": 2.2
+            "via EASYAI": 1.09,
+            "via EASYGE": 1.06
           }
         },
         {
           "instrument": "Fortress Real Estate Investments Limited B",
           "currency": "ZAR",
-          "total": 2.15,
+          "total": 2.13,
           "sources": {
-            "Direct": 2.15
-          }
-        },
-        {
-          "instrument": "COMFORT SYSTEMS",
-          "currency": "USD",
-          "total": 2.14,
-          "sources": {
-            "via EASYAI": 1.09,
-            "via EASYGE": 1.05
+            "Direct": 2.13
           }
         },
         {
           "instrument": "Resilient Property Income Fund Ltd",
           "currency": "ZAR",
-          "total": 2.04,
+          "total": 2.05,
           "sources": {
-            "Direct": 2.04
+            "Direct": 2.05
           }
         },
         {
           "instrument": "FORMFACTOR INC",
           "currency": "USD",
-          "total": 1.83,
+          "total": 1.91,
           "sources": {
-            "via EASYAI": 0.86,
-            "via EASYGE": 0.98
+            "via EASYAI": 0.89,
+            "via EASYGE": 1.02
           }
         },
         {
           "instrument": "Anglo American Plc",
           "currency": "ZAR",
-          "total": 1.83,
+          "total": 1.75,
           "sources": {
-            "Direct": 1.83
+            "Direct": 1.75
           }
         },
         {
           "instrument": "Glencore Xstrata Plc",
           "currency": "ZAR",
-          "total": 1.76,
+          "total": 1.68,
           "sources": {
-            "Direct": 1.76
+            "Direct": 1.68
           }
         },
         {
           "instrument": "BLOOM ENERGY C-A",
           "currency": "USD",
-          "total": 1.45,
+          "total": 1.47,
           "sources": {
-            "via EASYAI": 0.74,
-            "via EASYGE": 0.71
+            "via EASYAI": 0.75,
+            "via EASYGE": 0.72
           }
         },
         {
           "instrument": "MICRON TECH",
           "currency": "USD",
-          "total": 1.44,
+          "total": 1.47,
           "sources": {
-            "via EASYAI": 0.9,
-            "via EASYGE": 0.55
-          }
-        },
-        {
-          "instrument": "COHERENT CORP",
-          "currency": "USD",
-          "total": 1.38,
-          "sources": {
-            "via EASYAI": 0.65,
-            "via EASYGE": 0.73
+            "via EASYAI": 0.91,
+            "via EASYGE": 0.56
           }
         },
         {
           "instrument": "BOXER RETAIL LTD",
           "currency": "ZAR",
-          "total": 1.37,
+          "total": 1.38,
           "sources": {
-            "Direct": 1.37
+            "Direct": 1.38
+          }
+        },
+        {
+          "instrument": "COHERENT CORP",
+          "currency": "USD",
+          "total": 1.36,
+          "sources": {
+            "via EASYAI": 0.64,
+            "via EASYGE": 0.72
           }
         },
         {
           "instrument": "Naspers Ltd - N Shares",
           "currency": "ZAR",
-          "total": 1.22,
+          "total": 1.2,
           "sources": {
-            "Direct": 1.22
+            "Direct": 1.2
           }
         },
         {
           "instrument": "GE VERNOVA LLC",
           "currency": "USD",
-          "total": 1.15,
+          "total": 1.12,
           "sources": {
-            "via EASYAI": 0.78,
-            "via EASYGE": 0.37
+            "via EASYAI": 0.76,
+            "via EASYGE": 0.36
           }
         },
         {
           "instrument": "Lewis Group Ltd",
           "currency": "ZAR",
-          "total": 1.06,
+          "total": 1.05,
           "sources": {
-            "Direct": 1.06
-          }
-        },
-        {
-          "instrument": "QUANTA SERVICES",
-          "currency": "USD",
-          "total": 1.03,
-          "sources": {
-            "via EASYAI": 0.52,
-            "via EASYGE": 0.51
+            "Direct": 1.05
           }
         },
         {
           "instrument": "TERADYNE INC",
           "currency": "USD",
-          "total": 1.03,
+          "total": 1.05,
           "sources": {
-            "via EASYAI": 0.51,
-            "via EASYGE": 0.52
+            "via EASYAI": 0.52,
+            "via EASYGE": 0.53
           }
         },
         {
           "instrument": "CIENA CORP",
           "currency": "USD",
-          "total": 1.02,
+          "total": 1.05,
           "sources": {
-            "via EASYAI": 0.37,
-            "via EASYGE": 0.65
+            "via EASYAI": 0.38,
+            "via EASYGE": 0.67
           }
         },
         {
           "instrument": "CREDO TECHNOLOGY GROUP HOLDI",
           "currency": "USD",
-          "total": 1.0,
+          "total": 1.01,
           "sources": {
             "via EASYAI": 0.45,
-            "via EASYGE": 0.55
+            "via EASYGE": 0.56
           }
         },
         {
-          "instrument": "CIE FINANCIERE R",
-          "currency": "ZAR",
-          "total": 0.98,
+          "instrument": "QUANTA SERVICES",
+          "currency": "USD",
+          "total": 1.0,
           "sources": {
-            "Direct": 0.98
+            "via EASYAI": 0.51,
+            "via EASYGE": 0.49
           }
         },
         {
           "instrument": "MONOLITHIC POWER",
           "currency": "USD",
-          "total": 0.96,
+          "total": 0.98,
           "sources": {
-            "via EASYAI": 0.36,
-            "via EASYGE": 0.6
+            "via EASYAI": 0.37,
+            "via EASYGE": 0.61
+          }
+        },
+        {
+          "instrument": "CIE FINANCIERE R",
+          "currency": "ZAR",
+          "total": 0.97,
+          "sources": {
+            "Direct": 0.97
           }
         }
       ]
     },
     "health": {
       "EASYAI": {
-        "snapshots": 111,
+        "snapshots": 112,
         "first": "2026-05-08",
-        "last": "2026-10-19",
+        "last": "2026-10-20",
         "days_since_last": 0,
         "gaps": [
           {
@@ -19362,9 +19448,9 @@
         "avg_total_weight": 99.83
       },
       "EASYBF": {
-        "snapshots": 111,
+        "snapshots": 112,
         "first": "2026-05-08",
-        "last": "2026-10-19",
+        "last": "2026-10-20",
         "days_since_last": 0,
         "gaps": [
           {
@@ -19376,9 +19462,9 @@
         "avg_total_weight": 99.72
       },
       "EASYGE": {
-        "snapshots": 111,
+        "snapshots": 112,
         "first": "2026-05-08",
-        "last": "2026-10-19",
+        "last": "2026-10-20",
         "days_since_last": 0,
         "gaps": [
           {
